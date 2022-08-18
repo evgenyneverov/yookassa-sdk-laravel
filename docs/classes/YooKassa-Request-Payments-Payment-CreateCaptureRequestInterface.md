@@ -296,6 +296,6 @@ public setDeal(\YooKassa\Model\Deal\PaymentDealInfo|array|null $value) : mixed
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-01 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-08-18 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

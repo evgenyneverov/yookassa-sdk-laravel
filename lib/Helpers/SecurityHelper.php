@@ -154,7 +154,7 @@ class SecurityHelper
      *
      * @return string[]
      */
-    final private function getIPv4TrustedList()
+    private function getIPv4TrustedList()
     {
         return array(
             '185.71.76.0/27',
@@ -171,7 +171,7 @@ class SecurityHelper
      *
      * @return \string[][]
      */
-    final private function getIPv6TrustedList()
+    private function getIPv6TrustedList()
     {
         return array(
            array(

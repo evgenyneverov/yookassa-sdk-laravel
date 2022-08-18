@@ -46,6 +46,7 @@ class Metadata extends AbstractObject implements \IteratorAggregate, \Countable
         return $this->getUnknownProperties();
     }
 
+    #[\ReturnTypeWillChange]
     /**
      * Возвращает объект ArrayIterator для метаданных
      * @return \Iterator
@@ -55,6 +56,7 @@ class Metadata extends AbstractObject implements \IteratorAggregate, \Countable
         return new \ArrayIterator($this->getUnknownProperties());
     }
 
+    #[\ReturnTypeWillChange]
     /**
      * Возвращает количество метаданных
      * @return int
