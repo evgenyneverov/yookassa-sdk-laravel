@@ -1,32 +1,36 @@
 # [YooKassa API SDK](../home.md)
 
-# Class: \YooKassa\Model\Payout\PayoutDestinationBankCardCard
-### Namespace: [\YooKassa\Model\Payout](../namespaces/yookassa-model-payout.md)
+# Class: \YooKassa\Model\PaymentMethod\BankCard
+### Namespace: [\YooKassa\Model\PaymentMethod](../namespaces/yookassa-model-paymentmethod.md)
 ---
 **Summary:**
 
-Данные банковской карты
-Необходим при оплате PCI-DSS данными.
+Класс, описывающий объект банковской карты
 
 
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [ISO_3166_CODE_LENGTH](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#constant_ISO_3166_CODE_LENGTH) |  |  |
+| public | [ISO_3166_CODE_LENGTH](../classes/YooKassa-Model-PaymentMethod-BankCard.md#constant_ISO_3166_CODE_LENGTH) |  |  |
 
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [$card_type](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_card_type) |  | Тип банковской карты |
-| public | [$cardType](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_cardType) |  | Тип банковской карты |
-| public | [$first6](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_first6) |  | Первые 6 цифр номера карты |
-| public | [$issuer_country](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_issuer_country) |  | Код страны, в которой выпущена карта |
-| public | [$issuer_name](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_issuer_name) |  | Тип банковской карты |
-| public | [$issuerCountry](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_issuerCountry) |  | Код страны, в которой выпущена карта |
-| public | [$issuerName](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_issuerName) |  | Тип банковской карты |
-| public | [$last4](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#property_last4) |  | Последние 4 цифры номера карты |
+| public | [$card_type](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_card_type) |  | Тип банковской карты |
+| public | [$cardType](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_cardType) |  | Тип банковской карты |
+| public | [$expiry_month](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_expiry_month) |  | Срок действия, месяц |
+| public | [$expiry_year](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_expiry_year) |  | Срок действия, год |
+| public | [$expiryMonth](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_expiryMonth) |  | Срок действия, месяц |
+| public | [$expiryYear](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_expiryYear) |  | Срок действия, год |
+| public | [$first6](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_first6) |  | Первые 6 цифр номера карты |
+| public | [$issuer_country](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_issuer_country) |  | Код страны, в которой выпущена карта |
+| public | [$issuer_name](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_issuer_name) |  | Тип банковской карты |
+| public | [$issuerCountry](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_issuerCountry) |  | Код страны, в которой выпущена карта |
+| public | [$issuerName](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_issuerName) |  | Тип банковской карты |
+| public | [$last4](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_last4) |  | Последние 4 цифры номера карты |
+| public | [$source](../classes/YooKassa-Model-PaymentMethod-BankCard.md#property_source) |  | Тип банковской карты |
 
 ---
 ### Methods
@@ -38,31 +42,37 @@
 | public | [__set()](../classes/YooKassa-Common-AbstractObject.md#method___set) |  | Устанавливает значение свойства |
 | public | [__unset()](../classes/YooKassa-Common-AbstractObject.md#method___unset) |  | Удаляет свойство |
 | public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива |
-| public | [getCardType()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_getCardType) |  | Возвращает тип банковской карты |
-| public | [getFirst6()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_getFirst6) |  | Возвращает первые 6 цифр номера карты |
-| public | [getIssuerCountry()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_getIssuerCountry) |  | Возвращает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2 |
-| public | [getIssuerName()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_getIssuerName) |  | Возвращает наименование банка, выпустившего карту |
-| public | [getLast4()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_getLast4) |  | Возвращает последние 4 цифры номера карты |
+| public | [getCardType()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getCardType) |  | Возвращает тип банковской карты |
+| public | [getExpiryMonth()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getExpiryMonth) |  | Возвращает срок действия, месяц |
+| public | [getExpiryYear()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getExpiryYear) |  | Возвращает срок действия, год |
+| public | [getFirst6()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getFirst6) |  | Возвращает первые 6 цифр номера карты |
+| public | [getIssuerCountry()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getIssuerCountry) |  | Возвращает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2 |
+| public | [getIssuerName()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getIssuerName) |  | Возвращает наименование банка, выпустившего карту |
+| public | [getLast4()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getLast4) |  | Возвращает последние 4 цифры номера карты |
+| public | [getSource()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_getSource) |  | Возвращает источник данных банковской карты |
 | public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
 | public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
 | public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
 | public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
 | public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
-| public | [setCardType()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_setCardType) |  | Устанавливает тип банковской карты |
-| public | [setFirst6()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_setFirst6) |  | Устанавливает первые 6 цифр номера карты |
-| public | [setIssuerCountry()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_setIssuerCountry) |  | Устанавливает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2 |
-| public | [setIssuerName()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_setIssuerName) |  | Устанавливает наименование банка, выпустившего карту |
-| public | [setLast4()](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md#method_setLast4) |  | Устанавливает последние 4 цифры номера карты |
+| public | [setCardType()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setCardType) |  | Устанавливает тип банковской карты |
+| public | [setExpiryMonth()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setExpiryMonth) |  | Устанавливает срок действия, месяц |
+| public | [setExpiryYear()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setExpiryYear) |  | Устанавливает срок действия, год |
+| public | [setFirst6()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setFirst6) |  | Устанавливает первые 6 цифр номера карты |
+| public | [setIssuerCountry()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setIssuerCountry) |  | Устанавливает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2 |
+| public | [setIssuerName()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setIssuerName) |  | Устанавливает наименование банка, выпустившего карту |
+| public | [setLast4()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setLast4) |  | Устанавливает последние 4 цифры номера карты |
+| public | [setSource()](../classes/YooKassa-Model-PaymentMethod-BankCard.md#method_setSource) |  | Устанавливает источник данных банковской карты |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
 
 ---
 ### Details
-* File: [lib/Model/Payout/PayoutDestinationBankCardCard.php](../../lib/Model/Payout/PayoutDestinationBankCardCard.php)
+* File: [lib/Model/PaymentMethod/BankCard.php](../../lib/Model/PaymentMethod/BankCard.php)
 * Package: Default
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-  * \YooKassa\Model\Payout\PayoutDestinationBankCardCard
+  * \YooKassa\Model\PaymentMethod\BankCard
 
 ---
 ## Constants
@@ -94,6 +104,54 @@ ISO_3166_CODE_LENGTH = 2 : string
 ***Description***
 
 Тип банковской карты
+
+**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_expiry_month"></a>
+#### public $expiry_month : string
+---
+***Description***
+
+Срок действия, месяц
+
+**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_expiry_year"></a>
+#### public $expiry_year : string
+---
+***Description***
+
+Срок действия, год
+
+**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_expiryMonth"></a>
+#### public $expiryMonth : string
+---
+***Description***
+
+Срок действия, месяц
+
+**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_expiryYear"></a>
+#### public $expiryYear : string
+---
+***Description***
+
+Срок действия, год
 
 **Type:** <a href="../string"><abbr title="string">string</abbr></a>
 
@@ -166,6 +224,18 @@ ISO_3166_CODE_LENGTH = 2 : string
 ***Description***
 
 Последние 4 цифры номера карты
+
+**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_source"></a>
+#### public $source : string
+---
+***Description***
+
+Тип банковской карты
 
 **Type:** <a href="../string"><abbr title="string">string</abbr></a>
 
@@ -320,9 +390,43 @@ public getCardType() : string
 Возвращает тип банковской карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 **Returns:** string - Тип банковской карты
+
+
+<a name="method_getExpiryMonth" class="anchor"></a>
+#### public getExpiryMonth() : string
+
+```php
+public getExpiryMonth() : string
+```
+
+**Summary**
+
+Возвращает срок действия, месяц
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+**Returns:** string - Срок действия, месяц
+
+
+<a name="method_getExpiryYear" class="anchor"></a>
+#### public getExpiryYear() : string
+
+```php
+public getExpiryYear() : string
+```
+
+**Summary**
+
+Возвращает срок действия, год
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+**Returns:** string - Срок действия, год
 
 
 <a name="method_getFirst6" class="anchor"></a>
@@ -337,7 +441,7 @@ public getFirst6() : string
 Возвращает первые 6 цифр номера карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 **Returns:** string - Первые 6 цифр номера карты
 
@@ -358,7 +462,7 @@ public getIssuerCountry() : string
 Возвращает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 **Returns:** string - Код страны, в которой выпущена карта
 
@@ -375,7 +479,7 @@ public getIssuerName() : string
 Возвращает наименование банка, выпустившего карту
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 **Returns:** string - Наименование банка, выпустившего карту.
 
@@ -392,9 +496,26 @@ public getLast4() : string
 Возвращает последние 4 цифры номера карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 **Returns:** string - Последние 4 цифры номера карты
+
+
+<a name="method_getSource" class="anchor"></a>
+#### public getSource() : string
+
+```php
+public getSource() : string
+```
+
+**Summary**
+
+Возвращает источник данных банковской карты
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+**Returns:** string - Источник данных банковской карты
 
 
 <a name="method_jsonSerialize" class="anchor"></a>
@@ -515,12 +636,56 @@ public setCardType(string $value) : mixed
 Устанавливает тип банковской карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Тип банковской карты |
+
+**Returns:** mixed - 
+
+
+<a name="method_setExpiryMonth" class="anchor"></a>
+#### public setExpiryMonth() : mixed
+
+```php
+public setExpiryMonth(string $value) : mixed
+```
+
+**Summary**
+
+Устанавливает срок действия, месяц
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | value  | Срок действия, месяц |
+
+**Returns:** mixed - 
+
+
+<a name="method_setExpiryYear" class="anchor"></a>
+#### public setExpiryYear() : mixed
+
+```php
+public setExpiryYear(string $value) : mixed
+```
+
+**Summary**
+
+Устанавливает срок действия, год
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | value  | Срок действия, год |
 
 **Returns:** mixed - 
 
@@ -537,7 +702,7 @@ public setFirst6(string $value) : mixed
 Устанавливает первые 6 цифр номера карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 ##### Parameters:
 | Type | Name | Description |
@@ -563,7 +728,7 @@ public setIssuerCountry(string $value) : mixed
 Устанавливает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 ##### Parameters:
 | Type | Name | Description |
@@ -585,7 +750,7 @@ public setIssuerName(string $value) : mixed
 Устанавливает наименование банка, выпустившего карту
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 ##### Parameters:
 | Type | Name | Description |
@@ -607,12 +772,34 @@ public setLast4(string $value) : mixed
 Устанавливает последние 4 цифры номера карты
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md)
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
 
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Последние 4 цифры номера карты |
+
+**Returns:** mixed - 
+
+
+<a name="method_setSource" class="anchor"></a>
+#### public setSource() : mixed
+
+```php
+public setSource(string $value) : mixed
+```
+
+**Summary**
+
+Устанавливает источник данных банковской карты
+
+**Details:**
+* Inherited From: [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | value  | Источник данных банковской карты |
 
 **Returns:** mixed - 
 

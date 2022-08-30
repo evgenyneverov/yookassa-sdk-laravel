@@ -38,7 +38,7 @@ use YooKassa\Model\PaymentMethodType;
  * @property string $type Тип объекта
  * @property string $phone Телефон пользователя
  */
-class PaymentMethodSberbank extends AbstractPaymentMethod
+class PaymentMethodSberbank extends PaymentMethodBankCard
 {
     /**
      * Телефон пользователя, на который зарегистрирован аккаунт в Сбербанке Онлайн.
@@ -72,7 +72,9 @@ class PaymentMethodSberbank extends AbstractPaymentMethod
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException('Empty phone value', 0, 'PaymentMethodSberbank.phone');
-        } elseif (TypeCast::canCastToString($value)) {
+        }
+
+        if (TypeCast::canCastToString($value)) {
             if (preg_match('/^[0-9]{4,15}$/', $value)) {
                 $this->_phone = (string)$value;
             } else {
@@ -86,4 +88,5 @@ class PaymentMethodSberbank extends AbstractPaymentMethod
             );
         }
     }
+
 }

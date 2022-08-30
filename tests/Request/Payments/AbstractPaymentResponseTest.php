@@ -8,6 +8,7 @@ use YooKassa\Model\ConfirmationType;
 use YooKassa\Model\CurrencyCode;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Payment;
+use YooKassa\Model\PaymentMethod\PaymentMethodCardType;
 use YooKassa\Model\PaymentMethodType;
 use YooKassa\Model\PaymentStatus;
 use YooKassa\Model\ReceiptRegistrationStatus;
@@ -283,6 +284,36 @@ abstract class AbstractPaymentResponseTest extends TestCase
             ),
         );
 
+        $paymentMethods = array(
+            array(
+                'type' => PaymentMethodType::BANK_CARD,
+                'id' => Random::str(32, 32, '0123456789abcdef-'),
+                'saved' => Random::bool(),
+                'title' => Random::str(0, 256),
+                'card' => array(
+                    "first6" => "111111",
+                    "last4" => "1026",
+                    "expiry_month" => "12",
+                    "expiry_year" => "2024",
+                    "card_type" => Random::value(PaymentMethodCardType::getEnabledValues()),
+                ),
+            ),
+            array(
+                'type' => PaymentMethodType::SBERBANK,
+                'id' => Random::str(32, 32, '0123456789abcdef-'),
+                'saved' => Random::bool(),
+                'title' => Random::str(0, 256),
+                'card' => array(
+                    "first6" => "111111",
+                    "last4" => "1026",
+                    "expiry_month" => "12",
+                    "expiry_year" => "2024",
+                    "card_type" => Random::value(PaymentMethodCardType::getEnabledValues()),
+                ),
+                'phone' => Random::str(10, 10, '0123456789')
+            ),
+        );
+
         for ($i = 0; $i < 10; $i++) {
             $payment = array(
                 'id' => Random::str(36),
@@ -296,9 +327,7 @@ abstract class AbstractPaymentResponseTest extends TestCase
                     'value' => Random::float(0.01, 1000000.0),
                     'currency' => Random::value(CurrencyCode::getEnabledValues()),
                 ),
-                'payment_method' => array(
-                    'type' => Random::value(PaymentMethodType::getEnabledValues()),
-                ),
+                'payment_method' => Random::value($paymentMethods),
                 'created_at' => date(YOOKASSA_DATE, Random::int(1, time())),
                 'captured_at' => date(YOOKASSA_DATE, Random::int(1, time())),
                 'expires_at' => date(YOOKASSA_DATE, Random::int(1, time())),

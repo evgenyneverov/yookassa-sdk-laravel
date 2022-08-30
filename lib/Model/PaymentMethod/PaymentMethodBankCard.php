@@ -27,75 +27,27 @@
 namespace YooKassa\Model\PaymentMethod;
 
 use YooKassa\Common\Exceptions\EmptyPropertyValueException;
-use YooKassa\Common\Exceptions\InvalidPropertyValueException;
 use YooKassa\Common\Exceptions\InvalidPropertyValueTypeException;
-use YooKassa\Helpers\TypeCast;
 use YooKassa\Model\PaymentMethodType;
 
 /**
  * Класс, описывающий метод оплаты банковской картой
  *
  * @property string $type Тип объекта
- * @property string $last4 Последние 4 цифры номера карты
- * @property string $first6 Первые 6 цифр номера карты
- * @property string $expiryYear Срок действия, год
- * @property string $expiry_year Срок действия, год
- * @property string $expiryMonth Срок действия, месяц
- * @property string $expiry_month Срок действия, месяц
- * @property string $cardType Тип банковской карты
- * @property string $card_type Тип банковской карты
- * @property string $issuerCountry Код страны, в которой выпущена карта
- * @property string $issuer_country Код страны, в которой выпущена карта
- * @property string $issuerName Тип банковской карты
- * @property string $issuer_name Тип банковской карты
- * @property string $source Тип банковской карты
+ * @property string $card Данные банковской карты
  */
 class PaymentMethodBankCard extends AbstractPaymentMethod
 {
     /**
      * @var string Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
+     * @deprecated Будет удален в следующих версиях
      */
     const ISO_3166_CODE_LENGTH = 2;
 
     /**
-     * @var string Последние 4 цифры номера карты
+     * @var BankCard Данные банковской карты
      */
-    private $_last4;
-
-    /**
-     * @var string Первые 6 цифр номера карты
-     */
-    private $_first6;
-
-    /**
-     * @var string Срок действия, год
-     */
-    private $_expiryYear;
-
-    /**
-     * @var string Срок действия, месяц
-     */
-    private $_expiryMonth;
-
-    /**
-     * @var string Тип банковской карты
-     */
-    private $_cardType;
-
-    /**
-     * @var string Код страны, в которой выпущена карта
-     */
-    private $_issuerCountry;
-
-    /**
-     * @var string Наименование банка, выпустившего карту
-     */
-    private $_issuerName;
-
-    /**
-     * @var string Источник данных банковской карты
-     */
-    private $_source;
+    private $_card;
 
     public function __construct()
     {
@@ -104,256 +56,126 @@ class PaymentMethodBankCard extends AbstractPaymentMethod
 
     /**
      * Возвращает последние 4 цифры номера карты
+     * @deprecated Будет удален в следующих версиях
      * @return string Последние 4 цифры номера карты
      */
     public function getLast4()
     {
-        return $this->_last4;
-    }
-
-    /**
-     * Устанавливает последние 4 цифры номера карты
-     * @param string $value Последние 4 цифры номера карты
-     */
-    public function setLast4($value)
-    {
-        if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException('Empty card last4 value', 0, 'PaymentMethodBankCard.last4');
-        } elseif (TypeCast::canCastToString($value)) {
-            if (preg_match('/^[0-9]{4}$/', (string)$value)) {
-                $this->_last4 = (string)$value;
-            } else {
-                throw new InvalidPropertyValueException(
-                    'Invalid card last4 value', 0, 'PaymentMethodBankCard.last4', $value
-                );
-            }
-        } else {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid card last4 value type', 0, 'PaymentMethodBankCard.last4', $value
-            );
-        }
+        return $this->getCard() ? $this->getCard()->getLast4() : null;
     }
 
     /**
      * Возвращает первые 6 цифр номера карты
+     * @deprecated Будет удален в следующих версиях
      * @return string Первые 6 цифр номера карты
      * @since 1.0.14
      */
     public function getFirst6()
     {
-        return $this->_first6;
-    }
-
-    /**
-     * Устанавливает первые 6 цифр номера карты
-     * @param string $value Первые 6 цифр номера карты
-     * @since 1.0.14
-     */
-    public function setFirst6($value)
-    {
-        if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException('Empty card first6 value', 0, 'PaymentMethodBankCard.first6');
-        } elseif (TypeCast::canCastToString($value)) {
-            if (preg_match('/^[0-9]{6}$/', (string)$value)) {
-                $this->_first6 = (string)$value;
-            } else {
-                throw new InvalidPropertyValueException(
-                    'Invalid card first6 value', 0, 'PaymentMethodBankCard.first6', $value
-                );
-            }
-        } else {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid card first6 value type', 0, 'PaymentMethodBankCard.first6', $value
-            );
-        }
+        return $this->getCard() ? $this->getCard()->getFirst6() : null;
     }
 
     /**
      * Возвращает срок действия, год
+     * @deprecated Будет удален в следующих версиях
      * @return string Срок действия, год
      */
     public function getExpiryYear()
     {
-        return $this->_expiryYear;
-    }
-
-    /**
-     * Устанавливает срок действия, год
-     * @param string $value Срок действия, год
-     */
-    public function setExpiryYear($value)
-    {
-        if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException(
-                'Empty card expiry year value', 0, 'PaymentMethodBankCard.expiryYear'
-            );
-        } elseif (is_numeric($value)) {
-            if (!preg_match('/^\d\d\d\d$/', $value) || $value < 2000 || $value > 2200) {
-                throw new InvalidPropertyValueException(
-                    'Invalid card expiry year value', 0, 'PaymentMethodBankCard.expiryYear', $value
-                );
-            }
-            $this->_expiryYear = (string)$value;
-        } else {
-            throw new InvalidPropertyValueException(
-                'Invalid card expiry year value', 0, 'PaymentMethodBankCard.expiryYear', $value
-            );
-        }
+        return $this->getCard() ? $this->getCard()->getExpiryYear() : null;
     }
 
     /**
      * Возвращает срок действия, месяц
+     * @deprecated Будет удален в следующих версиях
      * @return string Срок действия, месяц
      */
     public function getExpiryMonth()
     {
-        return $this->_expiryMonth;
-    }
-
-    /**
-     * Устанавливает срок действия, месяц
-     * @param string $value Срок действия, месяц
-     */
-    public function setExpiryMonth($value)
-    {
-        if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException(
-                'Empty card expiry month value', 0, 'PaymentMethodBankCard.expiryMonth'
-            );
-        } elseif (is_numeric($value)) {
-            if (!preg_match('/^\d\d$/', $value)) {
-                throw new InvalidPropertyValueException(
-                    'Invalid card expiry month value', 0, 'PaymentMethodBankCard.expiryMonth', $value
-                );
-            }
-            if (is_string($value) && $value[0] == '0') {
-                $month = (int)($value[1]);
-            } else {
-                $month = (int)$value;
-            }
-            if ($month < 1 || $month > 12) {
-                throw new InvalidPropertyValueException(
-                    'Invalid card expiry month value', 0, 'PaymentMethodBankCard.expiryMonth', $value
-                );
-            } else {
-                $this->_expiryMonth = (string)$value;
-            }
-        } else {
-            throw new InvalidPropertyValueException(
-                'Invalid card expiry month value', 0, 'PaymentMethodBankCard.expiryMonth', $value
-            );
-        }
+        return $this->getCard() ? $this->getCard()->getExpiryMonth() : null;
     }
 
     /**
      * Возвращает тип банковской карты
+     * @deprecated Будет удален в следующих версиях
      * @return string Тип банковской карты
      */
     public function getCardType()
     {
-        return $this->_cardType;
-    }
-
-    /**
-     * Устанавливает тип банковской карты
-     * @param string $value Тип банковской карты
-     */
-    public function setCardType($value)
-    {
-        if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException('Empty cardType value', 0, 'PaymentMethodBankCard.cardType');
-        } elseif (TypeCast::canCastToString($value)) {
-            $this->_cardType = (string)$value;
-        } else {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid cardType value type', 0, 'PaymentMethodBankCard.cardType', $value
-            );
-        }
+        return $this->getCard() ? $this->getCard()->getCardType() : null;
     }
 
     /**
      * Возвращает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2
+     * @deprecated Будет удален в следующих версиях
      * @return string Код страны, в которой выпущена карта
      */
     public function getIssuerCountry()
     {
-        return $this->_issuerCountry;
-    }
-
-    /**
-     * Устанавливает код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2
-     * @param string $value Код страны, в которой выпущена карта
-     */
-    public function setIssuerCountry($value)
-    {
-        if ($value === null || $value === '') {
-            $this->_issuerCountry = (string)$value;
-        } elseif (!TypeCast::canCastToString($value)) {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid issuerCountry value type', 0, 'PaymentMethodBankCard.issuerCountry', $value
-            );
-        } elseif (mb_strlen($value) !== self::ISO_3166_CODE_LENGTH) {
-            throw new InvalidPropertyValueException(
-                'Invalid issuerCountry value', 0, 'PaymentMethodBankCard.issuerCountry', $value
-            );
-        }
-
-        $this->_issuerCountry = (string)$value;
-    }
-
-    /**
-     * Устанавливает наименование банка, выпустившего карту
-     * @param string $value Наименование банка, выпустившего карту
-     */
-    public function setIssuerName($value)
-    {
-        if ($value === null || $value === '') {
-            $this->_issuerName = (string)$value;
-        } elseif (!TypeCast::canCastToString($value)) {
-            throw new EmptyPropertyValueException(
-                'Empty issuerName value', 0, 'PaymentMethodBankCard.issuerName'
-            );
-        }
-
-        $this->_issuerName = (string)$value;
+        return $this->getCard() ? $this->getCard()->getIssuerCountry() : null;
     }
 
     /**
      * Возвращает наименование банка, выпустившего карту
+     * @deprecated Будет удален в следующих версиях
      * @return string Наименование банка, выпустившего карту.
      */
     public function getIssuerName()
     {
-        return $this->_issuerName;
-    }
-
-    /**
-     * Устанавливает источник данных банковской карты
-     * @param string $value Источник данных банковской карты
-     */
-    public function setSource($value)
-    {
-        if ($value === null || $value === '') {
-            $this->_source = (string)$value;
-        } elseif (!TypeCast::canCastToEnumString($value)) {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid source value type', 0, 'PaymentMethodBankCard.source', $value
-            );
-        } elseif (!BankCardSource::valueExists($value)) {
-            throw new InvalidPropertyValueException(
-                'Invalid source value', 0, 'PaymentMethodBankCard.source', $value
-            );
-        }
-
-        $this->_source = (string)$value;
+        return $this->getCard() ? $this->getCard()->getIssuerName() : null;
     }
 
     /**
      * Возвращает источник данных банковской карты
+     * @deprecated Будет удален в следующих версиях
      * @return string Источник данных банковской карты
      */
     public function getSource()
     {
-        return $this->_source;
+        return $this->getCard() ? $this->getCard()->getSource() : null;
     }
+
+    /**
+     * Возвращает данные банковской карты
+     * @return BankCard Данные банковской карты
+     */
+    public function getCard()
+    {
+        return $this->_card;
+    }
+
+    /**
+     * Устанавливает данные банковской карты
+     * @param BankCard|array $value Данные банковской карты
+     */
+    public function setCard($value)
+    {
+        if ($value === null || $value === '') {
+            throw new EmptyPropertyValueException('Empty card value', 0, 'PaymentMethodBankCard.card');
+        }
+
+        if (is_array($value)) {
+            $this->_card = new BankCard($value);
+        } elseif ($value instanceof BankCard) {
+            $this->_card = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid card value type', 0, 'PaymentMethodBankCard.card', $value
+            );
+        }
+    }
+
+    #[\ReturnTypeWillChange]
+    /**
+     * @inheritdoc
+     */
+    public function jsonSerialize()
+    {
+        $return = parent::jsonSerialize();
+        foreach (array('first6','last4','expiry_year','expiry_month','card_type','issuer_country','issuer_name','source') as $key) {
+            unset($return[$key]);
+        }
+        return $return;
+    }
+
 }
