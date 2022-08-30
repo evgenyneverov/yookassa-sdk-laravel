@@ -47,7 +47,7 @@ use YooKassa\Common\AbstractEnum;
  * |psb|ПромсвязьБанк|
  * |installments|Заплатить по частям|
  * |wechat|Платеж через WeChat|
- * |wechat|Платеж через через сервис быстрых платежей|
+ * |sbp|Платеж через через сервис быстрых платежей|
  */
 class PaymentMethodType extends AbstractEnum
 {

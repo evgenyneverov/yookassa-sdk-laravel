@@ -54,13 +54,6 @@ class PaymentMethodFactory
         PaymentMethodType::SBP            => 'PaymentMethodSbp',
     );
 
-    private $optionsMap = array(
-        'card_type'      => 'cardType',
-        'expiry_month'   => 'expiryMonth',
-        'expiry_year'    => 'expiryYear',
-        'account_number' => 'accountNumber',
-    );
-
     /**
      * Фабричный метод создания объекта платежных данных по типу
      *
@@ -111,9 +104,6 @@ class PaymentMethodFactory
     private function fillModel(AbstractPaymentMethod $paymentData, array $data)
     {
         foreach ($data as $key => $value) {
-            if (array_key_exists($key, $this->optionsMap)) {
-                $key = $this->optionsMap[$key];
-            }
             if ($paymentData->offsetExists($key)) {
                 $paymentData->offsetSet($key, $value);
             } else if (is_array($value)) {

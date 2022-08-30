@@ -4,6 +4,7 @@
 ### Table of Contents
 * [lib/Model/Payment.php](../../lib/Model/Payment.php)
 * [lib/Model/PaymentData/PaymentDataWechat.php](../../lib/Model/PaymentData/PaymentDataWechat.php)
+* [lib/Model/PaymentMethod/PaymentMethodBankCard.php](../../lib/Model/PaymentMethod/PaymentMethodBankCard.php)
 * [lib/Model/PaymentMethod/PaymentMethodWechat.php](../../lib/Model/PaymentMethod/PaymentMethodWechat.php)
 * [lib/Model/PaymentMethodType.php](../../lib/Model/PaymentMethodType.php)
 * [lib/Model/Receipt.php](../../lib/Model/Receipt.php)
@@ -22,6 +23,19 @@
 | Line | Element | Description |
 | ---- | ------- | ----------- |
 | 34 | \YooKassa\Model\PaymentData\PaymentDataWechat | Класс будет удалён в одной из будущих версий. |
+<a id="lib/Model/PaymentMethod/PaymentMethodBankCard.php"></a>
+#### [lib/Model/PaymentMethod/PaymentMethodBankCard.php](../../lib/Model/PaymentMethod/PaymentMethodBankCard.php)
+| Line | Element | Description |
+| ---- | ------- | ----------- |
+| 62 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getLast4() | Будет удален в следующих версиях |
+| 73 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getFirst6() | Будет удален в следующих версиях |
+| 83 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getExpiryYear() | Будет удален в следующих версиях |
+| 93 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getExpiryMonth() | Будет удален в следующих версиях |
+| 103 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getCardType() | Будет удален в следующих версиях |
+| 113 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getIssuerCountry() | Будет удален в следующих версиях |
+| 123 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getIssuerName() | Будет удален в следующих версиях |
+| 133 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getSource() | Будет удален в следующих версиях |
+| 45 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::ISO_3166_CODE_LENGTH | Будет удален в следующих версиях |
 <a id="lib/Model/PaymentMethod/PaymentMethodWechat.php"></a>
 #### [lib/Model/PaymentMethod/PaymentMethodWechat.php](../../lib/Model/PaymentMethod/PaymentMethodWechat.php)
 | Line | Element | Description |
@@ -68,10 +82,10 @@
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 13](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-18 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

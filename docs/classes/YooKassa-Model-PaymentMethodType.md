@@ -23,7 +23,7 @@ PaymentMethodType - Тип источника средств для провед
 |psb|ПромсвязьБанк|
 |installments|Заплатить по частям|
 |wechat|Платеж через WeChat|
-|wechat|Платеж через через сервис быстрых платежей|
+|sbp|Платеж через через сервис быстрых платежей|
 
 
 ---
@@ -299,10 +299,10 @@ Static public valueExists(mixed $value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 13](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-18 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney
