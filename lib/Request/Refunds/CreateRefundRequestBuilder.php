@@ -51,6 +51,12 @@ class CreateRefundRequestBuilder extends AbstractPaymentRequestBuilder
     protected $currentObject;
 
     /**
+     * Объект с информацией о сделке, в составе которой проходит возврат.
+     * @var RefundDealData
+     */
+    protected $deal;
+
+    /**
      * Возвращает новый объект для сборки
      * @return CreateRefundRequest Собираемый объект запроса к API
      */
@@ -103,15 +109,29 @@ class CreateRefundRequestBuilder extends AbstractPaymentRequestBuilder
     }
 
     /**
-     * Устанавливает данные о сделке, в составе которой проходит возврат
-     *
+     * Устанавливает сделку
      * @param RefundDealData|array|null $value Данные о сделке, в составе которой проходит возврат
+     * @throws InvalidPropertyValueTypeException
      *
-     * @return self Инстанс билдера запросов
+     * @return CreateRefundRequestBuilder Инстанс билдера запросов
      */
     public function setDeal($value)
     {
-        $this->currentObject->setDeal($value);
+        if ($value === null) {
+            return $this;
+        }
+        if ($value instanceof RefundDealData) {
+            $this->deal = $value;
+        } elseif (is_array($value)) {
+            $this->deal = new RefundDealData($value);
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid deal value type in CreateRefundRequest',
+                0,
+                'CreateRefundRequest.deal',
+                $value
+            );
+        }
         return $this;
     }
 
@@ -130,6 +150,10 @@ class CreateRefundRequestBuilder extends AbstractPaymentRequestBuilder
 
         if ($this->receipt->notEmpty()) {
             $this->currentObject->setReceipt($this->receipt);
+        }
+
+        if ($this->deal) {
+            $this->currentObject->setDeal($this->deal);
         }
         return parent::build();
     }

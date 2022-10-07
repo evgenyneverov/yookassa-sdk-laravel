@@ -12,6 +12,7 @@ use YooKassa\Model\Receipt\PaymentMode;
 use YooKassa\Model\Receipt\PaymentSubject;
 use YooKassa\Model\ReceiptItem;
 use YooKassa\Model\Transfer;
+use YooKassa\Request\Payments\CreatePaymentRequestBuilder;
 use YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder;
 
 class CreateCaptureRequestBuilderTest extends TestCase
@@ -32,6 +33,25 @@ class CreateCaptureRequestBuilderTest extends TestCase
         } else {
             self::assertNotNull($instance->getAmount());
             self::assertEquals($options['amount'], $instance->getAmount()->getValue());
+        }
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     *
+     * @param $options
+     */
+    public function testSetDeal($options)
+    {
+        $builder = new CreateCaptureRequestBuilder();
+        $builder->setDeal($options['deal']);
+        $instance = $builder->build();
+
+        if (empty($options['deal'])) {
+            self::assertNull($instance->getDeal());
+        } else {
+            self::assertNotNull($instance->getDeal());
+            self::assertEquals($options['deal'], $instance->getDeal()->toArray());
         }
     }
 
@@ -562,5 +582,33 @@ class CreateCaptureRequestBuilderTest extends TestCase
             array(Random::int(-100, -1)),
             array(Random::int(7, 100)),
         );
+    }
+
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function invalidDealDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(new \stdClass()),
+            array(0),
+            array(7),
+            array(Random::int(-100, -1)),
+            array(Random::int(7, 100)),
+        );
+    }
+
+    /**
+     * @dataProvider invalidDealDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidDeal($value)
+    {
+        $builder = new CreateCaptureRequestBuilder();
+        $builder->setDeal($value);
     }
 }

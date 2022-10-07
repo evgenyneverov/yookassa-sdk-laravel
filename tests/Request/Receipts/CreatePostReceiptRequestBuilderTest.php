@@ -472,7 +472,7 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
                 'receipt_operational_details' => array(
                     'operation_id' => Random::int(0, OperationalDetails::OPERATION_ID_MAX_LENGTH),
                     'value' => Random::str(1, OperationalDetails::VALUE_MAX_LENGTH),
-                    'created_at' => date(OperationalDetails::DATE_FORMAT),
+                    'created_at' => date(YOOKASSA_DATE),
                 ),
                 'type' => $type,
                 'send' => true,

@@ -17,7 +17,6 @@ Class OperationalDetails
 | ----------:| ---- | ---- | ------- |
 | public | [OPERATION_ID_MAX_LENGTH](../classes/YooKassa-Model-Receipt-OperationalDetails.md#constant_OPERATION_ID_MAX_LENGTH) |  |  |
 | public | [VALUE_MAX_LENGTH](../classes/YooKassa-Model-Receipt-OperationalDetails.md#constant_VALUE_MAX_LENGTH) |  |  |
-| public | [DATE_FORMAT](../classes/YooKassa-Model-Receipt-OperationalDetails.md#constant_DATE_FORMAT) |  |  |
 
 ---
 ### Properties
@@ -74,13 +73,6 @@ OPERATION_ID_MAX_LENGTH = 256 : int
 ###### VALUE_MAX_LENGTH
 ```php
 VALUE_MAX_LENGTH = 64 : int
-```
-
-
-<a name="constant_DATE_FORMAT" class="anchor"></a>
-###### DATE_FORMAT
-```php
-DATE_FORMAT = "Y-m-d\TH:i:s.uO" : string
 ```
 
 
@@ -421,6 +413,10 @@ public offsetSet(string $offset, mixed $value) : mixed
 
 **Returns:** mixed - 
 
+##### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| retrun |  | void |
 
 <a name="method_offsetUnset" class="anchor"></a>
 #### public offsetUnset() : mixed
@@ -443,6 +439,10 @@ public offsetUnset(string $offset) : mixed
 
 **Returns:** mixed - 
 
+##### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| retrun |  | void |
 
 <a name="method_setCreatedAt" class="anchor"></a>
 #### public setCreatedAt() : mixed
@@ -566,6 +566,6 @@ protected getUnknownProperties() : array
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

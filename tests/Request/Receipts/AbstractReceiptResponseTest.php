@@ -185,7 +185,7 @@ abstract class AbstractReceiptResponseTest extends TestCase
             'fiscal_document_number' => Random::int(4),
             'fiscal_storage_number' => Random::int(16),
             'fiscal_attribute' => Random::int(10),
-            'registered_at' => date(YOOKASSA_DATE, mt_rand(1111111111, time())),
+            'registered_at' => date(YOOKASSA_DATE, Random::int(1000000000, time())),
             'fiscal_provider_id' => Random::str(36),
             'items' => $this->generateItems(),
             'settlements' => $this->generateSettlements(),
@@ -199,9 +199,9 @@ abstract class AbstractReceiptResponseTest extends TestCase
                 ),
             ),
             'receipt_operational_details' => array(
-                'operation_id' => Random::int(0, OperationalDetails::OPERATION_ID_MAX_LENGTH),
+                'operation_id' => Random::str(1, OperationalDetails::OPERATION_ID_MAX_LENGTH),
                 'value' => Random::str(1, OperationalDetails::VALUE_MAX_LENGTH),
-                'created_at' => date(OperationalDetails::DATE_FORMAT),
+                'created_at' => date(YOOKASSA_DATE, Random::int(1000000000, time())),
             ),
             'on_behalf_of' => Random::int(6)
         );

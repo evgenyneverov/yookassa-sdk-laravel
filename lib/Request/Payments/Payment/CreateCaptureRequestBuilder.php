@@ -29,7 +29,9 @@ namespace YooKassa\Request\Payments\Payment;
 use YooKassa\Common\AbstractPaymentRequestBuilder;
 use YooKassa\Common\AbstractRequest;
 use YooKassa\Common\Exceptions\InvalidPropertyException;
+use YooKassa\Common\Exceptions\InvalidPropertyValueTypeException;
 use YooKassa\Common\Exceptions\InvalidRequestException;
+use YooKassa\Model\Deal\CaptureDealData;
 
 class CreateCaptureRequestBuilder extends AbstractPaymentRequestBuilder
 {
@@ -38,6 +40,12 @@ class CreateCaptureRequestBuilder extends AbstractPaymentRequestBuilder
      * @var CreateCaptureRequest
      */
     protected $currentObject;
+
+    /**
+     * Объект с информацией о сделке, в составе которой проходит подтверждение платежа.
+     * @var CaptureDealData
+     */
+    protected $deal;
 
     /**
      * @return CreateCaptureRequest
@@ -71,6 +79,36 @@ class CreateCaptureRequestBuilder extends AbstractPaymentRequestBuilder
         if ($this->receipt->notEmpty()) {
             $this->currentObject->setReceipt($this->receipt);
         }
+        if ($this->deal) {
+            $this->currentObject->setDeal($this->deal);
+        }
         return parent::build();
+    }
+
+    /**
+     * Устанавливает сделку
+     * @param CaptureDealData|array|null $value Данные о сделке, в составе подтверждения оплаты
+     * @throws InvalidPropertyValueTypeException
+     *
+     * @return CreateCaptureRequestBuilder Инстанс билдера запросов
+     */
+    public function setDeal($value)
+    {
+        if ($value === null) {
+            return $this;
+        }
+        if ($value instanceof CaptureDealData) {
+            $this->deal = $value;
+        } elseif (is_array($value)) {
+            $this->deal = new CaptureDealData($value);
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid deal value type in CreateCaptureRequest',
+                0,
+                'CreateCaptureRequest.deal',
+                $value
+            );
+        }
+        return $this;
     }
 }

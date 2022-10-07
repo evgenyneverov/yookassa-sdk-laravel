@@ -61,6 +61,7 @@ try {
 | ----------:| ---- | ---- | ------- |
 | protected | [$amount](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_amount) |  | Сумма |
 | protected | [$currentObject](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#property_currentObject) |  | Собираемый объект запроса к API |
+| protected | [$deal](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#property_deal) |  | Объект с информацией о сделке, в составе которой проходит возврат. |
 | protected | [$receipt](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_receipt) |  | Объект с информацией о чеке |
 | protected | [$transfers](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_transfers) |  | Массив платежей в пользу разных мерчантов |
 
@@ -74,7 +75,7 @@ try {
 | public | [build()](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#method_build) |  | Строит объект запроса к API |
 | public | [setAmount()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setAmount) |  | Устанавливает сумму |
 | public | [setCurrency()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setCurrency) |  | Устанавливает валюту в которой будет происходить подтверждение оплаты заказа |
-| public | [setDeal()](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#method_setDeal) |  | Устанавливает данные о сделке, в составе которой проходит возврат |
+| public | [setDeal()](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#method_setDeal) |  | Устанавливает сделку |
 | public | [setDescription()](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#method_setDescription) |  | Устанавливает комментарий к возврату |
 | public | [setOptions()](../classes/YooKassa-Common-AbstractRequestBuilder.md#method_setOptions) |  | Устанавливает свойства запроса из массива |
 | public | [setPaymentId()](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md#method_setPaymentId) |  | Устанавливает айди платежа для которого создаётся возврат |
@@ -119,6 +120,18 @@ try {
 Собираемый объект запроса к API
 
 **Type:** <a href="../classes/YooKassa-Request-Refunds-CreateRefundRequest.html"><abbr title="\YooKassa\Request\Refunds\CreateRefundRequest">CreateRefundRequest</abbr></a>
+
+**Details:**
+
+
+<a name="property_deal"></a>
+#### protected $deal : \YooKassa\Model\Deal\RefundDealData
+---
+**Summary**
+
+Объект с информацией о сделке, в составе которой проходит возврат.
+
+**Type:** <a href="../classes/YooKassa-Model-Deal-RefundDealData.html"><abbr title="\YooKassa\Model\Deal\RefundDealData">RefundDealData</abbr></a>
 
 **Details:**
 
@@ -299,15 +312,15 @@ public setCurrency(string $value) : self
 
 
 <a name="method_setDeal" class="anchor"></a>
-#### public setDeal() : self
+#### public setDeal() : \YooKassa\Request\Refunds\CreateRefundRequestBuilder
 
 ```php
-public setDeal(\YooKassa\Model\Deal\RefundDealData|array|null $value) : self
+public setDeal(\YooKassa\Model\Deal\RefundDealData|array|null $value) : \YooKassa\Request\Refunds\CreateRefundRequestBuilder
 ```
 
 **Summary**
 
-Устанавливает данные о сделке, в составе которой проходит возврат
+Устанавливает сделку
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\CreateRefundRequestBuilder](../classes/YooKassa-Request-Refunds-CreateRefundRequestBuilder.md)
@@ -317,7 +330,12 @@ public setDeal(\YooKassa\Model\Deal\RefundDealData|array|null $value) : self
 | ---- | ---- | ----------- |
 | <code lang="php">\YooKassa\Model\Deal\RefundDealData OR array OR null</code> | value  | Данные о сделке, в составе которой проходит возврат |
 
-**Returns:** self - Инстанс билдера запросов
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException |  |
+
+**Returns:** \YooKassa\Request\Refunds\CreateRefundRequestBuilder - Инстанс билдера запросов
 
 
 <a name="method_setDescription" class="anchor"></a>
@@ -606,6 +624,6 @@ protected initCurrentObject() : \YooKassa\Request\Refunds\CreateRefundRequest
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

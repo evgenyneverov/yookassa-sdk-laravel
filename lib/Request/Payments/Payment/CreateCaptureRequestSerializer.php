@@ -123,6 +123,9 @@ class CreateCaptureRequestSerializer
                 }
             }
         }
+        if ($request->hasDeal()) {
+            $result['deal'] = $request->getDeal()->toArray();
+        }
 
         return $result;
     }

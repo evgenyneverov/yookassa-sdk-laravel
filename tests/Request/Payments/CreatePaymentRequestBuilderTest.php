@@ -10,6 +10,9 @@ use YooKassa\Model\AmountInterface;
 use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesExternal;
 use YooKassa\Model\ConfirmationType;
 use YooKassa\Model\CurrencyCode;
+use YooKassa\Model\Deal\PaymentDealInfo;
+use YooKassa\Model\Deal\SettlementPayoutPayment;
+use YooKassa\Model\Deal\SettlementPayoutPaymentType;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Payment;
 use YooKassa\Model\PaymentData\PaymentDataQiwi;
@@ -21,6 +24,7 @@ use YooKassa\Model\Receipt\PaymentSubject;
 use YooKassa\Model\ReceiptItem;
 use YooKassa\Model\Recipient;
 use YooKassa\Request\Payments\CreatePaymentRequestBuilder;
+use YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder;
 
 class CreatePaymentRequestBuilderTest extends TestCase
 {
@@ -76,6 +80,27 @@ class CreatePaymentRequestBuilderTest extends TestCase
         } else {
             self::assertNotNull($instance->getRecipient());
             self::assertEquals($options['accountId'], $instance->getRecipient()->getAccountId());
+        }
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     *
+     * @param $options
+     * @throws Exception
+     */
+    public function testSetDeal($options)
+    {
+        $builder = new CreatePaymentRequestBuilder();
+        $builder->setAmount($options['amount']);
+        $builder->setDeal($options['deal']);
+        $instance = $builder->build();
+
+        if (empty($options['deal'])) {
+            self::assertNull($instance->getDeal());
+        } else {
+            self::assertNotNull($instance->getDeal());
+            self::assertEquals($options['deal'], $instance->getDeal()->toArray());
         }
     }
 
@@ -902,6 +927,18 @@ class CreatePaymentRequestBuilderTest extends TestCase
                     'receiptEmail'      => null,
                     'receiptPhone'      => null,
                     'taxSystemCode'     => null,
+                    'deal' => array(
+                        'id' => Random::str(36, 50),
+                        'settlements' => array(
+                            array(
+                                'type' => SettlementPayoutPaymentType::PAYOUT,
+                                'amount' => array(
+                                    'value' => round(Random::float(10.00, 100.00), 2),
+                                    'currency' => Random::value(CurrencyCode::getValidValues()),
+                                ),
+                            )
+                        )
+                    ),
                     'receiptIndustryDetails'    => null,
                     'receiptOperationalDetails' => null,
                 ),
@@ -937,6 +974,10 @@ class CreatePaymentRequestBuilderTest extends TestCase
                     'receiptEmail'      => Random::str(10, 32),
                     'receiptPhone'      => '',
                     'taxSystemCode'     => '',
+                    'deal' => array(
+                        'id' => Random::str(36, 50),
+                        'settlements' => array(),
+                    ),
                     'receiptIndustryDetails'    => '',
                     'receiptOperationalDetails' => '',
                 ),
@@ -993,7 +1034,19 @@ class CreatePaymentRequestBuilderTest extends TestCase
                 'receiptOperationalDetails' => array(
                     'operation_id' => Random::int(0, OperationalDetails::OPERATION_ID_MAX_LENGTH),
                     'value' => Random::str(1, OperationalDetails::VALUE_MAX_LENGTH),
-                    'created_at' => date(OperationalDetails::DATE_FORMAT),
+                    'created_at' => date(YOOKASSA_DATE),
+                ),
+                'deal' => array(
+                    'id' => Random::str(36, 50),
+                    'settlements' => array(
+                        array(
+                            'type' => SettlementPayoutPaymentType::PAYOUT,
+                            'amount' => array(
+                                'value' => round(Random::float(10.00, 100.00), 2),
+                                'currency' => Random::value(CurrencyCode::getValidValues()),
+                            ),
+                        )
+                    )
                 ),
             );
             $result[] = array($request);
@@ -1141,5 +1194,33 @@ class CreatePaymentRequestBuilderTest extends TestCase
         }
         $builder = new CreatePaymentRequestBuilder();
         $builder->setAirline($value);
+    }
+
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function invalidDealDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(new \stdClass()),
+            array(0),
+            array(7),
+            array(Random::int(-100, -1)),
+            array(Random::int(7, 100)),
+        );
+    }
+
+    /**
+     * @dataProvider invalidDealDataProvider
+     * @expectedException InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidDeal($value)
+    {
+        $builder = new CreatePaymentRequestBuilder();
+        $builder->setDeal($value);
     }
 }

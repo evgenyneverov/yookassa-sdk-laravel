@@ -84,6 +84,12 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
     private $airline;
 
     /**
+     * Объект с информацией о сделке, в составе которой проходит платеж.
+     * @var PaymentDealInfo
+     */
+    protected $deal;
+
+    /**
      * Инициализирует объект запроса, который в дальнейшем будет собираться билдером
      * @return CreatePaymentRequest Инстанс собираемого объекта запроса к API
      */
@@ -309,14 +315,29 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
     }
 
     /**
-     * Устанавливает данные о сделке, в составе которой проходит платеж.
+     * Устанавливает сделку
      * @param PaymentDealInfo|array|null $value Данные о сделке, в составе которой проходит платеж
+     * @throws InvalidPropertyValueTypeException
      *
-     * @throws InvalidPropertyValueTypeException Выбрасывается если переданные данные не удалось интерпретировать как метаданные платежа
+     * @return CreatePaymentRequestBuilder Инстанс билдера запросов
      */
     public function setDeal($value)
     {
-        $this->currentObject->setDeal($value);
+        if ($value === null) {
+            return $this;
+        }
+        if ($value instanceof PaymentDealInfo) {
+            $this->deal = $value;
+        } elseif (is_array($value)) {
+            $this->deal = new PaymentDealInfo($value);
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid deal value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.deal',
+                $value
+            );
+        }
         return $this;
     }
 
@@ -395,6 +416,9 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
         }
         $this->currentObject->setAmount($this->amount);
         $this->currentObject->setTransfers($this->transfers);
+        if ($this->deal) {
+            $this->currentObject->setDeal($this->deal);
+        }
 
         return parent::build();
     }

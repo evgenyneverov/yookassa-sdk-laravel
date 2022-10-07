@@ -104,6 +104,7 @@ var_dump($response);
 | ----------:| ---- | ---- | ------- |
 | protected | [$amount](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_amount) |  | Сумма |
 | protected | [$currentObject](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#property_currentObject) |  | Собираемый объект запроса |
+| protected | [$deal](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#property_deal) |  | Объект с информацией о сделке, в составе которой проходит платеж. |
 | protected | [$receipt](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_receipt) |  | Объект с информацией о чеке |
 | protected | [$transfers](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_transfers) |  | Массив платежей в пользу разных мерчантов |
 
@@ -122,7 +123,7 @@ var_dump($response);
 | public | [setClientIp()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setClientIp) |  | Устанавливает IP адрес покупателя |
 | public | [setConfirmation()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setConfirmation) |  | Устанавливает способ подтверждения платежа |
 | public | [setCurrency()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setCurrency) |  | Устанавливает валюту в которой будет происходить подтверждение оплаты заказа |
-| public | [setDeal()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setDeal) |  | Устанавливает данные о сделке, в составе которой проходит платеж. |
+| public | [setDeal()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setDeal) |  | Устанавливает сделку |
 | public | [setDescription()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setDescription) |  | Устанавливает описание транзакции |
 | public | [setGatewayId()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setGatewayId) |  | Устанавливает идентификатор шлюза |
 | public | [setMerchantCustomerId()](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md#method_setMerchantCustomerId) |  | Устанавливает идентификатор покупателя в вашей системе |
@@ -178,6 +179,18 @@ var_dump($response);
 Собираемый объект запроса
 
 **Type:** <a href="../classes/YooKassa-Request-Payments-CreatePaymentRequest.html"><abbr title="\YooKassa\Request\Payments\CreatePaymentRequest">CreatePaymentRequest</abbr></a>
+
+**Details:**
+
+
+<a name="property_deal"></a>
+#### protected $deal : \YooKassa\Model\Deal\PaymentDealInfo
+---
+**Summary**
+
+Объект с информацией о сделке, в составе которой проходит платеж.
+
+**Type:** <a href="../classes/YooKassa-Model-Deal-PaymentDealInfo.html"><abbr title="\YooKassa\Model\Deal\PaymentDealInfo">PaymentDealInfo</abbr></a>
 
 **Details:**
 
@@ -495,15 +508,15 @@ public setCurrency(string $value) : self
 
 
 <a name="method_setDeal" class="anchor"></a>
-#### public setDeal() : mixed
+#### public setDeal() : \YooKassa\Request\Payments\CreatePaymentRequestBuilder
 
 ```php
-public setDeal(\YooKassa\Model\Deal\PaymentDealInfo|array|null $value) : mixed
+public setDeal(\YooKassa\Model\Deal\PaymentDealInfo|array|null $value) : \YooKassa\Request\Payments\CreatePaymentRequestBuilder
 ```
 
 **Summary**
 
-Устанавливает данные о сделке, в составе которой проходит платеж.
+Устанавливает сделку
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\CreatePaymentRequestBuilder](../classes/YooKassa-Request-Payments-CreatePaymentRequestBuilder.md)
@@ -516,9 +529,9 @@ public setDeal(\YooKassa\Model\Deal\PaymentDealInfo|array|null $value) : mixed
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
-| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если переданные данные не удалось интерпретировать как метаданные платежа |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException |  |
 
-**Returns:** mixed - 
+**Returns:** \YooKassa\Request\Payments\CreatePaymentRequestBuilder - Инстанс билдера запросов
 
 
 <a name="method_setDescription" class="anchor"></a>
@@ -1076,6 +1089,6 @@ protected initCurrentObject() : \YooKassa\Request\Payments\CreatePaymentRequest
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

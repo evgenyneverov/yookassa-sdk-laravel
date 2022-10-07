@@ -53,8 +53,6 @@ class OperationalDetails extends AbstractObject
     const OPERATION_ID_MAX_LENGTH = 256;
     /** @var int Максимальная длинна значение операционного реквизита */
     const VALUE_MAX_LENGTH = 64;
-    /** @var string Формат даты операции */
-    const DATE_FORMAT = "Y-m-d\TH:i:s.uO";
 
     /**
      * @var string Идентификатор операции (тег в 54 ФЗ — 1271). Число от 0 до 255
@@ -173,7 +171,7 @@ class OperationalDetails extends AbstractObject
         $result = parent::jsonSerialize();
         $result['created_at'] = $this->getCreatedAt()
             ->setTimezone(new DateTimeZone('UTC'))
-            ->format(self::DATE_FORMAT);
+            ->format(YOOKASSA_DATE);
 
         return $result;
     }
