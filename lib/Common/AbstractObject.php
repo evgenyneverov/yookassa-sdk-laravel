@@ -104,6 +104,7 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
      * Устанавливает значение свойства
      * @param string $offset Имя свойства
      * @param mixed $value Значение свойства
+     * @retrun void
      */
     public function offsetSet($offset, $value)
     {
@@ -124,6 +125,7 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
     /**
      * Удаляет свойство
      * @param string $offset Имя удаляемого свойства
+     * @retrun void
      */
     public function offsetUnset($offset)
     {

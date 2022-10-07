@@ -30,7 +30,7 @@ class OperationalDetailsTest extends TestCase
         $instance = self::getInstance($options);
 
         self::assertEquals($options['operation_id'], $instance->getOperationId());
-        self::assertEquals($options['created_at'], $instance->getCreatedAt()->format(OperationalDetails::DATE_FORMAT));
+        self::assertEquals($options['created_at'], $instance->getCreatedAt()->format(YOOKASSA_DATE));
         self::assertEquals($options['value'], $instance->getValue());
     }
 
@@ -142,8 +142,8 @@ class OperationalDetailsTest extends TestCase
         self::assertNull($instance->getCreatedAt());
         self::assertNull($instance->created_at);
         $instance->setCreatedAt($options['created_at']);
-        self::assertEquals($options['created_at'], $instance->getCreatedAt()->format(OperationalDetails::DATE_FORMAT));
-        self::assertEquals($options['created_at'], $instance->created_at->format(OperationalDetails::DATE_FORMAT));
+        self::assertEquals($options['created_at'], $instance->getCreatedAt()->format(YOOKASSA_DATE));
+        self::assertEquals($options['created_at'], $instance->created_at->format(YOOKASSA_DATE));
     }
 
     /**
@@ -182,7 +182,7 @@ class OperationalDetailsTest extends TestCase
         foreach (range(1, 10) as $i) {
             $result[$i][] = array(
                 'operation_id' => Random::str(1, OperationalDetails::OPERATION_ID_MAX_LENGTH),
-                'created_at' => date(OperationalDetails::DATE_FORMAT, Random::int(10000000, 29999999)),
+                'created_at' => date(YOOKASSA_DATE, Random::int(10000000, 29999999)),
                 'value' => Random::str(1, OperationalDetails::VALUE_MAX_LENGTH),
             );
         }

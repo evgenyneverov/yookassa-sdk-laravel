@@ -18,6 +18,7 @@
 | ----------:| ---- | ---- | ------- |
 | protected | [$amount](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_amount) |  | Сумма |
 | protected | [$currentObject](../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequestBuilder.md#property_currentObject) |  | Собираемый объект запроса |
+| protected | [$deal](../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequestBuilder.md#property_deal) |  | Объект с информацией о сделке, в составе которой проходит подтверждение платежа. |
 | protected | [$receipt](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_receipt) |  | Объект с информацией о чеке |
 | protected | [$transfers](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#property_transfers) |  | Массив платежей в пользу разных мерчантов |
 
@@ -31,6 +32,7 @@
 | public | [build()](../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequestBuilder.md#method_build) |  | Осуществляет сборку объекта запроса к API |
 | public | [setAmount()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setAmount) |  | Устанавливает сумму |
 | public | [setCurrency()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setCurrency) |  | Устанавливает валюту в которой будет происходить подтверждение оплаты заказа |
+| public | [setDeal()](../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequestBuilder.md#method_setDeal) |  | Устанавливает сделку |
 | public | [setOptions()](../classes/YooKassa-Common-AbstractRequestBuilder.md#method_setOptions) |  | Устанавливает свойства запроса из массива |
 | public | [setReceipt()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setReceipt) |  | Устанавливает чек |
 | public | [setReceiptEmail()](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md#method_setReceiptEmail) |  | Устанавливает адрес электронной почты получателя чека |
@@ -72,6 +74,18 @@
 Собираемый объект запроса
 
 **Type:** <a href="../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequest.html"><abbr title="\YooKassa\Request\Payments\Payment\CreateCaptureRequest">CreateCaptureRequest</abbr></a>
+
+**Details:**
+
+
+<a name="property_deal"></a>
+#### protected $deal : \YooKassa\Model\Deal\CaptureDealData
+---
+**Summary**
+
+Объект с информацией о сделке, в составе которой проходит подтверждение платежа.
+
+**Type:** <a href="../classes/YooKassa-Model-Deal-CaptureDealData.html"><abbr title="\YooKassa\Model\Deal\CaptureDealData">CaptureDealData</abbr></a>
 
 **Details:**
 
@@ -255,6 +269,33 @@ public setCurrency(string $value) : self
 | <code lang="php">string</code> | value  | Валюта в которой подтверждается оплата |
 
 **Returns:** self - Инстанс билдера запросов
+
+
+<a name="method_setDeal" class="anchor"></a>
+#### public setDeal() : \YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder
+
+```php
+public setDeal(\YooKassa\Model\Deal\CaptureDealData|array|null $value) : \YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder
+```
+
+**Summary**
+
+Устанавливает сделку
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder](../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequestBuilder.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\Deal\CaptureDealData OR array OR null</code> | value  | Данные о сделке, в составе подтверждения оплаты |
+
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException |  |
+
+**Returns:** \YooKassa\Request\Payments\Payment\CreateCaptureRequestBuilder - Инстанс билдера запросов
 
 
 <a name="method_setOptions" class="anchor"></a>
@@ -465,6 +506,6 @@ protected initCurrentObject() : \YooKassa\Request\Payments\Payment\CreateCapture
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

@@ -937,6 +937,10 @@ public offsetSet(string $offset, mixed $value) : mixed
 
 **Returns:** mixed - 
 
+##### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| retrun |  | void |
 
 <a name="method_offsetUnset" class="anchor"></a>
 #### public offsetUnset() : mixed
@@ -959,6 +963,10 @@ public offsetUnset(string $offset) : mixed
 
 **Returns:** mixed - 
 
+##### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| retrun |  | void |
 
 <a name="method_setCapturedAtGt" class="anchor"></a>
 #### public setCapturedAtGt() : void
@@ -1384,6 +1392,6 @@ protected setValidationError(string $value) : mixed
 
 ---
 
-This document was automatically generated from source code comments on 2022-08-30 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

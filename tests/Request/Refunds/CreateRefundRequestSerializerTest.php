@@ -114,7 +114,9 @@ class CreateRefundRequestSerializerTest extends TestCase
                     'amount' => mt_rand(1, 999999),
                     'currency' => $currencies[mt_rand(0, count($currencies) - 1)],
                     'description' => '',
-                    'deal' => '',
+                    'deal' => array(
+                        'refund_settlements' => array(),
+                    ),
                     'receiptItems' => array(
                         array(
                             'title' => Random::str(10),

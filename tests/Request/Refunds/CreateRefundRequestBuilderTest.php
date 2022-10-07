@@ -6,11 +6,13 @@ use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\Random;
 use YooKassa\Model\AmountInterface;
 use YooKassa\Model\CurrencyCode;
+use YooKassa\Model\Deal\SettlementPayoutPaymentType;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Receipt\PaymentMode;
 use YooKassa\Model\Receipt\PaymentSubject;
 use YooKassa\Model\ReceiptItem;
 use YooKassa\Model\Source;
+use YooKassa\Request\Payments\CreatePaymentRequestBuilder;
 use YooKassa\Request\Refunds\CreateRefundRequestBuilder;
 
 class CreateRefundRequestBuilderTest extends TestCase
@@ -513,7 +515,19 @@ class CreateRefundRequestBuilderTest extends TestCase
                             'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                             'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         )),
-                    )
+                    ),
+                    'deal' => array(
+                        'id' => Random::str(36, 50),
+                        'refund_settlements' => array(
+                            array(
+                                'type' => SettlementPayoutPaymentType::PAYOUT,
+                                'amount' => array(
+                                    'value' => round(Random::float(10.00, 100.00), 2),
+                                    'currency' => Random::value(CurrencyCode::getValidValues()),
+                                ),
+                            )
+                        )
+                    ),
                 ),
             ),
             array(
@@ -535,7 +549,11 @@ class CreateRefundRequestBuilderTest extends TestCase
                             'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                             'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         )),
-                    )
+                    ),
+                    'deal' => array(
+                        'id' => Random::str(36, 50),
+                        'refund_settlements' => array(),
+                    ),
                 ),
             ),
         );
@@ -568,7 +586,19 @@ class CreateRefundRequestBuilderTest extends TestCase
                         'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                     )),
-                )
+                ),
+                'deal' => array(
+                    'id' => Random::str(36, 50),
+                    'refund_settlements' => array(
+                        array(
+                            'type' => SettlementPayoutPaymentType::PAYOUT,
+                            'amount' => array(
+                                'value' => round(Random::float(10.00, 100.00), 2),
+                                'currency' => Random::value(CurrencyCode::getValidValues()),
+                            ),
+                        )
+                    )
+                ),
             );
             $result[] = array($request);
         }
@@ -630,5 +660,55 @@ class CreateRefundRequestBuilderTest extends TestCase
             array(Random::int(-100, -1)),
             array(Random::int(7, 100)),
         );
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     *
+     * @param $options
+     * @throws \Exception
+     */
+    public function testSetDeal($options)
+    {
+        $builder = new CreateRefundRequestBuilder();
+        $builder->setPaymentId($options['paymentId']);
+        $builder->setAmount($options['amount']);
+        $builder->setDeal($options['deal']);
+        $instance = $builder->build();
+
+        if (empty($options['deal'])) {
+            self::assertNull($instance->getDeal());
+        } else {
+            self::assertNotNull($instance->getDeal());
+            self::assertEquals($options['deal'], $instance->getDeal()->toArray());
+        }
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public function invalidDealDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(new \stdClass()),
+            array(0),
+            array(7),
+            array(Random::int(-100, -1)),
+            array(Random::int(7, 100)),
+        );
+    }
+
+    /**
+     * @dataProvider invalidDealDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidDeal($value)
+    {
+        $builder = new CreatePaymentRequestBuilder();
+        $builder->setDeal($value);
     }
 }
