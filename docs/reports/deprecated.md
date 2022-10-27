@@ -5,6 +5,7 @@
 * [lib/Model/Payment.php](../../lib/Model/Payment.php)
 * [lib/Model/PaymentData/PaymentDataWechat.php](../../lib/Model/PaymentData/PaymentDataWechat.php)
 * [lib/Model/PaymentMethod/PaymentMethodBankCard.php](../../lib/Model/PaymentMethod/PaymentMethodBankCard.php)
+* [lib/Model/PaymentMethod/PaymentMethodFactory.php](../../lib/Model/PaymentMethod/PaymentMethodFactory.php)
 * [lib/Model/PaymentMethod/PaymentMethodWechat.php](../../lib/Model/PaymentMethod/PaymentMethodWechat.php)
 * [lib/Model/PaymentMethodType.php](../../lib/Model/PaymentMethodType.php)
 * [lib/Model/Receipt.php](../../lib/Model/Receipt.php)
@@ -36,6 +37,11 @@
 | 123 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getIssuerName() | Будет удален в следующих версиях |
 | 133 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::getSource() | Будет удален в следующих версиях |
 | 45 | \YooKassa\Model\PaymentMethod\PaymentMethodBankCard::ISO_3166_CODE_LENGTH | Будет удален в следующих версиях |
+<a id="lib/Model/PaymentMethod/PaymentMethodFactory.php"></a>
+#### [lib/Model/PaymentMethod/PaymentMethodFactory.php](../../lib/Model/PaymentMethod/PaymentMethodFactory.php)
+| Line | Element | Description |
+| ---- | ------- | ----------- |
+| 39 | \YooKassa\Model\PaymentMethod\PaymentMethodFactory::YANDEX_MONEY | Для поддержки старых платежей |
 <a id="lib/Model/PaymentMethod/PaymentMethodWechat.php"></a>
 #### [lib/Model/PaymentMethod/PaymentMethodWechat.php](../../lib/Model/PaymentMethod/PaymentMethodWechat.php)
 | Line | Element | Description |
@@ -82,10 +88,10 @@
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 22](../reports/deprecated.md)
+* [Deprecated - 23](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-27 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

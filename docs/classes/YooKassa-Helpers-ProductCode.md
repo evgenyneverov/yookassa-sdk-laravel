@@ -17,6 +17,7 @@ $inputDataMatrix = '010463003407001221SxMGorvNuq6Wk91fgr92sdfsdfghfgjh';
 $productCode = new \YooKassa\Helpers\ProductCode($inputDataMatrix);
 $receiptItem = new \YooKassa\Model\ReceiptItem();
 $receiptItem->setProductCode($productCode);
+$receiptItem->setMarkCodeInfo($productCode->getMarkCodeInfo());
 
 var_dump($receiptItem);
 
@@ -26,7 +27,8 @@ var_dump($receiptItem);
 ```php
 $inputDataMatrix = '010463003407001221SxMGorvNuq6Wk91fgr92sdfsdfghfgjh';
 $receiptItem = new \YooKassa\Model\ReceiptItem(array(
-    'product_code' => (string)(new \YooKassa\Helpers\ProductCode($inputDataMatrix)),
+    'product_code' => (string)($code = new \YooKassa\Helpers\ProductCode($inputDataMatrix)),
+    'mark_code_info' => $code->getMarkCodeInfo()
 ));
 
 var_dump($receiptItem);
@@ -37,7 +39,29 @@ var_dump($receiptItem);
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [PREFIX_DATA_MATRIX](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_DATA_MATRIX) |  | Код типа маркировки DataMatrix |
+| public | [PREFIX_DATA_MATRIX](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_DATA_MATRIX) |  |  |
+| public | [PREFIX_UNKNOWN](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_UNKNOWN) |  |  |
+| public | [PREFIX_EAN_8](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_EAN_8) |  |  |
+| public | [PREFIX_EAN_13](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_EAN_13) |  |  |
+| public | [PREFIX_ITF_14](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_ITF_14) |  |  |
+| public | [PREFIX_FUR](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_FUR) |  |  |
+| public | [PREFIX_EGAIS_20](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_EGAIS_20) |  |  |
+| public | [PREFIX_EGAIS_30](../classes/YooKassa-Helpers-ProductCode.md#constant_PREFIX_EGAIS_30) |  |  |
+| public | [TYPE_UNKNOWN](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_UNKNOWN) |  |  |
+| public | [TYPE_EAN_8](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_EAN_8) |  |  |
+| public | [TYPE_EAN_13](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_EAN_13) |  |  |
+| public | [TYPE_ITF_14](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_ITF_14) |  |  |
+| public | [TYPE_GS_10](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_GS_10) |  |  |
+| public | [TYPE_GS_1M](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_GS_1M) |  |  |
+| public | [TYPE_SHORT](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_SHORT) |  |  |
+| public | [TYPE_FUR](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_FUR) |  |  |
+| public | [TYPE_EGAIS_20](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_EGAIS_20) |  |  |
+| public | [TYPE_EGAIS_30](../classes/YooKassa-Helpers-ProductCode.md#constant_TYPE_EGAIS_30) |  |  |
+| public | [AI_GTIN](../classes/YooKassa-Helpers-ProductCode.md#constant_AI_GTIN) |  |  |
+| public | [AI_SERIAL](../classes/YooKassa-Helpers-ProductCode.md#constant_AI_SERIAL) |  |  |
+| public | [AI_SUM](../classes/YooKassa-Helpers-ProductCode.md#constant_AI_SUM) |  |  |
+| public | [MAX_PRODUCT_CODE_LENGTH](../classes/YooKassa-Helpers-ProductCode.md#constant_MAX_PRODUCT_CODE_LENGTH) |  |  |
+| public | [MAX_MARK_CODE_LENGTH](../classes/YooKassa-Helpers-ProductCode.md#constant_MAX_MARK_CODE_LENGTH) |  |  |
 
 ---
 ### Methods
@@ -46,14 +70,20 @@ var_dump($receiptItem);
 | public | [__construct()](../classes/YooKassa-Helpers-ProductCode.md#method___construct) |  | ProductCode constructor. |
 | public | [__toString()](../classes/YooKassa-Helpers-ProductCode.md#method___toString) |  | Приводит объект к строке |
 | public | [calcResult()](../classes/YooKassa-Helpers-ProductCode.md#method_calcResult) |  | Формирует тег 1162. |
-| public | [getGtin()](../classes/YooKassa-Helpers-ProductCode.md#method_getGtin) |  | Возвращает Глобальный номер товарной продукции |
-| public | [getPrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_getPrefix) |  | Возвращает Код типа маркировки |
-| public | [getResult()](../classes/YooKassa-Helpers-ProductCode.md#method_getResult) |  | Возвращает Сформированный тег 1162. |
-| public | [getSerial()](../classes/YooKassa-Helpers-ProductCode.md#method_getSerial) |  | Возвращает Серийный номер товара |
+| public | [getAppIdentifiers()](../classes/YooKassa-Helpers-ProductCode.md#method_getAppIdentifiers) |  | Возвращает массив дополнительных идентификаторов применения |
+| public | [getGtin()](../classes/YooKassa-Helpers-ProductCode.md#method_getGtin) |  | Возвращает глобальный номер товарной продукции |
+| public | [getMarkCodeInfo()](../classes/YooKassa-Helpers-ProductCode.md#method_getMarkCodeInfo) |  |  |
+| public | [getPrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_getPrefix) |  | Возвращает код типа маркировки |
+| public | [getResult()](../classes/YooKassa-Helpers-ProductCode.md#method_getResult) |  | Возвращает сформированный тег 1162. |
+| public | [getSerial()](../classes/YooKassa-Helpers-ProductCode.md#method_getSerial) |  | Возвращает серийный номер товара |
+| public | [getType()](../classes/YooKassa-Helpers-ProductCode.md#method_getType) |  | Возвращает тип маркировки |
 | public | [isUsePrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_isUsePrefix) |  | Возвращает флаг использования кода типа маркировки |
-| public | [setGtin()](../classes/YooKassa-Helpers-ProductCode.md#method_setGtin) |  | Устанавливает Глобальный номер товарной продукции |
-| public | [setPrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_setPrefix) |  | Устанавливает Код типа маркировки |
-| public | [setSerial()](../classes/YooKassa-Helpers-ProductCode.md#method_setSerial) |  | Устанавливает Серийный номер товара |
+| public | [setAppIdentifiers()](../classes/YooKassa-Helpers-ProductCode.md#method_setAppIdentifiers) |  | Устанавливает массив дополнительных идентификаторов применения |
+| public | [setGtin()](../classes/YooKassa-Helpers-ProductCode.md#method_setGtin) |  | Устанавливает глобальный номер товарной продукции |
+| public | [setMarkCodeInfo()](../classes/YooKassa-Helpers-ProductCode.md#method_setMarkCodeInfo) |  |  |
+| public | [setPrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_setPrefix) |  | Устанавливает код типа маркировки |
+| public | [setSerial()](../classes/YooKassa-Helpers-ProductCode.md#method_setSerial) |  | Устанавливает серийный номер товара |
+| public | [setType()](../classes/YooKassa-Helpers-ProductCode.md#method_setType) |  | Устанавливает тип маркировки |
 | public | [setUsePrefix()](../classes/YooKassa-Helpers-ProductCode.md#method_setUsePrefix) |  | Устанавливает флаг использования кода типа маркировки |
 | public | [validate()](../classes/YooKassa-Helpers-ProductCode.md#method_validate) |  | Проверяет заполненность необходимых свойств |
 
@@ -71,10 +101,162 @@ var_dump($receiptItem);
 ## Constants
 <a name="constant_PREFIX_DATA_MATRIX" class="anchor"></a>
 ###### PREFIX_DATA_MATRIX
-Код типа маркировки DataMatrix
-
 ```php
-PREFIX_DATA_MATRIX = '444D'
+PREFIX_DATA_MATRIX = '444D' : string
+```
+
+
+<a name="constant_PREFIX_UNKNOWN" class="anchor"></a>
+###### PREFIX_UNKNOWN
+```php
+PREFIX_UNKNOWN = '0000' : string
+```
+
+
+<a name="constant_PREFIX_EAN_8" class="anchor"></a>
+###### PREFIX_EAN_8
+```php
+PREFIX_EAN_8 = '4508' : string
+```
+
+
+<a name="constant_PREFIX_EAN_13" class="anchor"></a>
+###### PREFIX_EAN_13
+```php
+PREFIX_EAN_13 = '450D' : string
+```
+
+
+<a name="constant_PREFIX_ITF_14" class="anchor"></a>
+###### PREFIX_ITF_14
+```php
+PREFIX_ITF_14 = '4909' : string
+```
+
+
+<a name="constant_PREFIX_FUR" class="anchor"></a>
+###### PREFIX_FUR
+```php
+PREFIX_FUR = '5246' : string
+```
+
+
+<a name="constant_PREFIX_EGAIS_20" class="anchor"></a>
+###### PREFIX_EGAIS_20
+```php
+PREFIX_EGAIS_20 = 'C514' : string
+```
+
+
+<a name="constant_PREFIX_EGAIS_30" class="anchor"></a>
+###### PREFIX_EGAIS_30
+```php
+PREFIX_EGAIS_30 = 'C51E' : string
+```
+
+
+<a name="constant_TYPE_UNKNOWN" class="anchor"></a>
+###### TYPE_UNKNOWN
+```php
+TYPE_UNKNOWN = 'unknown' : string
+```
+
+
+<a name="constant_TYPE_EAN_8" class="anchor"></a>
+###### TYPE_EAN_8
+```php
+TYPE_EAN_8 = 'ean_8' : string
+```
+
+
+<a name="constant_TYPE_EAN_13" class="anchor"></a>
+###### TYPE_EAN_13
+```php
+TYPE_EAN_13 = 'ean_13' : string
+```
+
+
+<a name="constant_TYPE_ITF_14" class="anchor"></a>
+###### TYPE_ITF_14
+```php
+TYPE_ITF_14 = 'itf_14' : string
+```
+
+
+<a name="constant_TYPE_GS_10" class="anchor"></a>
+###### TYPE_GS_10
+```php
+TYPE_GS_10 = 'gs_10' : string
+```
+
+
+<a name="constant_TYPE_GS_1M" class="anchor"></a>
+###### TYPE_GS_1M
+```php
+TYPE_GS_1M = 'gs_1m' : string
+```
+
+
+<a name="constant_TYPE_SHORT" class="anchor"></a>
+###### TYPE_SHORT
+```php
+TYPE_SHORT = 'short' : string
+```
+
+
+<a name="constant_TYPE_FUR" class="anchor"></a>
+###### TYPE_FUR
+```php
+TYPE_FUR = 'fur' : string
+```
+
+
+<a name="constant_TYPE_EGAIS_20" class="anchor"></a>
+###### TYPE_EGAIS_20
+```php
+TYPE_EGAIS_20 = 'egais_20' : string
+```
+
+
+<a name="constant_TYPE_EGAIS_30" class="anchor"></a>
+###### TYPE_EGAIS_30
+```php
+TYPE_EGAIS_30 = 'egais_30' : string
+```
+
+
+<a name="constant_AI_GTIN" class="anchor"></a>
+###### AI_GTIN
+```php
+AI_GTIN = '01' : string
+```
+
+
+<a name="constant_AI_SERIAL" class="anchor"></a>
+###### AI_SERIAL
+```php
+AI_SERIAL = '21' : string
+```
+
+
+<a name="constant_AI_SUM" class="anchor"></a>
+###### AI_SUM
+```php
+AI_SUM = '8005' : string
+```
+
+
+<a name="constant_MAX_PRODUCT_CODE_LENGTH" class="anchor"></a>
+###### MAX_PRODUCT_CODE_LENGTH
+```php
+MAX_PRODUCT_CODE_LENGTH = 30 : int
+```
+
+
+<a name="constant_MAX_MARK_CODE_LENGTH" class="anchor"></a>
+###### MAX_MARK_CODE_LENGTH
+```php
+MAX_MARK_CODE_LENGTH = 32 : int
 ```
 
 
@@ -85,7 +267,7 @@ PREFIX_DATA_MATRIX = '444D'
 #### public __construct() : mixed
 
 ```php
-public __construct(string|null $codeDataMatrix = null, bool|string $usePrefix = false) : mixed
+public __construct(string|null $codeDataMatrix = null, bool|string $usePrefix = true) : mixed
 ```
 
 **Summary**
@@ -122,10 +304,10 @@ public __toString() : string
 
 
 <a name="method_calcResult" class="anchor"></a>
-#### public calcResult() : string|null
+#### public calcResult() : string
 
 ```php
-public calcResult() : string|null
+public calcResult() : string
 ```
 
 **Summary**
@@ -135,7 +317,24 @@ public calcResult() : string|null
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
 
-**Returns:** string|null - Сформированный тег 1162.
+**Returns:** string - Сформированный тег 1162.
+
+
+<a name="method_getAppIdentifiers" class="anchor"></a>
+#### public getAppIdentifiers() : array|null
+
+```php
+public getAppIdentifiers() : array|null
+```
+
+**Summary**
+
+Возвращает массив дополнительных идентификаторов применения
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+**Returns:** array|null - Массив дополнительных идентификаторов применения
 
 
 <a name="method_getGtin" class="anchor"></a>
@@ -147,12 +346,25 @@ public getGtin() : string
 
 **Summary**
 
-Возвращает Глобальный номер товарной продукции
+Возвращает глобальный номер товарной продукции
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
 
 **Returns:** string - Глобальный номер товарной продукции
+
+
+<a name="method_getMarkCodeInfo" class="anchor"></a>
+#### public getMarkCodeInfo() : \YooKassa\Model\Receipt\MarkCodeInfo
+
+```php
+public getMarkCodeInfo() : \YooKassa\Model\Receipt\MarkCodeInfo
+```
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+**Returns:** \YooKassa\Model\Receipt\MarkCodeInfo - 
 
 
 <a name="method_getPrefix" class="anchor"></a>
@@ -164,7 +376,7 @@ public getPrefix() : string
 
 **Summary**
 
-Возвращает Код типа маркировки
+Возвращает код типа маркировки
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
@@ -181,7 +393,7 @@ public getResult() : string
 
 **Summary**
 
-Возвращает Сформированный тег 1162.
+Возвращает сформированный тег 1162.
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
@@ -198,12 +410,29 @@ public getSerial() : string
 
 **Summary**
 
-Возвращает Серийный номер товара
+Возвращает серийный номер товара
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
 
 **Returns:** string - Серийный номер товара
+
+
+<a name="method_getType" class="anchor"></a>
+#### public getType() : string
+
+```php
+public getType() : string
+```
+
+**Summary**
+
+Возвращает тип маркировки
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+**Returns:** string - Тип маркировки
 
 
 <a name="method_isUsePrefix" class="anchor"></a>
@@ -223,6 +452,28 @@ public isUsePrefix() : bool
 **Returns:** bool - 
 
 
+<a name="method_setAppIdentifiers" class="anchor"></a>
+#### public setAppIdentifiers() : mixed
+
+```php
+public setAppIdentifiers(array|null $appIdentifiers) : mixed
+```
+
+**Summary**
+
+Устанавливает массив дополнительных идентификаторов применения
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">array OR null</code> | appIdentifiers  | Массив дополнительных идентификаторов применения |
+
+**Returns:** mixed - 
+
+
 <a name="method_setGtin" class="anchor"></a>
 #### public setGtin() : \YooKassa\Helpers\ProductCode
 
@@ -232,7 +483,7 @@ public setGtin(string $gtin) : \YooKassa\Helpers\ProductCode
 
 **Summary**
 
-Устанавливает Глобальный номер товарной продукции
+Устанавливает глобальный номер товарной продукции
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
@@ -245,6 +496,24 @@ public setGtin(string $gtin) : \YooKassa\Helpers\ProductCode
 **Returns:** \YooKassa\Helpers\ProductCode - 
 
 
+<a name="method_setMarkCodeInfo" class="anchor"></a>
+#### public setMarkCodeInfo() : mixed
+
+```php
+public setMarkCodeInfo(\YooKassa\Model\Receipt\MarkCodeInfo|array|string $markCodeInfo) : mixed
+```
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\Receipt\MarkCodeInfo OR array OR string</code> | markCodeInfo  |  |
+
+**Returns:** mixed - 
+
+
 <a name="method_setPrefix" class="anchor"></a>
 #### public setPrefix() : \YooKassa\Helpers\ProductCode
 
@@ -254,7 +523,7 @@ public setPrefix(string|int $prefix) : \YooKassa\Helpers\ProductCode
 
 **Summary**
 
-Устанавливает Код типа маркировки
+Устанавливает код типа маркировки
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
@@ -276,7 +545,7 @@ public setSerial(string $serial) : \YooKassa\Helpers\ProductCode
 
 **Summary**
 
-Устанавливает Серийный номер товара
+Устанавливает серийный номер товара
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
@@ -287,6 +556,28 @@ public setSerial(string $serial) : \YooKassa\Helpers\ProductCode
 | <code lang="php">string</code> | serial  | Серийный номер товара |
 
 **Returns:** \YooKassa\Helpers\ProductCode - 
+
+
+<a name="method_setType" class="anchor"></a>
+#### public setType() : mixed
+
+```php
+public setType(string $type) : mixed
+```
+
+**Summary**
+
+Устанавливает тип маркировки
+
+**Details:**
+* Inherited From: [\YooKassa\Helpers\ProductCode](../classes/YooKassa-Helpers-ProductCode.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | type  | Тип маркировки |
+
+**Returns:** mixed - 
 
 
 <a name="method_setUsePrefix" class="anchor"></a>
@@ -340,10 +631,10 @@ public validate() : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 22](../reports/deprecated.md)
+* [Deprecated - 23](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-27 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

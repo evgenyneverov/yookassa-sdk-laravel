@@ -10,7 +10,9 @@
 
 ---
 ### Constants
-* No constants found
+| Visibility | Name | Flag | Summary |
+| ----------:| ---- | ---- | ------- |
+| public | [YANDEX_MONEY](../classes/YooKassa-Model-PaymentMethod-PaymentMethodFactory.md#constant_YANDEX_MONEY) | *deprecated* |  |
 
 ---
 ### Methods
@@ -25,6 +27,18 @@
 * Package: YooKassa
 * Class Hierarchy:
   * \YooKassa\Model\PaymentMethod\PaymentMethodFactory
+
+---
+## Constants
+<a name="constant_YANDEX_MONEY" class="anchor"></a>
+###### ~~YANDEX_MONEY~~
+```php
+YANDEX_MONEY = 'yandex_money'
+```
+
+**deprecated**
+Для поддержки старых платежей
+
 
 ---
 ## Methods
@@ -85,10 +99,10 @@ public factoryFromArray(array $data, string|null $type = null) : \YooKassa\Model
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 22](../reports/deprecated.md)
+* [Deprecated - 23](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-27 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney
