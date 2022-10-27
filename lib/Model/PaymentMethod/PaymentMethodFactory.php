@@ -35,7 +35,11 @@ use YooKassa\Model\PaymentMethodType;
  */
 class PaymentMethodFactory
 {
+    /** @deprecated Для поддержки старых платежей */
+    const YANDEX_MONEY = 'yandex_money';
+
     private $typeClassMap = array(
+        self::YANDEX_MONEY                => 'PaymentMethodYooMoney',
         PaymentMethodType::YOO_MONEY      => 'PaymentMethodYooMoney',
         PaymentMethodType::BANK_CARD      => 'PaymentMethodBankCard',
         PaymentMethodType::SBERBANK       => 'PaymentMethodSberbank',

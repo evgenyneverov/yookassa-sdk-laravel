@@ -61,20 +61,20 @@ class MarkCodeInfo extends AbstractObject
     const MAX_UNKNOWN_LENGTH = 32;
     /** @var int Максимальная длина EAN_8 */
     const MAX_EAN_8_LENGTH = 8;
-    /** @var int Максимальная длина EAN_8 */
+    /** @var int Максимальная длина EAN_13 */
     const MAX_EAN_13_LENGTH = 13;
-    /** @var int Максимальная длина EAN_8 */
+    /** @var int Максимальная длина ITF_14 */
     const MAX_ITF_14_LENGTH = 14;
-    /** @var int Максимальная длина EAN_8 */
+    /** @var int Максимальная длина GS_10 */
     const MAX_GS_10_LENGTH = 38;
-    /** @var int Максимальная длина EAN_8 */
+    /** @var int Максимальная длина GS_1M */
     const MAX_GS_1M_LENGTH = 150;
-    /** @var int Максимальная длина EAN_8 */
+    /** @var int Максимальная длина HORT */
     const MAX_SHORT_LENGTH = 38;
     /** @var int Максимальная длина FUR */
     const MAX_FUR_LENGTH = 20;
     /** @var int Максимальная длина EGAIS_20 */
-    const MAX_EGAIS_20_LENGTH = 33;
+    const MAX_EGAIS_20_LENGTH = 23;
     /** @var int Максимальная длина EGAIS_30 */
     const MAX_EGAIS_30_LENGTH = 14;
 

@@ -161,7 +161,7 @@ MAX_FUR_LENGTH = 20 : int
 <a name="constant_MAX_EGAIS_20_LENGTH" class="anchor"></a>
 ###### MAX_EGAIS_20_LENGTH
 ```php
-MAX_EGAIS_20_LENGTH = 33 : int
+MAX_EGAIS_20_LENGTH = 23 : int
 ```
 
 
@@ -969,10 +969,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 22](../reports/deprecated.md)
+* [Deprecated - 23](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2022-10-07 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-10-27 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney
