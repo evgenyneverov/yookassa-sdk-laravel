@@ -330,13 +330,13 @@ class ProductCodeTest extends \PHPUnit_Framework_TestCase
                 array(
                     'usePrefix' => true,
                     'prefix' => '444D',
-                    'type' => 'gs_10',
+                    'type' => 'gs_1m',
                     'gtin' => '04601936005464',
-                    'serial' => '5hHUGT93dpD0',
+                    'serial' => '5hHUGT',
                     'dataMatrix' => '0104601936005464215hHUGT93dpD0',
-                    'result' => '44 4D 04 2F 78 C2 C9 58 35 68 48 55 47 54 39 33 64 70 44 30',
+                    'result' => '44 4D 04 2F 78 C2 C9 58 35 68 48 55 47 54',
                     'mark_code_info' => new MarkCodeInfo(array(
-                        'gs_10' => '0104601936005464215hHUGT93dpD0',
+                        'gs_1m' => '0104601936005464215hHUGT',
                     )),
                 ),
             ),

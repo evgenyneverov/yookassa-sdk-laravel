@@ -667,6 +667,6 @@ protected handleError(\YooKassa\Common\ResponseObject $response) : mixed
 
 ---
 
-This document was automatically generated from source code comments on 2022-10-27 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-11-11 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney
