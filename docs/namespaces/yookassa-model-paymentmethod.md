@@ -14,7 +14,7 @@
 | ---- | ------- |
 | [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md) | Абстрактный класс, описывающий основные свойства и методы платежных методов |
 | [\YooKassa\Model\PaymentMethod\BankCard](../classes/YooKassa-Model-PaymentMethod-BankCard.md) | Класс, описывающий объект банковской карты |
-| [\YooKassa\Model\PaymentMethod\BankCardSource](../classes/YooKassa-Model-PaymentMethod-BankCardSource.md) | BankCardSource - Источник данных банковской карты |Код|Описание| --- | --- |apple_pay|Источник данных apple_pay| |google_pay|Источник данных google_pay| |
+| [\YooKassa\Model\PaymentMethod\BankCardSource](../classes/YooKassa-Model-PaymentMethod-BankCardSource.md) | BankCardSource - Источник данных банковской карты |Код|Описание| --- | --- |apple_pay|Источник данных apple_pay| |google_pay|Источник данных google_pay| |mir_pay|Источник данных mir_pay| |
 | [\YooKassa\Model\PaymentMethod\PaymentMethodAlfaBank](../classes/YooKassa-Model-PaymentMethod-PaymentMethodAlfaBank.md) | Класс, описывающий метод оплаты, при оплате через Альфа Банк |
 | [\YooKassa\Model\PaymentMethod\PaymentMethodApplePay](../classes/YooKassa-Model-PaymentMethod-PaymentMethodApplePay.md) | Класс, описывающий метод оплаты, при оплате через Apple Pay |
 | [\YooKassa\Model\PaymentMethod\PaymentMethodB2bSberbank](../classes/YooKassa-Model-PaymentMethod-PaymentMethodB2bSberbank.md) | Класс, описывающий метод оплаты, при оплате через Сбербанк Бизнес Онлайн |
@@ -49,6 +49,6 @@
 
 ---
 
-This document was automatically generated from source code comments on 2022-11-11 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-12-19 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

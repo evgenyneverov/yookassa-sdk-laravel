@@ -35,15 +35,18 @@ use YooKassa\Common\AbstractEnum;
  * --- | ---
  * |apple_pay|Источник данных apple_pay|
  * |google_pay|Источник данных google_pay|
+ * |mir_pay|Источник данных mir_pay|
  *
  */
 class BankCardSource extends AbstractEnum
 {
     const APPLE_PAY  = 'apple_pay';
     const GOOGLE_PAY = 'google_pay';
+    const MIR_PAY = 'mir_pay';
 
     protected static $validValues = array(
         self::APPLE_PAY  => true,
         self::GOOGLE_PAY => true,
+        self::MIR_PAY => true,
     );
 }
