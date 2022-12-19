@@ -511,7 +511,7 @@ class ProductCode
     {
         return array(
             self::TYPE_GS_1M => array(
-                'pattern' => '#^01(\d{14})21(.+)((91(.+)92(.+))|(93\w{4}(.*)))$#ui',
+                'pattern' => '#^01(\d{14})21(.+)((91(.+)92(.+))|(93[\w!"%&\'()*+,-./_:;=<>?]{4}(.*)))$#ui',
                 'matches' => array(1 => true, 2 => true),
                 'split' => '#\\\u001d|\x{001d}#ui',
             ),

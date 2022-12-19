@@ -118,6 +118,6 @@ Static public valueExists(mixed $value) : bool
 
 ---
 
-This document was automatically generated from source code comments on 2022-11-11 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-12-19 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney

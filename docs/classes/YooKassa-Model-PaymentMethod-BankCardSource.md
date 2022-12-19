@@ -10,6 +10,7 @@ BankCardSource - Источник данных банковской карты
 --- | ---
 |apple_pay|Источник данных apple_pay|
 |google_pay|Источник данных google_pay|
+|mir_pay|Источник данных mir_pay|
 
 
 ---
@@ -18,6 +19,7 @@ BankCardSource - Источник данных банковской карты
 | ----------:| ---- | ---- | ------- |
 | public | [APPLE_PAY](../classes/YooKassa-Model-PaymentMethod-BankCardSource.md#constant_APPLE_PAY) |  |  |
 | public | [GOOGLE_PAY](../classes/YooKassa-Model-PaymentMethod-BankCardSource.md#constant_GOOGLE_PAY) |  |  |
+| public | [MIR_PAY](../classes/YooKassa-Model-PaymentMethod-BankCardSource.md#constant_MIR_PAY) |  |  |
 
 ---
 ### Properties
@@ -54,6 +56,13 @@ APPLE_PAY = 'apple_pay'
 ###### GOOGLE_PAY
 ```php
 GOOGLE_PAY = 'google_pay'
+```
+
+
+<a name="constant_MIR_PAY" class="anchor"></a>
+###### MIR_PAY
+```php
+MIR_PAY = 'mir_pay'
 ```
 
 
@@ -143,6 +152,6 @@ Static public valueExists(mixed $value) : bool
 
 ---
 
-This document was automatically generated from source code comments on 2022-11-11 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-12-19 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2022 YooMoney
