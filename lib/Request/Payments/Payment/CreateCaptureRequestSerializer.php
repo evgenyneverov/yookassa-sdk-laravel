@@ -156,6 +156,10 @@ class CreateCaptureRequestSerializer
                 $item['platform_fee_amount'] = $this->serializeAmount($transfer->getPlatformFeeAmount());
             }
 
+            if ($transfer->hasDescription()) {
+                $item['description'] = $transfer->getDescription();
+            }
+
             $result[] = $item;
         }
 

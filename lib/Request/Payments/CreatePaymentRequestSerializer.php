@@ -366,6 +366,9 @@ class CreatePaymentRequestSerializer
             if ($transfer->hasPlatformFeeAmount()) {
                 $item['platform_fee_amount'] = $this->serializeAmount($transfer->getPlatformFeeAmount());
             }
+            if ($transfer->hasDescription()) {
+                $item['description'] = $transfer->getDescription();
+            }
             if ($transfer->hasMetadata()) {
                 $item['metadata'] = $transfer->getMetadata()->toArray();
             }

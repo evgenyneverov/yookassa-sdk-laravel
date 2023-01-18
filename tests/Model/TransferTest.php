@@ -33,10 +33,12 @@ class TransferTest extends TestCase
         self::assertNull($instance->getPlatformFeeAmount());
         self::assertNull($instance->getAccountId());
         self::assertNull($instance->getStatus());
+        self::assertNull($instance->getDescription());
         self::assertNull($instance->amount);
         self::assertNull($instance->platform_fee_amount);
         self::assertNull($instance->accountId);
         self::assertNull($instance->status);
+        self::assertNull($instance->description);
         self::assertNull($instance->metadata);
         self::assertFalse($instance->hasAmount());
 
@@ -50,6 +52,8 @@ class TransferTest extends TestCase
         self::assertSame($value['platform_fee_amount'], $instance->platform_fee_amount->jsonSerialize());
         self::assertSame($value['status'], $instance->getStatus());
         self::assertSame($value['status'], $instance->status);
+        self::assertSame($value['description'], $instance->getDescription());
+        self::assertSame($value['description'], $instance->description);
         if (!empty($value['metadata'])) {
             self::assertSame($value['metadata'], $instance->getMetadata()->toArray());
             self::assertSame($value['metadata'], $instance->metadata->toArray());
@@ -108,8 +112,8 @@ class TransferTest extends TestCase
                         'currency' => 'RUB'
                     ),
                     'status' => TransferStatus::PENDING,
+                    'description' => 'Заказ маркетплейса №1',
                     'metadata' => null
-
             )
         );
         for ($i = 0; $i < 10; $i++) {
@@ -124,6 +128,7 @@ class TransferTest extends TestCase
                     'currency' => Random::value(CurrencyCode::getValidValues())
                 ),
                 'status' => Random::value(TransferStatus::getValidValues()),
+                'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                 'metadata' => array(
                     Random::str(2, 16) => Random::str(2, 512),
                 )
@@ -385,6 +390,26 @@ class TransferTest extends TestCase
     public function testSetterInvalidStatus($value)
     {
         $this->getTestInstance()->status = $value;
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testSetInvalidTypeDescription()
+    {
+        $instance = new Transfer();
+        $instance->setDescription(true);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @throws \Exception
+     */
+    public function testSetInvalidLengthDescription()
+    {
+        $instance = new Transfer();
+        $description = Random::str(Transfer::MAX_LENGTH_DESCRIPTION + 1);
+        $instance->setDescription($description);
     }
 
     /**

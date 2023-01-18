@@ -354,6 +354,7 @@ abstract class AbstractPaymentResponseTest extends TestCase
                         'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'status' => Random::value(TransferStatus::getValidValues()),
+                        'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                     )),
                 ),
                 'income_amount' => array(
@@ -404,6 +405,7 @@ abstract class AbstractPaymentResponseTest extends TestCase
                         'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'status' => Random::value(TransferStatus::getValidValues()),
+                        'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                     )),
                 ),
                 'income_amount' => array(
@@ -452,6 +454,7 @@ abstract class AbstractPaymentResponseTest extends TestCase
                         'amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'platform_fee_amount' => new MonetaryAmount(Random::int(1, 1000), 'RUB'),
                         'status' => Random::value(TransferStatus::getValidValues()),
+                        'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                     )),
                 ),
                 'income_amount' => array(

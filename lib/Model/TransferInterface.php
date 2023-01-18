@@ -36,6 +36,7 @@ namespace YooKassa\Model;
  * @property AmountInterface $platform_fee_amount Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
  * @property string $accountId Идентификатор магазина, в пользу которого вы принимаете оплату
  * @property string $status Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled`
+ * @property string $description Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72»)
  * @property Metadata $metadata Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа)
  *
  * @package YooKassa
@@ -109,6 +110,25 @@ interface TransferInterface
      * @param string|null $value
      */
     public function setStatus($value);
+
+    /**
+     * Устанавливает описание транзакции
+     * @param string|null $value Описание транзакции
+     */
+    public function setDescription($value);
+
+    /**
+     * Возвращает описание транзакции
+     * @return string|null Описание транзакции
+     */
+    public function getDescription();
+
+    /**
+     * Проверяет, было ли установлено описание транзакции
+     *
+     * @return bool True если описание транзакции было установлено, false если нет
+     */
+    public function hasDescription();
 
     /**
      * Устанавливает метаданные

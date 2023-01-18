@@ -660,6 +660,7 @@ class CreatePaymentRequestTest extends TestCase
                     'value' => sprintf('%.2f', round(Random::float(0.1, 99.99), 2)),
                     'currency' => Random::value(CurrencyCode::getValidValues())
                 ),
+                'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                 'metadata' => $i == 0 ? $metadata : array('test' => 'test'),
             );
         }
@@ -905,6 +906,7 @@ class CreatePaymentRequestTest extends TestCase
                             'value' => sprintf('%.2f', round(Random::float(0.1, 99.99), 2)),
                             'currency' => Random::value(CurrencyCode::getValidValues())
                         ),
+                        'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                         'metadata' => $i == 0 ? $metadata : array('test' => 'test'),
                     )
                 ),
@@ -946,6 +948,7 @@ class CreatePaymentRequestTest extends TestCase
                             'value' => sprintf('%.2f', round(Random::float(0.1, 99.99), 2)),
                             'currency' => Random::value(CurrencyCode::getValidValues())
                         ),
+                        'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                         'metadata' => $i == 0 ? $metadata : array('test' => 'test'),
                     )
                 ),
