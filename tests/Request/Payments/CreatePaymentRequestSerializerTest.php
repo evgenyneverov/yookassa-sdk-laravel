@@ -29,6 +29,7 @@ use YooKassa\Model\PaymentData\PaymentDataYooMoney;
 use YooKassa\Model\PaymentMethodType;
 use YooKassa\Model\Receipt\PaymentMode;
 use YooKassa\Model\Receipt\PaymentSubject;
+use YooKassa\Model\Transfer;
 use YooKassa\Model\TransferStatus;
 use YooKassa\Request\Payments\CreatePaymentRequest;
 use YooKassa\Request\Payments\CreatePaymentRequestSerializer;
@@ -201,6 +202,9 @@ class CreatePaymentRequestSerializerTest extends TestCase
                 if (!empty($item['platform_fee_amount'])) {
                     $itemArray['platform_fee_amount'] = $item['platform_fee_amount'];
                 }
+                if (!empty($item['description'])) {
+                    $itemArray['description'] = $item['description'];
+                }
                 if (!empty($item['metadata'])) {
                     $itemArray['metadata'] = $item['metadata'];
                 }
@@ -292,6 +296,7 @@ class CreatePaymentRequestSerializerTest extends TestCase
                                 'value' => sprintf('%.2f', round(Random::float(0.1, 99.99), 2)),
                                 'currency' => Random::value(CurrencyCode::getValidValues())
                             ),
+                            'description' => Random::str(1, Transfer::MAX_LENGTH_DESCRIPTION),
                             'metadata' => array('test' => Random::str(10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')),
                         )
                     ),

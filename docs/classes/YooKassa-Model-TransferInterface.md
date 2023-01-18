@@ -22,14 +22,17 @@ Interface TransferInterface
 | ----------:| ---- | ---- | ------- |
 | public | [getAccountId()](../classes/YooKassa-Model-TransferInterface.md#method_getAccountId) |  | Возвращает идентификатор магазина-получателя средств |
 | public | [getAmount()](../classes/YooKassa-Model-TransferInterface.md#method_getAmount) |  | Возвращает сумму оплаты |
+| public | [getDescription()](../classes/YooKassa-Model-TransferInterface.md#method_getDescription) |  | Возвращает описание транзакции |
 | public | [getMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_getMetadata) |  | Возвращает метаданные |
 | public | [getPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_getPlatformFeeAmount) |  | Возвращает комиссию за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [getStatus()](../classes/YooKassa-Model-TransferInterface.md#method_getStatus) |  | Возвращает статус операции распределения средств конечному получателю |
 | public | [hasAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasAmount) |  | Проверяет, была ли установлена сумма оплаты |
+| public | [hasDescription()](../classes/YooKassa-Model-TransferInterface.md#method_hasDescription) |  | Проверяет, было ли установлено описание транзакции |
 | public | [hasMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные |
 | public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasPlatformFeeAmount) |  | Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [setAccountId()](../classes/YooKassa-Model-TransferInterface.md#method_setAccountId) |  | Устанавливает идентификатор магазина-получателя средств |
 | public | [setAmount()](../classes/YooKassa-Model-TransferInterface.md#method_setAmount) |  | Устанавливает сумму оплаты |
+| public | [setDescription()](../classes/YooKassa-Model-TransferInterface.md#method_setDescription) |  | Устанавливает описание транзакции |
 | public | [setMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_setMetadata) |  | Устанавливает метаданные |
 | public | [setPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_setPlatformFeeAmount) |  | Устанавливает комиссию за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [setStatus()](../classes/YooKassa-Model-TransferInterface.md#method_setStatus) |  | Устанавливает статус операции распределения средств конечному получателю |
@@ -47,6 +50,7 @@ Interface TransferInterface
 | property |  | Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | property |  | Идентификатор магазина, в пользу которого вы принимаете оплату |
 | property |  | Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled` |
+| property |  | Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72») |
 | property |  | Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа) |
 
 ---
@@ -241,6 +245,62 @@ public setStatus(string|null $value) : mixed
 **Returns:** mixed - 
 
 
+<a name="method_setDescription" class="anchor"></a>
+#### public setDescription() : mixed
+
+```php
+public setDescription(string|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает описание транзакции
+
+**Details:**
+* Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string OR null</code> | value  | Описание транзакции |
+
+**Returns:** mixed - 
+
+
+<a name="method_getDescription" class="anchor"></a>
+#### public getDescription() : string|null
+
+```php
+public getDescription() : string|null
+```
+
+**Summary**
+
+Возвращает описание транзакции
+
+**Details:**
+* Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
+**Returns:** string|null - Описание транзакции
+
+
+<a name="method_hasDescription" class="anchor"></a>
+#### public hasDescription() : bool
+
+```php
+public hasDescription() : bool
+```
+
+**Summary**
+
+Проверяет, было ли установлено описание транзакции
+
+**Details:**
+* Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
+**Returns:** bool - True если описание транзакции было установлено, false если нет
+
+
 <a name="method_setMetadata" class="anchor"></a>
 #### public setMetadata() : mixed
 
@@ -314,6 +374,6 @@ public hasMetadata() : bool
 
 ---
 
-This document was automatically generated from source code comments on 2022-12-19 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-01-18 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2022 YooMoney
+&copy; 2023 YooMoney

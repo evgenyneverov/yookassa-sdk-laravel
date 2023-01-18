@@ -65,6 +65,6 @@ public serialize(\YooKassa\Request\Refunds\RefundsRequestInterface $request) : a
 
 ---
 
-This document was automatically generated from source code comments on 2022-12-19 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-01-18 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2022 YooMoney
+&copy; 2023 YooMoney

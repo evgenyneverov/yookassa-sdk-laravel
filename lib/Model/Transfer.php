@@ -42,12 +42,16 @@ use YooKassa\Helpers\TypeCast;
  * @property AmountInterface $platform_fee_amount Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
  * @property string $accountId Идентификатор магазина, в пользу которого вы принимаете оплату
  * @property string $status Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled`
+ * @property string $description Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72»)
  * @property Metadata $metadata Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа)
  *
  * @package YooKassa
  */
 class Transfer extends AbstractObject implements TransferInterface
 {
+    /** Максимальная длина строки описания транзакции */
+    const MAX_LENGTH_DESCRIPTION = 128;
+
     /**
      * @var string
      */
@@ -67,6 +71,11 @@ class Transfer extends AbstractObject implements TransferInterface
      * @var string
      */
     private $_status;
+
+    /**
+     * @var string
+     */
+    private $_description;
 
     /**
      * @var string
@@ -195,6 +204,50 @@ class Transfer extends AbstractObject implements TransferInterface
     public function getStatus()
     {
         return $this->_status;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDescription($value)
+    {
+        if ($value === null || $value === '') {
+            $this->_description = null;
+            return;
+        }
+
+        if (!TypeCast::canCastToString($value)) {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid description value type', 0, 'Transfer.description', $value
+            );
+        }
+
+        $length = mb_strlen((string)$value, 'utf-8');
+        if ($length > self::MAX_LENGTH_DESCRIPTION) {
+            throw new InvalidPropertyValueException(
+                'The value of the description parameter is too long. Max length is ' . self::MAX_LENGTH_DESCRIPTION,
+                0,
+                'Transfer.description',
+                $value
+            );
+        }
+        $this->_description = (string)$value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function hasDescription()
+    {
+        return !empty($this->_description);
     }
 
     /**
