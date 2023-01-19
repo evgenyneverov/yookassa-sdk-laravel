@@ -183,6 +183,9 @@ class CreatePaymentRequestSerializer
             }
             $result['return_url'] = $confirmation->getReturnUrl();
         }
+        if ($confirmation->getType() === ConfirmationType::MOBILE_APPLICATION) {
+            $result['return_url'] = $confirmation->getReturnUrl();
+        }
 
         return $result;
     }

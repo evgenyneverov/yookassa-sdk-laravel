@@ -1,3 +1,6 @@
+### v2.7.5 от 18.01.2023
+* Добавлен return_url в confirmation при mobile_application для Sberpay
+
 ### v2.7.4 от 18.01.2023
 * Добавлено поле description в платежи сплитованием
 
