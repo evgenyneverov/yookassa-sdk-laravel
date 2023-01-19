@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\Random;
 use YooKassa\Model\Airline;
 use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesExternal;
+use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesMobileApplication;
 use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesRedirect;
 use YooKassa\Model\ConfirmationType;
 use YooKassa\Model\CurrencyCode;
@@ -83,6 +84,9 @@ class CreatePaymentRequestSerializerTest extends TestCase
             }
             if ($options['confirmation']->getType() === ConfirmationType::REDIRECT) {
                 $expected['confirmation']['enforce']    = $options['confirmation']->enforce;
+                $expected['confirmation']['return_url'] = $options['confirmation']->returnUrl;
+            }
+            if ($options['confirmation']->getType() === ConfirmationType::MOBILE_APPLICATION) {
                 $expected['confirmation']['return_url'] = $options['confirmation']->returnUrl;
             }
         }
@@ -311,6 +315,7 @@ class CreatePaymentRequestSerializerTest extends TestCase
         $confirmations = array(
             new ConfirmationAttributesExternal(),
             new ConfirmationAttributesRedirect(),
+            new ConfirmationAttributesMobileApplication(),
         );
         $paymentData   = array(
             new PaymentDataAlfabank(),
@@ -358,6 +363,7 @@ class CreatePaymentRequestSerializerTest extends TestCase
         $confirmations[0]->setLocale('en_US');
         $confirmations[1]->setEnforce(true);
         $confirmations[1]->setReturnUrl(Random::str(10));
+        $confirmations[2]->setReturnUrl(Random::str(10));
         foreach ($paymentData as $i => $paymentMethodData) {
             $request  = array(
                 'accountId'         => uniqid(),
