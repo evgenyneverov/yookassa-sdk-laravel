@@ -13,9 +13,9 @@
   ],
   "dist": {
     "type": "zip",
-    "url": "https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-php/archive?at=refs%2Ftags%2F2.7.5&format=zip"
+    "url": "https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-php/archive?at=refs%2Ftags%2F2.7.6&format=zip"
   },
-  "version": "2.7.5",
+  "version": "2.7.6",
   "require": {
     "php": ">=5.3.0",
     "ext-curl": "*",

@@ -504,10 +504,10 @@ public offsetGet(string $offset) : mixed
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : mixed
+#### public offsetSet() : void
 
 ```php
-public offsetSet(string $offset, mixed $value) : mixed
+public offsetSet(string $offset, mixed $value) : void
 ```
 
 **Summary**
@@ -523,18 +523,14 @@ public offsetSet(string $offset, mixed $value) : mixed
 | <code lang="php">string</code> | offset  | Имя свойства |
 | <code lang="php">mixed</code> | value  | Значение свойства |
 
-**Returns:** mixed - 
+**Returns:** void - 
 
-##### Tags
-| Tag | Version | Description |
-| --- | ------- | ----------- |
-| retrun |  | void |
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : mixed
+#### public offsetUnset() : void
 
 ```php
-public offsetUnset(string $offset) : mixed
+public offsetUnset(string $offset) : void
 ```
 
 **Summary**
@@ -549,12 +545,8 @@ public offsetUnset(string $offset) : mixed
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | offset  | Имя удаляемого свойства |
 
-**Returns:** mixed - 
+**Returns:** void - 
 
-##### Tags
-| Tag | Version | Description |
-| --- | ------- | ----------- |
-| retrun |  | void |
 
 <a name="method_setBalance" class="anchor"></a>
 #### public setBalance() : \YooKassa\Model\SafeDeal
@@ -869,6 +861,6 @@ protected getUnknownProperties() : array
 
 ---
 
-This document was automatically generated from source code comments on 2023-01-19 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-02-13 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney
