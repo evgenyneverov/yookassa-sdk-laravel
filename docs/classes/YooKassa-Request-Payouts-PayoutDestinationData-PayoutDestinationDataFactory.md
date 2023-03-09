@@ -92,6 +92,6 @@ public factoryFromArray(array $data, string|null $type = null) : \YooKassa\Reque
 
 ---
 
-This document was automatically generated from source code comments on 2023-02-13 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

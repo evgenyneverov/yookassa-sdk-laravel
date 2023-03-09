@@ -534,5 +534,14 @@ class CurlClient implements ApiClientInterface
         $this->setCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
 
         $this->setCurlOption(CURLOPT_TIMEOUT, $this->timeout);
+
+        $this->setAdvancedCurlOptions();
+    }
+
+    /**
+     * @return void
+     */
+    public function setAdvancedCurlOptions()
+    {
     }
 }
