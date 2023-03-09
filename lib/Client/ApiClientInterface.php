@@ -93,4 +93,11 @@ interface ApiClientInterface
      * @param array $config
      */
     public function setConfig($config);
+
+    /**
+     * Устанавливает дополнительные настройки curl
+     *
+     * @return void
+     */
+    public function setAdvancedCurlOptions();
 }
