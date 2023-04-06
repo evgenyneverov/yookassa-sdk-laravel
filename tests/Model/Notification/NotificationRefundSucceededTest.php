@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\YooKassa\Model\Notification;
 
 use YooKassa\Helpers\Random;
@@ -14,7 +13,6 @@ use YooKassa\Model\RefundStatus;
 
 class NotificationRefundSucceededTest extends AbstractNotificationTest
 {
-
     /**
      * @param array $source
      *

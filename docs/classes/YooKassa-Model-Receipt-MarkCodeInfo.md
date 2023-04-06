@@ -66,11 +66,11 @@ Class MarkCodeInfo
 | public | [getMarkCodeRaw()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_getMarkCodeRaw) |  | Возвращает исходный код товара |
 | public | [getShort()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_getShort) |  |  |
 | public | [getUnknown()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_getUnknown) |  |  |
-| public | [jsonSerialize()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
-| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
-| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
-| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
-| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
+| public | [jsonSerialize()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_jsonSerialize) |  |  |
+| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  |  |
+| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  |  |
+| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  |  |
+| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  |  |
 | public | [setEan13()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_setEan13) |  |  |
 | public | [setEan8()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_setEan8) |  |  |
 | public | [setEgais20()](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md#method_setEgais20) |  |  |
@@ -182,7 +182,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате EAN-13 (тег в 54 ФЗ — 1302)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -194,7 +194,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате EAN-8 (тег в 54 ФЗ — 1301)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -206,7 +206,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате ЕГАИС-2.0 (тег в 54 ФЗ — 1308)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -218,7 +218,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате ЕГАИС-3.0 (тег в 54 ФЗ — 1309)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -230,7 +230,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Контрольно-идентификационный знак мехового изделия (тег в 54 ФЗ — 1307)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -242,7 +242,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате GS1.0 (тег в 54 ФЗ — 1304)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -254,7 +254,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате GS1.M (тег в 54 ФЗ — 1305)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -266,7 +266,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате ITF-14 (тег в 54 ФЗ — 1303)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -278,7 +278,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в том виде, в котором он был прочитан сканером (тег в 54 ФЗ — 2000)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -290,7 +290,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в том виде, в котором он был прочитан сканером (тег в 54 ФЗ — 2000)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -302,7 +302,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Код товара в формате короткого кода маркировки (тег в 54 ФЗ — 1306)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -314,7 +314,7 @@ MAX_EGAIS_30_LENGTH = 14 : int
 
 Нераспознанный код товара (тег в 54 ФЗ — 1300)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -609,10 +609,6 @@ public getUnknown() : string
 public jsonSerialize() : array
 ```
 
-**Summary**
-
-Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации
-
 **Details:**
 * Inherited From: [\YooKassa\Model\Receipt\MarkCodeInfo](../classes/YooKassa-Model-Receipt-MarkCodeInfo.md)
 
@@ -624,15 +620,11 @@ public jsonSerialize() : array
 | inheritdoc |  |  |
 
 <a name="method_offsetExists" class="anchor"></a>
-#### public offsetExists() : bool
+#### public offsetExists() : mixed
 
 ```php
-public offsetExists(string $offset) : bool
+public offsetExists(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Проверяет наличие свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -640,21 +632,17 @@ public offsetExists(string $offset) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя проверяемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** bool - True если свойство имеется, false если нет
+**Returns:** mixed - 
 
 
 <a name="method_offsetGet" class="anchor"></a>
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string $offset) : mixed
+public offsetGet(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Возвращает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -662,21 +650,17 @@ public offsetGet(string $offset) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** mixed - Значение свойства
+**Returns:** mixed - 
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : void
+#### public offsetSet() : mixed
 
 ```php
-public offsetSet(string $offset, mixed $value) : void
+public offsetSet(mixed $offset, mixed $value) : mixed
 ```
-
-**Summary**
-
-Устанавливает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -684,22 +668,18 @@ public offsetSet(string $offset, mixed $value) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
+| <code lang="php">mixed</code> | offset  |  |
+| <code lang="php">mixed</code> | value  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : void
+#### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string $offset) : void
+public offsetUnset(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Удаляет свойство
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -707,9 +687,9 @@ public offsetUnset(string $offset) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя удаляемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_setEan13" class="anchor"></a>
@@ -960,11 +940,11 @@ protected getUnknownProperties() : array
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

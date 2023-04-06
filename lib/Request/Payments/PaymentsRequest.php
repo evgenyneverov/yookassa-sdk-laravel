@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -150,13 +150,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtGte value in PaymentsRequest', 0, 'PaymentRequest.createdAtGte'
+                    'Invalid createdAtGte value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.createdAtGte'
                 );
             }
             $this->_createdAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtGte value type in PaymentsRequest', 0, 'PaymentRequest.createdAtGte'
+                'Invalid createdAtGte value type in PaymentsRequest',
+                0,
+                'PaymentRequest.createdAtGte'
             );
         }
     }
@@ -196,13 +200,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtGt value in PaymentsRequest', 0, 'PaymentRequest.createdAtGt'
+                    'Invalid createdAtGt value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.createdAtGt'
                 );
             }
             $this->_createdAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtGt value type in PaymentsRequest', 0, 'PaymentRequest.createdAtGt'
+                'Invalid createdAtGt value type in PaymentsRequest',
+                0,
+                'PaymentRequest.createdAtGt'
             );
         }
     }
@@ -242,13 +250,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtLte value in PaymentsRequest', 0, 'PaymentRequest.createdAtLte'
+                    'Invalid createdAtLte value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.createdAtLte'
                 );
             }
             $this->_createdAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtLte value type in PaymentsRequest', 0, 'PaymentRequest.createdAtLte'
+                'Invalid createdAtLte value type in PaymentsRequest',
+                0,
+                'PaymentRequest.createdAtLte'
             );
         }
     }
@@ -288,13 +300,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtLt value in PaymentsRequest', 0, 'PaymentRequest.createdAtLt'
+                    'Invalid createdAtLt value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.createdAtLt'
                 );
             }
             $this->_createdAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAlLt value type in PaymentsRequest', 0, 'PaymentRequest.createdAtLt'
+                'Invalid createdAlLt value type in PaymentsRequest',
+                0,
+                'PaymentRequest.createdAtLt'
             );
         }
     }
@@ -334,13 +350,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid capturedAtGte value in PaymentsRequest', 0, 'PaymentRequest.capturedAtGte'
+                    'Invalid capturedAtGte value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.capturedAtGte'
                 );
             }
             $this->_capturedAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid capturedAtGte value type in PaymentsRequest', 0, 'PaymentRequest.capturedAtGte'
+                'Invalid capturedAtGte value type in PaymentsRequest',
+                0,
+                'PaymentRequest.capturedAtGte'
             );
         }
     }
@@ -380,13 +400,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid capturedAtGt value in PaymentsRequest', 0, 'PaymentRequest.capturedAtGt'
+                    'Invalid capturedAtGt value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.capturedAtGt'
                 );
             }
             $this->_capturedAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid capturedAtGt value type in PaymentsRequest', 0, 'PaymentRequest.capturedAtGt'
+                'Invalid capturedAtGt value type in PaymentsRequest',
+                0,
+                'PaymentRequest.capturedAtGt'
             );
         }
     }
@@ -426,13 +450,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid capturedAtLte value in PaymentsRequest', 0, 'PaymentRequest.capturedAtLte'
+                    'Invalid capturedAtLte value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.capturedAtLte'
                 );
             }
             $this->_capturedAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid capturedAtLte value type in PaymentsRequest', 0, 'PaymentRequest.capturedAtLte'
+                'Invalid capturedAtLte value type in PaymentsRequest',
+                0,
+                'PaymentRequest.capturedAtLte'
             );
         }
     }
@@ -472,13 +500,17 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid capturedAtLt value in PaymentsRequest', 0, 'PaymentRequest.capturedAtLt'
+                    'Invalid capturedAtLt value in PaymentsRequest',
+                    0,
+                    'PaymentRequest.capturedAtLt'
                 );
             }
             $this->_capturedAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid capturedAlLt value type in PaymentsRequest', 0, 'PaymentRequest.capturedAtLt'
+                'Invalid capturedAlLt value type in PaymentsRequest',
+                0,
+                'PaymentRequest.capturedAtLt'
             );
         }
     }
@@ -515,14 +547,20 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (!PaymentStatus::valueExists((string)$value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value in PaymentsRequest', 0, 'PaymentsRequest.status', $value
+                    'Invalid status value in PaymentsRequest',
+                    0,
+                    'PaymentsRequest.status',
+                    $value
                 );
             } else {
                 $this->_status = (string)$value;
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value in PaymentsRequest', 0, 'PaymentsRequest.status', $value
+                'Invalid status value in PaymentsRequest',
+                0,
+                'PaymentsRequest.status',
+                $value
             );
         }
     }
@@ -559,14 +597,20 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (!PaymentMethodType::valueExists((string)$value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value in PaymentsRequest', 0, 'PaymentsRequest.paymentMethod', $value
+                    'Invalid status value in PaymentsRequest',
+                    0,
+                    'PaymentsRequest.paymentMethod',
+                    $value
                 );
             } else {
                 $this->_paymentMethod = (string)$value;
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in PaymentsRequest', 0, 'PaymentsRequest.paymentMethod', $value
+                'Invalid status value type in PaymentsRequest',
+                0,
+                'PaymentsRequest.paymentMethod',
+                $value
             );
         }
     }
@@ -602,13 +646,19 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
         } elseif (is_int($value)) {
             if ($value < 0 || $value > self::MAX_LIMIT_VALUE) {
                 throw new InvalidPropertyValueException(
-                    'Invalid limit value in PaymentsRequest', 0, 'PaymentsRequest.limit', $value
+                    'Invalid limit value in PaymentsRequest',
+                    0,
+                    'PaymentsRequest.limit',
+                    $value
                 );
             }
             $this->_limit = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid limit value type in PaymentsRequest', 0, 'PaymentsRequest.limit', $value
+                'Invalid limit value type in PaymentsRequest',
+                0,
+                'PaymentsRequest.limit',
+                $value
             );
         }
     }
@@ -645,7 +695,10 @@ class PaymentsRequest extends AbstractRequest implements PaymentsRequestInterfac
             $this->_cursor = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in PaymentsRequest', 0, 'PaymentsRequest.limit', $value
+                'Invalid cursor value type in PaymentsRequest',
+                0,
+                'PaymentsRequest.cursor',
+                $value
             );
         }
     }

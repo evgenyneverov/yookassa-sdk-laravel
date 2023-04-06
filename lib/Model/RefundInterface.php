@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,49 +51,49 @@ interface RefundInterface
      * Возвращает идентификатор возврата платежа
      * @return string Идентификатор возврата
      */
-    function getId();
+    public function getId();
 
     /**
      * Возвращает идентификатор платежа
      * @return string Идентификатор платежа
      */
-    function getPaymentId();
+    public function getPaymentId();
 
     /**
      * Возвращает статус текущего возврата
      * @return string Статус возврата
      */
-    function getStatus();
+    public function getStatus();
 
     /**
      * Возвращает дату создания возврата
      * @return \DateTime Время создания возврата
      */
-    function getCreatedAt();
+    public function getCreatedAt();
 
     /**
      * Возвращает сумму возврата
      * @return AmountInterface Сумма возврата
      */
-    function getAmount();
+    public function getAmount();
 
     /**
      * Возвращает статус регистрации чека
      * @return string Статус регистрации чека
      */
-    function getReceiptRegistration();
+    public function getReceiptRegistration();
 
     /**
      * Возвращает комментарий к возврату
      * @return string Комментарий, основание для возврата средств покупателю
      */
-    function getDescription();
+    public function getDescription();
 
     /**
      * Возвращает информацию о распределении денег — сколько и в какой магазин нужно перевести
      * @return SourceInterface[]
      */
-    function getSources();
+    public function getSources();
 
     /**
      * Возвращает сделку, в рамках которой нужно провести возврат.

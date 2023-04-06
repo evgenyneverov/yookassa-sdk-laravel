@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\YooKassa\Model\PaymentMethod;
-
 
 use YooKassa\Model\PaymentMethod\AbstractPaymentMethod;
 use YooKassa\Model\PaymentMethod\PaymentMethodTinkoffBank;
@@ -10,7 +8,6 @@ use YooKassa\Model\PaymentMethodType;
 
 class PaymentMethodTinkoffBankTest extends AbstractPaymentMethodTest
 {
-
     /**
      * @return AbstractPaymentMethod
      */

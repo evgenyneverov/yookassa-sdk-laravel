@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -125,13 +125,19 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length != 36) {
                 throw new InvalidPropertyValueException(
-                    'Invalid payment id value in RefundsRequest', 0, 'RefundsRequest.paymentId', $value
+                    'Invalid payment id value in RefundsRequest',
+                    0,
+                    'RefundsRequest.paymentId',
+                    $value
                 );
             }
             $this->_paymentId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment id value type in RefundsRequest', 0, 'RefundsRequest.paymentId', $value
+                'Invalid payment id value type in RefundsRequest',
+                0,
+                'RefundsRequest.paymentId',
+                $value
             );
         }
     }
@@ -171,13 +177,17 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_gte value in RefundsRequest', 0, 'RefundsRequest.createdAtGte'
+                    'Invalid created_gte value in RefundsRequest',
+                    0,
+                    'RefundsRequest.createdAtGte'
                 );
             }
             $this->_createdAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_gte value type in RefundsRequest', 0, 'RefundsRequest.createdAtGte'
+                'Invalid created_gte value type in RefundsRequest',
+                0,
+                'RefundsRequest.createdAtGte'
             );
         }
     }
@@ -217,13 +227,17 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_gt value in RefundsRequest', 0, 'RefundsRequest.createdAtGt'
+                    'Invalid created_gt value in RefundsRequest',
+                    0,
+                    'RefundsRequest.createdAtGt'
                 );
             }
             $this->_createdAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_gt value type in RefundsRequest', 0, 'RefundsRequest.createdAtGt'
+                'Invalid created_gt value type in RefundsRequest',
+                0,
+                'RefundsRequest.createdAtGt'
             );
         }
     }
@@ -263,13 +277,17 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_lte value in RefundsRequest', 0, 'RefundsRequest.createdLte'
+                    'Invalid created_lte value in RefundsRequest',
+                    0,
+                    'RefundsRequest.createdLte'
                 );
             }
             $this->_createdAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_lte value type in RefundsRequest', 0, 'RefundsRequest.createdLte'
+                'Invalid created_lte value type in RefundsRequest',
+                0,
+                'RefundsRequest.createdLte'
             );
         }
     }
@@ -309,13 +327,17 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_lt value in RefundsRequest', 0, 'RefundsRequest.createdLt'
+                    'Invalid created_lt value in RefundsRequest',
+                    0,
+                    'RefundsRequest.createdLt'
                 );
             }
             $this->_createdAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_lt value type in RefundsRequest', 0, 'RefundsRequest.createdLt'
+                'Invalid created_lt value type in RefundsRequest',
+                0,
+                'RefundsRequest.createdLt'
             );
         }
     }
@@ -352,14 +374,20 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (!RefundStatus::valueExists((string)$value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value in RefundsRequest', 0, 'RefundsRequest.status', $value
+                    'Invalid status value in RefundsRequest',
+                    0,
+                    'RefundsRequest.status',
+                    $value
                 );
             } else {
                 $this->_status = (string)$value;
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value in RefundsRequest', 0, 'RefundsRequest.status', $value
+                'Invalid status value in RefundsRequest',
+                0,
+                'RefundsRequest.status',
+                $value
             );
         }
     }
@@ -396,7 +424,10 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
             $this->_cursor = (string) $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value in RefundsRequest', 0, 'RefundsRequest.cursor', $value
+                'Invalid status value in RefundsRequest',
+                0,
+                'RefundsRequest.cursor',
+                $value
             );
         }
     }
@@ -432,13 +463,19 @@ class RefundsRequest extends AbstractRequest implements RefundsRequestInterface
         } elseif (is_int($value)) {
             if ($value < 0 || $value > self::MAX_LIMIT_VALUE) {
                 throw new InvalidPropertyValueException(
-                    'Invalid limit value in RefundsRequest', 0, 'RefundsRequest.limit', $value
+                    'Invalid limit value in RefundsRequest',
+                    0,
+                    'RefundsRequest.limit',
+                    $value
                 );
             }
             $this->_limit = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid limit value type in RefundsRequest', 0, 'RefundsRequest.limit', $value
+                'Invalid limit value type in RefundsRequest',
+                0,
+                'RefundsRequest.limit',
+                $value
             );
         }
     }

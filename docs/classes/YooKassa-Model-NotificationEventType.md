@@ -6,16 +6,17 @@
 **Summary:**
 
 NotificationEventType - Тип уведомления
-|Код|Описание|
---- | ---
-|payment.waiting_for_capture|Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)|
-|payment.succeeded|Успешно оплачен и подтвержден магазином|
-|payment.canceled|Неуспех оплаты или отменен магазином|
-|refund.succeeded|Успешный возврат|
-|deal.closed|Сделка перешла в статус closed|
-|payout.canceled|Выплата перешла в статус canceled|
-|payout.succeeded|Выплата перешла в статус succeeded|
 
+**Description:**
+
+Возможные значения:
+- `payment.waiting_for_capture` - Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)
+- `payment.succeeded` - Успешно оплачен и подтвержден магазином
+- `payment.canceled` - Неуспех оплаты или отменен магазином
+- `refund.succeeded` - Успешный возврат
+- `deal.closed` - Сделка перешла в статус closed
+- `payout.canceled` - Выплата перешла в статус canceled
+- `payout.succeeded` - Выплата перешла в статус succeeded
 
 ---
 ### Constants
@@ -122,7 +123,7 @@ PAYOUT_SUCCEEDED = 'payout.succeeded'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -197,11 +198,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

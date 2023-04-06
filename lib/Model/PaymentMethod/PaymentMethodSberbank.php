@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ class PaymentMethodSberbank extends PaymentMethodBankCard
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::SBERBANK);
+        $this->setType(PaymentMethodType::SBERBANK);
     }
 
     /**
@@ -79,14 +79,19 @@ class PaymentMethodSberbank extends PaymentMethodBankCard
                 $this->_phone = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid phone value', 0, 'PaymentMethodSberbank.phone', $value
+                    'Invalid phone value',
+                    0,
+                    'PaymentMethodSberbank.phone',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid phone value type', 0, 'PaymentMethodSberbank.phone', $value
+                'Invalid phone value type',
+                0,
+                'PaymentMethodSberbank.phone',
+                $value
             );
         }
     }
-
 }

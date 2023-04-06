@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -220,19 +220,26 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty description value in ReceiptItem', 0, 'ReceiptItem.description'
+                'Empty description value in ReceiptItem',
+                0,
+                'ReceiptItem.description'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $castedValue = (string)$value;
             if ($castedValue === '') {
                 throw new EmptyPropertyValueException(
-                    'Empty description value in ReceiptItem', 0, 'ReceiptItem.description'
+                    'Empty description value in ReceiptItem',
+                    0,
+                    'ReceiptItem.description'
                 );
             }
             $this->_description = $castedValue;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Empty description value in ReceiptItem', 0, 'ReceiptItem.description', $value
+                'Empty description value in ReceiptItem',
+                0,
+                'ReceiptItem.description',
+                $value
             );
         }
     }
@@ -262,11 +269,17 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
             throw new EmptyPropertyValueException('Empty quantity value in ReceiptItem', 0, 'ReceiptItem.quantity');
         } elseif (!is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid quantity value type in ReceiptItem', 0, 'ReceiptItem.quantity', $value
+                'Invalid quantity value type in ReceiptItem',
+                0,
+                'ReceiptItem.quantity',
+                $value
             );
         } elseif ($value <= 0.0) {
             throw new InvalidPropertyValueException(
-                'Invalid quantity value in ReceiptItem', 0, 'ReceiptItem.quantity', $value
+                'Invalid quantity value in ReceiptItem',
+                0,
+                'ReceiptItem.quantity',
+                $value
             );
         } else {
             $this->_quantity = (float)$value;
@@ -325,11 +338,17 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
             $this->_vatCode = null;
         } elseif (!is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid vatId value type in ReceiptItem', 0, 'ReceiptItem.vatId', $value
+                'Invalid vatId value type in ReceiptItem',
+                0,
+                'ReceiptItem.vatId',
+                $value
             );
         } elseif ($value < 1 || $value > 6) {
             throw new InvalidPropertyValueException(
-                'Invalid vatId value in ReceiptItem', 0, 'ReceiptItem.vatId', $value
+                'Invalid vatId value in ReceiptItem',
+                0,
+                'ReceiptItem.vatId',
+                $value
             );
         } else {
             $this->_vatCode = (int)$value;
@@ -385,7 +404,10 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
             $this->_paymentMode = null;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid paymentMode value type', 0, 'ReceiptItem.paymentMode', $value
+                'Invalid paymentMode value type',
+                0,
+                'ReceiptItem.paymentMode',
+                $value
             );
         } else {
             $this->_paymentMode = $value;
@@ -763,7 +785,9 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty supplier value in receipt', 0, 'Receipt.supplier'
+                'Empty supplier value in receipt',
+                0,
+                'Receipt.supplier'
             );
         }
 
@@ -773,7 +797,10 @@ class ReceiptResponseItem extends AbstractObject implements ReceiptResponseItemI
 
         if (!($value instanceof SupplierInterface)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid supplier value type in receipt', 0, 'Receipt.supplier', $value
+                'Invalid supplier value type in receipt',
+                0,
+                'Receipt.supplier',
+                $value
             );
         }
 

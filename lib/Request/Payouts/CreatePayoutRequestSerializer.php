@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,19 +47,30 @@ class CreatePayoutRequestSerializer
             $result['amount'] = $request->getAmount()->toArray();
         }
         if ($request->hasPayoutDestinationData()) {
-            $result['payout_destination_data'] = $request->getPayoutDestinationData()->toArray();
+            $result['payout_destination_data'] = $request->getPayoutDestinationdata()->toArray();
         }
         if ($request->hasPayoutToken()) {
             $result['payout_token'] = $request->getPayoutToken();
         }
-        if ($request->hasMetadata()) {
-            $result['metadata'] = $request->getMetadata()->toArray();
+        if ($request->hasPaymentMethodid()) {
+            $result['payment_method_id'] = $request->getPaymentMethodid();
         }
         if ($request->hasDescription()) {
             $result['description'] = $request->getDescription();
         }
         if ($request->hasDeal()) {
             $result['deal'] = $request->getDeal()->toArray();
+        }
+        if ($request->hasSelfEmployed()) {
+            $result['self_employed'] = $request->getSelfEmployed()->toArray();
+        }
+        if ($request->hasReceiptData()) {
+            $result['receipt_data'] = $request->getReceiptData()->toArray();
+        }
+        if ($request->hasPersonalData()) {
+            foreach ($request->getPersonalData() as $item) {
+                $result['personal_data'][] = $item->toArray();
+            }
         }
         if ($request->hasMetadata()) {
             $result['metadata'] = $request->getMetadata()->toArray();

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,11 +40,11 @@ interface SettlementInterface
      * Возвращает вид оплаты в чеке (cashless | prepayment | postpayment | consideration)
      * @return string Вид оплаты в чеке
      */
-    function getType();
+    public function getType();
 
     /**
      * Возвращает размер оплаты
      * @return AmountInterface Размер оплаты
      */
-    function getAmount();
+    public function getAmount();
 }

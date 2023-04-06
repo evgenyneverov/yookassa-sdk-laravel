@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ class PaymentDataGooglePay extends AbstractPaymentData
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::GOOGLE_PAY);
+        $this->setType(PaymentMethodType::GOOGLE_PAY);
     }
 
     /**
@@ -71,13 +71,18 @@ class PaymentDataGooglePay extends AbstractPaymentData
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for paymentMethodToken', 0, 'PaymentDataGooglePay.paymentMethodToken'
+                'Empty value for paymentMethodToken',
+                0,
+                'PaymentDataGooglePay.paymentMethodToken'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $this->_paymentMethodToken = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for paymentMethodToken', 0, 'PaymentDataGooglePay.paymentMethodToken', $value
+                'Invalid value type for paymentMethodToken',
+                0,
+                'PaymentDataGooglePay.paymentMethodToken',
+                $value
             );
         }
     }
@@ -99,13 +104,18 @@ class PaymentDataGooglePay extends AbstractPaymentData
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for googleTransactionId', 0, 'PaymentDataGooglePay.googleTransactionId'
+                'Empty value for googleTransactionId',
+                0,
+                'PaymentDataGooglePay.googleTransactionId'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $this->_googleTransactionId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for googleTransactionId', 0, 'PaymentDataGooglePay.googleTransactionId', $value
+                'Invalid value type for googleTransactionId',
+                0,
+                'PaymentDataGooglePay.googleTransactionId',
+                $value
             );
         }
     }

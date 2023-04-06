@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ class PaymentDataB2bSberbank extends AbstractPaymentData
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::B2B_SBERBANK);
+        $this->setType(PaymentMethodType::B2B_SBERBANK);
     }
 
     /**
@@ -72,19 +72,28 @@ class PaymentDataB2bSberbank extends AbstractPaymentData
     public function setPaymentPurpose($value)
     {
         if ($value === null || $value === '') {
-            throw new EmptyPropertyValueException('Empty paymentPurpose value', 0,
-                'PaymentDataB2bSberbank.paymentPurpose');
+            throw new EmptyPropertyValueException(
+                'Empty paymentPurpose value',
+                0,
+                'PaymentDataB2bSberbank.paymentPurpose'
+            );
         } elseif (TypeCast::canCastToString($value)) {
             if (preg_match('/^.{1,210}$/', $value)) {
                 $this->_paymentPurpose = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid paymentPurpose value', 0, 'PaymentDataB2bSberbank.paymentPurpose', $value
+                    'Invalid paymentPurpose value',
+                    0,
+                    'PaymentDataB2bSberbank.paymentPurpose',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid paymentPurpose value type', 0, 'PaymentDataB2bSberbank.paymentPurpose', $value
+                'Invalid paymentPurpose value type',
+                0,
+                'PaymentDataB2bSberbank.paymentPurpose',
+                $value
             );
         }
     }
@@ -116,8 +125,10 @@ class PaymentDataB2bSberbank extends AbstractPaymentData
             $this->_vatData = $vatData;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid vatData value type in PaymentDataB2BSberbank', 0,
-                'PaymentDataB2BSberbank.vatData', $value
+                'Invalid vatData value type in PaymentDataB2BSberbank',
+                0,
+                'PaymentDataB2BSberbank.vatData',
+                $value
             );
         }
     }

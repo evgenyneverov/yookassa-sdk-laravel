@@ -2,12 +2,12 @@
 
 namespace Tests\YooKassa\Helpers;
 
+use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\ProductCode;
 use YooKassa\Model\Receipt\MarkCodeInfo;
 
-class ProductCodeTest extends \PHPUnit_Framework_TestCase
+class ProductCodeTest extends TestCase
 {
-
     /**
      * @dataProvider dataProvider
      * @param mixed $data
@@ -153,11 +153,11 @@ class ProductCodeTest extends \PHPUnit_Framework_TestCase
         $instance = new ProductCode();
         $reflection = new \ReflectionClass(get_class($instance));
 
-        $method = $reflection->getMethod('base_convert');
+        $method = $reflection->getMethod('baseConvert');
         $method->setAccessible(true);
         $result1 = $method->invokeArgs($instance, array('numString' => $data));
 
-        $method = $reflection->getMethod('base_convert');
+        $method = $reflection->getMethod('baseConvert');
         $method->setAccessible(true);
         $result2 = $method->invokeArgs($instance, array('numString' => $result1, 'fromBase' => 16, 'toBase' => 10));
 
@@ -522,5 +522,4 @@ class ProductCodeTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-
 }

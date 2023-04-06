@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,6 @@ class PaymentMethodInstallments extends AbstractPaymentMethod
 {
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::INSTALLMENTS);
+        $this->setType(PaymentMethodType::INSTALLMENTS);
     }
 }

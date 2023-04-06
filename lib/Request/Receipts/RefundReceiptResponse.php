@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -83,11 +83,13 @@ class RefundReceiptResponse extends AbstractReceiptResponse
             throw new InvalidPropertyValueTypeException('Invalid refund_id value type', 0, 'Receipt.refundId');
         } elseif (mb_strlen((string)$value) !== self::LENGTH_REFUND_ID) {
             throw new InvalidPropertyValueException(
-                'Invalid refund_id value: "'.$value.'"', 0, 'Receipt.refundId', $value
+                'Invalid refund_id value: "' . $value . '"',
+                0,
+                'Receipt.refundId',
+                $value
             );
         } else {
             $this->_refund_id = (string)$value;
         }
     }
-
 }

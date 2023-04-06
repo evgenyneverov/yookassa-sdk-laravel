@@ -10,87 +10,9 @@
 
 ---
 ### Examples
-Пример использования билдера
+02-builder.php 11 78 Пример использования билдера
 
 ```php
-try {
-    $builder = \YooKassa\Request\Payments\CreatePaymentRequest::builder();
-    $builder->setAmount(100)
-            ->setCurrency(\YooKassa\Model\CurrencyCode::RUB)
-            ->setCapture(true)
-            ->setDescription('Оплата заказа 112233')
-            ->setMetadata(array(
-                'cms_name'       => 'yoo_api_test',
-                'order_id'       => '112233',
-                'language'       => 'ru',
-                'transaction_id' => '123-456-789',
-            ));
-
-    // Устанавливаем страницу для редиректа после оплаты
-    $builder->setConfirmation(array(
-        'type'      => \YooKassa\Model\ConfirmationType::REDIRECT,
-        'returnUrl' => 'https://merchant-site.ru/payment-return-page',
-    ));
-
-    // Можем установить конкретный способ оплаты
-    $builder->setPaymentMethodData(\YooKassa\Model\PaymentMethodType::BANK_CARD);
-
-    // Составляем чек
-    $builder->setReceiptEmail('john.doe@merchant.com');
-    $builder->setReceiptPhone('71111111111');
-    // Добавим товар
-    $builder->addReceiptItem(
-        'Платок Gucci',
-        3000,
-        1.0,
-        2,
-        'full_payment',
-        'commodity'
-    );
-    // Добавим доставку
-    $builder->addReceiptShipping(
-        'Delivery/Shipping/Доставка',
-        100,
-        1,
-        \YooKassa\Model\Receipt\PaymentMode::FULL_PAYMENT,
-        \YooKassa\Model\Receipt\PaymentSubject::SERVICE
-    );
-
-    // Можно добавить распределение денег по магазинам
-    $builder->setTransfers(array(
-        array(
-            'account_id' => 123456,
-            'amount' => array(
-                array(
-                    'value' => 1000,
-                    'currency' => \YooKassa\Model\CurrencyCode::RUB
-                )
-            ),
-        ),
-        array(
-            'account_id' => 654321,
-            'amount' => array(
-                array(
-                    'value' => 2000,
-                    'currency' => \YooKassa\Model\CurrencyCode::RUB
-                )
-            ),
-        )
-    ));
-
-    // Создаем объект запроса
-    $request = $builder->build();
-
-    // Можно изменить данные, если нужно
-    $request->setDescription($request->getDescription() . ' - merchant comment');
-
-    $idempotenceKey = uniqid('', true);
-    $response = $client->createPayment($request, $idempotenceKey);
-} catch (\Exception $e) {
-    $response = $e;
-}
-
-var_dump($response);
 
 ```
 
@@ -115,8 +37,12 @@ var_dump($response);
 | public | [setDescription()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setDescription) |  | Устанавливает описание транзакции |
 | public | [setMetadata()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setMetadata) |  | Устанавливает метаданные, привязанные к платежу |
 | public | [setOptions()](../classes/YooKassa-Common-AbstractRequestBuilder.md#method_setOptions) |  | Устанавливает свойства запроса из массива |
+| public | [setPaymentMethodId()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setPaymentMethodId) |  | Устанавливает идентификатор сохраненного способа оплаты. |
 | public | [setPayoutDestinationData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setPayoutDestinationData) |  | Устанавливает объект с информацией для создания метода оплаты |
 | public | [setPayoutToken()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setPayoutToken) |  | Устанавливает одноразовый токен для проведения выплаты |
+| public | [setPersonalData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setPersonalData) |  | Устанавливает персональные данные получателя выплаты. |
+| public | [setReceiptData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setReceiptData) |  | Устанавливает данные для формирования чека в сервисе Мой налог. |
+| public | [setSelfEmployed()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_setSelfEmployed) |  | Устанавливает данные самозанятого, который получит выплату. |
 | protected | [initCurrentObject()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md#method_initCurrentObject) |  | Инициализирует объект запроса, который в дальнейшем будет собираться билдером |
 
 ---
@@ -136,7 +62,7 @@ var_dump($response);
 
 Собираемый объект запроса
 
-**Type:** <a href="../classes/YooKassa-Request-Payouts-CreatePayoutRequest.html"><abbr title="\YooKassa\Request\Payouts\CreatePayoutRequest">CreatePayoutRequest</abbr></a>
+**Type:** <a href="classes/YooKassa-Request-Payouts-CreatePayoutRequest.html"><abbr title="\YooKassa\Request\Payouts\CreatePayoutRequest">CreatePayoutRequest</abbr></a>
 
 **Details:**
 
@@ -320,6 +246,33 @@ public setOptions(array|\Traversable $options) : \YooKassa\Common\AbstractReques
 **Returns:** \YooKassa\Common\AbstractRequestBuilder - Инстанс текущего билдера запросов
 
 
+<a name="method_setPaymentMethodId" class="anchor"></a>
+#### public setPaymentMethodId() : mixed
+
+```php
+public setPaymentMethodId(string|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает идентификатор сохраненного способа оплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestBuilder](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string OR null</code> | value  | Идентификатор сохраненного способа оплаты |
+
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если был передан объект невалидного типа |
+
+**Returns:** mixed - 
+
+
 <a name="method_setPayoutDestinationData" class="anchor"></a>
 #### public setPayoutDestinationData() : mixed
 
@@ -374,6 +327,87 @@ public setPayoutToken(string $value) : \YooKassa\Request\Payouts\CreatePayoutReq
 **Returns:** \YooKassa\Request\Payouts\CreatePayoutRequestBuilder - Инстанс текущего билдера
 
 
+<a name="method_setPersonalData" class="anchor"></a>
+#### public setPersonalData() : mixed
+
+```php
+public setPersonalData(\YooKassa\Request\Payouts\PayoutPersonalData[]|array|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает персональные данные получателя выплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestBuilder](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\PayoutPersonalData[] OR array OR null</code> | value  | Персональные данные получателя выплаты |
+
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если был передан объект невалидного типа |
+
+**Returns:** mixed - 
+
+
+<a name="method_setReceiptData" class="anchor"></a>
+#### public setReceiptData() : mixed
+
+```php
+public setReceiptData(\YooKassa\Request\Payouts\IncomeReceiptData|array|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает данные для формирования чека в сервисе Мой налог.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestBuilder](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\IncomeReceiptData OR array OR null</code> | value  | Данные для формирования чека в сервисе Мой налог |
+
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если был передан объект невалидного типа |
+
+**Returns:** mixed - 
+
+
+<a name="method_setSelfEmployed" class="anchor"></a>
+#### public setSelfEmployed() : mixed
+
+```php
+public setSelfEmployed(\YooKassa\Request\Payouts\PayoutSelfEmployedInfo|array|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает данные самозанятого, который получит выплату.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestBuilder](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\PayoutSelfEmployedInfo OR array OR null</code> | value  | Данные самозанятого, который получит выплату |
+
+##### Throws:
+| Type | Description |
+| ---- | ----------- |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если был передан объект невалидного типа |
+
+**Returns:** mixed - 
+
+
 <a name="method_initCurrentObject" class="anchor"></a>
 #### protected initCurrentObject() : \YooKassa\Request\Payouts\CreatePayoutRequest
 
@@ -402,11 +436,11 @@ protected initCurrentObject() : \YooKassa\Request\Payouts\CreatePayoutRequest
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

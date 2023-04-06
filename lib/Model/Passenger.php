@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 
 namespace YooKassa\Model;
-
 
 use YooKassa\Common\AbstractObject;
 use YooKassa\Common\Exceptions\InvalidPropertyValueException;
@@ -70,20 +69,28 @@ class Passenger extends AbstractObject implements PassengerInterface
     {
         if (empty($value) || is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid first_name value type in Passenger object', 0, 'airline.passengers', $value
+                'Invalid first_name value type in Passenger object',
+                0,
+                'airline.passengers',
+                $value
             );
-        } else if (TypeCast::canCastToString($value)) {
+        } elseif (TypeCast::canCastToString($value)) {
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length > 64) {
                 throw new InvalidPropertyValueException(
                     'Invalid first_name value length in Passenger object',
-                    0, 'airline.passengers', $value
+                    0,
+                    'airline.passengers',
+                    $value
                 );
             }
             $this->_firstName = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid first_name value type in Passenger object', 0, 'airline.passengers', $value
+                'Invalid first_name value type in Passenger object',
+                0,
+                'airline.passengers',
+                $value
             );
         }
     }
@@ -104,20 +111,28 @@ class Passenger extends AbstractObject implements PassengerInterface
     {
         if (empty($value) || is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid last_name value type in Passenger object', 0, 'airline.passengers', $value
+                'Invalid last_name value type in Passenger object',
+                0,
+                'airline.passengers',
+                $value
             );
-        } else if (TypeCast::canCastToString($value)) {
+        } elseif (TypeCast::canCastToString($value)) {
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length > 64) {
                 throw new InvalidPropertyValueException(
                     'Invalid last_name value length in Passenger object',
-                    0, 'airline.passengers', $value
+                    0,
+                    'airline.passengers',
+                    $value
                 );
             }
             $this->_lastName = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid last_name value type in Passenger object', 0, 'airline.passengers', $value
+                'Invalid last_name value type in Passenger object',
+                0,
+                'airline.passengers',
+                $value
             );
         }
     }

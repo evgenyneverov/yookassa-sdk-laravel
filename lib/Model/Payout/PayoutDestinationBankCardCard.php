@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ use YooKassa\Helpers\TypeCast;
 class PayoutDestinationBankCardCard extends AbstractObject
 {
     /**
-     * @var string Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
+     * @var int Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
      */
     const ISO_3166_CODE_LENGTH = 2;
 
@@ -98,12 +98,18 @@ class PayoutDestinationBankCardCard extends AbstractObject
                 $this->_last4 = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid card last4 value', 0, 'PaymentMethodBankCard.last4', $value
+                    'Invalid card last4 value',
+                    0,
+                    'PaymentMethodBankCard.last4',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card last4 value type', 0, 'PaymentMethodBankCard.last4', $value
+                'Invalid card last4 value type',
+                0,
+                'PaymentMethodBankCard.last4',
+                $value
             );
         }
     }
@@ -132,12 +138,18 @@ class PayoutDestinationBankCardCard extends AbstractObject
                 $this->_first6 = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid card first6 value', 0, 'PaymentMethodBankCard.first6', $value
+                    'Invalid card first6 value',
+                    0,
+                    'PaymentMethodBankCard.first6',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card first6 value type', 0, 'PaymentMethodBankCard.first6', $value
+                'Invalid card first6 value type',
+                0,
+                'PaymentMethodBankCard.first6',
+                $value
             );
         }
     }
@@ -163,7 +175,10 @@ class PayoutDestinationBankCardCard extends AbstractObject
             $this->_cardType = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid cardType value type', 0, 'PaymentMethodBankCard.cardType', $value
+                'Invalid cardType value type',
+                0,
+                'PaymentMethodBankCard.cardType',
+                $value
             );
         }
     }
@@ -187,11 +202,17 @@ class PayoutDestinationBankCardCard extends AbstractObject
             $this->_issuerCountry = (string)$value;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid issuerCountry value type', 0, 'PaymentMethodBankCard.issuerCountry', $value
+                'Invalid issuerCountry value type',
+                0,
+                'PaymentMethodBankCard.issuerCountry',
+                $value
             );
         } elseif (mb_strlen($value) !== self::ISO_3166_CODE_LENGTH) {
             throw new InvalidPropertyValueException(
-                'Invalid issuerCountry value', 0, 'PaymentMethodBankCard.issuerCountry', $value
+                'Invalid issuerCountry value',
+                0,
+                'PaymentMethodBankCard.issuerCountry',
+                $value
             );
         }
 
@@ -208,7 +229,9 @@ class PayoutDestinationBankCardCard extends AbstractObject
             $this->_issuerName = (string)$value;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new EmptyPropertyValueException(
-                'Empty issuerName value', 0, 'PaymentMethodBankCard.issuerName'
+                'Empty issuerName value',
+                0,
+                'PaymentMethodBankCard.issuerName'
             );
         }
 
@@ -223,5 +246,4 @@ class PayoutDestinationBankCardCard extends AbstractObject
     {
         return $this->_issuerName;
     }
-
 }

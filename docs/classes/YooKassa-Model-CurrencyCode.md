@@ -5,8 +5,12 @@
 ---
 **Summary:**
 
-CurrencyCode - Код валюты, ISO-4217 3-alpha currency symbol
+CurrencyCode - Код валюты в формате [ISO-4217](https://www.iso.org/iso-4217-currency-codes.md).
 
+**Description:**
+
+Должен соответствовать валюте субаккаунта (`recipient.gateway_id`), если вы разделяете потоки платежей,
+и валюте аккаунта (shopId в [личном кабинете](https://yookassa.ru/my)), если не разделяете.
 
 ---
 ### Constants
@@ -19,6 +23,11 @@ CurrencyCode - Код валюты, ISO-4217 3-alpha currency symbol
 | public | [CNY](../classes/YooKassa-Model-CurrencyCode.md#constant_CNY) |  | Китайская йена |
 | public | [KZT](../classes/YooKassa-Model-CurrencyCode.md#constant_KZT) |  | Казахский тенге |
 | public | [UAH](../classes/YooKassa-Model-CurrencyCode.md#constant_UAH) |  | Украинская гривна |
+| public | [UZS](../classes/YooKassa-Model-CurrencyCode.md#constant_UZS) |  | Узбекский сум |
+| public | [_TRY](../classes/YooKassa-Model-CurrencyCode.md#constant__TRY) |  | Турецкая лира |
+| public | [INR](../classes/YooKassa-Model-CurrencyCode.md#constant_INR) |  | Индийская рупия |
+| public | [MDL](../classes/YooKassa-Model-CurrencyCode.md#constant_MDL) |  | Молдавский лей |
+| public | [AZN](../classes/YooKassa-Model-CurrencyCode.md#constant_AZN) |  | Азербайджанский манат |
 
 ---
 ### Properties
@@ -37,10 +46,16 @@ CurrencyCode - Код валюты, ISO-4217 3-alpha currency symbol
 ---
 ### Details
 * File: [lib/Model/CurrencyCode.php](../../lib/Model/CurrencyCode.php)
-* Package: Default
+* Package: YooKassa\Model
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\CurrencyCode
+
+---
+### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| author |  | cms@yoomoney.ru |
 
 ---
 ## Constants
@@ -107,13 +122,58 @@ UAH = 'UAH'
 ```
 
 
+<a name="constant_UZS" class="anchor"></a>
+###### UZS
+Узбекский сум
+
+```php
+UZS = 'UZS'
+```
+
+
+<a name="constant__TRY" class="anchor"></a>
+###### _TRY
+Турецкая лира
+
+```php
+_TRY = 'TRY'
+```
+
+
+<a name="constant_INR" class="anchor"></a>
+###### INR
+Индийская рупия
+
+```php
+INR = 'INR'
+```
+
+
+<a name="constant_MDL" class="anchor"></a>
+###### MDL
+Молдавский лей
+
+```php
+MDL = 'MDL'
+```
+
+
+<a name="constant_AZN" class="anchor"></a>
+###### AZN
+Азербайджанский манат
+
+```php
+AZN = 'AZN'
+```
+
+
 
 ---
 ## Properties
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -188,11 +248,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

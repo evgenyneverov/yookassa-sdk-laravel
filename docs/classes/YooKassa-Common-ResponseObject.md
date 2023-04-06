@@ -45,7 +45,7 @@
 
 Тело ответа
 
-**Type:** <a href="../mixed"><abbr title="mixed">mixed</abbr></a>
+**Type:** <a href="mixed"><abbr title="mixed">mixed</abbr></a>
 
 **Details:**
 
@@ -57,7 +57,7 @@
 
 HTTP код ответа
 
-**Type:** <a href="../int|string"><abbr title="int|string">int|string</abbr></a>
+**Type:** <a href="int|string"><abbr title="int|string">int|string</abbr></a>
 
 **Details:**
 
@@ -69,7 +69,7 @@ HTTP код ответа
 
 Массив заголовков ответа
 
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 
 **Details:**
 
@@ -157,11 +157,11 @@ public getHeaders() : array
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,23 +61,32 @@ abstract class AbstractConfirmationAttributes extends AbstractObject
     /**
      * @param string $value
      */
-    protected function _setType($value)
+    protected function setType($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "type" parameter in ConfirmationAttributes', 0, 'confirmationAttributes.type'
+                'Empty value for "type" parameter in ConfirmationAttributes',
+                0,
+                'confirmationAttributes.type'
             );
-        } elseif (TypeCast::canCastToEnumString($value)) {
+        }
+        if (TypeCast::canCastToEnumString($value)) {
             if (ConfirmationType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in ConfirmationAttributes', 0, 'confirmationAttributes.type', $value
+                    'Invalid value for "type" parameter in ConfirmationAttributes',
+                    0,
+                    'confirmationAttributes.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in ConfirmationAttributes', 0, 'confirmationAttributes.type', $value
+                'Invalid value type for "type" parameter in ConfirmationAttributes',
+                0,
+                'confirmationAttributes.type',
+                $value
             );
         }
     }
@@ -99,11 +108,17 @@ abstract class AbstractConfirmationAttributes extends AbstractObject
             $this->_locale = null;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "locale" parameter in ConfirmationAttributes', 0, 'confirmationAttributes.locale', $value
+                'Invalid value type for "locale" parameter in ConfirmationAttributes',
+                0,
+                'confirmationAttributes.locale',
+                $value
             );
         } elseif (!preg_match('/^[a-z]{2}_[A-Z]{2}$/', (string)$value)) {
             throw new InvalidPropertyValueException(
-                'Invalid value type for "locale" parameter in ConfirmationAttributes', 0, 'confirmationAttributes.locale', $value
+                'Invalid value type for "locale" parameter in ConfirmationAttributes',
+                0,
+                'confirmationAttributes.locale',
+                $value
             );
         } else {
             $this->_locale = (string)$value;

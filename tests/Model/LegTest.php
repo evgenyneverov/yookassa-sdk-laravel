@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\YooKassa\Model;
-
 
 use PHPUnit\Framework\TestCase;
 use YooKassa\Model\Leg;
@@ -24,7 +22,6 @@ class LegTest extends TestCase
         self::assertEquals($data["departure_airport"], $leg->getDepartureAirport());
         self::assertEquals($data["destination_airport"], $leg->getDestinationAirport());
         self::assertEquals($data["departure_date"], $leg->getDepartureDate());
-
     }
 
     /**

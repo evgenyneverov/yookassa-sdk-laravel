@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ class ConfirmationAttributesRedirect extends AbstractConfirmationAttributes
 
     public function __construct()
     {
-        $this->_setType(ConfirmationType::REDIRECT);
+        $this->setType(ConfirmationType::REDIRECT);
     }
 
     /**
@@ -75,7 +75,10 @@ class ConfirmationAttributesRedirect extends AbstractConfirmationAttributes
             $this->_enforce = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid enforce value type', 0, 'confirmationAttributesRedirect.enforce', $value
+                'Invalid enforce value type',
+                0,
+                'confirmationAttributesRedirect.enforce',
+                $value
             );
         }
     }
@@ -100,7 +103,10 @@ class ConfirmationAttributesRedirect extends AbstractConfirmationAttributes
             $this->_returnUrl = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid returnUrl value type', 0, 'confirmationAttributesRedirect.returnUrl', $value
+                'Invalid returnUrl value type',
+                0,
+                'confirmationAttributesRedirect.returnUrl',
+                $value
             );
         }
     }

@@ -24,11 +24,11 @@
 | public | [clearValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_clearValidationError) |  | Очищает статус валидации текущего запроса |
 | public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива |
 | public | [getLastValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_getLastValidationError) |  | Возвращает последнюю ошибку валидации |
-| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
-| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
-| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
-| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
-| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
+| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  |  |
+| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  |  |
+| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  |  |
+| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  |  |
+| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  |  |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | public | [validate()](../classes/YooKassa-Common-AbstractRequest.md#method_validate) |  | Валидирует текущий запрос, проверяет все ли нужные свойства установлены |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
@@ -212,32 +212,24 @@ public getLastValidationError() : string
 
 
 <a name="method_jsonSerialize" class="anchor"></a>
-#### public jsonSerialize() : array
+#### public jsonSerialize() : mixed
 
 ```php
-public jsonSerialize() : array
+public jsonSerialize() : mixed
 ```
-
-**Summary**
-
-Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
 
-**Returns:** array - Ассоциативный массив со свойствами текущего объекта
+**Returns:** mixed - 
 
 
 <a name="method_offsetExists" class="anchor"></a>
-#### public offsetExists() : bool
+#### public offsetExists() : mixed
 
 ```php
-public offsetExists(string $offset) : bool
+public offsetExists(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Проверяет наличие свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -245,21 +237,17 @@ public offsetExists(string $offset) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя проверяемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** bool - True если свойство имеется, false если нет
+**Returns:** mixed - 
 
 
 <a name="method_offsetGet" class="anchor"></a>
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string $offset) : mixed
+public offsetGet(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Возвращает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -267,21 +255,17 @@ public offsetGet(string $offset) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** mixed - Значение свойства
+**Returns:** mixed - 
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : void
+#### public offsetSet() : mixed
 
 ```php
-public offsetSet(string $offset, mixed $value) : void
+public offsetSet(mixed $offset, mixed $value) : mixed
 ```
-
-**Summary**
-
-Устанавливает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -289,22 +273,18 @@ public offsetSet(string $offset, mixed $value) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
+| <code lang="php">mixed</code> | offset  |  |
+| <code lang="php">mixed</code> | value  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : void
+#### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string $offset) : void
+public offsetUnset(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Удаляет свойство
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -312,9 +292,9 @@ public offsetUnset(string $offset) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя удаляемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_toArray" class="anchor"></a>
@@ -402,11 +382,11 @@ protected setValidationError(string $value) : mixed
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

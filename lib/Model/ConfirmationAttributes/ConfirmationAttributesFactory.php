@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,9 +55,9 @@ class ConfirmationAttributesFactory
             throw new \InvalidArgumentException('Invalid confirmation attributes value in confirmation factory');
         }
         if (!array_key_exists($type, $this->typeClassMap)) {
-            throw new \InvalidArgumentException('Invalid confirmation attributes value type "'.$type.'"');
+            throw new \InvalidArgumentException('Invalid confirmation attributes value type "' . $type . '"');
         }
-        $className = __NAMESPACE__.'\\'.$this->typeClassMap[$type];
+        $className = __NAMESPACE__ . '\\' . $this->typeClassMap[$type];
 
         return new $className();
     }

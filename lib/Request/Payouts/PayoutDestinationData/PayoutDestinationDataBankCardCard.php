@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,14 +67,19 @@ class PayoutDestinationDataBankCardCard extends AbstractObject
                 $this->_number = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid card number value', 0, 'PayoutDestinationBankCardCard.number', $value
+                    'Invalid card number value',
+                    0,
+                    'PayoutDestinationBankCardCard.number',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card number value type', 0, 'PayoutDestinationBankCardCard.number', $value
+                'Invalid card number value type',
+                0,
+                'PayoutDestinationBankCardCard.number',
+                $value
             );
         }
     }
-
 }

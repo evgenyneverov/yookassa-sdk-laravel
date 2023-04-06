@@ -68,16 +68,26 @@ class CurlClientTest extends TestCase
             array('http_code' => 200),
         ));
         $curlClientMock->expects($this->once())->method('closeCurlConnection');
-        $curlClientMock->call('', HttpVerb::HEAD, array('queryParam' => 'value'), 'testBodyValue',
-            array('testHeader' => 'testValue'));
+        $curlClientMock->call(
+            '',
+            HttpVerb::HEAD,
+            array('queryParam' => 'value'),
+            'testBodyValue',
+            array('testHeader' => 'testValue')
+        );
     }
 
     public function testAuthorizeException()
     {
         $this->setExpectedException('YooKassa\Common\Exceptions\AuthorizeException');
         $client = new CurlClient();
-        $client->call('', HttpVerb::HEAD, array('queryParam' => 'value'), array('httpBody' => 'testValue'),
-            array('testHeader' => 'testValue'));
+        $client->call(
+            '',
+            HttpVerb::HEAD,
+            array('queryParam' => 'value'),
+            array('httpBody' => 'testValue'),
+            array('testHeader' => 'testValue')
+        );
     }
 
     public function curlErrorCodeProvider()

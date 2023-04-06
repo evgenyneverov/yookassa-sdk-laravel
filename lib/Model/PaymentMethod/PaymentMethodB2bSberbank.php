@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ class PaymentMethodB2bSberbank extends AbstractPaymentMethod
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::B2B_SBERBANK);
+        $this->setType(PaymentMethodType::B2B_SBERBANK);
     }
 
     /**
@@ -91,20 +91,19 @@ class PaymentMethodB2bSberbank extends AbstractPaymentMethod
 
     /**
      * Устанавливает назначение платежа
-     * @param VatData $vatData Данные об НДС
+     * @param VatData|array $vatData Данные об НДС
      */
     public function setVatData($vatData)
     {
-        if(is_array($vatData)) {
+        if (is_array($vatData)) {
             $value = new VatData();
             $value->fromArray($vatData);
             $this->_vatData = $value;
-        } else if($vatData instanceof VatData){
+        } elseif ($vatData instanceof VatData) {
             $this->_vatData = $vatData;
-        } else{
+        } else {
             throw new InvalidPropertyValueException('Invalid $vatData property type');
         }
-
     }
 
     /**
@@ -122,13 +121,13 @@ class PaymentMethodB2bSberbank extends AbstractPaymentMethod
      */
     public function setPayerBankDetails($payerBankDetails)
     {
-        if(is_array($payerBankDetails)) {
+        if (is_array($payerBankDetails)) {
             $value = new PayerBankDetails();
             $value->fromArray($payerBankDetails);
             $this->_payerBankDetails = $value;
-        } else if($payerBankDetails instanceof PayerBankDetails){
+        } elseif ($payerBankDetails instanceof PayerBankDetails) {
             $this->_payerBankDetails = $payerBankDetails;
-        } else{
+        } else {
             throw new InvalidPropertyValueException('Invalid $payerBankDetails property type');
         }
     }

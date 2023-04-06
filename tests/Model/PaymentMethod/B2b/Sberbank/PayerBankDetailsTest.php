@@ -115,8 +115,8 @@ class PayerBankDetailsTest extends TestCase
      */
     protected function getAndSetTest($value, $property, $snakeCase = null)
     {
-        $getter = 'get'.ucfirst($property);
-        $setter = 'set'.ucfirst($property);
+        $getter = 'get' . ucfirst($property);
+        $setter = 'set' . ucfirst($property);
 
         $instance = $this->getTestInstance();
 

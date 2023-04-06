@@ -104,8 +104,10 @@ class PaymentDataB2bSberbankTest extends AbstractPaymentDataTest
             }
             if (isset($value['amount'])) {
                 if (is_array($value['amount'])) {
-                    self::assertEquals($value['amount']['value'],
-                        (int)$instance->getVatData()->getAmount()->getValue());
+                    self::assertEquals(
+                        $value['amount']['value'],
+                        (int)$instance->getVatData()->getAmount()->getValue()
+                    );
                     self::assertEquals($value['amount']['currency'], $instance->vatData->getAmount()->getCurrency());
                 } else {
                     self::assertEquals($value['amount'], $instance->getVatData()->getAmount());

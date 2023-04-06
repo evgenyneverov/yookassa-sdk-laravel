@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -101,6 +101,19 @@ class CreatePayoutRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
+     * Устанавливает идентификатор сохраненного способа оплаты.
+     *
+     * @param string|null $value Идентификатор сохраненного способа оплаты
+     *
+     * @throws InvalidPropertyValueTypeException Выбрасывается если был передан объект невалидного типа
+     */
+    public function setPaymentMethodId($value)
+    {
+        $this->currentObject->setPaymentMethodId($value);
+        return $this;
+    }
+
+    /**
      * Устанавливает сделку, в рамках которой нужно провести выплату
      * @param PayoutDealInfo|array $value Сделка, в рамках которой нужно провести выплату
      *
@@ -109,6 +122,45 @@ class CreatePayoutRequestBuilder extends AbstractRequestBuilder
     public function setDeal($value)
     {
         $this->currentObject->setDeal($value);
+        return $this;
+    }
+
+    /**
+     * Устанавливает данные самозанятого, который получит выплату.
+     *
+     * @param PayoutSelfEmployedInfo|array|null $value Данные самозанятого, который получит выплату
+     *
+     * @throws InvalidPropertyValueTypeException Выбрасывается если был передан объект невалидного типа
+     */
+    public function setSelfEmployed($value)
+    {
+        $this->currentObject->setSelfEmployed($value);
+        return $this;
+    }
+
+    /**
+     * Устанавливает данные для формирования чека в сервисе Мой налог.
+     *
+     * @param IncomeReceiptData|array|null $value Данные для формирования чека в сервисе Мой налог
+     *
+     * @throws InvalidPropertyValueTypeException Выбрасывается если был передан объект невалидного типа
+     */
+    public function setReceiptData($value)
+    {
+        $this->currentObject->setReceiptData($value);
+        return $this;
+    }
+
+    /**
+     * Устанавливает персональные данные получателя выплаты.
+     *
+     * @param PayoutPersonalData[]|array|null $value Персональные данные получателя выплаты
+     *
+     * @throws InvalidPropertyValueTypeException Выбрасывается если был передан объект невалидного типа
+     */
+    public function setPersonalData($value)
+    {
+        $this->currentObject->setPersonalData($value);
         return $this;
     }
 
@@ -151,5 +203,4 @@ class CreatePayoutRequestBuilder extends AbstractRequestBuilder
     {
         return parent::build($options);
     }
-
 }

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ use YooKassa\Helpers\TypeCast;
  * @property string $accountId Идентификатор магазина, в пользу которого вы принимаете оплату
  * @property string $status Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled`
  * @property string $description Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72»)
- * @property Metadata $metadata Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа)
+ * @property Metadata $metadata Любые дополнительные данные, которые нужны вам для работы с платежами (например, ваш внутренний идентификатор заказа)
  *
  * @package YooKassa
  */
@@ -53,32 +53,32 @@ class Transfer extends AbstractObject implements TransferInterface
     const MAX_LENGTH_DESCRIPTION = 128;
 
     /**
-     * @var string
+     * @var string Идентификатор магазина, в пользу которого вы принимаете оплату. Выдается ЮKassa, отображается в разделе Продавцы личного кабинета (столбец shopId).
      */
     private $_accountId;
 
     /**
-     * @var AmountInterface
+     * @var AmountInterface Сумма, которую необходимо перечислить магазину.
      */
     private $_amount;
 
     /**
-     * @var AmountInterface
+     * @var AmountInterface Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу.
      */
     private $_platform_fee_amount;
 
     /**
-     * @var string
+     * @var string Статус распределения денег между магазинами. Возможные значения: pending, waiting_for_capture, succeeded, canceled.
      */
     private $_status;
 
     /**
-     * @var string
+     * @var string Описание транзакции (не более 128 символов), которое продавец увидит в личном кабинете ЮKassa. Например: «Заказ маркетплейса №72».
      */
     private $_description;
 
     /**
-     * @var string
+     * @var string Любые дополнительные данные, которые нужны вам для работы (например, ваш внутренний идентификатор заказа).
      */
     private $_metadata;
 
@@ -89,11 +89,15 @@ class Transfer extends AbstractObject implements TransferInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "accountId" parameter in Transfer', 0, 'transfer.accountId'
+                'Empty value for "accountId" parameter in Transfer',
+                0,
+                'transfer.accountId'
             );
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "accountId" parameter in Transfer', 0, 'transfer.accountId'
+                'Invalid value type for "accountId" parameter in Transfer',
+                0,
+                'transfer.accountId'
             );
         } else {
             $this->_accountId = (string)$value;
@@ -131,7 +135,9 @@ class Transfer extends AbstractObject implements TransferInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "amount" parameter in Transfer', 0, 'transfer.amount'
+                'Empty value for "amount" parameter in Transfer',
+                0,
+                'transfer.amount'
             );
         } elseif (is_array($value)) {
             $this->_amount = $this->factoryAmount($value);
@@ -139,7 +145,10 @@ class Transfer extends AbstractObject implements TransferInterface
             $this->_amount = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "amount" parameter in Transfer', 0, 'transfer.amount', $value
+                'Invalid value type for "amount" parameter in Transfer',
+                0,
+                'transfer.amount',
+                $value
             );
         }
     }
@@ -167,7 +176,9 @@ class Transfer extends AbstractObject implements TransferInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "platform_fee_amount" parameter in Transfer', 0, 'transfer.platform_fee_amount'
+                'Empty value for "platform_fee_amount" parameter in Transfer',
+                0,
+                'transfer.platform_fee_amount'
             );
         } elseif (is_array($value)) {
             $this->_platform_fee_amount = $this->factoryAmount($value);
@@ -175,7 +186,10 @@ class Transfer extends AbstractObject implements TransferInterface
             $this->_platform_fee_amount = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "platform_fee_amount" parameter in Transfer', 0, 'transfer.platform_fee_amount', $value
+                'Invalid value type for "platform_fee_amount" parameter in Transfer',
+                0,
+                'transfer.platform_fee_amount',
+                $value
             );
         }
     }
@@ -187,11 +201,17 @@ class Transfer extends AbstractObject implements TransferInterface
     {
         if (!TypeCast::canCastToEnumString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid "status" value type', 0, 'transfer.status', $value
+                'Invalid "status" value type',
+                0,
+                'transfer.status',
+                $value
             );
         } elseif (!TransferStatus::valueExists((string)$value)) {
             throw new InvalidPropertyValueException(
-                'Invalid "status" value', 0, 'transfer.status', $value
+                'Invalid "status" value',
+                0,
+                'transfer.status',
+                $value
             );
         } else {
             $this->_status = (string)$value;
@@ -226,7 +246,10 @@ class Transfer extends AbstractObject implements TransferInterface
 
         if (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'Transfer.description', $value
+                'Invalid description value type',
+                0,
+                'Transfer.description',
+                $value
             );
         }
 
@@ -263,7 +286,10 @@ class Transfer extends AbstractObject implements TransferInterface
             $this->_metadata = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "metadata" parameter in Transfer', 0, 'transfer.metadata', $value
+                'Invalid value type for "metadata" parameter in Transfer',
+                0,
+                'transfer.metadata',
+                $value
             );
         }
     }

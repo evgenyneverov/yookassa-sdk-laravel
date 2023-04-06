@@ -33,7 +33,7 @@ class WebhookTest extends TestCase
     public function testWebhookConstructorInstantiate($data)
     {
         $webhook = new Webhook($data);
-        
+
         self::assertEquals($webhook->getId(), $data['id']);
         self::assertEquals($webhook->getUrl(), $data['url']);
         self::assertEquals($webhook->getEvent(), $data['event']);

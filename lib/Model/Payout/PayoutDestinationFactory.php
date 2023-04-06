@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +38,7 @@ class PayoutDestinationFactory
     private $typeClassMap = array(
         PaymentMethodType::YOO_MONEY => 'PayoutDestinationYooMoney',
         PaymentMethodType::BANK_CARD => 'PayoutDestinationBankCard',
+        PaymentMethodType::SBP       => 'PayoutDestinationSbp',
     );
 
     /**
@@ -52,9 +53,9 @@ class PayoutDestinationFactory
             throw new \InvalidArgumentException('Invalid payment type value in payment factory');
         }
         if (!array_key_exists($type, $this->typeClassMap)) {
-            throw new \InvalidArgumentException('Invalid payment data type "'.$type.'"');
+            throw new \InvalidArgumentException('Invalid payment data type "' . $type . '"');
         }
-        $className = __NAMESPACE__.'\\'.$this->typeClassMap[$type];
+        $className = __NAMESPACE__ . '\\' . $this->typeClassMap[$type];
 
         return new $className();
     }

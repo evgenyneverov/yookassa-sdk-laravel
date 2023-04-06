@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ use YooKassa\Helpers\TypeCast;
 /**
  * AuthorizationDetails - Данные об авторизации платежа
  *
- * @property $rrn Retrieval Reference Number — уникальный идентификатор транзакции в системе эмитента
+ * @property string $rrn Retrieval Reference Number — уникальный идентификатор транзакции в системе эмитента
  * @property string $authCode Код авторизации банковской карты
  * @property ThreeDSecure $threeDSecure Данные о прохождении пользователем аутентификации по 3‑D Secure
  */
@@ -115,8 +115,12 @@ class AuthorizationDetails extends AbstractObject implements AuthorizationDetail
         } elseif (TypeCast::canCastToEnumString($value)) {
             $this->_rrn = (string)$value;
         } else {
-            throw new InvalidPropertyValueTypeException('Invalid rrn value type', 0,
-                'authorization_details.rrn', $value);
+            throw new InvalidPropertyValueTypeException(
+                'Invalid rrn value type',
+                0,
+                'authorization_details.rrn',
+                $value
+            );
         }
     }
 
@@ -134,8 +138,12 @@ class AuthorizationDetails extends AbstractObject implements AuthorizationDetail
         } elseif (TypeCast::canCastToEnumString($value)) {
             $this->_authCode = (string)$value;
         } else {
-            throw new InvalidPropertyValueTypeException('Invalid auth_code value type', 0,
-                'authorization_details.auth_code', $value);
+            throw new InvalidPropertyValueTypeException(
+                'Invalid auth_code value type',
+                0,
+                'authorization_details.auth_code',
+                $value
+            );
         }
     }
 
@@ -153,8 +161,12 @@ class AuthorizationDetails extends AbstractObject implements AuthorizationDetail
         } elseif ($value instanceof ThreeDSecure) {
             $this->_threeDSecure = $value;
         } else {
-            throw new InvalidPropertyValueTypeException('Invalid three_d_secure value type', 0,
-                'authorization_details.three_d_secure', $value);
+            throw new InvalidPropertyValueTypeException(
+                'Invalid three_d_secure value type',
+                0,
+                'authorization_details.three_d_secure',
+                $value
+            );
         }
     }
 }

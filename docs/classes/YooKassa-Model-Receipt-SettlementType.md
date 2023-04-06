@@ -5,17 +5,26 @@
 ---
 **Summary:**
 
-Базовый класс генерируемых enum'ов
+SettlementType - Тип расчета
 
+**Description:**
+
+Тип расчета передается в запросе на создание чека в массиве `settlements`, в параметре `type`.
+
+Возможные значения:
+- `cashless` - Безналичный расчет
+- `prepayment` - Предоплата (аванс)
+- `postpayment` - Постоплата (кредит)
+- `consideration` - Встречное предоставление
 
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [CASHLESS](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_CASHLESS) |  |  |
-| public | [PREPAYMENT](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_PREPAYMENT) |  |  |
-| public | [POSTPAYMENT](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_POSTPAYMENT) |  |  |
-| public | [CONSIDERATION](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_CONSIDERATION) |  |  |
+| public | [CASHLESS](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_CASHLESS) |  | Безналичный расчет |
+| public | [PREPAYMENT](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_PREPAYMENT) |  | Предоплата (аванс) |
+| public | [POSTPAYMENT](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_POSTPAYMENT) |  | Постоплата (кредит) |
+| public | [CONSIDERATION](../classes/YooKassa-Model-Receipt-SettlementType.md#constant_CONSIDERATION) |  | Встречное предоставление |
 
 ---
 ### Properties
@@ -34,7 +43,7 @@
 ---
 ### Details
 * File: [lib/Model/Receipt/SettlementType.php](../../lib/Model/Receipt/SettlementType.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\Receipt\SettlementType
@@ -43,6 +52,8 @@
 ## Constants
 <a name="constant_CASHLESS" class="anchor"></a>
 ###### CASHLESS
+Безналичный расчет
+
 ```php
 CASHLESS = 'cashless'
 ```
@@ -50,6 +61,8 @@ CASHLESS = 'cashless'
 
 <a name="constant_PREPAYMENT" class="anchor"></a>
 ###### PREPAYMENT
+Предоплата (аванс)
+
 ```php
 PREPAYMENT = 'prepayment'
 ```
@@ -57,6 +70,8 @@ PREPAYMENT = 'prepayment'
 
 <a name="constant_POSTPAYMENT" class="anchor"></a>
 ###### POSTPAYMENT
+Постоплата (кредит)
+
 ```php
 POSTPAYMENT = 'postpayment'
 ```
@@ -64,6 +79,8 @@ POSTPAYMENT = 'postpayment'
 
 <a name="constant_CONSIDERATION" class="anchor"></a>
 ###### CONSIDERATION
+Встречное предоставление
+
 ```php
 CONSIDERATION = 'consideration'
 ```
@@ -75,7 +92,7 @@ CONSIDERATION = 'consideration'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -150,11 +167,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

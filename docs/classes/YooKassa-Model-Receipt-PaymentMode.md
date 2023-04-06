@@ -12,13 +12,13 @@
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [FULL_PREPAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_FULL_PREPAYMENT) |  |  |
-| public | [PARTIAL_PREPAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_PARTIAL_PREPAYMENT) |  |  |
-| public | [ADVANCE](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_ADVANCE) |  |  |
-| public | [FULL_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_FULL_PAYMENT) |  |  |
-| public | [PARTIAL_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_PARTIAL_PAYMENT) |  |  |
-| public | [CREDIT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_CREDIT) |  |  |
-| public | [CREDIT_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_CREDIT_PAYMENT) |  |  |
+| public | [FULL_PREPAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_FULL_PREPAYMENT) |  | Полная предоплата |
+| public | [PARTIAL_PREPAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_PARTIAL_PREPAYMENT) |  | Частичная предоплата |
+| public | [ADVANCE](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_ADVANCE) |  | Аванс |
+| public | [FULL_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_FULL_PAYMENT) |  | Полный расчет |
+| public | [PARTIAL_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_PARTIAL_PAYMENT) |  | Частичный расчет и кредит |
+| public | [CREDIT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_CREDIT) |  | Кредит |
+| public | [CREDIT_PAYMENT](../classes/YooKassa-Model-Receipt-PaymentMode.md#constant_CREDIT_PAYMENT) |  | Выплата по кредиту |
 
 ---
 ### Properties
@@ -37,7 +37,7 @@
 ---
 ### Details
 * File: [lib/Model/Receipt/PaymentMode.php](../../lib/Model/Receipt/PaymentMode.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\Receipt\PaymentMode
@@ -46,50 +46,64 @@
 ## Constants
 <a name="constant_FULL_PREPAYMENT" class="anchor"></a>
 ###### FULL_PREPAYMENT
+Полная предоплата
+
 ```php
-FULL_PREPAYMENT = 'full_prepayment' : string
+FULL_PREPAYMENT = 'full_prepayment'
 ```
 
 
 <a name="constant_PARTIAL_PREPAYMENT" class="anchor"></a>
 ###### PARTIAL_PREPAYMENT
+Частичная предоплата
+
 ```php
-PARTIAL_PREPAYMENT = 'partial_prepayment' : string
+PARTIAL_PREPAYMENT = 'partial_prepayment'
 ```
 
 
 <a name="constant_ADVANCE" class="anchor"></a>
 ###### ADVANCE
+Аванс
+
 ```php
-ADVANCE = 'advance' : string
+ADVANCE = 'advance'
 ```
 
 
 <a name="constant_FULL_PAYMENT" class="anchor"></a>
 ###### FULL_PAYMENT
+Полный расчет
+
 ```php
-FULL_PAYMENT = 'full_payment' : string
+FULL_PAYMENT = 'full_payment'
 ```
 
 
 <a name="constant_PARTIAL_PAYMENT" class="anchor"></a>
 ###### PARTIAL_PAYMENT
+Частичный расчет и кредит
+
 ```php
-PARTIAL_PAYMENT = 'partial_payment' : string
+PARTIAL_PAYMENT = 'partial_payment'
 ```
 
 
 <a name="constant_CREDIT" class="anchor"></a>
 ###### CREDIT
+Кредит
+
 ```php
-CREDIT = 'credit' : string
+CREDIT = 'credit'
 ```
 
 
 <a name="constant_CREDIT_PAYMENT" class="anchor"></a>
 ###### CREDIT_PAYMENT
+Выплата по кредиту
+
 ```php
-CREDIT_PAYMENT = 'credit_payment' : string
+CREDIT_PAYMENT = 'credit_payment'
 ```
 
 
@@ -99,7 +113,7 @@ CREDIT_PAYMENT = 'credit_payment' : string
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -174,11 +188,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

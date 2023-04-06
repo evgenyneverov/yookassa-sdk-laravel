@@ -85,11 +85,11 @@
 | public | [getStatus()](../classes/YooKassa-Model-Payment.md#method_getStatus) |  | Возвращает состояние платежа |
 | public | [getTest()](../classes/YooKassa-Model-Payment.md#method_getTest) |  | Возвращает признак тестовой операции |
 | public | [getTransfers()](../classes/YooKassa-Model-Payment.md#method_getTransfers) |  | Возвращает массив распределения денег между магазинами |
-| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
-| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
-| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
-| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
-| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
+| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  |  |
+| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  |  |
+| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  |  |
+| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  |  |
+| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  |  |
 | public | [setAmount()](../classes/YooKassa-Model-Payment.md#method_setAmount) |  | Устанавливает сумму платежа |
 | public | [setAuthorizationDetails()](../classes/YooKassa-Model-Payment.md#method_setAuthorizationDetails) |  | Устанавливает данные об авторизации платежа |
 | public | [setCancellationDetails()](../classes/YooKassa-Model-Payment.md#method_setCancellationDetails) |  | Устанавливает комментарий к статусу canceled: кто отменил платеж и по какой причине |
@@ -160,7 +160,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Сумма заказа
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -173,7 +173,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Данные об авторизации платежа
 
-**Type:** <a href="../classes/YooKassa-Model-AuthorizationDetailsInterface.html"><abbr title="\YooKassa\Model\AuthorizationDetailsInterface">AuthorizationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AuthorizationDetailsInterface.html"><abbr title="\YooKassa\Model\AuthorizationDetailsInterface">AuthorizationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -186,7 +186,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Данные об авторизации платежа
 
-**Type:** <a href="../classes/YooKassa-Model-AuthorizationDetailsInterface.html"><abbr title="\YooKassa\Model\AuthorizationDetailsInterface">AuthorizationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AuthorizationDetailsInterface.html"><abbr title="\YooKassa\Model\AuthorizationDetailsInterface">AuthorizationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -199,7 +199,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Комментарий к отмене платежа
 
-**Type:** <a href="../classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -212,7 +212,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Комментарий к отмене платежа
 
-**Type:** <a href="../classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -251,7 +251,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Способ подтверждения платежа
 
-**Type:** <a href="../classes/YooKassa-Model-Confirmation-AbstractConfirmation.html"><abbr title="\YooKassa\Model\Confirmation\AbstractConfirmation">AbstractConfirmation</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Confirmation-AbstractConfirmation.html"><abbr title="\YooKassa\Model\Confirmation\AbstractConfirmation">AbstractConfirmation</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -290,7 +290,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Данные о сделке, в составе которой проходит платеж
 
-**Type:** <a href="../classes/YooKassa-Model-Deal-PaymentDealInfo.html"><abbr title="\YooKassa\Model\Deal\PaymentDealInfo">PaymentDealInfo</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Deal-PaymentDealInfo.html"><abbr title="\YooKassa\Model\Deal\PaymentDealInfo">PaymentDealInfo</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -303,7 +303,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Описание транзакции
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -342,7 +342,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Идентификатор платежа
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -355,7 +355,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Сумма платежа, которую получит магазин
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -368,7 +368,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Сумма платежа, которую получит магазин
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -381,7 +381,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Идентификатор покупателя в вашей системе, например электронная почта или номер телефона
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -394,7 +394,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Идентификатор покупателя в вашей системе, например электронная почта или номер телефона
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -407,7 +407,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Метаданные платежа указанные мерчантом
 
-**Type:** <a href="../classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -420,7 +420,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Признак оплаты заказа
 
-**Type:** <a href="../bool"><abbr title="bool">bool</abbr></a>
+**Type:** <a href="bool"><abbr title="bool">bool</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -433,7 +433,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Способ проведения платежа
 
-**Type:** <a href="../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -446,7 +446,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Способ проведения платежа
 
-**Type:** <a href="../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -459,7 +459,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Состояние регистрации фискального чека
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -472,7 +472,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Состояние регистрации фискального чека
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -485,7 +485,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Получатель платежа
 
-**Type:** <a href="../classes/YooKassa-Model-RecipientInterface.html"><abbr title="\YooKassa\Model\RecipientInterface">RecipientInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-RecipientInterface.html"><abbr title="\YooKassa\Model\RecipientInterface">RecipientInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -498,7 +498,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Возможность провести возврат по API
 
-**Type:** <a href="../bool"><abbr title="bool">bool</abbr></a>
+**Type:** <a href="bool"><abbr title="bool">bool</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -511,7 +511,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Сумма возвращенных средств платежа
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -524,7 +524,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Сумма возвращенных средств платежа
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -537,7 +537,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Текущее состояние платежа
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -550,7 +550,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Признак тестовой операции
 
-**Type:** <a href="../bool"><abbr title="bool">bool</abbr></a>
+**Type:** <a href="bool"><abbr title="bool">bool</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -563,7 +563,7 @@ MAX_LENGTH_MERCHANT_CUSTOMER_ID = 200
 
 Данные о распределении платежа между магазинами
 
-**Type:** <a href="../\YooKassa\Model\TransferInterface[]"><abbr title="\YooKassa\Model\TransferInterface[]">TransferInterface[]</abbr></a>
+**Type:** <a href="\YooKassa\Model\TransferInterface[]"><abbr title="\YooKassa\Model\TransferInterface[]">TransferInterface[]</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment](../classes/YooKassa-Model-Payment.md)
@@ -1111,32 +1111,24 @@ public getTransfers() : \YooKassa\Model\TransferInterface[]
 
 
 <a name="method_jsonSerialize" class="anchor"></a>
-#### public jsonSerialize() : array
+#### public jsonSerialize() : mixed
 
 ```php
-public jsonSerialize() : array
+public jsonSerialize() : mixed
 ```
-
-**Summary**
-
-Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
 
-**Returns:** array - Ассоциативный массив со свойствами текущего объекта
+**Returns:** mixed - 
 
 
 <a name="method_offsetExists" class="anchor"></a>
-#### public offsetExists() : bool
+#### public offsetExists() : mixed
 
 ```php
-public offsetExists(string $offset) : bool
+public offsetExists(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Проверяет наличие свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -1144,21 +1136,17 @@ public offsetExists(string $offset) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя проверяемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** bool - True если свойство имеется, false если нет
+**Returns:** mixed - 
 
 
 <a name="method_offsetGet" class="anchor"></a>
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string $offset) : mixed
+public offsetGet(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Возвращает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -1166,21 +1154,17 @@ public offsetGet(string $offset) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** mixed - Значение свойства
+**Returns:** mixed - 
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : void
+#### public offsetSet() : mixed
 
 ```php
-public offsetSet(string $offset, mixed $value) : void
+public offsetSet(mixed $offset, mixed $value) : mixed
 ```
-
-**Summary**
-
-Устанавливает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -1188,22 +1172,18 @@ public offsetSet(string $offset, mixed $value) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
+| <code lang="php">mixed</code> | offset  |  |
+| <code lang="php">mixed</code> | value  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : void
+#### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string $offset) : void
+public offsetUnset(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Удаляет свойство
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -1211,9 +1191,9 @@ public offsetUnset(string $offset) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя удаляемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_setAmount" class="anchor"></a>
@@ -1839,11 +1819,11 @@ protected getUnknownProperties() : array
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

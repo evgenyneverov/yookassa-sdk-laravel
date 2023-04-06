@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class OperationalDetailsTest extends TestCase
 {
-
     protected static function getInstance($options = null)
     {
         return new OperationalDetails($options);

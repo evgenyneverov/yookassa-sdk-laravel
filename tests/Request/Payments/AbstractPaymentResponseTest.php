@@ -513,5 +513,4 @@ abstract class AbstractPaymentResponseTest extends TestCase
             );
         }
     }
-
 }

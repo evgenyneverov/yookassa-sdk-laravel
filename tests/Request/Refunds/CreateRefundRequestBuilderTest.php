@@ -183,7 +183,10 @@ class CreateRefundRequestBuilderTest extends TestCase
         foreach ($options['receiptItems'] as $item) {
             if ($item instanceof ReceiptItem) {
                 $builder->addReceiptItem(
-                    $item->getDescription(), $item->getPrice()->getValue(), $item->getQuantity(), $item->getVatCode()
+                    $item->getDescription(),
+                    $item->getPrice()->getValue(),
+                    $item->getQuantity(),
+                    $item->getVatCode()
                 );
             } else {
                 $builder->addReceiptItem($item['title'], $item['price'], $item['quantity'], $item['vatCode']);
@@ -216,7 +219,9 @@ class CreateRefundRequestBuilderTest extends TestCase
         foreach ($options['receiptItems'] as $item) {
             if ($item instanceof ReceiptItem) {
                 $builder->addReceiptShipping(
-                    $item->getDescription(), $item->getPrice()->getValue(), $item->getVatCode()
+                    $item->getDescription(),
+                    $item->getPrice()->getValue(),
+                    $item->getVatCode()
                 );
             } else {
                 $builder->addReceiptShipping($item['title'], $item['price'], $item['vatCode']);

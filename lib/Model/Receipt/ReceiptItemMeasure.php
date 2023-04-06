@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,53 +34,53 @@ use YooKassa\Common\AbstractEnum;
  */
 class ReceiptItemMeasure extends AbstractEnum
 {
-    /** @var string Штука, единица товара */
+    /** Штука, единица товара */
     const PIECE = 'piece';
-    /** @var string Грамм */
+    /** Грамм */
     const GRAM = 'gram';
-    /** @var string Килограмм */
+    /** Килограмм */
     const KILOGRAM = 'kilogram';
-    /** @var string Тонна */
+    /** Тонна */
     const TON = 'ton';
-    /** @var string Сантиметр */
+    /** Сантиметр */
     const CENTIMETER = 'centimeter';
-    /** @var string Дециметр */
+    /** Дециметр */
     const DECIMETER = 'decimeter';
-    /** @var string Метр */
+    /** Метр */
     const METER = 'meter';
-    /** @var string Квадратный сантиметр */
+    /** Квадратный сантиметр */
     const SQUARE_CENTIMETER = 'square_centimeter';
-    /** @var string Квадратный дециметр */
+    /** Квадратный дециметр */
     const SQUARE_DECIMETER = 'square_decimeter';
-    /** @var string Квадратный метр */
+    /** Квадратный метр */
     const SQUARE_METER = 'square_meter';
-    /** @var string Миллилитр */
+    /** Миллилитр */
     const MILLILITER = 'milliliter';
-    /** @var string Литр */
+    /** Литр */
     const LITER = 'liter';
-    /** @var string Кубический метр */
+    /** Кубический метр */
     const CUBIC_METER = 'cubic_meter';
-    /** @var string Килловат-час */
+    /** Килловат-час */
     const KILOWATT_HOUR = 'kilowatt_hour';
-    /** @var string Гигакалория */
+    /** Гигакалория */
     const GIGACALORIE = 'gigacalorie';
-    /** @var string Сутки */
+    /** Сутки */
     const DAY = 'day';
-    /** @var string Час */
+    /** Час */
     const HOUR = 'hour';
-    /** @var string Минута */
+    /** Минута */
     const MINUTE = 'minute';
-    /** @var string Секунда */
+    /** Секунда */
     const SECOND = 'second';
-    /** @var string Килобайт */
+    /** Килобайт */
     const KILOBYTE = 'kilobyte';
-    /** @var string Мегабайт */
+    /** Мегабайт */
     const MEGABYTE = 'megabyte';
-    /** @var string Гигабайт */
+    /** Гигабайт */
     const GIGABYTE = 'gigabyte';
-    /** @var string Терабайт */
+    /** Терабайт */
     const TERABYTE = 'terabyte';
-    /** @var string Другое */
+    /** Другое */
     const ANOTHER = 'another';
 
     protected static $validValues = array(

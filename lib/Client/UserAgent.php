@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 
 namespace YooKassa\Client;
-
 
 use YooKassa\Client;
 
@@ -346,5 +345,4 @@ class UserAgent
              . self::VERSION_DELIMITER
              . str_replace(array(self::PART_DELIMITER, self::VERSION_DELIMITER), '.', trim($version));
     }
-
 }

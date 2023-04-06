@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ use YooKassa\Helpers\TypeCast;
 class BankCard extends AbstractObject
 {
     /**
-     * @var string Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
+     * @var int Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
      */
     const ISO_3166_CODE_LENGTH = 2;
 
@@ -113,17 +113,23 @@ class BankCard extends AbstractObject
      */
     public function setFirst6($value)
     {
-         if (TypeCast::canCastToString($value)) {
+        if (TypeCast::canCastToString($value)) {
             if (preg_match('/^[0-9]{6}$/', (string)$value)) {
                 $this->_first6 = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid card first6 value', 0, 'BankCard.first6', $value
+                    'Invalid card first6 value',
+                    0,
+                    'BankCard.first6',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card first6 value type', 0, 'BankCard.first6', $value
+                'Invalid card first6 value type',
+                0,
+                'BankCard.first6',
+                $value
             );
         }
     }
@@ -152,12 +158,18 @@ class BankCard extends AbstractObject
                 $this->_last4 = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid card last4 value', 0, 'BankCard.last4', $value
+                    'Invalid card last4 value',
+                    0,
+                    'BankCard.last4',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card last4 value type', 0, 'BankCard.last4', $value
+                'Invalid card last4 value type',
+                0,
+                'BankCard.last4',
+                $value
             );
         }
     }
@@ -179,20 +191,28 @@ class BankCard extends AbstractObject
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty card expiry year value', 0, 'BankCard.expiryYear'
+                'Empty card expiry year value',
+                0,
+                'BankCard.expiryYear'
             );
         }
 
         if (is_numeric($value)) {
             if (!preg_match('/^\d\d\d\d$/', $value) || $value < 2000 || $value > 2200) {
                 throw new InvalidPropertyValueException(
-                    'Invalid card expiry year value', 0, 'BankCard.expiryYear', $value
+                    'Invalid card expiry year value',
+                    0,
+                    'BankCard.expiryYear',
+                    $value
                 );
             }
             $this->_expiryYear = (string)$value;
         } else {
             throw new InvalidPropertyValueException(
-                'Invalid card expiry year value', 0, 'BankCard.expiryYear', $value
+                'Invalid card expiry year value',
+                0,
+                'BankCard.expiryYear',
+                $value
             );
         }
     }
@@ -214,14 +234,19 @@ class BankCard extends AbstractObject
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty card expiry month value', 0, 'BankCard.expiryMonth'
+                'Empty card expiry month value',
+                0,
+                'BankCard.expiryMonth'
             );
         }
 
         if (is_numeric($value)) {
             if (!preg_match('/^\d\d$/', $value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid card expiry month value', 0, 'BankCard.expiryMonth', $value
+                    'Invalid card expiry month value',
+                    0,
+                    'BankCard.expiryMonth',
+                    $value
                 );
             }
             if (is_string($value) && $value[0] == '0') {
@@ -231,14 +256,20 @@ class BankCard extends AbstractObject
             }
             if ($month < 1 || $month > 12) {
                 throw new InvalidPropertyValueException(
-                    'Invalid card expiry month value', 0, 'BankCard.expiryMonth', $value
+                    'Invalid card expiry month value',
+                    0,
+                    'BankCard.expiryMonth',
+                    $value
                 );
             }
 
             $this->_expiryMonth = (string)$value;
         } else {
             throw new InvalidPropertyValueException(
-                'Invalid card expiry month value', 0, 'BankCard.expiryMonth', $value
+                'Invalid card expiry month value',
+                0,
+                'BankCard.expiryMonth',
+                $value
             );
         }
     }
@@ -266,7 +297,10 @@ class BankCard extends AbstractObject
             $this->_cardType = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid cardType value type', 0, 'BankCard.cardType', $value
+                'Invalid cardType value type',
+                0,
+                'BankCard.cardType',
+                $value
             );
         }
     }
@@ -291,11 +325,17 @@ class BankCard extends AbstractObject
             $this->_issuerCountry = (string)$value;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid issuerCountry value type', 0, 'PaymentMethodBankCard.issuerCountry', $value
+                'Invalid issuerCountry value type',
+                0,
+                'PaymentMethodBankCard.issuerCountry',
+                $value
             );
         } elseif (mb_strlen($value) !== self::ISO_3166_CODE_LENGTH) {
             throw new InvalidPropertyValueException(
-                'Invalid issuerCountry value', 0, 'PaymentMethodBankCard.issuerCountry', $value
+                'Invalid issuerCountry value',
+                0,
+                'PaymentMethodBankCard.issuerCountry',
+                $value
             );
         }
 
@@ -312,7 +352,9 @@ class BankCard extends AbstractObject
             $this->_issuerName = (string)$value;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new EmptyPropertyValueException(
-                'Empty issuerName value', 0, 'PaymentMethodBankCard.issuerName'
+                'Empty issuerName value',
+                0,
+                'PaymentMethodBankCard.issuerName'
             );
         }
 
@@ -338,11 +380,17 @@ class BankCard extends AbstractObject
             $this->_source = (string)$value;
         } elseif (!TypeCast::canCastToEnumString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid source value type', 0, 'PaymentMethodBankCard.source', $value
+                'Invalid source value type',
+                0,
+                'PaymentMethodBankCard.source',
+                $value
             );
         } elseif (!BankCardSource::valueExists($value)) {
             throw new InvalidPropertyValueException(
-                'Invalid source value', 0, 'PaymentMethodBankCard.source', $value
+                'Invalid source value',
+                0,
+                'PaymentMethodBankCard.source',
+                $value
             );
         }
 

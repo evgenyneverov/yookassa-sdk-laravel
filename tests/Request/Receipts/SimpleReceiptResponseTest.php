@@ -27,5 +27,4 @@ class SimpleReceiptResponseTest extends AbstractReceiptResponseTest
         $instance = $this->getTestInstance($options);
         self::assertEquals($options['id'], $instance->getId());
     }
-
 }

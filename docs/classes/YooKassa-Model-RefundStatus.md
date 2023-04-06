@@ -6,12 +6,13 @@
 **Summary:**
 
 RefundStatus - Состояние возврата платежа
-|Код|Описание|
---- | ---
-|pending|Ожидает обработки|
-|succeeded|Успешно возвращен|
-|canceled|В проведении возврата отказано|
 
+**Description:**
+
+Возможные значения:
+- `pending` - Ожидает обработки
+- `succeeded` - Успешно возвращен
+- `canceled` - В проведении возврата отказано
 
 ---
 ### Constants
@@ -38,7 +39,7 @@ RefundStatus - Состояние возврата платежа
 ---
 ### Details
 * File: [lib/Model/RefundStatus.php](../../lib/Model/RefundStatus.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\RefundStatus
@@ -72,7 +73,7 @@ CANCELED = 'canceled'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -147,11 +148,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

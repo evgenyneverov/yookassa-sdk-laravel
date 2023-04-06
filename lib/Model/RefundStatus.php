@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,11 @@ use YooKassa\Common\AbstractEnum;
 
 /**
  * RefundStatus - Состояние возврата платежа
- * |Код|Описание|
- * --- | ---
- * |pending|Ожидает обработки|
- * |succeeded|Успешно возвращен|
- * |canceled|В проведении возврата отказано|
  *
+ * Возможные значения:
+ * - `pending` - Ожидает обработки
+ * - `succeeded` - Успешно возвращен
+ * - `canceled` - В проведении возврата отказано
  */
 class RefundStatus extends AbstractEnum
 {

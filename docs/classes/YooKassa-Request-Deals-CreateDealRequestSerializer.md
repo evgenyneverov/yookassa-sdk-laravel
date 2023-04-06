@@ -31,7 +31,7 @@
 #### public serialize() : array
 
 ```php
-public serialize(\YooKassa\Request\Deals\CreateDealRequestInterface|\YooKassa\Common\AbstractRequest $request) : array
+public serialize(\YooKassa\Request\Deals\CreateDealRequestInterface $request) : array
 ```
 
 **Summary**
@@ -44,7 +44,7 @@ public serialize(\YooKassa\Request\Deals\CreateDealRequestInterface|\YooKassa\Co
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Request\Deals\CreateDealRequestInterface OR \YooKassa\Common\AbstractRequest</code> | request  | Объект запроса |
+| <code lang="php">\YooKassa\Request\Deals\CreateDealRequestInterface</code> | request  | Объект запроса |
 
 **Returns:** array - Массив данных для дальнейшего кодирования в JSON
 
@@ -60,11 +60,11 @@ public serialize(\YooKassa\Request\Deals\CreateDealRequestInterface|\YooKassa\Co
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

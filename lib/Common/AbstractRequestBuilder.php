@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -104,13 +104,13 @@ abstract class AbstractRequestBuilder
         foreach ($options as $property => $value) {
             $method = 'set' . ucfirst($property);
             if (method_exists($this, $method)) {
-                $this->{$method} ($value);
+                $this->{$method}($value);
             } else {
                 $property = str_replace('.', '_', $property);
                 $field = implode('', array_map('ucfirst', explode('_', $property)));
                 $method = 'set' . ucfirst($field);
                 if (method_exists($this, $method)) {
-                    $this->{$method} ($value);
+                    $this->{$method}($value);
                 }
             }
         }

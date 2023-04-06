@@ -6,18 +6,19 @@
 **Summary:**
 
 Locale - Язык интерфейса, писем и смс, которые будет видеть или получать пользователь
-|Код|Описание|
---- | ---
-|ru_RU|Русский|
-|en_US|English|
 
+**Description:**
+
+Возможные значения:
+- `ru_RU` - Русский
+- `en_US` - English
 
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [RUSSIAN](../classes/YooKassa-Model-Locale.md#constant_RUSSIAN) |  |  |
-| public | [ENGLISH](../classes/YooKassa-Model-Locale.md#constant_ENGLISH) |  |  |
+| public | [RUSSIAN](../classes/YooKassa-Model-Locale.md#constant_RUSSIAN) |  | Русский |
+| public | [ENGLISH](../classes/YooKassa-Model-Locale.md#constant_ENGLISH) |  | English |
 
 ---
 ### Properties
@@ -36,7 +37,7 @@ Locale - Язык интерфейса, писем и смс, которые б�
 ---
 ### Details
 * File: [lib/Model/Locale.php](../../lib/Model/Locale.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\Locale
@@ -45,6 +46,8 @@ Locale - Язык интерфейса, писем и смс, которые б�
 ## Constants
 <a name="constant_RUSSIAN" class="anchor"></a>
 ###### RUSSIAN
+Русский
+
 ```php
 RUSSIAN = 'ru_RU'
 ```
@@ -52,6 +55,8 @@ RUSSIAN = 'ru_RU'
 
 <a name="constant_ENGLISH" class="anchor"></a>
 ###### ENGLISH
+English
+
 ```php
 ENGLISH = 'en_US'
 ```
@@ -63,7 +68,7 @@ ENGLISH = 'en_US'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -138,11 +143,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

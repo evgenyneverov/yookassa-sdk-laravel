@@ -6,25 +6,26 @@
 **Summary:**
 
 PaymentMethodType - Тип источника средств для проведения платежа
-|Код|Описание|
---- | ---
-|yoo_money|Платеж из кошелька ЮMoney|
-|bank_card|Платеж с произвольной банковской карты|
-|sberbank|Платеж СбербанкОнлайн|
-|cash|Платеж наличными|
-|mobile_balance|Платеж с баланса мобильного телефона|
-|apple_pay|Платеж ApplePay|
-|google_pay|Платеж Google Pay|
-|qiwi|Платеж из кошелька Qiwi|
-|webmoney|Платеж из кошелька Webmoney|
-|alfabank|Платеж через Альфа-Клик|
-|b2b_sberbank|Сбербанк Бизнес Онлайн|
-|tinkoff_bank|Интернет-банк Тинькофф|
-|psb|ПромсвязьБанк|
-|installments|Заплатить по частям|
-|wechat|Платеж через WeChat|
-|sbp|Платеж через через сервис быстрых платежей|
 
+**Description:**
+
+Возможные значения:
+- `yoo_money` - Платеж из кошелька ЮMoney
+- `bank_card` - Платеж с произвольной банковской карты
+- `sberbank` - Платеж СбербанкОнлайн
+- `cash` - Платеж наличными
+- `mobile_balance` - Платеж с баланса мобильного телефона
+- `apple_pay` - Платеж ApplePay
+- `google_pay` - Платеж Google Pay
+- `qiwi` - Платеж из кошелька Qiwi
+- `webmoney` - Платеж из кошелька Webmoney
+- `alfabank` - Платеж через Альфа-Клик
+- `b2b_sberbank` - Сбербанк Бизнес Онлайн
+- `tinkoff_bank` - Интернет-банк Тинькофф
+- `psb` - ПромсвязьБанк
+- `installments` - Заплатить по частям
+- `wechat` - Платеж через WeChat
+- `sbp` - Платеж через через сервис быстрых платежей
 
 ---
 ### Constants
@@ -64,7 +65,7 @@ PaymentMethodType - Тип источника средств для провед
 ---
 ### Details
 * File: [lib/Model/PaymentMethodType.php](../../lib/Model/PaymentMethodType.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\PaymentMethodType
@@ -223,7 +224,7 @@ SBP = 'sbp'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -298,11 +299,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

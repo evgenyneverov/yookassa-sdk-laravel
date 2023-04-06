@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -199,7 +199,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
             $this->_type = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid receipt type value type', 0, 'Receipt.type', $value
+                'Invalid receipt type value type',
+                0,
+                'Receipt.type',
+                $value
             );
         }
     }
@@ -273,12 +276,18 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
                 $this->_status = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value', 0, 'Receipt.status', $value
+                    'Invalid status value',
+                    0,
+                    'Receipt.status',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type', 0, 'Receipt.status', $value
+                'Invalid status value type',
+                0,
+                'Receipt.status',
+                $value
             );
         }
         return $this;
@@ -305,7 +314,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
             $this->_fiscalDocumentNumber = null;
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid fiscal_document_number value type', 0, 'Receipt.fiscalDocumentNumber', $value
+                'Invalid fiscal_document_number value type',
+                0,
+                'Receipt.fiscalDocumentNumber',
+                $value
             );
         } else {
             $this->_fiscalDocumentNumber = (string)$value;
@@ -414,7 +426,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid items value type in receipt', 0, 'receipt.items', $value
+                'Invalid items value type in receipt',
+                0,
+                'receipt.items',
+                $value
             );
         }
         $this->_items = array();
@@ -425,7 +440,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
                 $this->addItem($val);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid item value type in receipt', 0, 'receipt.items[' . $key . ']', $val
+                    'Invalid item value type in receipt',
+                    0,
+                    'receipt.items[' . $key . ']',
+                    $val
                 );
             }
         }
@@ -463,7 +481,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid settlements value type in receipt', 0, 'receipt.settlements', $value
+                'Invalid settlements value type in receipt',
+                0,
+                'receipt.settlements',
+                $value
             );
         }
         $this->_settlements = array();
@@ -474,7 +495,10 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
                 $this->addSettlement($val);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid settlement value type in receipt', 0, 'receipt.settlements['.$key.']', $val
+                    'Invalid settlement value type in receipt',
+                    0,
+                    'receipt.settlements[' . $key . ']',
+                    $val
                 );
             }
         }
@@ -515,13 +539,17 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
             $this->_taxSystemCode = null;
         } elseif (!is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid tax_system_code value type', 0, 'receipt.taxSystemCode'
+                'Invalid tax_system_code value type',
+                0,
+                'receipt.taxSystemCode'
             );
         } else {
             $castedValue = (int)$value;
             if ($castedValue < 1 || $castedValue > 6) {
                 throw new InvalidPropertyValueException(
-                    'Invalid tax_system_code value: ' . $value, 0, 'receipt.taxSystemCode'
+                    'Invalid tax_system_code value: ' . $value,
+                    0,
+                    'receipt.taxSystemCode'
                 );
             }
             $this->_taxSystemCode = $castedValue;
@@ -631,11 +659,16 @@ abstract class AbstractReceiptResponse extends AbstractObject implements Receipt
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty onBehalfOf value', 0, 'Receipt.onBehalfOf'
+                'Empty onBehalfOf value',
+                0,
+                'Receipt.onBehalfOf'
             );
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid onBehalfOf value type', 0, 'Receipt.onBehalfOf', $value
+                'Invalid onBehalfOf value type',
+                0,
+                'Receipt.onBehalfOf',
+                $value
             );
         } else {
             $this->_onBehalfOf = (string)$value;

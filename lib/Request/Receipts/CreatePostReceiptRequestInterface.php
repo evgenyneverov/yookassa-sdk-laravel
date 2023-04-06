@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -87,6 +87,21 @@ interface CreatePostReceiptRequestInterface
      * @return CreatePostReceiptRequestInterface
      */
     public function setType($value);
+
+    /**
+     * Возвращает тип объекта чека
+     *
+     * @return string Тип объекта чека
+     */
+    public function getObjectType();
+
+    /**
+     * Устанавливает тип объекта чека
+     *
+     * @param string $value Тип объекта чека
+     * @return CreatePostReceiptRequestInterface
+     */
+    public function setObjectType($value);
 
     /**
      * Возвращает признак отложенной отправки чека

@@ -1,8 +1,9 @@
 <?php
+
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +25,6 @@
  */
 
 namespace YooKassa\Model\Notification;
-
 
 use YooKassa\Common\Exceptions\EmptyPropertyValueException;
 use YooKassa\Common\Exceptions\InvalidPropertyValueException;
@@ -69,19 +69,25 @@ class NotificationDealClosed extends AbstractNotification
      */
     public function __construct(array $source)
     {
-        $this->_setType(NotificationType::NOTIFICATION);
-        $this->_setEvent(NotificationEventType::DEAL_CLOSED);
+        $this->setType(NotificationType::NOTIFICATION);
+        $this->setEvent(NotificationEventType::DEAL_CLOSED);
         if (!empty($source['type'])) {
             if ($this->getType() !== $source['type']) {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in Notification', 0, 'notification.type', $source['type']
+                    'Invalid value for "type" parameter in Notification',
+                    0,
+                    'notification.type',
+                    $source['type']
                 );
             }
         }
         if (!empty($source['event'])) {
             if ($this->getEvent() !== $source['event']) {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "event" parameter in Notification', 0, 'notification.event', $source['event']
+                    'Invalid value for "event" parameter in Notification',
+                    0,
+                    'notification.event',
+                    $source['event']
                 );
             }
         }

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ class PaymentMethodMobileBalance extends AbstractPaymentMethod
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::MOBILE_BALANCE);
+        $this->setType(PaymentMethodType::MOBILE_BALANCE);
     }
 
     /**
@@ -73,12 +73,18 @@ class PaymentMethodMobileBalance extends AbstractPaymentMethod
                 $this->_phone = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid phone value', 0, 'PaymentMethodMobileBalance.phone', $value
+                    'Invalid phone value',
+                    0,
+                    'PaymentMethodMobileBalance.phone',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid phone value type', 0, 'PaymentMethodMobileBalance.phone', $value
+                'Invalid phone value type',
+                0,
+                'PaymentMethodMobileBalance.phone',
+                $value
             );
         }
     }

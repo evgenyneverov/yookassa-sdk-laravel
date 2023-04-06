@@ -79,7 +79,7 @@ class NotificationFactoryTest extends TestCase
 
         for ($i = 0; $i < 12; $i++) {
             $eventType = Random::value(NotificationEventType::getEnabledValues());
-            switch($eventType) {
+            switch ($eventType) {
                 case NotificationEventType::REFUND_SUCCEEDED:
                     $notification = $this->getRefundNotification();
                     break;
@@ -316,5 +316,4 @@ class NotificationFactoryTest extends TestCase
                 break;
         }
     }
-
 }

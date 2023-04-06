@@ -29,6 +29,9 @@
 | public | [$metadata](../classes/YooKassa-Model-Payout.md#property_metadata) |  | Метаданные выплаты указанные мерчантом |
 | public | [$payout_destination](../classes/YooKassa-Model-Payout.md#property_payout_destination) |  | Способ проведения выплаты |
 | public | [$payoutDestination](../classes/YooKassa-Model-Payout.md#property_payoutDestination) |  | Способ проведения выплаты |
+| public | [$receipt](../classes/YooKassa-Model-Payout.md#property_receipt) |  | Данные чека, зарегистрированного в ФНС |
+| public | [$self_employed](../classes/YooKassa-Model-Payout.md#property_self_employed) |  | Данные самозанятого, который получит выплату |
+| public | [$selfEmployed](../classes/YooKassa-Model-Payout.md#property_selfEmployed) |  | Данные самозанятого, который получит выплату |
 | public | [$status](../classes/YooKassa-Model-Payout.md#property_status) |  | Текущее состояние выплаты |
 | public | [$test](../classes/YooKassa-Model-Payout.md#property_test) |  | Признак тестовой операции |
 
@@ -50,13 +53,15 @@
 | public | [getId()](../classes/YooKassa-Model-Payout.md#method_getId) |  | Возвращает идентификатор выплаты |
 | public | [getMetadata()](../classes/YooKassa-Model-Payout.md#method_getMetadata) |  | Возвращает метаданные выплаты установленные мерчантом |
 | public | [getPayoutDestination()](../classes/YooKassa-Model-Payout.md#method_getPayoutDestination) |  | Возвращает используемый способ проведения выплаты |
+| public | [getReceipt()](../classes/YooKassa-Model-Payout.md#method_getReceipt) |  | Возвращает данные чека, зарегистрированного в ФНС. |
+| public | [getSelfEmployed()](../classes/YooKassa-Model-Payout.md#method_getSelfEmployed) |  | Возвращает данные самозанятого, который получит выплату. |
 | public | [getStatus()](../classes/YooKassa-Model-Payout.md#method_getStatus) |  | Возвращает состояние выплаты |
 | public | [getTest()](../classes/YooKassa-Model-Payout.md#method_getTest) |  | Возвращает признак тестовой операции |
-| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
-| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
-| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
-| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
-| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
+| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  |  |
+| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  |  |
+| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  |  |
+| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  |  |
+| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  |  |
 | public | [setAmount()](../classes/YooKassa-Model-Payout.md#method_setAmount) |  | Устанавливает сумму выплаты |
 | public | [setCancellationDetails()](../classes/YooKassa-Model-Payout.md#method_setCancellationDetails) |  | Устанавливает комментарий к статусу canceled: кто отменил платеж и по какой причине |
 | public | [setCreatedAt()](../classes/YooKassa-Model-Payout.md#method_setCreatedAt) |  | Устанавливает время создания заказа |
@@ -65,6 +70,8 @@
 | public | [setId()](../classes/YooKassa-Model-Payout.md#method_setId) |  | Устанавливает идентификатор выплаты |
 | public | [setMetadata()](../classes/YooKassa-Model-Payout.md#method_setMetadata) |  | Устанавливает метаданные выплаты |
 | public | [setPayoutDestination()](../classes/YooKassa-Model-Payout.md#method_setPayoutDestination) |  | Устанавливает используемый способ проведения выплаты |
+| public | [setReceipt()](../classes/YooKassa-Model-Payout.md#method_setReceipt) |  | Устанавливает данные чека, зарегистрированного в ФНС. |
+| public | [setSelfEmployed()](../classes/YooKassa-Model-Payout.md#method_setSelfEmployed) |  | Устанавливает данные самозанятого, который получит выплату. |
 | public | [setStatus()](../classes/YooKassa-Model-Payout.md#method_setStatus) |  | Устанавливает статус выплаты |
 | public | [setTest()](../classes/YooKassa-Model-Payout.md#method_setTest) |  | Устанавливает признак тестовой операции |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
@@ -103,7 +110,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Сумма выплаты
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -116,7 +123,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Комментарий к отмене выплаты
 
-**Type:** <a href="../classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -129,7 +136,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Комментарий к отмене выплаты
 
-**Type:** <a href="../classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-CancellationDetailsInterface.html"><abbr title="\YooKassa\Model\CancellationDetailsInterface">CancellationDetailsInterface</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -168,7 +175,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Сделка, в рамках которой нужно провести выплату
 
-**Type:** <a href="../classes/YooKassa-Model-Deal-PayoutDealInfo.html"><abbr title="\YooKassa\Model\Deal\PayoutDealInfo">PayoutDealInfo</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Deal-PayoutDealInfo.html"><abbr title="\YooKassa\Model\Deal\PayoutDealInfo">PayoutDealInfo</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -181,7 +188,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Описание транзакции
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -194,7 +201,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Идентификатор выплаты
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -207,7 +214,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Метаданные выплаты указанные мерчантом
 
-**Type:** <a href="../classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -220,7 +227,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Способ проведения выплаты
 
-**Type:** <a href="../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -233,7 +240,46 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Способ проведения выплаты
 
-**Type:** <a href="../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.html"><abbr title="\YooKassa\Model\PaymentMethod\AbstractPaymentMethod">AbstractPaymentMethod</abbr></a>
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+
+<a name="property_receipt"></a>
+#### public $receipt : \YooKassa\Model\Payout\IncomeReceipt
+---
+***Description***
+
+Данные чека, зарегистрированного в ФНС
+
+**Type:** <a href="classes/YooKassa-Model-Payout-IncomeReceipt.html"><abbr title="\YooKassa\Model\Payout\IncomeReceipt">IncomeReceipt</abbr></a>
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+
+<a name="property_self_employed"></a>
+#### public $self_employed : \YooKassa\Model\Payout\PayoutSelfEmployed
+---
+***Description***
+
+Данные самозанятого, который получит выплату
+
+**Type:** <a href="classes/YooKassa-Model-Payout-PayoutSelfEmployed.html"><abbr title="\YooKassa\Model\Payout\PayoutSelfEmployed">PayoutSelfEmployed</abbr></a>
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+
+<a name="property_selfEmployed"></a>
+#### public $selfEmployed : \YooKassa\Model\Payout\PayoutSelfEmployed
+---
+***Description***
+
+Данные самозанятого, который получит выплату
+
+**Type:** <a href="classes/YooKassa-Model-Payout-PayoutSelfEmployed.html"><abbr title="\YooKassa\Model\Payout\PayoutSelfEmployed">PayoutSelfEmployed</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -246,7 +292,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Текущее состояние выплаты
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -259,7 +305,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Признак тестовой операции
 
-**Type:** <a href="../bool"><abbr title="bool">bool</abbr></a>
+**Type:** <a href="bool"><abbr title="bool">bool</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
@@ -541,6 +587,40 @@ public getPayoutDestination() : \YooKassa\Model\PaymentMethod\AbstractPaymentMet
 **Returns:** \YooKassa\Model\PaymentMethod\AbstractPaymentMethod - Способ проведения выплаты
 
 
+<a name="method_getReceipt" class="anchor"></a>
+#### public getReceipt() : \YooKassa\Model\Payout\IncomeReceipt|null
+
+```php
+public getReceipt() : \YooKassa\Model\Payout\IncomeReceipt|null
+```
+
+**Summary**
+
+Возвращает данные чека, зарегистрированного в ФНС.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+**Returns:** \YooKassa\Model\Payout\IncomeReceipt|null - Данные чека, зарегистрированного в ФНС
+
+
+<a name="method_getSelfEmployed" class="anchor"></a>
+#### public getSelfEmployed() : \YooKassa\Model\Payout\PayoutSelfEmployed|null
+
+```php
+public getSelfEmployed() : \YooKassa\Model\Payout\PayoutSelfEmployed|null
+```
+
+**Summary**
+
+Возвращает данные самозанятого, который получит выплату.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+**Returns:** \YooKassa\Model\Payout\PayoutSelfEmployed|null - Данные самозанятого, который получит выплату
+
+
 <a name="method_getStatus" class="anchor"></a>
 #### public getStatus() : string
 
@@ -576,32 +656,24 @@ public getTest() : bool
 
 
 <a name="method_jsonSerialize" class="anchor"></a>
-#### public jsonSerialize() : array
+#### public jsonSerialize() : mixed
 
 ```php
-public jsonSerialize() : array
+public jsonSerialize() : mixed
 ```
-
-**Summary**
-
-Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
 
-**Returns:** array - Ассоциативный массив со свойствами текущего объекта
+**Returns:** mixed - 
 
 
 <a name="method_offsetExists" class="anchor"></a>
-#### public offsetExists() : bool
+#### public offsetExists() : mixed
 
 ```php
-public offsetExists(string $offset) : bool
+public offsetExists(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Проверяет наличие свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -609,21 +681,17 @@ public offsetExists(string $offset) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя проверяемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** bool - True если свойство имеется, false если нет
+**Returns:** mixed - 
 
 
 <a name="method_offsetGet" class="anchor"></a>
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string $offset) : mixed
+public offsetGet(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Возвращает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -631,21 +699,17 @@ public offsetGet(string $offset) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** mixed - Значение свойства
+**Returns:** mixed - 
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : void
+#### public offsetSet() : mixed
 
 ```php
-public offsetSet(string $offset, mixed $value) : void
+public offsetSet(mixed $offset, mixed $value) : mixed
 ```
-
-**Summary**
-
-Устанавливает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -653,22 +717,18 @@ public offsetSet(string $offset, mixed $value) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
+| <code lang="php">mixed</code> | offset  |  |
+| <code lang="php">mixed</code> | value  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : void
+#### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string $offset) : void
+public offsetUnset(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Удаляет свойство
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -676,16 +736,16 @@ public offsetUnset(string $offset) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя удаляемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_setAmount" class="anchor"></a>
 #### public setAmount() : mixed
 
 ```php
-public setAmount(\YooKassa\Model\AmountInterface|array $value) : mixed
+public setAmount(\YooKassa\Model\AmountInterface|array|null $value = null) : mixed
 ```
 
 **Summary**
@@ -698,7 +758,7 @@ public setAmount(\YooKassa\Model\AmountInterface|array $value) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\AmountInterface OR array</code> | value  | Сумма выплаты |
+| <code lang="php">\YooKassa\Model\AmountInterface OR array OR null</code> | value  | Сумма выплаты |
 
 **Returns:** mixed - 
 
@@ -758,7 +818,7 @@ public setCreatedAt(\DateTime|string|int $value) : mixed
 #### public setDeal() : mixed
 
 ```php
-public setDeal(\YooKassa\Model\Deal\PayoutDealInfo|array $value) : mixed
+public setDeal(\YooKassa\Model\Deal\PayoutDealInfo|array|null $value) : mixed
 ```
 
 **Summary**
@@ -771,7 +831,7 @@ public setDeal(\YooKassa\Model\Deal\PayoutDealInfo|array $value) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\Deal\PayoutDealInfo OR array</code> | value  | Сделка, в рамках которой нужно провести выплату |
+| <code lang="php">\YooKassa\Model\Deal\PayoutDealInfo OR array OR null</code> | value  | Сделка, в рамках которой нужно провести выплату |
 
 **Returns:** mixed - 
 
@@ -836,7 +896,7 @@ public setId(string $value) : mixed
 #### public setMetadata() : mixed
 
 ```php
-public setMetadata(\YooKassa\Model\Metadata|array $value) : mixed
+public setMetadata(\YooKassa\Model\Metadata|array|null $value) : mixed
 ```
 
 **Summary**
@@ -849,7 +909,7 @@ public setMetadata(\YooKassa\Model\Metadata|array $value) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\Metadata OR array</code> | value  | Метаданные выплаты указанные мерчантом |
+| <code lang="php">\YooKassa\Model\Metadata OR array OR null</code> | value  | Метаданные выплаты указанные мерчантом |
 
 **Returns:** mixed - 
 
@@ -858,7 +918,7 @@ public setMetadata(\YooKassa\Model\Metadata|array $value) : mixed
 #### public setPayoutDestination() : mixed
 
 ```php
-public setPayoutDestination(\YooKassa\Model\Payout\AbstractPayoutDestination|array $value) : mixed
+public setPayoutDestination(\YooKassa\Model\Payout\AbstractPayoutDestination|array|null $value) : mixed
 ```
 
 **Summary**
@@ -871,9 +931,53 @@ public setPayoutDestination(\YooKassa\Model\Payout\AbstractPayoutDestination|arr
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\Payout\AbstractPayoutDestination OR array</code> | value  | Способ проведения выплаты |
+| <code lang="php">\YooKassa\Model\Payout\AbstractPayoutDestination OR array OR null</code> | value  | Способ проведения выплаты |
 
 **Returns:** mixed - 
+
+
+<a name="method_setReceipt" class="anchor"></a>
+#### public setReceipt() : $this
+
+```php
+public setReceipt(\YooKassa\Model\Payout\IncomeReceipt|array|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает данные чека, зарегистрированного в ФНС.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\Payout\IncomeReceipt OR array OR null</code> | value  | Данные чека, зарегистрированного в ФНС |
+
+**Returns:** $this - 
+
+
+<a name="method_setSelfEmployed" class="anchor"></a>
+#### public setSelfEmployed() : $this
+
+```php
+public setSelfEmployed(\YooKassa\Model\Payout\PayoutSelfEmployed|array|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает данные самозанятого, который получит выплату.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payout](../classes/YooKassa-Model-Payout.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\Payout\PayoutSelfEmployed OR array OR null</code> | value  | Данные самозанятого, который получит выплату |
+
+**Returns:** $this - 
 
 
 <a name="method_setStatus" class="anchor"></a>
@@ -972,11 +1076,11 @@ protected getUnknownProperties() : array
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

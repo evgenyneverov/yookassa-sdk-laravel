@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,19 +67,27 @@ abstract class AbstractConfirmation extends AbstractObject
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "type" parameter in Confirmation', 0, 'confirmation.type'
+                'Empty value for "type" parameter in Confirmation',
+                0,
+                'confirmation.type'
             );
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (ConfirmationType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in Confirmation', 0, 'confirmation.type', $value
+                    'Invalid value for "type" parameter in Confirmation',
+                    0,
+                    'confirmation.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in Confirmation', 0, 'confirmation.type', $value
+                'Invalid value type for "type" parameter in Confirmation',
+                0,
+                'confirmation.type',
+                $value
             );
         }
     }

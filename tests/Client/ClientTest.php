@@ -27,6 +27,7 @@ use YooKassa\Helpers\StringObject;
 use YooKassa\Model\Deal\DealType;
 use YooKassa\Model\Deal\FeeMoment;
 use YooKassa\Model\PaymentMethodType;
+use YooKassa\Model\PersonalData\PersonalDataType;
 use YooKassa\Model\ReceiptCustomer;
 use YooKassa\Model\ReceiptItem;
 use YooKassa\Model\ReceiptType;
@@ -48,6 +49,9 @@ use YooKassa\Request\Payments\PaymentsResponse;
 use YooKassa\Request\Payouts\CreatePayoutRequest;
 use YooKassa\Request\Payouts\CreatePayoutResponse;
 use YooKassa\Request\Payouts\PayoutResponse;
+use YooKassa\Request\Payouts\SbpBanksResponse;
+use YooKassa\Request\PersonalData\CreatePersonalDataRequest;
+use YooKassa\Request\PersonalData\PersonalDataResponse;
 use YooKassa\Request\Receipts\AbstractReceiptResponse;
 use YooKassa\Request\Receipts\CreatePostReceiptRequest;
 use YooKassa\Request\Refunds\CreateRefundRequest;
@@ -55,10 +59,11 @@ use YooKassa\Request\Refunds\CreateRefundResponse;
 use YooKassa\Request\Refunds\RefundResponse;
 use YooKassa\Request\Refunds\RefundsRequest;
 use YooKassa\Request\Refunds\RefundsResponse;
+use YooKassa\Request\SelfEmployed\SelfEmployedRequest;
+use YooKassa\Request\SelfEmployed\SelfEmployedResponse;
 
 class ClientTest extends TestCase
 {
-
     public function testCreatePayment()
     {
         $payment = CreatePaymentRequest::builder()
@@ -180,7 +185,7 @@ class ClientTest extends TestCase
         $apiClient = new Client();
         $apiClient->setApiClient($curlClientStub)->setAuth('shopId', 'shopPassword');
         try {
-            $apiClient->createPayment($payment,123);
+            $apiClient->createPayment($payment, 123);
         } catch (ApiException $e) {
             self::assertInstanceOf($requiredException, $e);
             return;
@@ -1004,7 +1009,6 @@ class ClientTest extends TestCase
             ->setApiClient($curlClientStub)
             ->setAuth('shopId', 'shopPassword')
             ->getPaymentInfo(Random::str(36));
-
     }
 
     public function testConfig()
@@ -1026,11 +1030,11 @@ class ClientTest extends TestCase
         $apiClient->setLogger($logger);
 
         $clientMock = $this->getMockBuilder('YooKassa\Client\ApiClientInterface')
-            ->setMethods(array('setLogger', 'setConfig', 'call', 'setShopId', 'getUserAgent', 'setBearerToken', 'setShopPassword'))
+            ->setMethods(array('setLogger', 'setConfig', 'call', 'setShopId', 'getUserAgent', 'setBearerToken', 'setShopPassword', 'setAdvancedCurlOptions'))
             ->disableOriginalConstructor()
             ->getMock();
         $expectedLoggers = array();
-        $clientMock->expects(self::exactly(3))->method('setLogger')->willReturnCallback(function ($logger) use(&$expectedLoggers) {
+        $clientMock->expects(self::exactly(3))->method('setLogger')->willReturnCallback(function ($logger) use (&$expectedLoggers) {
             $expectedLoggers[] = $logger;
         });
         $clientMock->expects(self::once())->method('setConfig')->willReturn($clientMock);
@@ -1096,8 +1100,10 @@ class ClientTest extends TestCase
                 self::fail('Exception not thrown');
             } catch (JsonException $e) {
                 self::assertEquals(JSON_ERROR_UTF8, $e->getCode());
-                self::assertEquals('Failed serialize json. Malformed UTF-8 characters, possibly incorrectly encoded',
-                    $e->getMessage());
+                self::assertEquals(
+                    'Failed serialize json. Malformed UTF-8 characters, possibly incorrectly encoded',
+                    $e->getMessage()
+                );
             }
         } else {
             $value = array('test' => iconv('utf-8', 'windows-1251', 'абвгдеёжз'));
@@ -1106,7 +1112,8 @@ class ClientTest extends TestCase
         }
     }
 
-    public function testCreatePaymentErrors() {
+    public function testCreatePaymentErrors()
+    {
         $payment = CreatePaymentRequest::builder()
             ->setAmount(123)
             ->setPaymentToken(Random::str(36))
@@ -1709,6 +1716,501 @@ class ClientTest extends TestCase
     }
 
     public function payoutInfoDataProvider()
+    {
+        return array(
+            array(null, '\InvalidArgumentException'),
+            array(Random::str(36)),
+            array(new StringObject(Random::str(36))),
+            array(true, '\InvalidArgumentException'),
+            array(false, '\InvalidArgumentException'),
+            array(0, '\InvalidArgumentException'),
+            array(1, '\InvalidArgumentException'),
+            array(0.1, '\InvalidArgumentException'),
+            array(Random::str(35), '\InvalidArgumentException'),
+            array(Random::str(51), '\InvalidArgumentException'),
+            array(new DateTime(), '\InvalidArgumentException'),
+            array(array(), '\InvalidArgumentException'),
+        );
+    }
+
+    public function testCreatePersonalData()
+    {
+        $personalData = CreatePersonalDataRequest::builder()
+            ->setType(PersonalDataType::SBP_PAYOUT_RECIPIENT)
+            ->setLastName('Иванов')
+            ->setFirstName('Иван')
+            ->setMiddleName('Иванович')
+            ->setMetadata(array('recipient_id' => '37'))
+            ->build();
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createPersonalDataFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createPersonalData($personalData);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof PersonalDataResponse);
+
+        $personalData = CreatePersonalDataRequest::builder()
+            ->setType(PersonalDataType::SBP_PAYOUT_RECIPIENT)
+            ->setLastName('Иванов')
+            ->setFirstName('Иван')
+            ->setMiddleName('Иванович')
+            ->setMetadata(array('recipient_id' => '37'))
+            ->build();
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createPersonalDataFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createPersonalData($personalData);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof PersonalDataResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createPersonalDataFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createPersonalData(array(
+                'type' => 'sbp_payout_recipient',
+                'last_name' => 'Иванов',
+                'first_name' => 'Иван',
+                'middle_name' => 'Иванович',
+                'metadata' => array('recipient_id' => '37'),
+            ), 123);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof PersonalDataResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted","retry_after":1800}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createPersonalData($personalData, 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ApiException $e) {
+            self::assertInstanceOf('YooKassa\Common\Exceptions\ResponseProcessingException', $e);
+            return;
+        }
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted"}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createPersonalData($personalData, 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted"}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createPersonalData(array(
+                    'type' => 'sbp_payout_recipient',
+                    'last_name' => 'Иванов',
+                    'first_name' => 'Иван',
+                    'middle_name' => 'Иванович',
+                    'metadata' => array('recipient_id' => '37'),
+                ), 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+    }
+
+    /**
+     * @dataProvider personalDataInfoDataProvider
+     * @param mixed $personalDataId
+     * @param string $exceptionClassName
+     * @throws ApiException
+     * @throws ResponseProcessingException
+     * @throws BadApiRequestException
+     * @throws ForbiddenException
+     * @throws InternalServerError
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws UnauthorizedException
+     * @throws ExtensionNotFoundException
+     */
+    public function testGetPersonalDataInfo($personalDataId, $exceptionClassName = null)
+    {
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($exceptionClassName !== null ? self::never() : self::once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('personalDataInfoFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+
+        if ($exceptionClassName !== null) {
+            $this->setExpectedException($exceptionClassName);
+        }
+
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->getPersonalDataInfo($personalDataId);
+
+        self::assertTrue($response instanceof PersonalDataResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted","retry_after":1800}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->getPersonalDataInfo($personalDataId);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+    }
+
+    public function personalDataInfoDataProvider()
+    {
+        return array(
+            array(null, '\InvalidArgumentException'),
+            array(Random::str(36)),
+            array(new StringObject(Random::str(36))),
+            array(true, '\InvalidArgumentException'),
+            array(false, '\InvalidArgumentException'),
+            array(0, '\InvalidArgumentException'),
+            array(1, '\InvalidArgumentException'),
+            array(0.1, '\InvalidArgumentException'),
+            array(Random::str(35), '\InvalidArgumentException'),
+            array(Random::str(51), '\InvalidArgumentException'),
+            array(new DateTime(), '\InvalidArgumentException'),
+            array(array(), '\InvalidArgumentException'),
+        );
+    }
+
+    /**
+     * @dataProvider paymentsListDataProvider
+     *
+     * @throws ApiException
+     * @throws ResponseProcessingException
+     * @throws BadApiRequestException
+     * @throws ForbiddenException
+     * @throws InternalServerError
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws UnauthorizedException
+     * @throws ExtensionNotFoundException
+     */
+    public function testSbpBanksList()
+    {
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('getSbpBanksFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->getSbpBanks();
+
+        $this->assertTrue($response instanceof SbpBanksResponse);
+    }
+
+
+    public function testCreateSelfEmployed()
+    {
+        $selfEmployed = SelfEmployedRequest::builder()
+            ->setItn('123456789012')
+            ->setPhone('79001002030')
+            ->setConfirmation(array('type' => 'redirect'))
+            ->build();
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createSelfEmployedFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createSelfEmployed($selfEmployed);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof SelfEmployedResponse);
+
+        $selfEmployed = SelfEmployedRequest::builder()
+            ->setItn('123456789012')
+            ->setPhone('79001002030')
+            ->setConfirmation(array('type' => 'redirect'))
+            ->build();
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createSelfEmployedFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createSelfEmployed($selfEmployed);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof SelfEmployedResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('createSelfEmployedFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->createSelfEmployed(array(
+                'itn' => '123456789012',
+                'phone' => '79001002030',
+                'confirmation' => array('type' => 'redirect'),
+            ), 123);
+
+        self::assertSame($curlClientStub, $apiClient->getApiClient());
+        self::assertTrue($response instanceof SelfEmployedResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted","retry_after":1800}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createSelfEmployed($selfEmployed, 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ApiException $e) {
+            self::assertInstanceOf('YooKassa\Common\Exceptions\ResponseProcessingException', $e);
+            return;
+        }
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted"}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createSelfEmployed($selfEmployed, 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted"}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->createSelfEmployed(array(
+                    'itn' => '123456789012',
+                    'phone' => '79001002030',
+                    'confirmation' => array('type' => 'redirect'),
+                ), 123);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+    }
+
+    /**
+     * @dataProvider selfEmployedInfoDataProvider
+     *
+     * @param mixed $selfEmployedId
+     * @param string $exceptionClassName
+     *
+     * @throws ApiException
+     * @throws ResponseProcessingException
+     * @throws BadApiRequestException
+     * @throws ForbiddenException
+     * @throws InternalServerError
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws UnauthorizedException
+     * @throws ExtensionNotFoundException
+     */
+    public function testGetSelfEmployedInfo($selfEmployedId, $exceptionClassName = null)
+    {
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($exceptionClassName !== null ? self::never() : self::once())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                $this->getFixtures('selfEmployedInfoFixtures.json'),
+                array('http_code' => 200)
+            ));
+
+        $apiClient = new Client();
+
+        if ($exceptionClassName !== null) {
+            $this->setExpectedException($exceptionClassName);
+        }
+
+        $response = $apiClient
+            ->setApiClient($curlClientStub)
+            ->setAuth('shopId', 'shopPassword')
+            ->getSelfEmployedInfo($selfEmployedId);
+
+        self::assertTrue($response instanceof SelfEmployedResponse);
+
+        $curlClientStub = $this->getCurlClientStub();
+        $curlClientStub
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willReturn(array(
+                array('Header-Name' => 'HeaderValue'),
+                '{"type":"error","code":"request_accepted","retry_after":1800}',
+                array('http_code' => 202)
+            ));
+
+        try {
+            $apiClient->setRetryTimeout(0);
+            $response = $apiClient
+                ->setApiClient($curlClientStub)
+                ->setAuth('shopId', 'shopPassword')
+                ->getSelfEmployedInfo($selfEmployedId);
+            self::fail('Исключение не было выброшено');
+        } catch (ResponseProcessingException $e) {
+            self::assertEquals(Client::DEFAULT_DELAY, $e->retryAfter);
+            return;
+        }
+    }
+
+    public function selfEmployedInfoDataProvider()
     {
         return array(
             array(null, '\InvalidArgumentException'),

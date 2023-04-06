@@ -15,6 +15,9 @@
 | public | [RECEIPTS_PATH](../classes/YooKassa-Client-BaseClient.md#constant_RECEIPTS_PATH) |  | Точка входа для запросов к API по чекам |
 | public | [DEALS_PATH](../classes/YooKassa-Client-BaseClient.md#constant_DEALS_PATH) |  | Точка входа для запросов к API по сделкам |
 | public | [PAYOUTS_PATH](../classes/YooKassa-Client-BaseClient.md#constant_PAYOUTS_PATH) |  | Точка входа для запросов к API по выплатам |
+| public | [PERSONAL_DATA_PATH](../classes/YooKassa-Client-BaseClient.md#constant_PERSONAL_DATA_PATH) |  | Точка входа для запросов к API по персональным данным |
+| public | [SBP_BANKS_PATH](../classes/YooKassa-Client-BaseClient.md#constant_SBP_BANKS_PATH) |  | Точка входа для запросов к API по участникам СБП |
+| public | [SELF_EMPLOYED_PATH](../classes/YooKassa-Client-BaseClient.md#constant_SELF_EMPLOYED_PATH) |  | Точка входа для запросов к API по самозанятым |
 | public | [IDEMPOTENCY_KEY_HEADER](../classes/YooKassa-Client-BaseClient.md#constant_IDEMPOTENCY_KEY_HEADER) |  | Имя HTTP заголовка, используемого для передачи idempotence key |
 | public | [DEFAULT_DELAY](../classes/YooKassa-Client-BaseClient.md#constant_DEFAULT_DELAY) |  | Значение по умолчанию времени ожидания между запросами при отправке повторного запроса в случае получения ответа с HTTP статусом 202 |
 | public | [DEFAULT_TRIES_COUNT](../classes/YooKassa-Client-BaseClient.md#constant_DEFAULT_TRIES_COUNT) |  | Значение по умолчанию количества попыток получения информации от API если пришёл ответ с HTTP статусом 202 |
@@ -56,7 +59,7 @@
 ---
 ### Details
 * File: [lib/Client/BaseClient.php](../../lib/Client/BaseClient.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy:
   * \YooKassa\Client\BaseClient
 
@@ -125,6 +128,33 @@ PAYOUTS_PATH = '/payouts'
 ```
 
 
+<a name="constant_PERSONAL_DATA_PATH" class="anchor"></a>
+###### PERSONAL_DATA_PATH
+Точка входа для запросов к API по персональным данным
+
+```php
+PERSONAL_DATA_PATH = '/personal_data'
+```
+
+
+<a name="constant_SBP_BANKS_PATH" class="anchor"></a>
+###### SBP_BANKS_PATH
+Точка входа для запросов к API по участникам СБП
+
+```php
+SBP_BANKS_PATH = '/sbp_banks'
+```
+
+
+<a name="constant_SELF_EMPLOYED_PATH" class="anchor"></a>
+###### SELF_EMPLOYED_PATH
+Точка входа для запросов к API по самозанятым
+
+```php
+SELF_EMPLOYED_PATH = '/self_employed'
+```
+
+
 <a name="constant_IDEMPOTENCY_KEY_HEADER" class="anchor"></a>
 ###### IDEMPOTENCY_KEY_HEADER
 Имя HTTP заголовка, используемого для передачи idempotence key
@@ -171,7 +201,7 @@ DEFAULT_ATTEMPTS_COUNT = 3
 
 CURL клиент
 
-**Type:** <a href="../null|\YooKassa\Client\ApiClientInterface"><abbr title="null|\YooKassa\Client\ApiClientInterface">ApiClientInterface</abbr></a>
+**Type:** <a href="null|\YooKassa\Client\ApiClientInterface"><abbr title="null|\YooKassa\Client\ApiClientInterface">ApiClientInterface</abbr></a>
 
 **Details:**
 
@@ -187,7 +217,7 @@ CURL клиент
 
 Значение по умолчанию 3
 
-**Type:** <a href="../int"><abbr title="int">int</abbr></a>
+**Type:** <a href="int"><abbr title="int">int</abbr></a>
 
 **Details:**
 
@@ -199,7 +229,7 @@ CURL клиент
 
 Настройки для CURL клиента
 
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 
 **Details:**
 
@@ -211,7 +241,7 @@ CURL клиент
 
 Объект для логирования работы SDK
 
-**Type:** <a href="../\Psr\Log\LoggerInterface|null"><abbr title="\Psr\Log\LoggerInterface|null">LoggerInterface|null</abbr></a>
+**Type:** <a href="\Psr\Log\LoggerInterface|null"><abbr title="\Psr\Log\LoggerInterface|null">LoggerInterface|null</abbr></a>
 
 **Details:**
 
@@ -223,7 +253,7 @@ CURL клиент
 
 shopId магазина
 
-**Type:** <a href="../string|int"><abbr title="string|int">string|int</abbr></a>
+**Type:** <a href="string|int"><abbr title="string|int">string|int</abbr></a>
 
 **Details:**
 
@@ -235,7 +265,7 @@ shopId магазина
 
 Секретный ключ магазина
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -251,7 +281,7 @@ shopId магазина
 
 Значение по умолчанию - 1800 миллисекунд.
 
-**Type:** <a href="../int"><abbr title="int">int</abbr></a>
+**Type:** <a href="int"><abbr title="int">int</abbr></a>
 Значение в миллисекундах
 **Details:**
 
@@ -333,12 +363,12 @@ public isNotificationIPTrusted(string $ip) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | ip  | - IPv4 или IPv6 адрес webhook уведомления |
+| <code lang="php">string</code> | ip  | IPv4 или IPv6 адрес webhook уведомления |
 
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
-| \Exception | - исключение будет выброшено, если будет передан IP адрес неверного формата |
+| \Exception | Выбрасывается, если будет передан IP адрес неверного формата |
 
 **Returns:** bool - 
 
@@ -387,10 +417,9 @@ public setAuth(string $login, string $password) : $this
 
 **Returns:** $this - 
 ##### Examples:
-Пример авторизации:
+01-client.php 7 1 Пример авторизации:
 
 ```php
-$client->setAuth('xxxxxx', 'test_XXXXXXX');
 
 ```
 
@@ -416,10 +445,9 @@ public setAuthToken(string $token) : $this
 
 **Returns:** $this - 
 ##### Examples:
-Пример авторизации:
+01-client.php 9 1 Пример авторизации:
 
 ```php
-$client->setAuthToken('token_XXXXXXX');
 
 ```
 
@@ -529,9 +557,9 @@ protected decodeData(\YooKassa\Common\ResponseObject $response) : array
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Common\ResponseObject</code> | response  |  |
+| <code lang="php">\YooKassa\Common\ResponseObject</code> | response  | Объект ответа на запрос к API |
 
-**Returns:** array - 
+**Returns:** array - Массив данных
 
 
 <a name="method_delay" class="anchor"></a>
@@ -551,7 +579,7 @@ protected delay(\YooKassa\Common\ResponseObject $response) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Common\ResponseObject</code> | response  |  |
+| <code lang="php">\YooKassa\Common\ResponseObject</code> | response  | Объект ответа на запрос к API |
 
 **Returns:** mixed - 
 
@@ -573,21 +601,21 @@ protected encodeData(array $serializedData) : string
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">array</code> | serializedData  |  |
+| <code lang="php">array</code> | serializedData  | Массив данных для кодировки |
 
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
-| \Exception |  |
+| \Exception | Выбрасывается, если не удалось конвертировать данные в строку JSON |
 
-**Returns:** string - 
+**Returns:** string - Строка JSON
 
 
 <a name="method_execute" class="anchor"></a>
 #### protected execute() : mixed|\YooKassa\Common\ResponseObject
 
 ```php
-protected execute(string $path, string $method, array $queryParams, null $httpBody = null, array $headers = array()) : mixed|\YooKassa\Common\ResponseObject
+protected execute(string $path, string $method, array $queryParams, string|null $httpBody = null, array $headers = array()) : mixed|\YooKassa\Common\ResponseObject
 ```
 
 **Summary**
@@ -600,11 +628,11 @@ protected execute(string $path, string $method, array $queryParams, null $httpBo
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | path  |  |
-| <code lang="php">string</code> | method  |  |
-| <code lang="php">array</code> | queryParams  |  |
-| <code lang="php">null</code> | httpBody  |  |
-| <code lang="php">array</code> | headers  |  |
+| <code lang="php">string</code> | path  | URL запроса |
+| <code lang="php">string</code> | method  | HTTP метод |
+| <code lang="php">array</code> | queryParams  | Массив GET параметров запроса |
+| <code lang="php">string OR null</code> | httpBody  | Тело запроса |
+| <code lang="php">array</code> | headers  | Массив заголовков запроса |
 
 ##### Throws:
 | Type | Description |
@@ -639,14 +667,15 @@ protected handleError(\YooKassa\Common\ResponseObject $response) : mixed
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
-| \YooKassa\Common\Exceptions\ApiException |  |
-| \YooKassa\Common\Exceptions\BadApiRequestException |  |
-| \YooKassa\Common\Exceptions\ForbiddenException |  |
-| \YooKassa\Common\Exceptions\InternalServerError |  |
-| \YooKassa\Common\Exceptions\NotFoundException |  |
-| \YooKassa\Common\Exceptions\ResponseProcessingException |  |
-| \YooKassa\Common\Exceptions\TooManyRequestsException |  |
-| \YooKassa\Common\Exceptions\UnauthorizedException |  |
+| \YooKassa\Common\Exceptions\ApiException | Неожиданный код ошибки. |
+| \YooKassa\Common\Exceptions\BadApiRequestException | Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API. |
+| \YooKassa\Common\Exceptions\ForbiddenException | Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции. |
+| \YooKassa\Common\Exceptions\InternalServerError | Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности. |
+| \YooKassa\Common\Exceptions\NotFoundException | Ресурс не найден. |
+| \YooKassa\Common\Exceptions\ResponseProcessingException | Запрос был принят на обработку, но она не завершена. |
+| \YooKassa\Common\Exceptions\TooManyRequestsException | Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов. |
+| \YooKassa\Common\Exceptions\UnauthorizedException | Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации. |
+| \YooKassa\Common\Exceptions\AuthorizeException | Ошибка авторизации. Не установлен заголовок. |
 
 **Returns:** mixed - 
 
@@ -662,11 +691,11 @@ protected handleError(\YooKassa\Common\ResponseObject $response) : mixed
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

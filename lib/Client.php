@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,9 @@ use YooKassa\Helpers\UUID;
 use YooKassa\Model\DealInterface;
 use YooKassa\Model\PaymentInterface;
 use YooKassa\Model\PayoutInterface;
+use YooKassa\Model\PersonalData\PersonalDataInterface;
 use YooKassa\Model\RefundInterface;
+use YooKassa\Model\SelfEmployed\SelfEmployedInterface;
 use YooKassa\Model\Webhook\Webhook;
 use YooKassa\Request\Deals\CreateDealRequest;
 use YooKassa\Request\Deals\CreateDealRequestInterface;
@@ -78,6 +80,11 @@ use YooKassa\Request\Payouts\CreatePayoutRequestInterface;
 use YooKassa\Request\Payouts\CreatePayoutRequestSerializer;
 use YooKassa\Request\Payouts\CreatePayoutResponse;
 use YooKassa\Request\Payouts\PayoutResponse;
+use YooKassa\Request\Payouts\SbpBanksResponse;
+use YooKassa\Request\PersonalData\CreatePersonalDataRequest;
+use YooKassa\Request\PersonalData\CreatePersonalDataRequestInterface;
+use YooKassa\Request\PersonalData\CreatePersonalDataRequestSerializer;
+use YooKassa\Request\PersonalData\PersonalDataResponse;
 use YooKassa\Request\Receipts\AbstractReceiptResponse;
 use YooKassa\Request\Receipts\CreatePostReceiptRequest;
 use YooKassa\Request\Receipts\CreatePostReceiptRequestInterface;
@@ -96,6 +103,9 @@ use YooKassa\Request\Refunds\RefundsRequest;
 use YooKassa\Request\Refunds\RefundsRequestInterface;
 use YooKassa\Request\Refunds\RefundsRequestSerializer;
 use YooKassa\Request\Refunds\RefundsResponse;
+use YooKassa\Request\SelfEmployed\SelfEmployedRequest;
+use YooKassa\Request\SelfEmployed\SelfEmployedRequestSerializer;
+use YooKassa\Request\SelfEmployed\SelfEmployedResponse;
 use YooKassa\Request\Webhook\WebhookListResponse;
 
 /**
@@ -112,7 +122,7 @@ class Client extends BaseClient
     /**
      * Текущая версия библиотеки
      */
-    const SDK_VERSION = '2.7.7';
+    const SDK_VERSION = '2.8.0';
 
     /**
      * Получить список платежей магазина
@@ -123,7 +133,7 @@ class Client extends BaseClient
      * Если результатов больше, чем задано в `limit`, список будет выводиться фрагментами. В этом случае в ответе
      * на запрос вернется фрагмент списка и параметр `next_cursor` с указателем на следующий фрагмент.
      *
-     * @example 01-client.php 226 23 Получить список платежей магазина с фильтрацией
+     * @example 01-client.php 227 23 Получить список платежей магазина с фильтрацией
      *
      * @param PaymentsRequestInterface|array|null $filter
      *
@@ -271,7 +281,7 @@ class Client extends BaseClient
             throw new \InvalidArgumentException('Invalid paymentId value');
         }
 
-        $path = self::PAYMENTS_PATH.'/'.$paymentId;
+        $path = self::PAYMENTS_PATH . '/' . $paymentId;
 
         $response = $this->execute($path, HttpVerb::GET, null);
 
@@ -326,7 +336,7 @@ class Client extends BaseClient
             throw new \InvalidArgumentException('Invalid paymentId value');
         }
 
-        $path = '/payments/'.$paymentId.'/capture';
+        $path = '/payments/' . $paymentId . '/capture';
 
         $headers = array();
 
@@ -392,7 +402,7 @@ class Client extends BaseClient
             throw new \InvalidArgumentException('Invalid paymentId value');
         }
 
-        $path    = self::PAYMENTS_PATH.'/'.$paymentId.'/cancel';
+        $path    = self::PAYMENTS_PATH . '/' . $paymentId . '/cancel';
         $headers = array();
         if ($idempotencyKey) {
             $headers[self::IDEMPOTENCY_KEY_HEADER] = $idempotencyKey;
@@ -422,7 +432,7 @@ class Client extends BaseClient
      * Если результатов больше, чем задано в `limit`, список будет выводиться фрагментами. В этом случае в ответе
      * на запрос вернется фрагмент списка и параметр `next_cursor` с указателем на следующий фрагмент.
      *
-     * @example 01-client.php 274 23 Получить список возвратов платежей магазина с фильтрацией
+     * @example 01-client.php 275 23 Получить список возвратов платежей магазина с фильтрацией
      *
      * @param RefundsRequestInterface|array|null $filter
      *
@@ -555,7 +565,7 @@ class Client extends BaseClient
         } elseif (mb_strlen($refundId) !== 36) {
             throw new \InvalidArgumentException('Invalid refundId value');
         }
-        $path = self::REFUNDS_PATH.'/'.$refundId;
+        $path = self::REFUNDS_PATH . '/' . $refundId;
 
         $response = $this->execute($path, HttpVerb::GET, null);
 
@@ -634,7 +644,7 @@ class Client extends BaseClient
      * Запрос позволяет отписаться от уведомлений о событии для переданного OAuth-токена.
      * Чтобы удалить webhook, вам нужно передать в запросе его идентификатор.
      *
-     * @example 01-client.php 192 32 Удаление Webhook
+     * @example 01-client.php 192 33 Удаление Webhook
      *
      * @param string $webhookId Идентификатор Webhook
      * @param string|null $idempotencyKey [Ключ идемпотентности](https://yookassa.ru/developers/using-api/basics?lang=php#idempotence)
@@ -661,7 +671,7 @@ class Client extends BaseClient
         } else {
             $headers[self::IDEMPOTENCY_KEY_HEADER] = UUID::v4();
         }
-        $path    = self::WEBHOOKS_PATH.'/'.$webhookId;
+        $path    = self::WEBHOOKS_PATH . '/' . $webhookId;
 
         $response = $this->execute($path, HttpVerb::DELETE, null, null, $headers);
 
@@ -681,7 +691,7 @@ class Client extends BaseClient
      *
      * Запрос позволяет узнать, какие webhook есть для переданного OAuth-токена.
      *
-     * @example 01-client.php 192 32 Список созданных Webhook
+     * @example 01-client.php 192 33 Список созданных Webhook
      *
      * @return WebhookListResponse|null
      *
@@ -723,7 +733,7 @@ class Client extends BaseClient
      * Если результатов больше, чем задано в `limit`, список будет выводиться фрагментами.
      * В этом случае в ответе на запрос вернется фрагмент списка и параметр `next_cursor` с указателем на следующий фрагмент.
      *
-     * @example 01-client.php 251 21 Получить список чеков магазина с фильтрацией
+     * @example 01-client.php 252 21 Получить список чеков магазина с фильтрацией
      *
      * @param PaymentInterface|RefundInterface|array|null $filter
      *
@@ -858,7 +868,7 @@ class Client extends BaseClient
             throw new \InvalidArgumentException('Invalid receiptId value');
         }
 
-        $path = self::RECEIPTS_PATH.'/'.$receiptId;
+        $path = self::RECEIPTS_PATH . '/' . $receiptId;
 
         $response = $this->execute($path, HttpVerb::GET, null);
 
@@ -882,16 +892,17 @@ class Client extends BaseClient
      * Необходимо указать следующие параметры:
      * <ul>
      * <li>type — Тип сделки. Фиксированное значение: safe_deal — Безопасная сделка;</li>
-     * <li>fee_moment — Момент перечисления вам вознаграждения платформы. Возможные значения: payment_succeeded — после успешной оплаты; deal_closed — при закрытии сделки после успешной выплаты.</li>
+     * <li>fee_moment — Момент перечисления вам вознаграждения платформы. Возможные значения: payment_succeeded — после успешной оплаты;</li>
+     * <li>deal_closed — при закрытии сделки после успешной выплаты.</li>
      * </ul>
      *
      * Дополнительные параметры:
      * <ul>
-     * <li>metadata — Любые дополнительные данные, которые нужны вам для работы (например, номер заказа);</li>
+     * <li>metadata — Любые дополнительные данные, которые нужны вам для работы (например, ваш внутренний идентификатор заказа);</li>
      * <li>description — Описание сделки (не более 128 символов). Используется для фильтрации при получении списка сделок.</li>
      * </ul>
      *
-     * @example 01-client.php 299 18 Запрос на создание сделки
+     * @example 01-client.php 300 18 Запрос на создание сделки
      *
      * @param CreateDealRequestInterface|array $deal
      * @param string|null $idempotenceKey [Ключ идемпотентности](https://yookassa.ru/developers/using-api/basics?lang=php#idempotence)
@@ -946,7 +957,7 @@ class Client extends BaseClient
      * Запрос позволяет получить информацию о текущем состоянии сделки по её уникальному идентификатору.
      * Выдает объект чека {@link DealInteface} в актуальном статусе.
      *
-     * @example 01-client.php 317 8 Получить информацию о сделке
+     * @example 01-client.php 320 8 Получить информацию о сделке
      *
      * @param string $dealId Идентификатор сделки
      *
@@ -972,7 +983,7 @@ class Client extends BaseClient
             throw new \InvalidArgumentException('Invalid dealId value');
         }
 
-        $path = self::DEALS_PATH.'/'.$dealId;
+        $path = self::DEALS_PATH . '/' . $dealId;
 
         $response = $this->execute($path, HttpVerb::GET, null);
 
@@ -996,7 +1007,7 @@ class Client extends BaseClient
      * Если результатов больше, чем задано в `limit`, список будет выводиться фрагментами.
      * В этом случае в ответе на запрос вернется фрагмент списка и параметр `next_cursor` с указателем на следующий фрагмент.
      *
-     * @example 01-client.php 327 27 Получить список сделок с фильтрацией
+     * @example 01-client.php 330 27 Получить список сделок с фильтрацией
      *
      * @param DealsRequestInterface|array|null $filter
      *
@@ -1061,7 +1072,7 @@ class Client extends BaseClient
      * <ul>
      * <li>description — описание транзакции (не более 128 символов);</li>
      * <li>deal — сделка, в рамках которой нужно провести выплату. Необходимо передавать, если вы проводите Безопасную сделку;</li>
-     * <li>metadata — любые дополнительные данные, которые нужны вам для работы (например, номер заказа).</li>
+     * <li>metadata — любые дополнительные данные, которые нужны вам для работы (например, ваш внутренний идентификатор заказа).</li>
      * </ul>
      *
      * @param CreatePayoutRequestInterface|array $payout
@@ -1148,7 +1159,7 @@ class Client extends BaseClient
             throw new InvalidPropertyValueTypeException('Invalid payoutId value: string required');
         }
 
-        $path = self::PAYOUTS_PATH.'/'.$payoutId;
+        $path = self::PAYOUTS_PATH . '/' . $payoutId;
 
         $response = $this->execute($path, HttpVerb::GET, null);
 
@@ -1202,6 +1213,258 @@ class Client extends BaseClient
         if ($response->getCode() == 200) {
             $responseArray = $this->decodeData($response);
             $result        = $responseArray;
+        } else {
+            $this->handleError($response);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Создание персональных данных
+     *
+     * Используйте этот запрос, чтобы создать в ЮKassa [объект персональных данных](#personal_data_object).
+     * В запросе необходимо передать фамилию, имя, отчество пользователя и указать, с какой целью эти данные будут использоваться.
+     * Идентификатор созданного объекта персональных данных необходимо использовать в запросе на проведение выплаты через СБП с проверкой получателя.
+     * [Подробнее о выплатах с проверкой получателя](/developers/payouts/scenario-extensions/recipient-check)
+     *
+     * @example 01-client.php 397 16 Запрос на создание персональных данных
+     *
+     * @param CreatePersonalDataRequestInterface|array $request
+     * @param string|null $idempotencyKey [Ключ идемпотентности](https://yookassa.ru/developers/using-api/basics?lang=php#idempotence)
+     *
+     * @return PersonalDataResponse|null Объект персональных данных
+     *
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws ExtensionNotFoundException Требуемое PHP расширение не установлено.
+     * @throws Exception
+     */
+    public function createPersonalData($request, $idempotencyKey = null)
+    {
+        $path = self::PERSONAL_DATA_PATH;
+
+        $headers = array();
+
+        if ($idempotencyKey) {
+            $headers[self::IDEMPOTENCY_KEY_HEADER] = $idempotencyKey;
+        } else {
+            $headers[self::IDEMPOTENCY_KEY_HEADER] = UUID::v4();
+        }
+        if (is_array($request)) {
+            $request = CreatePersonalDataRequest::builder()->build($request);
+        }
+
+        $serializer     = new CreatePersonalDataRequestSerializer();
+        $serializedData = $serializer->serialize($request);
+        $httpBody       = $this->encodeData($serializedData);
+
+        $response = $this->execute($path, HttpVerb::POST, array(), $httpBody, $headers);
+
+        $result = null;
+        if ($response->getCode() === 200) {
+            $resultArray = $this->decodeData($response);
+            $result      = new PersonalDataResponse($resultArray);
+        } else {
+            $this->handleError($response);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получить информацию о персональных данных
+     *
+     * Запрос позволяет получить информацию о текущем состоянии персональных данных по их уникальному идентификатору.
+     * Выдает объект платежа {@link PersonalDataInterface} в актуальном статусе.
+     *
+     * @example 01-client.php 415 8 Получить информацию о персональных данных
+     *
+     * @param string $personalDataId Идентификатор персональных данных
+     *
+     * @return PersonalDataInterface|null Объект персональных данных
+     *
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws ExtensionNotFoundException Требуемое PHP расширение не установлено.
+     */
+    public function getPersonalDataInfo($personalDataId)
+    {
+        if ($personalDataId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $personalDataId');
+        }
+        if (!TypeCast::canCastToString($personalDataId)) {
+            throw new \InvalidArgumentException('Invalid personalDataId value: string required');
+        }
+        if (mb_strlen($personalDataId) < PersonalDataInterface::MIN_LENGTH_ID || mb_strlen($personalDataId) > PersonalDataInterface::MAX_LENGTH_ID) {
+            throw new \InvalidArgumentException('Invalid personalDataId value');
+        }
+
+        $path = self::PERSONAL_DATA_PATH . '/' . $personalDataId;
+
+        $response = $this->execute($path, HttpVerb::GET, array());
+
+        $result = null;
+        if ($response->getCode() === 200) {
+            $resultArray = $this->decodeData($response);
+            $result      = new PersonalDataResponse($resultArray);
+        } else {
+            $this->handleError($response);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получить список участников СБП
+     *
+     * С помощью этого запроса вы можете получить актуальный список всех участников СБП.
+     * Список нужно вывести получателю выплаты, идентификатор выбранного участника СБП необходимо использовать
+     * в запросе на создание выплаты.
+     *
+     * @example 01-client.php 415 7 Получить информацию о персональных данных
+     *
+     * @return SbpBanksResponse|null
+     *
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws ExtensionNotFoundException Требуемое PHP расширение не установлено.
+     */
+    public function getSbpBanks()
+    {
+        $path = self::SBP_BANKS_PATH;
+
+        $response = $this->execute($path, HttpVerb::GET, array());
+
+        $result = null;
+        if ($response->getCode() === 200) {
+            $resultArray = $this->decodeData($response);
+            $result      = new SbpBanksResponse($resultArray);
+        } else {
+            $this->handleError($response);
+        }
+
+        return $result;
+    }
+
+
+    /**
+     * Создание самозанятого.
+     *
+     * Используйте этот запрос, чтобы создать в ЮKassa [объект самозанятого](https://yookassa.ru/developers/api?codeLang=bash#self_employed_object).
+     *
+     * В запросе необходимо передать ИНН или телефон самозанятого для идентификации в сервисе Мой налог,
+     * сценарий подтверждения пользователем заявки ЮMoney на получение прав для регистрации чеков и описание самозанятого.
+     *
+     * Идентификатор созданного объекта самозанятого необходимо использовать в запросе на проведение выплаты.
+     *
+     * @example 01-client.php 425 14 Запрос на создание самозанятого
+     *
+     * @param SelfEmployedRequest|array $selfEmployed
+     * @param string|null $idempotenceKey [Ключ идемпотентности](https://yookassa.ru/developers/using-api/basics?lang=php#idempotence)
+     *
+     * @return SelfEmployedResponse|null
+     *
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws ExtensionNotFoundException Требуемое PHP расширение не установлено.
+     */
+    public function createSelfEmployed($selfEmployed, $idempotenceKey = null)
+    {
+        $path = self::SELF_EMPLOYED_PATH;
+
+        $headers = array();
+
+        if ($idempotenceKey) {
+            $headers[self::IDEMPOTENCY_KEY_HEADER] = $idempotenceKey;
+        } else {
+            $headers[self::IDEMPOTENCY_KEY_HEADER] = UUID::v4();
+        }
+
+        $request = is_array($selfEmployed) ? SelfEmployedRequest::builder()->build($selfEmployed) : $selfEmployed;
+
+        $serializer     = new SelfEmployedRequestSerializer();
+        $serializedData = $serializer->serialize($request);
+        $httpBody       = $this->encodeData($serializedData);
+
+        $response = $this->execute($path, HttpVerb::POST, array(), $httpBody, $headers);
+
+        $result = null;
+        if ($response->getCode() === 200) {
+            $resultArray     = $this->decodeData($response);
+            $result = new SelfEmployedResponse($resultArray);
+        } else {
+            $this->handleError($response);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получить информацию о самозанятом
+     *
+     * С помощью этого запроса вы можете получить информацию о текущем статусе самозанятого по его уникальному идентификатору.
+     *
+     * @example 01-client.php 441 8 Получить информацию о самозанятом
+     *
+     * @param string $selfEmployedId Идентификатор самозанятого
+     *
+     * @return SelfEmployedInterface|null Объект информации о самозанятом
+     *
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws ExtensionNotFoundException Требуемое PHP расширение не установлено.
+     */
+    public function getSelfEmployedInfo($selfEmployedId)
+    {
+        if ($selfEmployedId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $selfEmployedId');
+        }
+        if (!TypeCast::canCastToString($selfEmployedId)) {
+            throw new \InvalidArgumentException('Invalid selfEmployedId value: string required');
+        }
+        if (mb_strlen($selfEmployedId) < SelfEmployedInterface::MIN_LENGTH_ID || mb_strlen($selfEmployedId) > SelfEmployedInterface::MAX_LENGTH_ID) {
+            throw new \InvalidArgumentException('Invalid selfEmployedId value');
+        }
+
+        $path = self::SELF_EMPLOYED_PATH . '/' . $selfEmployedId;
+
+        $response = $this->execute($path, HttpVerb::GET, array());
+
+        $result = null;
+        if ($response->getCode() === 200) {
+            $resultArray = $this->decodeData($response);
+            $result      = new SelfEmployedResponse($resultArray);
         } else {
             $this->handleError($response);
         }

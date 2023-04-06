@@ -348,9 +348,9 @@ class PaymentsRequestTest extends TestCase
 
     private function getterAndSetterTest($value, $property, $expected, $testHas = true)
     {
-        $getter = 'get'.ucfirst($property);
-        $setter = 'set'.ucfirst($property);
-        $has    = 'has'.ucfirst($property);
+        $getter = 'get' . ucfirst($property);
+        $setter = 'set' . ucfirst($property);
+        $has    = 'has' . ucfirst($property);
 
         $instance = $this->getTestInstance();
 

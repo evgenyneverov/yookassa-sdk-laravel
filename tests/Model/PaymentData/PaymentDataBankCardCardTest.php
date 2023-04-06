@@ -248,7 +248,7 @@ class PaymentDataBankCardCardTest extends TestCase
         }
         return $result;
     }
-    
+
     public function invalidNumberDataProvider()
     {
         return array(

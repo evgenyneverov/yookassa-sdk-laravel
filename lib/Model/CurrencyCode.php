@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,12 @@ namespace YooKassa\Model;
 use YooKassa\Common\AbstractEnum;
 
 /**
- * CurrencyCode - Код валюты, ISO-4217 3-alpha currency symbol
+ * CurrencyCode - Код валюты в формате [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html).
+ * Должен соответствовать валюте субаккаунта (`recipient.gateway_id`), если вы разделяете потоки платежей,
+ * и валюте аккаунта (shopId в [личном кабинете](https://yookassa.ru/my)), если не разделяете.
+ *
+ * @package YooKassa\Model
+ * @author  cms@yoomoney.ru
  */
 class CurrencyCode extends AbstractEnum
 {
@@ -47,6 +52,16 @@ class CurrencyCode extends AbstractEnum
     const KZT = 'KZT';
     /** Украинская гривна */
     const UAH = 'UAH';
+    /** Узбекский сум */
+    const UZS = 'UZS';
+    /** Турецкая лира */
+    const _TRY = 'TRY';
+    /** Индийская рупия */
+    const INR = 'INR';
+    /** Молдавский лей */
+    const MDL = 'MDL';
+    /** Азербайджанский манат */
+    const AZN = 'AZN';
 
     protected static $validValues = array(
         self::RUB => true,
@@ -56,5 +71,10 @@ class CurrencyCode extends AbstractEnum
         self::CNY => true,
         self::KZT => true,
         self::UAH => true,
+        self::UZS => true,
+        self::_TRY => true,
+        self::INR => true,
+        self::MDL => true,
+        self::AZN => true,
     );
 }

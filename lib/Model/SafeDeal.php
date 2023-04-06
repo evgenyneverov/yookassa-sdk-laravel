@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -152,7 +152,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_balance->fromArray($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid SafeDeal.balance value type', 0, 'SafeDeal.balance', $value
+                'Invalid SafeDeal.balance value type',
+                0,
+                'SafeDeal.balance',
+                $value
             );
         }
         return $this;
@@ -183,7 +186,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_payout_balance->fromArray($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid SafeDeal.payout_balance value type', 0, 'SafeDeal.payout_balance', $value
+                'Invalid SafeDeal.payout_balance value type',
+                0,
+                'SafeDeal.payout_balance',
+                $value
             );
         }
         return $this;
@@ -212,7 +218,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_status = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal status value type', 0, 'SafeDeal.status', $value
+                'Invalid deal status value type',
+                0,
+                'SafeDeal.status',
+                $value
             );
         }
         return $this;
@@ -310,7 +319,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_test = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid SafeDeal test flag value type', 0, 'SafeDeal.test', $value
+                'Invalid SafeDeal test flag value type',
+                0,
+                'SafeDeal.test',
+                $value
             );
         }
         return $this;
@@ -350,7 +362,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'SafeDeal.description', $value
+                'Invalid description value type',
+                0,
+                'SafeDeal.description',
+                $value
             );
         }
         return $this;
@@ -380,7 +395,10 @@ class SafeDeal extends BaseDeal implements DealInterface
             $this->_metadata = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "metadata" parameter in SafeDeal', 0, 'SafeDeal.metadata', $value
+                'Invalid value type for "metadata" parameter in SafeDeal',
+                0,
+                'SafeDeal.metadata',
+                $value
             );
         }
         return $this;

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 
 namespace YooKassa\Request\Receipts;
-
 
 use YooKassa\Common\AbstractRequest;
 use YooKassa\Common\Exceptions\EmptyPropertyValueException;
@@ -73,7 +72,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
     /** @var OperationalDetails Операционный реквизит чека */
     private $_receiptOperationalDetails;
 
-    /** @var ReceiptItemInterface[] Список товаров в заказе */
+    /** @var ReceiptItemInterface[] Список товаров в заказе. Для чеков по 54-ФЗ можно передать не более 100 товаров, для чеков самозанятых — не более шести. */
     private $_items = array();
 
     /** @var SettlementInterface[] Список платежей */
@@ -111,10 +110,12 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает Id объекта чека
      *
      * @param string $value Id объекта чека
+     * @return CreatePostReceiptRequest
      */
     public function setObjectId($value)
     {
         $this->_object_id = $value;
+        return $this;
     }
 
     /**
@@ -131,10 +132,12 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает тип объекта чека
      *
      * @param string $value Тип объекта чека
+     * @return CreatePostReceiptRequest
      */
     public function setObjectType($value)
     {
         $this->_object_type = $value;
+        return $this;
     }
 
     /**
@@ -161,6 +164,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает информацию о плательщике
      *
      * @param ReceiptCustomerInterface|array $value Информация о плательщике
+     * @return CreatePostReceiptRequest
      */
     public function setCustomer($value)
     {
@@ -170,9 +174,13 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
             $this->_customer = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid customer value type in receipt', 0, 'Receipt.customer', $value
+                'Invalid customer value type in receipt',
+                0,
+                'Receipt.customer',
+                $value
             );
         }
+        return $this;
     }
 
     /**
@@ -206,7 +214,10 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid items value type in receipt', 0, 'Receipt.items', $value
+                'Invalid items value type in receipt',
+                0,
+                'Receipt.items',
+                $value
             );
         }
         $this->_items = array();
@@ -217,7 +228,10 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
                 $this->addItem($item);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid item value type in receipt', 0, 'Receipt.items['.$key.']', $item
+                    'Invalid item value type in receipt',
+                    0,
+                    'Receipt.items[' . $key . ']',
+                    $item
                 );
             }
         }
@@ -260,19 +274,26 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException('Empty taxSystemCode value in receipt', 0, 'Receipt.taxSystemCode');
-        } elseif (!is_numeric($value)) {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid taxSystemCode value type', 0, 'Receipt.taxSystemCode'
-            );
-        } else {
-            $castedValue = (int)$value;
-            if ($castedValue < 1 || $castedValue > 6) {
-                throw new InvalidPropertyValueException(
-                    'Invalid taxSystemCode value: '.$value, 0, 'Receipt.taxSystemCode'
-                );
-            }
-            $this->_taxSystemCode = $castedValue;
         }
+        if (!is_numeric($value)) {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid taxSystemCode value type',
+                0,
+                'Receipt.taxSystemCode'
+            );
+        }
+
+        $castedValue = (int)$value;
+        if ($castedValue < 1 || $castedValue > 6) {
+            throw new InvalidPropertyValueException(
+                'Invalid taxSystemCode value: ' . $value,
+                0,
+                'Receipt.taxSystemCode'
+            );
+        }
+        $this->_taxSystemCode = $castedValue;
+
+        return $this;
     }
 
     /**
@@ -289,6 +310,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает дополнительный реквизит пользователя
      *
      * @param AdditionalUserProps|array $value Дополнительный реквизит пользователя
+     * @return void|CreatePostReceiptRequest
      */
     public function setAdditionalUserProps($value)
     {
@@ -302,9 +324,13 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
             $this->_additionalUserProps = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid additionalUserProps value type in receipt', 0, 'Receipt.additional_user_props', $value
+                'Invalid additionalUserProps value type in receipt',
+                0,
+                'Receipt.additional_user_props',
+                $value
             );
         }
+        return $this;
     }
 
     /**
@@ -318,15 +344,15 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
 
     /**
      * Устанавливает отраслевой реквизит чека
-     * @param array|IndustryDetails[] $value Отраслевой реквизит чека
+     * @param array|IndustryDetails $value Отраслевой реквизит чека
      *
-     * @throws InvalidPropertyValueTypeException Выбрасывается если переданный аргумент - не массив
+     * @return CreatePostReceiptRequest
      */
     public function setReceiptIndustryDetails($value)
     {
         if (empty($value)) {
             $this->_receiptIndustryDetails = null;
-            return;
+            return $this;
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
@@ -353,6 +379,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
             }
         }
         $this->_receiptIndustryDetails = $details;
+        return $this;
     }
 
     /**
@@ -368,13 +395,13 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает операционный реквизит чека
      * @param array|OperationalDetails $value Операционный реквизит чека
      *
-     * @throws InvalidPropertyValueTypeException Выбрасывается если переданный аргумент - не массив
+     * @return CreatePostReceiptRequest
      */
     public function setReceiptOperationalDetails($value)
     {
         if (empty($value)) {
             $this->_receiptOperationalDetails = null;
-            return;
+            return $this;
         }
         if (!is_array($value) && !($value instanceof OperationalDetails)) {
             throw new InvalidPropertyValueTypeException(
@@ -390,6 +417,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
         }
 
         $this->_receiptOperationalDetails = $value;
+        return $this;
     }
 
     /**
@@ -406,6 +434,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Устанавливает тип чека в онлайн-кассе
      *
      * @param string $value Тип чека в онлайн-кассе: приход "payment" или возврат "refund".
+     * @return CreatePostReceiptRequest
      */
     public function setType($value)
     {
@@ -419,9 +448,13 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid receipt type value type', 0, 'Receipt.type', $value
+                'Invalid receipt type value type',
+                0,
+                'Receipt.type',
+                $value
             );
         }
+        return $this;
     }
 
     /**
@@ -437,16 +470,22 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
     /**
      * Устанавливает признак отложенной отправки чека.
      * @param bool $value Признак отложенной отправки чека.
+     * @return CreatePostReceiptRequest
      */
     public function setSend($value)
     {
-        if (TypeCast::canCastToBoolean($value)) {
-            $this->_send = (bool)$value;
-        } else {
+        if (!TypeCast::canCastToBoolean($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid receipt type value send', 0, 'Receipt.send', $value
+                'Invalid receipt type value send',
+                0,
+                'Receipt.send',
+                $value
             );
         }
+
+        $this->_send = (bool)$value;
+
+        return $this;
     }
 
     /**
@@ -462,7 +501,8 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
     /**
      * Устанавливает массив оплат, обеспечивающих выдачу товара.
      *
-     * @param SettlementInterface[]|array $value Массив оплат, обеспечивающих выдачу товара.
+     * @param SettlementInterface|array $value Массив оплат, обеспечивающих выдачу товара.
+     * @return CreatePostReceiptRequest
      */
     public function setSettlements($value)
     {
@@ -471,7 +511,10 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid settlements value type in receipt', 0, 'Receipt.settlements', $value
+                'Invalid settlements value type in receipt',
+                0,
+                'Receipt.settlements',
+                $value
             );
         }
         $this->_settlements = array();
@@ -482,10 +525,14 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
                 $this->addSettlement($val);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid settlement value type in receipt', 0, 'Receipt.settlements['.$key.']', $val
+                    'Invalid settlement value type in receipt',
+                    0,
+                    'Receipt.settlements[' . $key . ']',
+                    $val
                 );
             }
         }
+        return $this;
     }
 
     /**
@@ -516,20 +563,29 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
      * Необходимо передавать, если вы используете решение ЮKassa для платформ.
      *
      * @param string $value
+     * @return CreatePostReceiptRequest
      */
     public function setOnBehalfOf($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty onBehalfOf value', 0, 'Receipt.onBehalfOf'
+                'Empty onBehalfOf value',
+                0,
+                'Receipt.onBehalfOf'
             );
-        } elseif (!TypeCast::canCastToString($value)) {
-            throw new InvalidPropertyValueTypeException(
-                'Invalid onBehalfOf value type', 0, 'Receipt.onBehalfOf', $value
-            );
-        } else {
-            $this->_onBehalfOf = (string)$value;
         }
+        if (!TypeCast::canCastToString($value)) {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid onBehalfOf value type',
+                0,
+                'Receipt.onBehalfOf',
+                $value
+            );
+        }
+
+        $this->_onBehalfOf = (string)$value;
+
+        return $this;
     }
 
     /**

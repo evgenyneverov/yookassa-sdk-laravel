@@ -69,6 +69,7 @@ $client->setAuth('shopId', 'secretKey');
 ## Examples of using the API SDK
 
 #### [YooKassa SDK Settings](docs/examples/01-configuration.md)
+* [Additional settings for Curl](docs/examples/01-configuration.md#Установка-дополнительных-настроек-для-Curl)
 * [Authentication](docs/examples/01-configuration.md#Аутентификация)
 * [Statistics about the environment used](docs/examples/01-configuration.md#Статистические-данные-об-используемом-окружении)
 * [Getting information about the store](docs/examples/01-configuration.md#Получение-информации-о-магазине)
@@ -99,7 +100,16 @@ $client->setAuth('shopId', 'secretKey');
 * [Request to create a deal](docs/examples/05-deals.md#Запрос-на-создание-сделки)
 * [Request to create a deal via the builder](docs/examples/05-deals.md#Запрос-на-создание-сделки-через-билдер)
 * [Request to create a payment with info about deal](docs/examples/05-deals.md#Запрос-на-создание-платежа-с-привязкой-к-сделке)
-* [Request to create a payout](docs/examples/05-deals.md#Запрос-на-выплату-продавцу)
 * [Get deal information](docs/examples/05-deals.md#Получить-информацию-о-сделке)
 * [Get a list of deals with filtering](docs/examples/05-deals.md#Получить-список-сделок-с-фильтрацией)
-* [Get payout information](docs/examples/05-deals.md#Получить-информацию-о-выплате)
+
+#### [Working with payouts](docs/examples/06-payouts.md)
+* [Request to create a payout](docs/examples/06-payouts.md#Запрос-на-выплату-продавцу)
+* [Get payout information](docs/examples/06-payouts.md#Получить-информацию-о-выплате)
+
+#### [Working with personal data](docs/examples/08-personal-data.md)
+* [Creation of personal data](docs/examples/08-personal-data.md#Создание-персональных-данных)
+* [Get information about personal data](docs/examples/08-personal-data.md#Получить-информацию-о-персональных-данных)
+
+#### [Working with the list of SBP participants](docs/examples/09-sbp-banks.md)
+* [Get a list of SBP participants](docs/examples/09-sbp-banks.md#Получить-список-участников-СБП)

@@ -23,7 +23,7 @@
 ---
 ### Details
 * File: [lib/Common/Exceptions/JsonException.php](../../lib/Common/Exceptions/JsonException.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\UnexpectedValueException](\UnexpectedValueException)
   * \YooKassa\Common\Exceptions\JsonException
@@ -71,11 +71,11 @@ public __construct(mixed $message = &quot;&quot;, mixed $code, mixed $previous =
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

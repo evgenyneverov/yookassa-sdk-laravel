@@ -3,9 +3,8 @@
 namespace Tests\YooKassa\Model\Payout;
 
 use PHPUnit\Framework\TestCase;
-use YooKassa\Model\CancellationDetails;
-use YooKassa\Model\CancellationDetailsPartyCode;
-use YooKassa\Model\CancellationDetailsReasonCode;
+use YooKassa\Model\Payout\PayoutCancellationDetailsPartyCode;
+use YooKassa\Model\Payout\PayoutCancellationDetailsReasonCode;
 use YooKassa\Model\Payout\PayoutCancellationDetails;
 
 class PayoutCancellationDetailsTest extends TestCase
@@ -100,9 +99,9 @@ class PayoutCancellationDetailsTest extends TestCase
     public function validDataProvider()
     {
         $result                          = array();
-        $cancellationDetailsParties      = CancellationDetailsPartyCode::getValidValues();
+        $cancellationDetailsParties      = PayoutCancellationDetailsPartyCode::getValidValues();
         $countCancellationDetailsParties = count($cancellationDetailsParties);
-        $cancellationDetailsReasons      = CancellationDetailsReasonCode::getValidValues();
+        $cancellationDetailsReasons      = PayoutCancellationDetailsReasonCode::getValidValues();
         $countCancellationDetailsReasons = count($cancellationDetailsReasons);
         for ($i = 0; $i < 20; $i++) {
             $result[] = array(
@@ -113,19 +112,18 @@ class PayoutCancellationDetailsTest extends TestCase
             );
         }
         return $result;
-
     }
 
     public function invalidValueDataProvider()
     {
         $exceptionNamespace = 'YooKassa\\Common\\Exceptions\\';
         return array(
-            array(null, $exceptionNamespace.'EmptyPropertyValueException'),
-            array('', $exceptionNamespace.'EmptyPropertyValueException'),
-            array(array(), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(fopen(__FILE__, 'r'), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(true, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(false, $exceptionNamespace.'InvalidPropertyValueTypeException'),
+            array(null, $exceptionNamespace . 'EmptyPropertyValueException'),
+            array('', $exceptionNamespace . 'EmptyPropertyValueException'),
+            array(array(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(fopen(__FILE__, 'r'), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(true, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(false, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
         );
     }
 

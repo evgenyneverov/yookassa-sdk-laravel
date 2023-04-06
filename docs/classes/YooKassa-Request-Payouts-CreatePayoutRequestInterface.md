@@ -19,20 +19,32 @@ Interface CreatePayoutRequestInterface
 | public | [getDeal()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getDeal) |  | Возвращает сделку, в рамках которой нужно провести выплату |
 | public | [getDescription()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getDescription) |  | Возвращает описание транзакции |
 | public | [getMetadata()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getMetadata) |  | Возвращает данные оплаты установленные мерчантом |
+| public | [getPaymentMethodId()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getPaymentMethodId) |  | Возвращает идентификатор сохраненного способа оплаты. |
 | public | [getPayoutDestinationData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getPayoutDestinationData) |  | Возвращает данные платежного средства, на которое нужно сделать выплату |
 | public | [getPayoutToken()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getPayoutToken) |  | Возвращает токенизированные данные для выплаты |
+| public | [getPersonalData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getPersonalData) |  | Возвращает персональные данные получателя выплаты. |
+| public | [getReceiptData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getReceiptData) |  | Возвращает данные для формирования чека в сервисе Мой налог. |
+| public | [getSelfEmployed()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_getSelfEmployed) |  | Возвращает данные самозанятого, который получит выплату. |
 | public | [hasAmount()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasAmount) |  | Проверяет наличие суммы в создаваемой выплате |
 | public | [hasDeal()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasDeal) |  | Проверяет установлена ли сделка, в рамках которой нужно провести выплату |
 | public | [hasDescription()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasDescription) |  | Проверяет наличие описания транзакции в создаваемой выплате |
 | public | [hasMetadata()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные заказа |
+| public | [hasPaymentMethodId()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasPaymentMethodId) |  | Проверяет наличие идентификатора сохраненного способа оплаты |
 | public | [hasPayoutDestinationData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasPayoutDestinationData) |  | Проверяет наличие данных платежного средства, на которое нужно сделать выплату |
 | public | [hasPayoutToken()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasPayoutToken) |  | Проверяет наличие токенизированных данных для выплаты |
+| public | [hasPersonalData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasPersonalData) |  | Проверяет наличие персональных данных в создаваемой выплате |
+| public | [hasReceiptData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasReceiptData) |  | Проверяет наличие данных для формирования чека в сервисе Мой налог. |
+| public | [hasSelfEmployed()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_hasSelfEmployed) |  | Проверяет наличие данных самозанятого в создаваемой выплате |
 | public | [setAmount()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setAmount) |  | Устанавливает сумму выплаты |
 | public | [setDeal()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setDeal) |  | Устанавливает сделку, в рамках которой нужно провести выплату |
 | public | [setDescription()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setDescription) |  | Устанавливает описание транзакции |
 | public | [setMetadata()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setMetadata) |  | Устанавливает метаданные, привязанные к выплате |
+| public | [setPaymentMethodId()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setPaymentMethodId) |  | Устанавливает идентификатор сохраненного способа оплаты. |
 | public | [setPayoutDestinationData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setPayoutDestinationData) |  | Устанавливает данные платежного средства, на которое нужно сделать выплату |
 | public | [setPayoutToken()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setPayoutToken) |  | Устанавливает токенизированные данные для выплаты |
+| public | [setPersonalData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setPersonalData) |  | Устанавливает персональные данные получателя выплаты. |
+| public | [setReceiptData()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setReceiptData) |  | Устанавливает данные для формирования чека в сервисе Мой налог. |
+| public | [setSelfEmployed()](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md#method_setSelfEmployed) |  | Устанавливает данные самозанятого, который получит выплату. |
 
 ---
 ### Details
@@ -48,8 +60,16 @@ Interface CreatePayoutRequestInterface
 | property |  | Данные платежного средства, на которое нужно сделать выплату. Обязательный параметр, если не передан payout_token. |
 | property |  | Токенизированные данные для выплаты. Например, синоним банковской карты. Обязательный параметр, если не передан payout_destination_data |
 | property |  | Токенизированные данные для выплаты. Например, синоним банковской карты. Обязательный параметр, если не передан payout_destination_data |
+| property |  | Идентификатор сохраненного способа оплаты, данные которого нужно использовать для проведения выплаты |
+| property |  | Идентификатор сохраненного способа оплаты, данные которого нужно использовать для проведения выплаты |
 | property |  | Сделка, в рамках которой нужно провести выплату. Необходимо передавать, если вы проводите Безопасную сделку |
 | property |  | Описание транзакции (не более 128 символов). Например: «Выплата по договору N» |
+| property |  | Данные самозанятого, который получит выплату. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат. |
+| property |  | Данные самозанятого, который получит выплату. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат. |
+| property |  | Данные для формирования чека в сервисе Мой налог. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат. |
+| property |  | Данные для формирования чека в сервисе Мой налог. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат. |
+| property |  | Персональные данные получателя выплаты. Необходимо передавать, если вы делаете выплаты с [проверкой получателя](/developers/payouts/scenario-extensions/recipient-check) (только для выплат через СБП). |
+| property |  | Персональные данные получателя выплаты. Необходимо передавать, если вы делаете выплаты с [проверкой получателя](/developers/payouts/scenario-extensions/recipient-check) (только для выплат через СБП). |
 | property |  | Метаданные привязанные к выплате |
 
 ---
@@ -92,7 +112,7 @@ public hasAmount() : bool
 #### public setAmount() : mixed
 
 ```php
-public setAmount(mixed $value) : mixed
+public setAmount(\YooKassa\Model\AmountInterface|array $value) : mixed
 ```
 
 **Summary**
@@ -105,7 +125,7 @@ public setAmount(mixed $value) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">mixed</code> | value  |  |
+| <code lang="php">\YooKassa\Model\AmountInterface OR array</code> | value  | Сумма выплаты |
 
 **Returns:** mixed - 
 
@@ -222,6 +242,62 @@ public setPayoutToken(string $value) : mixed
 **Returns:** mixed - 
 
 
+<a name="method_getPaymentMethodId" class="anchor"></a>
+#### public getPaymentMethodId() : string|null
+
+```php
+public getPaymentMethodId() : string|null
+```
+
+**Summary**
+
+Возвращает идентификатор сохраненного способа оплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** string|null - Идентификатор сохраненного способа оплаты
+
+
+<a name="method_hasPaymentMethodId" class="anchor"></a>
+#### public hasPaymentMethodId() : bool
+
+```php
+public hasPaymentMethodId() : bool
+```
+
+**Summary**
+
+Проверяет наличие идентификатора сохраненного способа оплаты
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** bool - True если идентификатора установлен, false если нет
+
+
+<a name="method_setPaymentMethodId" class="anchor"></a>
+#### public setPaymentMethodId() : $this
+
+```php
+public setPaymentMethodId(string|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает идентификатор сохраненного способа оплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string OR null</code> | value  | Идентификатор сохраненного способа оплаты |
+
+**Returns:** $this - 
+
+
 <a name="method_getDescription" class="anchor"></a>
 #### public getDescription() : string
 
@@ -334,6 +410,178 @@ public setDeal(\YooKassa\Model\Deal\PayoutDealInfo|array|null $value) : mixed
 **Returns:** mixed - 
 
 
+<a name="method_getSelfEmployed" class="anchor"></a>
+#### public getSelfEmployed() : \YooKassa\Request\Payouts\PayoutSelfEmployedInfo|null
+
+```php
+public getSelfEmployed() : \YooKassa\Request\Payouts\PayoutSelfEmployedInfo|null
+```
+
+**Summary**
+
+Возвращает данные самозанятого, который получит выплату.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** \YooKassa\Request\Payouts\PayoutSelfEmployedInfo|null - Данные самозанятого, который получит выплату
+
+
+<a name="method_hasSelfEmployed" class="anchor"></a>
+#### public hasSelfEmployed() : bool
+
+```php
+public hasSelfEmployed() : bool
+```
+
+**Summary**
+
+Проверяет наличие данных самозанятого в создаваемой выплате
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** bool - True если данные самозанятого есть, false если нет
+
+
+<a name="method_setSelfEmployed" class="anchor"></a>
+#### public setSelfEmployed() : $this
+
+```php
+public setSelfEmployed(\YooKassa\Request\Payouts\PayoutSelfEmployedInfo|array|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает данные самозанятого, который получит выплату.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\PayoutSelfEmployedInfo OR array OR null</code> | value  | Данные самозанятого, который получит выплату |
+
+**Returns:** $this - 
+
+
+<a name="method_getReceiptData" class="anchor"></a>
+#### public getReceiptData() : \YooKassa\Request\Payouts\IncomeReceiptData|null
+
+```php
+public getReceiptData() : \YooKassa\Request\Payouts\IncomeReceiptData|null
+```
+
+**Summary**
+
+Возвращает данные для формирования чека в сервисе Мой налог.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** \YooKassa\Request\Payouts\IncomeReceiptData|null - Данные для формирования чека в сервисе Мой налог
+
+
+<a name="method_hasReceiptData" class="anchor"></a>
+#### public hasReceiptData() : bool
+
+```php
+public hasReceiptData() : bool
+```
+
+**Summary**
+
+Проверяет наличие данных для формирования чека в сервисе Мой налог.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** bool - True если данные для формирования чека есть, false если нет
+
+
+<a name="method_setReceiptData" class="anchor"></a>
+#### public setReceiptData() : $this
+
+```php
+public setReceiptData(\YooKassa\Request\Payouts\IncomeReceiptData|array|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает данные для формирования чека в сервисе Мой налог.
+
+**Description**
+
+.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\IncomeReceiptData OR array OR null</code> | value  | Данные для формирования чека в сервисе Мой налог. |
+
+**Returns:** $this - 
+
+
+<a name="method_getPersonalData" class="anchor"></a>
+#### public getPersonalData() : \YooKassa\Request\Payouts\PayoutPersonalData[]|null
+
+```php
+public getPersonalData() : \YooKassa\Request\Payouts\PayoutPersonalData[]|null
+```
+
+**Summary**
+
+Возвращает персональные данные получателя выплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** \YooKassa\Request\Payouts\PayoutPersonalData[]|null - Персональные данные получателя выплаты
+
+
+<a name="method_hasPersonalData" class="anchor"></a>
+#### public hasPersonalData() : bool
+
+```php
+public hasPersonalData() : bool
+```
+
+**Summary**
+
+Проверяет наличие персональных данных в создаваемой выплате
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+**Returns:** bool - True если персональные данные есть, false если нет
+
+
+<a name="method_setPersonalData" class="anchor"></a>
+#### public setPersonalData() : $this
+
+```php
+public setPersonalData(\YooKassa\Request\Payouts\PayoutPersonalData[]|array|null $value = null) : $this
+```
+
+**Summary**
+
+Устанавливает персональные данные получателя выплаты.
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payouts\CreatePayoutRequestInterface](../classes/YooKassa-Request-Payouts-CreatePayoutRequestInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Request\Payouts\PayoutPersonalData[] OR array OR null</code> | value  | Персональные данные получателя выплаты |
+
+**Returns:** $this - 
+
+
 <a name="method_getMetadata" class="anchor"></a>
 #### public getMetadata() : \YooKassa\Model\Metadata
 
@@ -402,11 +650,11 @@ public setMetadata(\YooKassa\Model\Metadata|array|null $value) : mixed
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -209,7 +209,7 @@ class CurlClient implements ApiClientInterface
     {
 
         $this->setCurlOption(CURLOPT_CUSTOMREQUEST, $method);
-        if(!empty($httpBody)) {
+        if (!empty($httpBody)) {
             $this->setCurlOption(CURLOPT_POSTFIELDS, $httpBody);
         }
     }
@@ -413,7 +413,7 @@ class CurlClient implements ApiClientInterface
         if ($this->shopId && $this->shopPassword) {
             $encodedAuth = base64_encode($this->shopId . ':' . $this->shopPassword);
             $headers['Authorization'] = 'Basic ' . $encodedAuth;
-        } else if ($this->bearerToken) {
+        } elseif ($this->bearerToken) {
             $headers['Authorization'] = 'Bearer ' . $this->bearerToken;
         }
 
@@ -430,7 +430,9 @@ class CurlClient implements ApiClientInterface
      */
     private function implodeHeaders($headers)
     {
-        return array_map(function ($key, $value) { return $key . ':' . $value; }, array_keys($headers), $headers);
+        return array_map(function ($key, $value) {
+            return $key . ':' . $value;
+        }, array_keys($headers), $headers);
     }
 
     /**

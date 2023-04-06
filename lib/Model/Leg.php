@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 
 namespace YooKassa\Model;
-
 
 use YooKassa\Common\AbstractObject;
 use YooKassa\Common\Exceptions\InvalidPropertyValueException;
@@ -81,11 +80,17 @@ class Leg extends AbstractObject implements LegInterface
     public function setDepartureAirport($value)
     {
         if (!TypeCast::canCastToString($value)) {
-            throw new InvalidPropertyValueTypeException('Invalid departure_airport value type', 0,
-                'airline.departure_airport');
+            throw new InvalidPropertyValueTypeException(
+                'Invalid departure_airport value type',
+                0,
+                'airline.departure_airport'
+            );
         } elseif (!preg_match('/^[A-Z]{3}$/', (string)$value)) {
-            throw new InvalidPropertyValueException('Invalid departure_airport value: "'.$value.'"', 0,
-                'airline.departure_airport');
+            throw new InvalidPropertyValueException(
+                'Invalid departure_airport value: "' . $value . '"',
+                0,
+                'airline.departure_airport'
+            );
         } else {
             $this->_departureAirport = (string)$value;
         }
@@ -106,11 +111,17 @@ class Leg extends AbstractObject implements LegInterface
     public function setDestinationAirport($value)
     {
         if (!TypeCast::canCastToString($value)) {
-            throw new InvalidPropertyValueTypeException('Invalid destination_airport value type', 0,
-                'airline.destination_airport');
+            throw new InvalidPropertyValueTypeException(
+                'Invalid destination_airport value type',
+                0,
+                'airline.destination_airport'
+            );
         } elseif (!preg_match('/^[A-Z]{3}$/', (string)$value)) {
-            throw new InvalidPropertyValueException('Invalid destination_airport value: "'.$value.'"', 0,
-                'airline.destination_airport');
+            throw new InvalidPropertyValueException(
+                'Invalid destination_airport value: "' . $value . '"',
+                0,
+                'airline.destination_airport'
+            );
         } else {
             $this->_destinationAirport = (string)$value;
         }
@@ -135,13 +146,17 @@ class Leg extends AbstractObject implements LegInterface
             $departureDate = TypeCast::castToDateTime($value);
             if ($departureDate === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid departure_date value in airline.legs', 0, 'airline.legs'
+                    'Invalid departure_date value in airline.legs',
+                    0,
+                    'airline.legs'
                 );
             }
             $this->_departureDate = $departureDate->format(self::ISO8601);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid departure_date value type in airline.legs', 0, 'airline.legs'
+                'Invalid departure_date value type in airline.legs',
+                0,
+                'airline.legs'
             );
         }
     }

@@ -140,7 +140,7 @@ class TestNotification extends AbstractNotification
 {
     public function __construct($type, $event)
     {
-        $this->_setType($type);
-        $this->_setEvent($event);
+        $this->setType($type);
+        $this->setEvent($event);
     }
 }

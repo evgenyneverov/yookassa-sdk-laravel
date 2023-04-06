@@ -153,7 +153,7 @@ class ReceiptResponseItemTest extends TestCase
                 self::assertSame($options['mark_quantity'], $instance->getMarkQuantity()->toArray());
                 self::assertSame($options['mark_quantity'], $instance->mark_quantity->toArray());
                 self::assertSame($options['mark_quantity'], $instance->markQuantity->toArray());
-            }else {
+            } else {
                 self::assertNotNull($instance->getMarkQuantity());
                 self::assertEquals($options['mark_quantity'], $instance->getMarkQuantity());
             }
@@ -570,7 +570,7 @@ class ReceiptResponseItemTest extends TestCase
                     'description' => Random::str(128),
                     'quantity' => Random::float(0.0001, 99.99),
                     'amount' => new MonetaryAmount(Random::int(1, 1000)),
-                    'vat_code' => Random::int(1,6),
+                    'vat_code' => Random::int(1, 6),
                     'measure' => null,
                     'excise' => null,
                     'payment_mode' => null,
@@ -600,8 +600,8 @@ class ReceiptResponseItemTest extends TestCase
                         'value' => round(Random::float(0.1, 99.99), 2),
                         'currency' => Random::value(CurrencyCode::getValidValues())
                     ),
-                    'vat_code' => Random::int(1,6),
-                    'excise' => round(Random::float(1.0,10.0), 2),
+                    'vat_code' => Random::int(1, 6),
+                    'excise' => round(Random::float(1.0, 10.0), 2),
                     'payment_mode' => Random::value(PaymentMode::getValidValues()),
                     'payment_subject' => Random::value(PaymentSubject::getValidValues()),
                     'product_code' => Random::value(array(
@@ -639,7 +639,7 @@ class ReceiptResponseItemTest extends TestCase
             );
             if ($test[0]['measure'] === ReceiptItemMeasure::PIECE) {
                 $test[0]['mark_quantity'] = array(
-                    'numerator' => Random::int(1,100),
+                    'numerator' => Random::int(1, 100),
                     'denominator' => 100,
                 );
             }

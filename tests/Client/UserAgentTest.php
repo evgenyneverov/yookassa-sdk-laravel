@@ -7,7 +7,6 @@ use ReflectionClass;
 use ReflectionException;
 use YooKassa\Client\UserAgent;
 
-
 class UserAgentTest extends TestCase
 {
     /**
@@ -26,8 +25,8 @@ class UserAgentTest extends TestCase
         $method    = $reflector->getMethod('setSdk');
         $method->setAccessible(true);
         $method->invokeArgs($agent, array('name' => 'YooKassa.PHP', 'version' => '1.4.1'));
-        $agent->setCms('Wordpress','2.0.4');
-        $agent->setModule('Woocommerce','1.2.3');
+        $agent->setCms('Wordpress', '2.0.4');
+        $agent->setModule('Woocommerce', '1.2.3');
         $this->assertEquals('CentOS/6.7 PHP/5.4.45 Wordpress/2.0.4 Woocommerce/1.2.3 YooKassa.PHP/1.4.1', $agent->getHeaderString());
     }
 

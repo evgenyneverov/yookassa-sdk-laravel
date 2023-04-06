@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -91,19 +91,27 @@ class AbstractRefundRequest extends AbstractRequest
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty payment id value in CreateRefundRequest', 0, 'CreateRefundRequest.paymentId'
+                'Empty payment id value in CreateRefundRequest',
+                0,
+                'CreateRefundRequest.paymentId'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $length = mb_strlen($value, 'utf-8');
             if ($length != 36) {
                 throw new InvalidPropertyValueException(
-                    'Invalid payment id value in CreateRefundRequest', 0, 'CreateRefundRequest.paymentId', $value
+                    'Invalid payment id value in CreateRefundRequest',
+                    0,
+                    'CreateRefundRequest.paymentId',
+                    $value
                 );
             }
             $this->_paymentId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment id value type in CreateRefundRequest', 0, 'CreateRefundRequest.paymentId', $value
+                'Invalid payment id value type in CreateRefundRequest',
+                0,
+                'CreateRefundRequest.paymentId',
+                $value
             );
         }
     }
@@ -219,5 +227,4 @@ class AbstractRefundRequest extends AbstractRequest
 
         return true;
     }
-
 }

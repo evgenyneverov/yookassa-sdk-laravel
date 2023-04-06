@@ -23,7 +23,11 @@
 | [\YooKassa\Request\Payouts\CreatePayoutRequestBuilder](../classes/YooKassa-Request-Payouts-CreatePayoutRequestBuilder.md) | Класс билдера объектов запросов к API на создание платежа |
 | [\YooKassa\Request\Payouts\CreatePayoutRequestSerializer](../classes/YooKassa-Request-Payouts-CreatePayoutRequestSerializer.md) | Класс сериалайзера объекта запроса к API на проведение выплаты |
 | [\YooKassa\Request\Payouts\CreatePayoutResponse](../classes/YooKassa-Request-Payouts-CreatePayoutResponse.md) | Класс объекта ответа возвращаемого API при запросе на создание выплаты |
+| [\YooKassa\Request\Payouts\IncomeReceiptData](../classes/YooKassa-Request-Payouts-IncomeReceiptData.md) | Класс, представляющий модель IncomeReceiptData. |
+| [\YooKassa\Request\Payouts\PayoutPersonalData](../classes/YooKassa-Request-Payouts-PayoutPersonalData.md) | Класс, представляющий модель PayoutsPersonalData. |
 | [\YooKassa\Request\Payouts\PayoutResponse](../classes/YooKassa-Request-Payouts-PayoutResponse.md) | Класс объекта ответа, возвращаемого API при запросе конкретной выплаты |
+| [\YooKassa\Request\Payouts\PayoutSelfEmployedInfo](../classes/YooKassa-Request-Payouts-PayoutSelfEmployedInfo.md) | Класс, представляющий модель PayoutSelfEmployedInfo. |
+| [\YooKassa\Request\Payouts\SbpBanksResponse](../classes/YooKassa-Request-Payouts-SbpBanksResponse.md) | Класс, представляющий модель GetSbpBanksResponse. |
 
 ---
 
@@ -35,11 +39,11 @@
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

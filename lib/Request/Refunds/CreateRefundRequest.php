@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,6 @@ use YooKassa\Model\SourceInterface;
  */
 class CreateRefundRequest extends AbstractRefundRequest implements CreateRefundRequestInterface
 {
-
     /**
      * @var string Комментарий к операции возврата, основание для возврата средств покупателю.
      */
@@ -97,7 +96,10 @@ class CreateRefundRequest extends AbstractRefundRequest implements CreateRefundR
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type in CreateRefundRequest', 0, 'CreateRefundRequest.description', $value
+                'Invalid description value type in CreateRefundRequest',
+                0,
+                'CreateRefundRequest.description',
+                $value
             );
         }
     }
@@ -198,7 +200,10 @@ class CreateRefundRequest extends AbstractRefundRequest implements CreateRefundR
             $this->_deal = new RefundDealData($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal value type in CreateRefundRequest', 0, 'CreateRefundRequest.deal', $value
+                'Invalid deal value type in CreateRefundRequest',
+                0,
+                'CreateRefundRequest.deal',
+                $value
             );
         }
     }

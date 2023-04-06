@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ use YooKassa\Model\PaymentMethodType;
 class PaymentMethodBankCard extends AbstractPaymentMethod
 {
     /**
-     * @var string Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
+     * @var int Длина кода страны по ISO 3166 https://www.iso.org/obp/ui/#iso:pub:PUB500001:en
      * @deprecated Будет удален в следующих версиях
      */
     const ISO_3166_CODE_LENGTH = 2;
@@ -51,7 +51,7 @@ class PaymentMethodBankCard extends AbstractPaymentMethod
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::BANK_CARD);
+        $this->setType(PaymentMethodType::BANK_CARD);
     }
 
     /**
@@ -160,7 +160,10 @@ class PaymentMethodBankCard extends AbstractPaymentMethod
             $this->_card = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card value type', 0, 'PaymentMethodBankCard.card', $value
+                'Invalid card value type',
+                0,
+                'PaymentMethodBankCard.card',
+                $value
             );
         }
     }
@@ -177,5 +180,4 @@ class PaymentMethodBankCard extends AbstractPaymentMethod
         }
         return $return;
     }
-
 }

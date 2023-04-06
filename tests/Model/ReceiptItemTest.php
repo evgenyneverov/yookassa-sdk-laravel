@@ -516,6 +516,92 @@ class ReceiptItemTest extends TestCase
     }
 
     /**
+     * @dataProvider invalidPaymentModeDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetInvalidPaymentMode($value)
+    {
+        $this->getTestInstance()->setPaymentMode($value);
+    }
+
+    /**
+     * @dataProvider invalidPaymentModeDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetterInvalidPaymentMode($value)
+    {
+        $this->getTestInstance()->paymentMode = $value;
+    }
+
+    /**
+     * @dataProvider invalidPaymentModeDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetterInvalidPayment_mode($value)
+    {
+        $this->getTestInstance()->payment_mode = $value;
+    }
+
+    public function invalidPaymentModeDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(array()),
+            array(new \stdClass()),
+        );
+    }
+
+    /**
+     * @dataProvider invalidPaymentSubjectDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetInvalidPaymentSubject($value)
+    {
+        $this->getTestInstance()->setPaymentSubject($value);
+    }
+
+    /**
+     * @dataProvider invalidPaymentSubjectDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetterInvalidPaymentSubject($value)
+    {
+        $this->getTestInstance()->paymentSubject = $value;
+    }
+
+    /**
+     * @dataProvider invalidPaymentSubjectDataProvider
+     * @expectedException \InvalidArgumentException
+     *
+     * @param $value
+     */
+    public function testSetterInvalidPayment_subject($value)
+    {
+        $this->getTestInstance()->payment_subject = $value;
+    }
+
+    public function invalidPaymentSubjectDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(array()),
+            array(new \stdClass()),
+        );
+    }
+
+    /**
      * @dataProvider invalidVatCodeDataProvider
      * @expectedException \InvalidArgumentException
      *
@@ -928,7 +1014,6 @@ class ReceiptItemTest extends TestCase
         $instance->setPrice(new ReceiptItemAmount(Random::int(1, 100)));
         $instance->setQuantity($quantity);
         $instance->fetchItem($fetch);
-
     }
 
     public function invalidFetchItemDataProvider()

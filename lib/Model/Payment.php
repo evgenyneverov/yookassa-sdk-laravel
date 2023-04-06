@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -254,7 +254,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_status = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment status value type', 0, 'Payment.status', $value
+                'Invalid payment status value type',
+                0,
+                'Payment.status',
+                $value
             );
         }
     }
@@ -328,7 +331,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'CreatePaymentRequest.description', $value
+                'Invalid description value type',
+                0,
+                'CreatePaymentRequest.description',
+                $value
             );
         }
     }
@@ -476,7 +482,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_paid = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment paid flag value type', 0, 'Payment.paid', $value
+                'Invalid payment paid flag value type',
+                0,
+                'Payment.paid',
+                $value
             );
         }
     }
@@ -505,7 +514,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_refundable = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment refundable flag value type', 0, 'Payment.refundable', $value
+                'Invalid payment refundable flag value type',
+                0,
+                'Payment.refundable',
+                $value
             );
         }
     }
@@ -535,12 +547,18 @@ class Payment extends AbstractObject implements PaymentInterface
                 $this->_receiptRegistration = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid receipt_registration value', 0, 'payment.receiptRegistration', $value
+                    'Invalid receipt_registration value',
+                    0,
+                    'payment.receiptRegistration',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid receipt_registration value type', 0, 'payment.receiptRegistration', $value
+                'Invalid receipt_registration value type',
+                0,
+                'payment.receiptRegistration',
+                $value
             );
         }
     }
@@ -690,7 +708,8 @@ class Payment extends AbstractObject implements PaymentInterface
      * @param RequestorInterface|array $value
      */
     public function setRequestor($value)
-    {}
+    {
+    }
 
     /**
      * Возвращает инициатора платежа
@@ -723,7 +742,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_test = (bool)$test;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment test flag value type', 0, 'Payment.test', $test
+                'Invalid payment test flag value type',
+                0,
+                'Payment.test',
+                $test
             );
         }
     }
@@ -753,7 +775,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_deal = new PaymentDealInfo($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal value type in Payment', 0, 'Payment.deal', $value
+                'Invalid deal value type in Payment',
+                0,
+                'Payment.deal',
+                $value
             );
         }
     }
@@ -790,7 +815,10 @@ class Payment extends AbstractObject implements PaymentInterface
             $this->_merchant_customer_id = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid merchant_customer_id value type in Payment', 0, 'Payment.merchant_customer_id', $value
+                'Invalid merchant_customer_id value type in Payment',
+                0,
+                'Payment.merchant_customer_id',
+                $value
             );
         }
     }

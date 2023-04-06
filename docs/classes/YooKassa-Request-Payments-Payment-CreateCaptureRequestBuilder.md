@@ -45,7 +45,7 @@
 ---
 ### Details
 * File: [lib/Request/Payments/Payment/CreateCaptureRequestBuilder.php](../../lib/Request/Payments/Payment/CreateCaptureRequestBuilder.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy:  
   * [\YooKassa\Common\AbstractRequestBuilder](../classes/YooKassa-Common-AbstractRequestBuilder.md)
   * [\YooKassa\Common\AbstractPaymentRequestBuilder](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md)
@@ -60,7 +60,7 @@
 
 Сумма
 
-**Type:** <a href="../classes/YooKassa-Model-MonetaryAmount.html"><abbr title="\YooKassa\Model\MonetaryAmount">MonetaryAmount</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-MonetaryAmount.html"><abbr title="\YooKassa\Model\MonetaryAmount">MonetaryAmount</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractPaymentRequestBuilder](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md)
@@ -73,7 +73,7 @@
 
 Собираемый объект запроса
 
-**Type:** <a href="../classes/YooKassa-Request-Payments-Payment-CreateCaptureRequest.html"><abbr title="\YooKassa\Request\Payments\Payment\CreateCaptureRequest">CreateCaptureRequest</abbr></a>
+**Type:** <a href="classes/YooKassa-Request-Payments-Payment-CreateCaptureRequest.html"><abbr title="\YooKassa\Request\Payments\Payment\CreateCaptureRequest">CreateCaptureRequest</abbr></a>
 
 **Details:**
 
@@ -85,7 +85,7 @@
 
 Объект с информацией о сделке, в составе которой проходит подтверждение платежа.
 
-**Type:** <a href="../classes/YooKassa-Model-Deal-CaptureDealData.html"><abbr title="\YooKassa\Model\Deal\CaptureDealData">CaptureDealData</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Deal-CaptureDealData.html"><abbr title="\YooKassa\Model\Deal\CaptureDealData">CaptureDealData</abbr></a>
 
 **Details:**
 
@@ -97,7 +97,7 @@
 
 Объект с информацией о чеке
 
-**Type:** <a href="../classes/YooKassa-Model-Receipt.html"><abbr title="\YooKassa\Model\Receipt">Receipt</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Receipt.html"><abbr title="\YooKassa\Model\Receipt">Receipt</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractPaymentRequestBuilder](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md)
@@ -110,7 +110,7 @@
 
 Массив платежей в пользу разных мерчантов
 
-**Type:** <a href="../\YooKassa\Model\TransferInterface[]"><abbr title="\YooKassa\Model\TransferInterface[]">TransferInterface[]</abbr></a>
+**Type:** <a href="\YooKassa\Model\TransferInterface[]"><abbr title="\YooKassa\Model\TransferInterface[]">TransferInterface[]</abbr></a>
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractPaymentRequestBuilder](../classes/YooKassa-Common-AbstractPaymentRequestBuilder.md)
@@ -501,11 +501,11 @@ protected initCurrentObject() : \YooKassa\Request\Payments\Payment\CreateCapture
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

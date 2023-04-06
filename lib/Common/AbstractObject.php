@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -90,11 +90,11 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
     {
         $method = 'get' . ucfirst($offset);
         if (method_exists($this, $method)) {
-            return $this->{$method} ();
+            return $this->{$method}();
         }
         $method = 'get' . self::matchPropertyName($offset);
         if (method_exists($this, $method)) {
-            return $this->{$method} ();
+            return $this->{$method}();
         }
         return array_key_exists($offset, $this->unknownProperties) ? $this->unknownProperties[$offset] : null;
     }
@@ -131,11 +131,11 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
     {
         $method = 'set' . ucfirst($offset);
         if (method_exists($this, $method)) {
-            $this->{$method} (null);
+            $this->{$method}(null);
         } else {
             $method = 'set' . self::matchPropertyName($offset);
             if (method_exists($this, $method)) {
-                $this->{$method} (null);
+                $this->{$method}(null);
             } else {
                 unset($this->unknownProperties[$offset]);
             }
@@ -219,7 +219,7 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
                     continue;
                 }
                 $property = strtolower(preg_replace('/[A-Z]/', '_\0', lcfirst(substr($method, 3))));
-                $value = $this->serializeValueToJson($this->{$method} ());
+                $value = $this->serializeValueToJson($this->{$method}());
                 if ($value !== null) {
                     $result[$property] = $value;
                 }

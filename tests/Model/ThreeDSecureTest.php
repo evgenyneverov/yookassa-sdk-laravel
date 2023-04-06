@@ -2,9 +2,10 @@
 
 namespace Tests\YooKassa\Model;
 
+use PHPUnit\Framework\TestCase;
 use YooKassa\Model\ThreeDSecure;
 
-class ThreeDSecureTest extends \PHPUnit_Framework_TestCase
+class ThreeDSecureTest extends TestCase
 {
     /**
      * @dataProvider validDataProvider
@@ -77,13 +78,13 @@ class ThreeDSecureTest extends \PHPUnit_Framework_TestCase
     {
         $exceptionNamespace = 'YooKassa\\Common\\Exceptions\\';
         return array(
-            array(array(), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(fopen(__FILE__, 'r'), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(-1, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(-0.01, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(0.0, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array('', $exceptionNamespace.'EmptyPropertyValueException'),
-            array(null, $exceptionNamespace.'EmptyPropertyValueException'),
+            array(array(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(fopen(__FILE__, 'r'), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(-1, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(-0.01, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(0.0, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array('', $exceptionNamespace . 'EmptyPropertyValueException'),
+            array(null, $exceptionNamespace . 'EmptyPropertyValueException'),
         );
     }
 
@@ -95,7 +96,7 @@ class ThreeDSecureTest extends \PHPUnit_Framework_TestCase
      */
     public function testJsonSerialize($threeDSecure)
     {
-        if (is_object($threeDSecure)){
+        if (is_object($threeDSecure)) {
             $threeDSecure = $threeDSecure->jsonSerialize();
         }
 

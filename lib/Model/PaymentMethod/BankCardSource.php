@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,22 +26,23 @@
 
 namespace YooKassa\Model\PaymentMethod;
 
-
 use YooKassa\Common\AbstractEnum;
 
 /**
  * BankCardSource - Источник данных банковской карты
- * |Код|Описание|
- * --- | ---
- * |apple_pay|Источник данных apple_pay|
- * |google_pay|Источник данных google_pay|
- * |mir_pay|Источник данных mir_pay|
  *
+ * Возможные значения:
+ * - apple_pay - Источник данных ApplePay
+ * - google_pay - Источник данных GooglePay
+ * - mir_pay - Источник данных MirPay
  */
 class BankCardSource extends AbstractEnum
 {
+    /** Источник данных ApplePay  */
     const APPLE_PAY  = 'apple_pay';
+    /** Источник данных GooglePay */
     const GOOGLE_PAY = 'google_pay';
+    /** Источник данных MirPay */
     const MIR_PAY = 'mir_pay';
 
     protected static $validValues = array(

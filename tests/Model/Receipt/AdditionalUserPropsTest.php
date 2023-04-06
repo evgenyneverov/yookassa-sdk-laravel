@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class AdditionalUserPropsTest extends TestCase
 {
-
     protected static function getInstance($options = null)
     {
         return new AdditionalUserProps($options);

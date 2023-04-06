@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ class PayoutDestinationDataBankCard extends AbstractPayoutDestinationData
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::BANK_CARD);
+        $this->setType(PaymentMethodType::BANK_CARD);
     }
 
     /**
@@ -75,7 +75,10 @@ class PayoutDestinationDataBankCard extends AbstractPayoutDestinationData
             $this->_card = $card;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid card value type in PayoutDestinationBankCard', 0, 'PayoutDestinationBankCard.card', $value
+                'Invalid card value type in PayoutDestinationBankCard',
+                0,
+                'PayoutDestinationBankCard.card',
+                $value
             );
         }
     }

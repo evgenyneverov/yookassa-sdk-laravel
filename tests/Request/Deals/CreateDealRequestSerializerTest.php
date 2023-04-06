@@ -11,7 +11,6 @@ use YooKassa\Request\Deals\CreateDealRequestSerializer;
 
 class CreateDealRequestSerializerTest extends TestCase
 {
-
     /**
      * @dataProvider validDataProvider
      *

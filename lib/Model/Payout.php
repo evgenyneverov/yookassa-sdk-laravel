@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,8 +35,10 @@ use YooKassa\Helpers\TypeCast;
 use YooKassa\Model\Deal\PayoutDealInfo;
 use YooKassa\Model\PaymentMethod\AbstractPaymentMethod;
 use YooKassa\Model\Payout\AbstractPayoutDestination;
+use YooKassa\Model\Payout\IncomeReceipt;
 use YooKassa\Model\Payout\PayoutCancellationDetails;
 use YooKassa\Model\Payout\PayoutDestinationFactory;
+use YooKassa\Model\Payout\PayoutSelfEmployed;
 
 /**
  * Payout - Данные о выплате
@@ -50,6 +52,9 @@ use YooKassa\Model\Payout\PayoutDestinationFactory;
  * @property DateTime $createdAt Время создания заказа
  * @property DateTime $created_at Время создания заказа
  * @property PayoutDealInfo $deal Сделка, в рамках которой нужно провести выплату
+ * @property PayoutSelfEmployed $self_employed Данные самозанятого, который получит выплату
+ * @property PayoutSelfEmployed $selfEmployed Данные самозанятого, который получит выплату
+ * @property IncomeReceipt $receipt Данные чека, зарегистрированного в ФНС
  * @property CancellationDetailsInterface $cancellationDetails Комментарий к отмене выплаты
  * @property CancellationDetailsInterface $cancellation_details Комментарий к отмене выплаты
  * @property Metadata $metadata Метаданные выплаты указанные мерчантом
@@ -94,6 +99,16 @@ class Payout extends AbstractObject implements PayoutInterface
      * @var PayoutDealInfo Сделка, в рамках которой нужно провести выплату. Присутствует, если вы проводите Безопасную сделку
      */
     private $_deal;
+
+    /**
+     * @var PayoutSelfEmployed|null Данные самозанятого, который получит выплату. Присутствует, если вы делаете выплату самозанятому
+     */
+    private $_self_employed;
+
+    /**
+     * @var IncomeReceipt|null Данные чека, зарегистрированного в ФНС. Присутствует, если вы делаете выплату самозанятому.
+     */
+    private $_receipt;
 
     /**
      * @var PayoutCancellationDetails Комментарий к статусу canceled: кто отменил выплаты и по какой причине
@@ -150,19 +165,23 @@ class Payout extends AbstractObject implements PayoutInterface
 
     /**
      * Устанавливает сумму выплаты
-     * @param AmountInterface|array $value Сумма выплаты
+     * @param AmountInterface|array|null $value Сумма выплаты
      */
-    public function setAmount($value)
+    public function setAmount($value = null)
     {
-        if ($value === null || $value === '') {
+        if ($value === null || $value === '' || (is_array($value) && empty($value))) {
             throw new EmptyPropertyValueException('Empty amount value', 0, 'Payout.amount');
-        } elseif ($value instanceof AmountInterface) {
+        }
+        if ($value instanceof AmountInterface) {
             $this->_amount = $value;
         } elseif (is_array($value)) {
             $this->_amount = new MonetaryAmount($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid Payout.amount value type', 0, 'Payout.amount', $value
+                'Invalid Payout.amount value type',
+                0,
+                'Payout.amount',
+                $value
             );
         }
     }
@@ -192,7 +211,10 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_status = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid Payout status value type', 0, 'Payout.status', $value
+                'Invalid Payout status value type',
+                0,
+                'Payout.status',
+                $value
             );
         }
     }
@@ -230,7 +252,10 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'CreatePayoutRequest.description', $value
+                'Invalid description value type',
+                0,
+                'CreatePayoutRequest.description',
+                $value
             );
         }
     }
@@ -246,18 +271,18 @@ class Payout extends AbstractObject implements PayoutInterface
 
     /**
      * Устанавливает используемый способ проведения выплаты
-     * @param AbstractPayoutDestination|array $value Способ проведения выплаты
+     * @param AbstractPayoutDestination|array|null $value Способ проведения выплаты
      */
     public function setPayoutDestination($value)
     {
-        if ($value === null || $value === '') {
+        if ($value === null || (is_array($value) && empty($value))) {
             $this->_payout_destination = null;
         } elseif ($value instanceof AbstractPayoutDestination) {
             $this->_payout_destination = $value;
         } elseif (is_array($value)) {
             $factory = new PayoutDestinationFactory();
             $this->_payout_destination  = $factory->factoryFromArray($value);
-        }  else {
+        } else {
             throw new InvalidPropertyValueTypeException('Invalid payout_destination value type', 0, 'Payout.payout_destination', $value);
         }
 
@@ -308,7 +333,7 @@ class Payout extends AbstractObject implements PayoutInterface
 
     /**
      * Устанавливает метаданные выплаты
-     * @param Metadata|array $value Метаданные выплаты указанные мерчантом
+     * @param Metadata|array|null $value Метаданные выплаты указанные мерчантом
      */
     public function setMetadata($value)
     {
@@ -320,7 +345,10 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_metadata = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "metadata" parameter in Payout', 0, 'Payout.metadata', $value
+                'Invalid value type for "metadata" parameter in Payout',
+                0,
+                'Payout.metadata',
+                $value
             );
         }
         return $this;
@@ -342,7 +370,7 @@ class Payout extends AbstractObject implements PayoutInterface
      */
     public function setCancellationDetails($value)
     {
-        if ($value === null) {
+        if ($value === null || (is_array($value) && empty($value))) {
             $this->_cancellationDetails = null;
         } elseif (is_array($value)) {
             $this->_cancellationDetails = new PayoutCancellationDetails($value);
@@ -350,7 +378,10 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_cancellationDetails = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "cancellation_details" parameter in Payout', 0, 'Payout.cancellation_details', $value
+                'Invalid value type for "cancellation_details" parameter in Payout',
+                0,
+                'Payout.cancellation_details',
+                $value
             );
         }
     }
@@ -376,7 +407,10 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_test = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid Payout test flag value type', 0, 'Payout.test', $value
+                'Invalid Payout test flag value type',
+                0,
+                'Payout.test',
+                $value
             );
         }
     }
@@ -392,11 +426,11 @@ class Payout extends AbstractObject implements PayoutInterface
 
     /**
      * Устанавливает сделку, в рамках которой нужно провести выплату
-     * @param PayoutDealInfo|array $value Сделка, в рамках которой нужно провести выплату
+     * @param PayoutDealInfo|array|null $value Сделка, в рамках которой нужно провести выплату
      */
     public function setDeal($value)
     {
-        if ($value === null || $value === '') {
+        if ($value === null || (is_array($value) && empty($value))) {
             $this->_deal = null;
         } elseif (is_array($value)) {
             $this->_deal = new PayoutDealInfo($value);
@@ -404,9 +438,86 @@ class Payout extends AbstractObject implements PayoutInterface
             $this->_deal = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "deal" parameter in Payout', 0, 'Payout.deal', $value
+                'Invalid value type for "deal" parameter in Payout',
+                0,
+                'Payout.deal',
+                $value
             );
         }
+        return $this;
+    }
+
+    /**
+     * Возвращает данные самозанятого, который получит выплату.
+     *
+     * @return PayoutSelfEmployed|null Данные самозанятого, который получит выплату
+     */
+    public function getSelfEmployed()
+    {
+        return $this->_self_employed;
+    }
+
+    /**
+     * Устанавливает данные самозанятого, который получит выплату.
+     *
+     * @param PayoutSelfEmployed|array|null $value Данные самозанятого, который получит выплату
+     *
+     * @return $this
+     */
+    public function setSelfEmployed($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_self_employed = null;
+        } elseif (is_array($value)) {
+            $this->_self_employed = new PayoutSelfEmployed($value);
+        } elseif ($value instanceof PayoutSelfEmployed) {
+            $this->_self_employed = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid value type for "self_employed" parameter in Payout',
+                0,
+                'Payout.self_employed',
+                $value
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Возвращает данные чека, зарегистрированного в ФНС.
+     *
+     * @return IncomeReceipt|null Данные чека, зарегистрированного в ФНС
+     */
+    public function getReceipt()
+    {
+        return $this->_receipt;
+    }
+
+    /**
+     * Устанавливает данные чека, зарегистрированного в ФНС.
+     *
+     * @param IncomeReceipt|array|null $value Данные чека, зарегистрированного в ФНС
+     *
+     * @return $this
+     */
+    public function setReceipt($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_receipt = null;
+        } elseif (is_array($value)) {
+            $this->_receipt = new IncomeReceipt($value);
+        } elseif ($value instanceof IncomeReceipt) {
+            $this->_receipt = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid value type for "receipt" parameter in Payout',
+                0,
+                'Payout.receipt',
+                $value
+            );
+        }
+
         return $this;
     }
 }

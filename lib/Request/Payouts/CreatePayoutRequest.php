@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,8 +52,16 @@ use YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataFactory;
  * @property AbstractPayoutDestination $payout_destination_data Данные платежного средства, на которое нужно сделать выплату. Обязательный параметр, если не передан payout_token.
  * @property string $payoutToken Токенизированные данные для выплаты. Например, синоним банковской карты. Обязательный параметр, если не передан payout_destination_data
  * @property string $payout_token Токенизированные данные для выплаты. Например, синоним банковской карты. Обязательный параметр, если не передан payout_destination_data
+ * @property string $payment_method_id Идентификатор сохраненного способа оплаты, данные которого нужно использовать для проведения выплаты
+ * @property string $paymentMethodId Идентификатор сохраненного способа оплаты, данные которого нужно использовать для проведения выплаты
  * @property PayoutDealInfo $deal Сделка, в рамках которой нужно провести выплату. Необходимо передавать, если вы проводите Безопасную сделку
  * @property string $description Описание транзакции (не более 128 символов). Например: «Выплата по договору N»
+ * @property PayoutSelfEmployedInfo $self_employed Данные самозанятого, который получит выплату. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+ * @property PayoutSelfEmployedInfo $selfEmployed Данные самозанятого, который получит выплату. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+ * @property IncomeReceiptData $receipt_data Данные для формирования чека в сервисе Мой налог. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+ * @property IncomeReceiptData $receiptData Данные для формирования чека в сервисе Мой налог. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+ * @property PayoutPersonalData $personal_data Персональные данные получателя выплаты. Необходимо передавать, если вы делаете выплаты с [проверкой получателя](/developers/payouts/scenario-extensions/recipient-check) (только для выплат через СБП).
+ * @property PayoutPersonalData $personalData Персональные данные получателя выплаты. Необходимо передавать, если вы делаете выплаты с [проверкой получателя](/developers/payouts/scenario-extensions/recipient-check) (только для выплат через СБП).
  * @property Metadata $metadata Метаданные привязанные к выплате
  */
 class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequestInterface
@@ -66,12 +74,23 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
     /**
      * @var AbstractPayoutDestination Данные платежного средства, на которое нужно сделать выплату
      */
-    private $_payoutDestinationData;
+    private $_payout_destination_data;
 
     /**
      * @var string Токенизированные данные для выплаты
      */
     private $_payoutToken;
+
+    /**
+     * Идентификатор сохраненного способа оплаты, данные которого нужно использовать для проведения выплаты.
+     *
+     * [Подробнее о выплатах с использованием идентификатора сохраненного способа оплаты](https://yookassa.ru/developers/payouts/scenario-extensions/multipurpose-token)
+     *
+     * Обязательный параметр, если не передан payout_destination_data или payout_token.
+     *
+     * @var string|null
+     */
+    private $_payment_method_id;
 
     /**
      * @var PayoutDealInfo Сделка, в рамках которой нужно провести выплату
@@ -82,6 +101,27 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
      * @var string Описание транзакции
      */
     private $_description;
+
+    /**
+     * Данные самозанятого, который получит выплату. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+     *
+     * @var PayoutSelfEmployedInfo|null
+     */
+    private $_self_employed;
+
+    /**
+     * Данные для формирования чека в сервисе Мой налог. Необходимо передавать, если вы делаете выплату [самозанятому](https://yookassa.ru/developers/payouts/scenario-extensions/self-employed). Только для обычных выплат.
+     *
+     * @var IncomeReceiptData|null
+     */
+    private $_receipt_data;
+
+    /**
+     * Персональные данные получателя выплаты. Необходимо передавать, если вы делаете выплаты с [проверкой получателя](/developers/payouts/scenario-extensions/recipient-check) (только для выплат через СБП).
+     *
+     * @var PayoutPersonalData[]|null
+     */
+    private $_personal_data;
 
     /**
      * @var Metadata Метаданные привязанные к выплате
@@ -108,7 +148,7 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
 
     /**
      * Устанавливает сумму выплаты
-     * @param AmountInterface|array|string|null Сумма выплаты
+     * @param AmountInterface|array|string|numeric|null $value Сумма выплаты
      *
      * @throws InvalidPropertyValueTypeException Выбрасывается если был передан объект невалидного типа
      */
@@ -116,12 +156,17 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException('Empty amount value', 0, 'CreatePayoutRequest.amount');
-        } elseif ($value instanceof AmountInterface) {
+        }
+        if ($value instanceof AmountInterface) {
             $this->_amount = $value;
         } elseif (is_numeric($value) || is_array($value)) {
             $this->_amount = new MonetaryAmount($value);
         } else {
             throw new InvalidPropertyValueTypeException('Invalid amount value type in CreatePayoutRequest', 0, 'CreatePayoutRequest.amount', $value);
+        }
+        $value = $this->_amount->getValue();
+        if (empty($value) || $value <= 0.0) {
+            throw new InvalidPropertyValueException('Invalid amount value in CreatePayoutRequest', 0, 'CreatePayoutRequest.amount', $value);
         }
     }
 
@@ -131,7 +176,7 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
      */
     public function getPayoutDestinationData()
     {
-        return $this->_payoutDestinationData;
+        return $this->_payout_destination_data;
     }
 
     /**
@@ -140,7 +185,7 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
      */
     public function hasPayoutDestinationData()
     {
-        return !empty($this->_payoutDestinationData);
+        return !empty($this->_payout_destination_data);
     }
 
     /**
@@ -152,12 +197,12 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
     public function setPayoutDestinationData($value)
     {
         if ($value === null || $value === '') {
-            $this->_payoutDestinationData = null;
+            $this->_payout_destination_data = null;
         } elseif ($value instanceof AbstractPayoutDestinationData) {
-            $this->_payoutDestinationData = $value;
+            $this->_payout_destination_data = $value;
         } elseif (is_array($value)) {
             $factory = new PayoutDestinationDataFactory();
-            $this->_payoutDestinationData = $factory->factoryFromArray($value);
+            $this->_payout_destination_data = $factory->factoryFromArray($value);
         } else {
             throw new InvalidPropertyValueTypeException(
                 'Invalid payoutDestinationData value type in CreatePayoutRequest',
@@ -169,8 +214,8 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
     }
 
     /**
-     * Проверяет наличие токенизированных данных для выплаты
-     * @return bool True если токен установлен, false если нет
+     * Возвращает токенизированные данные для выплаты
+     * @return string Токенизированные данные для выплаты
      */
     public function getPayoutToken()
     {
@@ -178,7 +223,7 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
     }
 
     /**
-     * Проверяет наличие одноразового токена для проведения оплаты
+     * Проверяет наличие токенизированных данных для выплаты
      * @return bool True если токен установлен, false если нет
      */
     public function hasPayoutToken()
@@ -200,9 +245,56 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
             $this->_payoutToken = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payoutToken value type', 0, 'CreatePayoutRequest.payoutToken', $value
+                'Invalid payoutToken value type',
+                0,
+                'CreatePayoutRequest.payoutToken',
+                $value
             );
         }
+    }
+
+    /**
+     * Возвращает идентификатор сохраненного способа оплаты.
+     *
+     * @return string|null Идентификатор сохраненного способа оплаты
+     */
+    public function getPaymentMethodId()
+    {
+        return $this->_payment_method_id;
+    }
+
+    /**
+     * Проверяет наличие идентификатора сохраненного способа оплаты
+     * @return bool True если идентификатора установлен, false если нет
+     */
+    public function hasPaymentMethodId()
+    {
+        return !empty($this->_payment_method_id);
+    }
+
+    /**
+     * Устанавливает идентификатор сохраненного способа оплаты.
+     *
+     * @param string|null $value Идентификатор сохраненного способа оплаты
+     *
+     * @return $this
+     */
+    public function setPaymentMethodId($value = null)
+    {
+        if ($value === null || $value === '') {
+            $this->_payment_method_id = null;
+        } elseif (TypeCast::canCastToString($value)) {
+            $this->_payment_method_id = (string)$value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid payment_method_id value type',
+                0,
+                'CreatePayoutRequest.payment_method_id',
+                $value
+            );
+        }
+
+        return $this;
     }
 
     /**
@@ -237,12 +329,164 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
             $this->_deal = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "deal" parameter in CreatePayoutRequest', 0, 'CreatePayoutRequest.deal', $value
+                'Invalid value type for "deal" parameter in CreatePayoutRequest',
+                0,
+                'CreatePayoutRequest.deal',
+                $value
             );
         }
         return $this;
     }
+    /**
+     * Возвращает данные самозанятого, который получит выплату.
+     *
+     * @return PayoutSelfEmployedInfo|null Данные самозанятого, который получит выплату
+     */
+    public function getSelfEmployed()
+    {
+        return $this->_self_employed;
+    }
 
+    /**
+     * Проверяет наличие данных самозанятого в создаваемой выплате
+     * @return bool True если данные самозанятого есть, false если нет
+     */
+    public function hasSelfEmployed()
+    {
+        return !empty($this->_self_employed);
+    }
+
+    /**
+     * Устанавливает данные самозанятого, который получит выплату.
+     *
+     * @param PayoutSelfEmployedInfo|array|null $value Данные самозанятого, который получит выплату
+     *
+     * @return $this
+     */
+    public function setSelfEmployed($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_self_employed = null;
+        } elseif (is_array($value)) {
+            $this->_self_employed = new PayoutSelfEmployedInfo($value);
+        } elseif ($value instanceof PayoutSelfEmployedInfo) {
+            $this->_self_employed = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid value type for "self_employed" parameter in CreatePayoutRequest',
+                0,
+                'CreatePayoutRequest.self_employed',
+                $value
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Возвращает данные для формирования чека в сервисе Мой налог.
+     *
+     * @return IncomeReceiptData|null Данные для формирования чека в сервисе Мой налог
+     */
+    public function getReceiptData()
+    {
+        return $this->_receipt_data;
+    }
+
+    /**
+     * Проверяет наличие данных для формирования чека в сервисе Мой налог.
+     * @return bool True если данные для формирования чека есть, false если нет
+     */
+    public function hasReceiptData()
+    {
+        return !empty($this->_receipt_data);
+    }
+
+    /**
+     * Устанавливает данные для формирования чека в сервисе Мой налог.
+     *
+     * @param IncomeReceiptData|array|null $value Данные для формирования чека в сервисе Мой налог
+     *
+     * @return $this
+     */
+    public function setReceiptData($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_receipt_data = null;
+        } elseif (is_array($value)) {
+            $this->_receipt_data = new IncomeReceiptData($value);
+        } elseif ($value instanceof IncomeReceiptData) {
+            $this->_receipt_data = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid value type for "receipt_data" parameter in CreatePayoutRequest',
+                0,
+                'CreatePayoutRequest.receipt_data',
+                $value
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Возвращает персональные данные получателя выплаты.
+     *
+     * @return PayoutPersonalData[]|null Персональные данные получателя выплаты
+     */
+    public function getPersonalData()
+    {
+        return $this->_personal_data;
+    }
+
+    /**
+     * Проверяет наличие персональных данных в создаваемой выплате
+     * @return bool True если персональные данные есть, false если нет
+     */
+    public function hasPersonalData()
+    {
+        return !empty($this->_personal_data);
+    }
+
+    /**
+     * Устанавливает персональные данные получателя выплаты.
+     *
+     * @param PayoutPersonalData[]|array|null $value Персональные данные получателя выплаты
+     *
+     * @return $this
+     */
+    public function setPersonalData($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_personal_data = null;
+            return $this;
+        }
+        if (!is_array($value) && !($value instanceof \Traversable)) {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid personal_data value type in CreatePayoutRequest',
+                0,
+                'CreatePayoutRequest.personal_data',
+                $value
+            );
+        }
+        $this->_personal_data = array();
+        foreach ($value as $key => $val) {
+            if ($val instanceof PayoutPersonalData) {
+                $this->_personal_data[] = $val;
+            } elseif (is_array($val)) {
+                $this->_personal_data[] = new PayoutPersonalData($val);
+            } else {
+                throw new InvalidPropertyValueTypeException(
+                    'Invalid personal_data value type in CreatePayoutRequest',
+                    0,
+                    'CreatePayoutRequest.personal_data[' . $key . ']',
+                    $val
+                );
+            }
+        }
+
+        return $this;
+    }
 
     /**
      * Возвращает описание транзакции
@@ -286,7 +530,10 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'CreatePayoutRequest.description', $value
+                'Invalid description value type',
+                0,
+                'CreatePayoutRequest.description',
+                $value
             );
         }
     }
@@ -326,7 +573,10 @@ class CreatePayoutRequest extends AbstractRequest implements CreatePayoutRequest
             $this->_metadata = new Metadata($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid metadata value type in CreatePayoutRequest', 0, 'CreatePayoutRequest.metadata', $value
+                'Invalid metadata value type in CreatePayoutRequest',
+                0,
+                'CreatePayoutRequest.metadata',
+                $value
             );
         }
     }

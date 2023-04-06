@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ class PayoutDestinationYooMoney extends AbstractPayoutDestination
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::YOO_MONEY);
+        $this->setType(PaymentMethodType::YOO_MONEY);
     }
 
     /**
@@ -68,19 +68,27 @@ class PayoutDestinationYooMoney extends AbstractPayoutDestination
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty accountNumber value', 0, 'PayoutDestinationYooMoney.accountNumber'
+                'Empty accountNumber value',
+                0,
+                'PayoutDestinationYooMoney.accountNumber'
             );
         } elseif (TypeCast::canCastToString($value)) {
             if (preg_match('/^[0-9]{11,33}$/', $value)) {
                 $this->_accountNumber = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid accountNumber value', 0, 'PayoutDestinationYooMoney.accountNumber', $value
+                    'Invalid accountNumber value',
+                    0,
+                    'PayoutDestinationYooMoney.accountNumber',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid accountNumber value type', 0, 'PayoutDestinationYooMoney.accountNumber', $value
+                'Invalid accountNumber value type',
+                0,
+                'PayoutDestinationYooMoney.accountNumber',
+                $value
             );
         }
     }

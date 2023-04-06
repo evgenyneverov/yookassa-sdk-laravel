@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,27 +32,17 @@ use YooKassa\Common\AbstractEnum;
  * Класс с перечислением статусов доставки данных для чека в онлайн-кассу (`pending`, `succeeded` или `canceled`)
  *
  * Состояние регистрации фискального чека:
- * <ul>
- * <li>pending - Чек ожидает доставки</li>
- * <li>succeeded - Успешно доставлен</li>
- * <li>canceled - Чек не доставлен</li>
- * </ul>
+ * - `pending` - Чек ожидает доставки
+ * - `succeeded` - Успешно доставлен
+ * - `canceled` - Чек не доставлен
  */
 class ReceiptRegistrationStatus extends AbstractEnum
 {
-    /**
-     * @var string Состояние регистрации фискального чека: ожидает доставки
-     */
+    /** Состояние регистрации фискального чека: ожидает доставки */
     const PENDING = 'pending';
-
-    /**
-     * @var string Состояние регистрации фискального чека: успешно доставлен
-     */
+    /** Состояние регистрации фискального чека: успешно доставлен */
     const SUCCEEDED = 'succeeded';
-
-    /**
-     * @var string Состояние регистрации фискального чека: не доставлен
-     */
+    /** Состояние регистрации фискального чека: не доставлен */
     const CANCELED = 'canceled';
 
     protected static $validValues = array(

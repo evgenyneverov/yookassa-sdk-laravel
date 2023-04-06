@@ -10,7 +10,6 @@ use YooKassa\Model\Deal\SettlementPayoutPaymentType;
 
 class RefundDealDataTest extends TestCase
 {
-
     /**
      * @dataProvider fromArrayDataProvider
      * @param array $source
@@ -110,7 +109,7 @@ class RefundDealDataTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateRefundSettlement();
         }
 
@@ -127,5 +126,4 @@ class RefundDealDataTest extends TestCase
             ),
         );
     }
-
 }

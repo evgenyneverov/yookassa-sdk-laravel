@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ class SecurityHelper
     public function isIPTrusted($ip)
     {
         if (!$this->isIPv6($ip)) {
-           return $this->checkInIPv4TrustedList($ip);
+            return $this->checkInIPv4TrustedList($ip);
         }
 
         if (!$this->isIPv4($ip)) {
@@ -80,7 +80,7 @@ class SecurityHelper
      */
     private function checkInIPv4TrustedList($ip)
     {
-        foreach($this->getIPv4TrustedList() as $range) {
+        foreach ($this->getIPv4TrustedList() as $range) {
             if ($this->isIPInV4Range($ip, $range)) {
                 return true;
             }
@@ -96,7 +96,7 @@ class SecurityHelper
      */
     private function checkInIPv6TrustedList($ip)
     {
-        foreach($this->getIPv6TrustedList() as $range) {
+        foreach ($this->getIPv6TrustedList() as $range) {
             if ($this->isIPInV6Range($ip, $range)) {
                 return true;
             }
@@ -116,18 +116,18 @@ class SecurityHelper
         $ip_dec = ip2long($ip);
 
         if (strpos($range, '/') === false) {
-            return ip2long($ip) == ip2long($range);
+            return ip2long($ip) === ip2long($range);
         }
         list($range, $netmask) = explode('/', $range, 2);
-        list($a,$b,$c,$d) = explode('.', $range);
+        list($a, $b, $c, $d) = explode('.', $range);
 
         $range = sprintf("%u.%u.%u.%u", $a, $b, $c, $d);
         $range_dec = ip2long($range);
 
-        $wildcard_dec = pow(2, (32-$netmask)) - 1;
-        $netmask_dec = ~ $wildcard_dec;
+        $wildcard_dec = pow(2, (32 - (int)$netmask)) - 1;
+        $netmask_dec = ~$wildcard_dec;
 
-        return (($ip_dec & $netmask_dec) == ($range_dec & $netmask_dec));
+        return (($ip_dec & $netmask_dec) === ($range_dec & $netmask_dec));
     }
 
     /**
@@ -169,7 +169,7 @@ class SecurityHelper
     /**
      * Возвращает список диапазонов IPv6 адресов с которых Юkassa может отправлять уведомления
      *
-     * @return \string[][]
+     * @return string[][]
      */
     private function getIPv6TrustedList()
     {

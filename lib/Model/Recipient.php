@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -80,7 +80,10 @@ class Recipient extends AbstractObject implements RecipientInterface
             $this->_accountId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid accountId value type in Recipient', 0, 'Recipient.accountId', $value
+                'Invalid accountId value type in Recipient',
+                0,
+                'Recipient.accountId',
+                $value
             );
         }
     }
@@ -109,13 +112,18 @@ class Recipient extends AbstractObject implements RecipientInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty gatewayId value in Recipient', 0, 'Recipient.gatewayId'
+                'Empty gatewayId value in Recipient',
+                0,
+                'Recipient.gatewayId'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $this->_gatewayId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid gatewayId value type in Recipient', 0, 'Recipient.gatewayId', $value
+                'Invalid gatewayId value type in Recipient',
+                0,
+                'Recipient.gatewayId',
+                $value
             );
         }
     }

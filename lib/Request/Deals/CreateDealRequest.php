@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -95,7 +95,10 @@ class CreateDealRequest extends AbstractRequest implements CreateDealRequestInte
             $this->_type = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal type value type', 0, 'CreateDealRequest.type', $value
+                'Invalid deal type value type',
+                0,
+                'CreateDealRequest.type',
+                $value
             );
         }
     }
@@ -143,7 +146,10 @@ class CreateDealRequest extends AbstractRequest implements CreateDealRequestInte
             $this->_fee_moment = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid fee_moment value type in CreateDealRequest', 0, 'CreateDealRequest.fee_moment', $value
+                'Invalid fee_moment value type in CreateDealRequest',
+                0,
+                'CreateDealRequest.fee_moment',
+                $value
             );
         }
     }
@@ -181,7 +187,10 @@ class CreateDealRequest extends AbstractRequest implements CreateDealRequestInte
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'CreateDealRequest.description', $value
+                'Invalid description value type',
+                0,
+                'CreateDealRequest.description',
+                $value
             );
         }
     }
@@ -230,7 +239,10 @@ class CreateDealRequest extends AbstractRequest implements CreateDealRequestInte
             $this->_metadata = new Metadata($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid metadata value type in CreateDealRequest', 0, 'CreateDealRequest.metadata', $value
+                'Invalid metadata value type in CreateDealRequest',
+                0,
+                'CreateDealRequest.metadata',
+                $value
             );
         }
     }

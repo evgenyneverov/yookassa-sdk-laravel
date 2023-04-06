@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,11 @@ use YooKassa\Common\AbstractEnum;
 
 /**
  * PaymentDataB2bSberbankVatDataRate - Налоговая ставка НДС
- * |Код|Описание|
- * --- | ---
- * |7|7%|
- * |10|10%|
- * |18|18%|
- * |20|20%|
+ *
+ * - 7 - 7%
+ * - 10 - 10%
+ * - 18 - 18%
+ * - 20 - 20%
  */
 class VatDataRate extends AbstractEnum
 {
@@ -54,5 +53,4 @@ class VatDataRate extends AbstractEnum
         self::RATE_18 => true,
         self::RATE_20 => true,
     );
-
 }

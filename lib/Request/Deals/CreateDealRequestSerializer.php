@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ class CreateDealRequestSerializer
     /**
      * Формирует ассоциативный массив данных из объекта запроса
      *
-     * @param CreateDealRequestInterface|AbstractRequest $request Объект запроса
+     * @param CreateDealRequestInterface $request Объект запроса
      * @return array Массив данных для дальнейшего кодирования в JSON
      */
     public function serialize(CreateDealRequestInterface $request)
@@ -60,5 +60,4 @@ class CreateDealRequestSerializer
 
         return $result;
     }
-
 }

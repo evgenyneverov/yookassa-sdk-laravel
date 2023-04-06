@@ -100,16 +100,16 @@ class PassengerTest extends TestCase
     {
         $exceptionNamespace = 'YooKassa\\Common\\Exceptions\\';
         return array(
-            array(null, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array('', $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(array(), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(fopen(__FILE__, 'r'), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(Random::str(65), $exceptionNamespace.'InvalidPropertyValueException'),
-            array(-1, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(-0.01, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(0.0, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(true, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(false, $exceptionNamespace.'InvalidPropertyValueTypeException'),
+            array(null, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array('', $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(array(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(fopen(__FILE__, 'r'), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(Random::str(65), $exceptionNamespace . 'InvalidPropertyValueException'),
+            array(-1, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(-0.01, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(0.0, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(true, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(false, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
         );
     }
 

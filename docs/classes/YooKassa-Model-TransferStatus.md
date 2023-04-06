@@ -6,22 +6,23 @@
 **Summary:**
 
 PaymentStatus - Статус операции распределения средств конечному получателю
-|Код|Описание|
---- | ---
-|pending|Ожидает оплаты покупателем|
-|waiting_for_capture|Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)|
-|succeeded|Успешно оплачен и получен магазином|
-|canceled|Неуспех оплаты или отменен магазином (cancel)|
 
+**Description:**
+
+Возможные значения:
+- `pending` - Ожидает оплаты покупателем
+- `waiting_for_capture` - Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)
+- `succeeded` - Успешно оплачен и получен магазином
+- `canceled` - Неуспех оплаты или отменен магазином (cancel)
 
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [PENDING](../classes/YooKassa-Model-TransferStatus.md#constant_PENDING) |  |  |
-| public | [WAITING_FOR_CAPTURE](../classes/YooKassa-Model-TransferStatus.md#constant_WAITING_FOR_CAPTURE) |  |  |
-| public | [SUCCEEDED](../classes/YooKassa-Model-TransferStatus.md#constant_SUCCEEDED) |  |  |
-| public | [CANCELED](../classes/YooKassa-Model-TransferStatus.md#constant_CANCELED) |  |  |
+| public | [PENDING](../classes/YooKassa-Model-TransferStatus.md#constant_PENDING) |  | Ожидает оплаты покупателем |
+| public | [WAITING_FOR_CAPTURE](../classes/YooKassa-Model-TransferStatus.md#constant_WAITING_FOR_CAPTURE) |  | Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso) |
+| public | [SUCCEEDED](../classes/YooKassa-Model-TransferStatus.md#constant_SUCCEEDED) |  | Успешно оплачен и получен магазином |
+| public | [CANCELED](../classes/YooKassa-Model-TransferStatus.md#constant_CANCELED) |  | Неуспех оплаты или отменен магазином (cancel) |
 
 ---
 ### Properties
@@ -40,7 +41,7 @@ PaymentStatus - Статус операции распределения сре�
 ---
 ### Details
 * File: [lib/Model/TransferStatus.php](../../lib/Model/TransferStatus.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\TransferStatus
@@ -49,6 +50,8 @@ PaymentStatus - Статус операции распределения сре�
 ## Constants
 <a name="constant_PENDING" class="anchor"></a>
 ###### PENDING
+Ожидает оплаты покупателем
+
 ```php
 PENDING = 'pending'
 ```
@@ -56,6 +59,8 @@ PENDING = 'pending'
 
 <a name="constant_WAITING_FOR_CAPTURE" class="anchor"></a>
 ###### WAITING_FOR_CAPTURE
+Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)
+
 ```php
 WAITING_FOR_CAPTURE = 'waiting_for_capture'
 ```
@@ -63,6 +68,8 @@ WAITING_FOR_CAPTURE = 'waiting_for_capture'
 
 <a name="constant_SUCCEEDED" class="anchor"></a>
 ###### SUCCEEDED
+Успешно оплачен и получен магазином
+
 ```php
 SUCCEEDED = 'succeeded'
 ```
@@ -70,6 +77,8 @@ SUCCEEDED = 'succeeded'
 
 <a name="constant_CANCELED" class="anchor"></a>
 ###### CANCELED
+Неуспех оплаты или отменен магазином (cancel)
+
 ```php
 CANCELED = 'canceled'
 ```
@@ -81,7 +90,7 @@ CANCELED = 'canceled'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -156,11 +165,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

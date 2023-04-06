@@ -9,19 +9,18 @@ ReceiptType - Тип чека в онлайн-кассе.
 
 **Description:**
 
-|Код|Описание|
---- | ---
-|payment|Приход|
-|refund|Возврат|
-|simple|Простой|
+Возможные значения:
+- `payment` - Приход
+- `refund` - Возврат
+- `simple` - Простой
 
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [PAYMENT](../classes/YooKassa-Model-ReceiptType.md#constant_PAYMENT) |  |  |
-| public | [REFUND](../classes/YooKassa-Model-ReceiptType.md#constant_REFUND) |  |  |
-| public | [SIMPLE](../classes/YooKassa-Model-ReceiptType.md#constant_SIMPLE) |  |  |
+| public | [PAYMENT](../classes/YooKassa-Model-ReceiptType.md#constant_PAYMENT) |  | Тип чека: приход |
+| public | [REFUND](../classes/YooKassa-Model-ReceiptType.md#constant_REFUND) |  | Тип чека: возврат |
+| public | [SIMPLE](../classes/YooKassa-Model-ReceiptType.md#constant_SIMPLE) |  | Тип чека: простой |
 
 ---
 ### Properties
@@ -40,7 +39,7 @@ ReceiptType - Тип чека в онлайн-кассе.
 ---
 ### Details
 * File: [lib/Model/ReceiptType.php](../../lib/Model/ReceiptType.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\ReceiptType
@@ -49,22 +48,28 @@ ReceiptType - Тип чека в онлайн-кассе.
 ## Constants
 <a name="constant_PAYMENT" class="anchor"></a>
 ###### PAYMENT
+Тип чека: приход
+
 ```php
-PAYMENT = 'payment' : string
+PAYMENT = 'payment'
 ```
 
 
 <a name="constant_REFUND" class="anchor"></a>
 ###### REFUND
+Тип чека: возврат
+
 ```php
-REFUND = 'refund' : string
+REFUND = 'refund'
 ```
 
 
 <a name="constant_SIMPLE" class="anchor"></a>
 ###### SIMPLE
+Тип чека: простой
+
 ```php
-SIMPLE = 'simple' : string
+SIMPLE = 'simple'
 ```
 
 
@@ -74,7 +79,7 @@ SIMPLE = 'simple' : string
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -149,11 +154,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

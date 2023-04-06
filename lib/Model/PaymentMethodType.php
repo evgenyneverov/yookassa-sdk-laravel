@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,24 +30,24 @@ use YooKassa\Common\AbstractEnum;
 
 /**
  * PaymentMethodType - Тип источника средств для проведения платежа
- * |Код|Описание|
- * --- | ---
- * |yoo_money|Платеж из кошелька ЮMoney|
- * |bank_card|Платеж с произвольной банковской карты|
- * |sberbank|Платеж СбербанкОнлайн|
- * |cash|Платеж наличными|
- * |mobile_balance|Платеж с баланса мобильного телефона|
- * |apple_pay|Платеж ApplePay|
- * |google_pay|Платеж Google Pay|
- * |qiwi|Платеж из кошелька Qiwi|
- * |webmoney|Платеж из кошелька Webmoney|
- * |alfabank|Платеж через Альфа-Клик|
- * |b2b_sberbank|Сбербанк Бизнес Онлайн|
- * |tinkoff_bank|Интернет-банк Тинькофф|
- * |psb|ПромсвязьБанк|
- * |installments|Заплатить по частям|
- * |wechat|Платеж через WeChat|
- * |sbp|Платеж через через сервис быстрых платежей|
+ *
+ * Возможные значения:
+ * - `yoo_money` - Платеж из кошелька ЮMoney
+ * - `bank_card` - Платеж с произвольной банковской карты
+ * - `sberbank` - Платеж СбербанкОнлайн
+ * - `cash` - Платеж наличными
+ * - `mobile_balance` - Платеж с баланса мобильного телефона
+ * - `apple_pay` - Платеж ApplePay
+ * - `google_pay` - Платеж Google Pay
+ * - `qiwi` - Платеж из кошелька Qiwi
+ * - `webmoney` - Платеж из кошелька Webmoney
+ * - `alfabank` - Платеж через Альфа-Клик
+ * - `b2b_sberbank` - Сбербанк Бизнес Онлайн
+ * - `tinkoff_bank` - Интернет-банк Тинькофф
+ * - `psb` - ПромсвязьБанк
+ * - `installments` - Заплатить по частям
+ * - `wechat` - Платеж через WeChat
+ * - `sbp` - Платеж через через сервис быстрых платежей
  */
 class PaymentMethodType extends AbstractEnum
 {

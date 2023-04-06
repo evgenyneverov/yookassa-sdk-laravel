@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class MarkQuantityTest extends TestCase
 {
-
     protected static function getInstance($options = null)
     {
         return new MarkQuantity($options);
