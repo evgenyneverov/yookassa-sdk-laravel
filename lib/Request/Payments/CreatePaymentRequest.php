@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,7 @@ use YooKassa\Model\AirlineInterface;
 use YooKassa\Model\AmountInterface;
 use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesFactory;
 use YooKassa\Model\Deal\PaymentDealInfo;
+use YooKassa\Model\FraudData;
 use YooKassa\Model\Payment;
 use YooKassa\Model\PaymentData\AbstractPaymentData;
 use YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes;
@@ -66,6 +67,8 @@ use YooKassa\Model\RecipientInterface;
  * @property string $client_ip IPv4 или IPv6-адрес покупателя. Если не указан, используется IP-адрес TCP-подключения
  * @property Metadata $metadata Метаданные привязанные к платежу
  * @property PaymentDealInfo $deal Данные о сделке, в составе которой проходит платеж
+ * @property FraudData $fraudData Информация для проверки операции на мошенничество
+ * @property FraudData $fraud_data Информация для проверки операции на мошенничество
  * @property string $merchantCustomerId Идентификатор покупателя в вашей системе, например электронная почта или номер телефона
  * @property string $merchant_customer_id Идентификатор покупателя в вашей системе, например электронная почта или номер телефона
  */
@@ -134,6 +137,11 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
     private $_deal;
 
     /**
+     * @var FraudData Информация для проверки операции на мошенничество
+     */
+    private $_fraud_data;
+
+    /**
      * @var string Идентификатор покупателя в вашей системе, например электронная почта или номер телефона. Не более 200 символов.
      * Присутствует, если вы хотите запомнить банковскую карту и отобразить ее при повторном платеже в виджете ЮKassa
      */
@@ -190,7 +198,10 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_description = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid description value type', 0, 'CreatePaymentRequest.description', $value
+                'Invalid description value type',
+                0,
+                'CreatePaymentRequest.description',
+                $value
             );
         }
     }
@@ -252,13 +263,19 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length > self::MAX_LENGTH_PAYMENT_TOKEN) {
                 throw new InvalidPropertyValueException(
-                    'Invalid paymentToken value', 0, 'CreatePaymentRequest.paymentToken', $value
+                    'Invalid paymentToken value',
+                    0,
+                    'CreatePaymentRequest.paymentToken',
+                    $value
                 );
             }
             $this->_paymentToken = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid paymentToken value type', 0, 'CreatePaymentRequest.paymentToken', $value
+                'Invalid paymentToken value type',
+                0,
+                'CreatePaymentRequest.paymentToken',
+                $value
             );
         }
     }
@@ -459,7 +476,10 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_capture = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid capture value type in CreatePaymentRequest', 0, 'CreatePaymentRequest.capture', $value
+                'Invalid capture value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.capture',
+                $value
             );
         }
     }
@@ -496,7 +516,10 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_clientIp = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid clientIp value type in CreatePaymentRequest', 0, 'CreatePaymentRequest.clientIp', $value
+                'Invalid clientIp value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.clientIp',
+                $value
             );
         }
     }
@@ -514,7 +537,7 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
      * Проверяет, были ли установлены данные авиабилетов
      * @return bool
      */
-    function hasAirline()
+    public function hasAirline()
     {
         return $this->_airline !== null;
     }
@@ -563,7 +586,10 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_metadata = new Metadata($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid metadata value type in CreatePaymentRequest', 0, 'CreatePaymentRequest.metadata', $value
+                'Invalid metadata value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.metadata',
+                $value
             );
         }
     }
@@ -602,9 +628,54 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_deal = new PaymentDealInfo($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal value type in CreatePaymentRequest', 0, 'CreatePaymentRequest.deal', $value
+                'Invalid deal value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.deal',
+                $value
             );
         }
+    }
+
+    /**
+     * Возвращает информацию для проверки операции на мошенничество.
+     *
+     * @return FraudData|null Информация для проверки операции на мошенничество
+     */
+    public function getFraudData()
+    {
+        return $this->_fraud_data;
+    }
+
+    /**
+     * Устанавливает информацию для проверки операции на мошенничество.
+     *
+     * @param FraudData|array|null $value Информация для проверки операции на мошенничество
+     */
+    public function setFraudData($value = null)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->_fraud_data = null;
+        } elseif ($value instanceof FraudData) {
+            $this->_fraud_data = $value;
+        } elseif (is_array($value)) {
+            $this->_fraud_data = new FraudData($value);
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid fraud_data value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.fraud_data',
+                $value
+            );
+        }
+    }
+
+    /**
+     * Проверяет, была ли установлена информация для проверки операции на мошенничество
+     * @return bool True если информация была установлена, false если нет
+     */
+    public function hasFraudData()
+    {
+        return !empty($this->_fraud_data);
     }
 
     /**
@@ -648,7 +719,10 @@ class CreatePaymentRequest extends AbstractPaymentRequest implements CreatePayme
             $this->_merchant_customer_id = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid merchant_customer_id value type in CreatePaymentRequest', 0, 'CreatePaymentRequest.merchant_customer_id', $value
+                'Invalid merchant_customer_id value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.merchant_customer_id',
+                $value
             );
         }
     }

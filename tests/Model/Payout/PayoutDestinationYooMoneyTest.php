@@ -70,7 +70,6 @@ class PayoutDestinationYooMoneyTest extends AbstractPayoutDestinationTest
     public function testSetInvalidAccountNumber($value)
     {
         $this->getTestInstance()->setAccountNumber($value);
-
     }
 
     /**

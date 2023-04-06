@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\YooKassa\Common\Exceptions;
 
 use PHPUnit\Framework\TestCase;

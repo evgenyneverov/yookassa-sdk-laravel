@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,107 +47,107 @@ interface ReceiptsRequestInterface
      * Возвращает идентификатор возврата
      * @return string Идентификатор возврата
      */
-    function getRefundId();
+    public function getRefundId();
 
     /**
      * Проверяет, был ли установлен идентификатор возврата
      * @return bool True если идентификатор возврата был установлен, false если не был
      */
-    function hasRefundId();
+    public function hasRefundId();
 
     /**
      * Возвращает идентификатор платежа если он задан или null
      * @return string|null Идентификатор платежа
      */
-    function getPaymentId();
+    public function getPaymentId();
 
     /**
      * Проверяет, был ли задан идентификатор платежа
      * @return bool True если идентификатор был задан, false если нет
      */
-    function hasPaymentId();
+    public function hasPaymentId();
 
     /**
      * Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена
      * @return \DateTime|null Время создания, от (включительно)
      */
-    function getCreatedAtGte();
+    public function getCreatedAtGte();
 
     /**
      * Проверяет, была ли установлена дата создания от которой выбираются возвраты
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtGte();
+    public function hasCreatedAtGte();
 
     /**
      * Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена
      * @return \DateTime|null Время создания, от (не включая)
      */
-    function getCreatedAtGt();
+    public function getCreatedAtGt();
 
     /**
      * Проверяет, была ли установлена дата создания от которой выбираются возвраты
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtGt();
+    public function hasCreatedAtGt();
 
     /**
      * Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена
      * @return \DateTime|null Время создания, до (включительно)
      */
-    function getCreatedAtLte();
+    public function getCreatedAtLte();
 
     /**
      * Проверяет, была ли установлена дата создания до которой выбираются возвраты
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtLte();
+    public function hasCreatedAtLte();
 
     /**
      * Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена
      * @return \DateTime|null Время создания, до (не включая)
      */
-    function getCreatedAtLt();
+    public function getCreatedAtLt();
 
     /**
      * Проверяет, была ли установлена дата создания до которой выбираются возвраты
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtLt();
+    public function hasCreatedAtLt();
 
     /**
      * Возвращает статус выбираемых возвратов или null, если он до этого не был установлен
      * @return string|null Статус выбираемых возвратов
      */
-    function getStatus();
+    public function getStatus();
 
     /**
      * Проверяет, был ли установлен статус выбираемых возвратов
      * @return bool True если статус был установлен, false если нет
      */
-    function hasStatus();
+    public function hasStatus();
 
     /**
      * Возвращает токен для получения следующей страницы выборки
      * @return string|null Токен для получения следующей страницы выборки
      */
-    function getCursor();
+    public function getCursor();
 
     /**
      * Проверяет, был ли установлен токен следующей страницы
      * @return bool True если токен был установлен, false если нет
      */
-    function hasCursor();
+    public function hasCursor();
 
     /**
      * Возвращает ограничение количества объектов или null, если оно до этого не было установлено
      * @return string|null Ограничение количества объектов
      */
-    function getLimit();
+    public function getLimit();
 
     /**
      * Проверяет, было ли установлено ограничение количества объектов
      * @return bool True если ограничение количества объектов было установлено, false если нет
      */
-    function hasLimit();
+    public function hasLimit();
 }

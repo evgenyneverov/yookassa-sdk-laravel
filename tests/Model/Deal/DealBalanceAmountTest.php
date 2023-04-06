@@ -167,7 +167,7 @@ class DealBalanceAmountTest extends TestCase
         $result = array();
         foreach (range(1, 10) as $i) {
             $result[$i][] = array(
-                'value' => Random::value(array('-', '')).Random::float(0, 9999.99),
+                'value' => Random::value(array('-', '')) . Random::float(0, 9999.99),
                 'currency' => Random::value(CurrencyCode::getValidValues()),
             );
         }
@@ -190,7 +190,7 @@ class DealBalanceAmountTest extends TestCase
             array('-100'),
         );
         for ($i = 0; $i < 10; $i++) {
-            $result[] = array(Random::value(array('-', '')).Random::float(0, 9999999));
+            $result[] = array(Random::value(array('-', '')) . Random::float(0, 9999999));
         }
         return $result;
     }

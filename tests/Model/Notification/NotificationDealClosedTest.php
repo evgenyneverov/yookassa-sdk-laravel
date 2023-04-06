@@ -122,5 +122,4 @@ class NotificationDealClosedTest extends AbstractNotificationTest
 
         return $result;
     }
-
 }

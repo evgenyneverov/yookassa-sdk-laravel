@@ -12,7 +12,6 @@ use YooKassa\Request\Deals\CreateDealRequestBuilder;
 
 class CreateDealRequestTest extends TestCase
 {
-
     /**
      * @dataProvider validDataProvider
      * @param $options
@@ -225,5 +224,4 @@ class CreateDealRequestTest extends TestCase
             array(Random::str(10)),
         );
     }
-
 }

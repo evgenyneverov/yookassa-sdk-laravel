@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ class PaymentDataApplePay extends AbstractPaymentData
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::APPLE_PAY);
+        $this->setType(PaymentMethodType::APPLE_PAY);
     }
 
     /**
@@ -67,13 +67,18 @@ class PaymentDataApplePay extends AbstractPaymentData
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for paymentData', 0, 'PaymentDataApplePay.paymentData'
+                'Empty value for paymentData',
+                0,
+                'PaymentDataApplePay.paymentData'
             );
         } elseif (TypeCast::canCastToString($value)) {
             $this->_paymentData = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for paymentData', 0, 'PaymentDataApplePay.paymentData', $value
+                'Invalid value type for paymentData',
+                0,
+                'PaymentDataApplePay.paymentData',
+                $value
             );
         }
     }

@@ -114,19 +114,18 @@ class CancellationDetailsTest extends TestCase
             );
         }
         return $result;
-
     }
 
     public function invalidValueDataProvider()
     {
         $exceptionNamespace = 'YooKassa\\Common\\Exceptions\\';
         return array(
-            array(null, $exceptionNamespace.'EmptyPropertyValueException'),
-            array('', $exceptionNamespace.'EmptyPropertyValueException'),
-            array(array(), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(fopen(__FILE__, 'r'), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(true, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(false, $exceptionNamespace.'InvalidPropertyValueTypeException'),
+            array(null, $exceptionNamespace . 'EmptyPropertyValueException'),
+            array('', $exceptionNamespace . 'EmptyPropertyValueException'),
+            array(array(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(fopen(__FILE__, 'r'), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(true, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(false, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
         );
     }
 

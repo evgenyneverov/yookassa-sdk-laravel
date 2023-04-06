@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class ReceiptResponseFactoryTest extends TestCase
 {
-
     /**
      * @dataProvider invalidFactoryDataProvider
      * @param array $value

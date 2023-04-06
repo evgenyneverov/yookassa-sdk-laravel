@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 
 namespace YooKassa\Model\Notification;
 
-
 use YooKassa\Model\PaymentInterface;
 use YooKassa\Model\RefundInterface;
 
@@ -39,7 +38,7 @@ interface NotificationInterface
      *
      * @return string Тип уведомления в виде строки
      */
-    function getType();
+    public function getType();
 
     /**
      * Возвращает тип события
@@ -48,7 +47,7 @@ interface NotificationInterface
      *
      * @return string Тип события
      */
-    function getEvent();
+    public function getEvent();
 
     /**
      * Возвращает объект с информацией о платеже или возврате, уведомление о котором хранится в текущем объекте
@@ -59,5 +58,5 @@ interface NotificationInterface
      *
      * @return PaymentInterface|RefundInterface Объект с информацией о платеже
      */
-    function getObject();
+    public function getObject();
 }

@@ -86,7 +86,7 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
     {
         $instance = $this->getTestInstance();
         $instance->setCard($value['card']);
-        $this->getOnlyTest($instance, $value['card'],'expiryMonth', 'expiry_month');
+        $this->getOnlyTest($instance, $value['card'], 'expiryMonth', 'expiry_month');
     }
 
     /**
@@ -97,7 +97,7 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
     {
         $instance = $this->getTestInstance();
         $instance->setCard($value['card']);
-        $this->getOnlyTest($instance, $value['card'],'cardType', 'card_type');
+        $this->getOnlyTest($instance, $value['card'], 'cardType', 'card_type');
     }
 
     /**
@@ -108,7 +108,7 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
     {
         $instance = $this->getTestInstance();
         $instance->setCard($value['card']);
-        $this->getOnlyTest($instance, $value['card'],'issuerCountry', 'issuer_country');
+        $this->getOnlyTest($instance, $value['card'], 'issuerCountry', 'issuer_country');
     }
 
     /**
@@ -119,7 +119,7 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
     {
         $instance = $this->getTestInstance();
         $instance->setCard($value['card']);
-        $this->getOnlyTest($instance, $value['card'],'issuerName', 'issuer_name');
+        $this->getOnlyTest($instance, $value['card'], 'issuerName', 'issuer_name');
     }
 
     /**
@@ -130,7 +130,7 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
     {
         $instance = $this->getTestInstance();
         $instance->setCard($value['card']);
-        $this->getOnlyTest($instance, $value['card'],'source', 'source');
+        $this->getOnlyTest($instance, $value['card'], 'source', 'source');
     }
 
 
@@ -155,7 +155,6 @@ class PaymentMethodBankCardTest extends AbstractPaymentMethodTest
                     )
                 )
             );
-
         }
         return $result;
     }

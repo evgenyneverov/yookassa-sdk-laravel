@@ -249,7 +249,7 @@ abstract class AbstractReceiptResponseTest extends TestCase
         );
         if ($item['measure'] === ReceiptItemMeasure::PIECE) {
             $item['mark_quantity'] = array(
-                'numerator' => Random::int(1,100),
+                'numerator' => Random::int(1, 100),
                 'denominator' => 100,
             );
         }

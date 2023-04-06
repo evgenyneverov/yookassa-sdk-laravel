@@ -6,12 +6,13 @@
 **Summary:**
 
 PayoutStatus - Статус выплаты
-|Код|Описание|
---- | ---
-|pending|Выплата создана и ожидает подтверждения от эмитента|
-|succeeded|Выплата успешно завершена|
-|canceled|Выплата отменена|
 
+**Description:**
+
+Возможные значения:
+- `pending` - Выплата создана и ожидает подтверждения от эмитента
+- `succeeded` - Выплата успешно завершена
+- `canceled` - Выплата отменена
 
 ---
 ### Constants
@@ -38,7 +39,7 @@ PayoutStatus - Статус выплаты
 ---
 ### Details
 * File: [lib/Model/PayoutStatus.php](../../lib/Model/PayoutStatus.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\PayoutStatus
@@ -78,7 +79,7 @@ CANCELED = 'canceled'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -153,11 +154,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

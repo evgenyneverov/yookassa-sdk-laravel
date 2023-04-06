@@ -13,7 +13,6 @@ use YooKassa\Model\SafeDeal;
 
 class SafeDealTest extends TestCase
 {
-
     /**
      * @dataProvider validDataProvider
      * @param array $options

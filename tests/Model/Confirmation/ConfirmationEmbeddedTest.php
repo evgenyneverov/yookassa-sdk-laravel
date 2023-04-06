@@ -2,7 +2,6 @@
 
 namespace Model\Confirmation;
 
-
 use Tests\YooKassa\Model\Confirmation\AbstractConfirmationTest;
 use YooKassa\Model\Confirmation\AbstractConfirmation;
 use YooKassa\Model\Confirmation\ConfirmationEmbedded;
@@ -10,7 +9,6 @@ use YooKassa\Model\ConfirmationType;
 
 class ConfirmationEmbeddedTest extends AbstractConfirmationTest
 {
-
     /**
      * @return AbstractConfirmation
      */

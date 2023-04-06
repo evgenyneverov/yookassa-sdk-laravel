@@ -2,23 +2,30 @@
 
 # Deprecated Elements
 ### Table of Contents
+* [lib/Model/ConfirmationType.php](../../lib/Model/ConfirmationType.php)
 * [lib/Model/Payment.php](../../lib/Model/Payment.php)
 * [lib/Model/PaymentData/PaymentDataWechat.php](../../lib/Model/PaymentData/PaymentDataWechat.php)
 * [lib/Model/PaymentMethod/PaymentMethodBankCard.php](../../lib/Model/PaymentMethod/PaymentMethodBankCard.php)
 * [lib/Model/PaymentMethod/PaymentMethodFactory.php](../../lib/Model/PaymentMethod/PaymentMethodFactory.php)
 * [lib/Model/PaymentMethod/PaymentMethodWechat.php](../../lib/Model/PaymentMethod/PaymentMethodWechat.php)
 * [lib/Model/PaymentMethodType.php](../../lib/Model/PaymentMethodType.php)
+* [lib/Model/Payout/PayoutCancellationDetailsPartyCode.php](../../lib/Model/Payout/PayoutCancellationDetailsPartyCode.php)
 * [lib/Model/Receipt.php](../../lib/Model/Receipt.php)
 * [lib/Model/Refund.php](../../lib/Model/Refund.php)
 * [lib/Model/Requestor.php](../../lib/Model/Requestor.php)
 * [lib/Model/RequestorInterface.php](../../lib/Model/RequestorInterface.php)
 
+<a id="lib/Model/ConfirmationType.php"></a>
+#### [lib/Model/ConfirmationType.php](../../lib/Model/ConfirmationType.php)
+| Line | Element | Description |
+| ---- | ------- | ----------- |
+| 52 | \YooKassa\Model\ConfirmationType::CODE_VERIFICATION | Будет удален в будущих версиях |
 <a id="lib/Model/Payment.php"></a>
 #### [lib/Model/Payment.php](../../lib/Model/Payment.php)
 | Line | Element | Description |
 | ---- | ------- | ----------- |
-| 692 | \YooKassa\Model\Payment::setRequestor() | Не используется. Будет удален в следующих версиях |
-| 700 | \YooKassa\Model\Payment::getRequestor() | Не используется. Будет удален в следующих версиях |
+| 710 | \YooKassa\Model\Payment::setRequestor() | Не используется. Будет удален в следующих версиях |
+| 719 | \YooKassa\Model\Payment::getRequestor() | Не используется. Будет удален в следующих версиях |
 <a id="lib/Model/PaymentData/PaymentDataWechat.php"></a>
 #### [lib/Model/PaymentData/PaymentDataWechat.php](../../lib/Model/PaymentData/PaymentDataWechat.php)
 | Line | Element | Description |
@@ -52,30 +59,35 @@
 | Line | Element | Description |
 | ---- | ------- | ----------- |
 | 86 | \YooKassa\Model\PaymentMethodType::WECHAT | Будет удален в следующих версиях |
+<a id="lib/Model/Payout/PayoutCancellationDetailsPartyCode.php"></a>
+#### [lib/Model/Payout/PayoutCancellationDetailsPartyCode.php](../../lib/Model/Payout/PayoutCancellationDetailsPartyCode.php)
+| Line | Element | Description |
+| ---- | ------- | ----------- |
+| 40 | \YooKassa\Model\Payout\PayoutCancellationDetailsPartyCode::MERCHANT | Будет удален в будущих версиях |
 <a id="lib/Model/Receipt.php"></a>
 #### [lib/Model/Receipt.php](../../lib/Model/Receipt.php)
 | Line | Element | Description |
 | ---- | ------- | ----------- |
-| 514 | \YooKassa\Model\Receipt::getPhone() | Устарел — данные рекомендуется брать в параметре receipt.customer.phone. |
-| 528 | \YooKassa\Model\Receipt::setPhone() | Устарел — данные рекомендуется передавать в параметре receipt.customer.phone. |
-| 543 | \YooKassa\Model\Receipt::getEmail() | Устарел — данные рекомендуется брать в параметре receipt.customer.email. |
-| 557 | \YooKassa\Model\Receipt::setEmail() | Устарел — данные рекомендуется передавать в параметре receipt.customer.email. |
+| 529 | \YooKassa\Model\Receipt::getPhone() | Устарел — данные рекомендуется брать в параметре receipt.customer.phone. |
+| 543 | \YooKassa\Model\Receipt::setPhone() | Устарел — данные рекомендуется передавать в параметре receipt.customer.phone. |
+| 558 | \YooKassa\Model\Receipt::getEmail() | Устарел — данные рекомендуется брать в параметре receipt.customer.email. |
+| 572 | \YooKassa\Model\Receipt::setEmail() | Устарел — данные рекомендуется передавать в параметре receipt.customer.email. |
 <a id="lib/Model/Refund.php"></a>
 #### [lib/Model/Refund.php](../../lib/Model/Refund.php)
 | Line | Element | Description |
 | ---- | ------- | ----------- |
-| 365 | \YooKassa\Model\Refund::getRequestor() | Не используется. Будет удален в следующих версиях |
-| 373 | \YooKassa\Model\Refund::setRequestor() | Не используется. Будет удален в следующих версиях |
+| 383 | \YooKassa\Model\Refund::getRequestor() | Не используется. Будет удален в следующих версиях |
+| 391 | \YooKassa\Model\Refund::setRequestor() | Не используется. Будет удален в следующих версиях |
 <a id="lib/Model/Requestor.php"></a>
 #### [lib/Model/Requestor.php](../../lib/Model/Requestor.php)
 | Line | Element | Description |
 | ---- | ------- | ----------- |
-| 29 | \YooKassa\Model\Requestor | Не используется. Будет удален в следующих версиях |
+| 51 | \YooKassa\Model\Requestor | Не используется. Будет удален в следующих версиях |
 <a id="lib/Model/RequestorInterface.php"></a>
 #### [lib/Model/RequestorInterface.php](../../lib/Model/RequestorInterface.php)
 | Line | Element | Description |
 | ---- | ------- | ----------- |
-| 17 | \YooKassa\Model\RequestorInterface | Не используется. Будет удален в следующих версиях |
+| 40 | \YooKassa\Model\RequestorInterface | Не используется. Будет удален в следующих версиях |
 
 ---
 
@@ -87,11 +99,11 @@
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

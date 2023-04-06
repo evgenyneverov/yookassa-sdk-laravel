@@ -25,7 +25,7 @@
 | public | [$accountId](../classes/YooKassa-Model-Transfer.md#property_accountId) |  | Идентификатор магазина, в пользу которого вы принимаете оплату |
 | public | [$amount](../classes/YooKassa-Model-Transfer.md#property_amount) |  | Сумма, которую необходимо перечислить магазину |
 | public | [$description](../classes/YooKassa-Model-Transfer.md#property_description) |  | Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72») |
-| public | [$metadata](../classes/YooKassa-Model-Transfer.md#property_metadata) |  | Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа) |
+| public | [$metadata](../classes/YooKassa-Model-Transfer.md#property_metadata) |  | Любые дополнительные данные, которые нужны вам для работы с платежами (например, ваш внутренний идентификатор заказа) |
 | public | [$platform_fee_amount](../classes/YooKassa-Model-Transfer.md#property_platform_fee_amount) |  | Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [$status](../classes/YooKassa-Model-Transfer.md#property_status) |  | Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled` |
 
@@ -49,11 +49,11 @@
 | public | [hasDescription()](../classes/YooKassa-Model-Transfer.md#method_hasDescription) |  | Проверяет, было ли установлено описание транзакции |
 | public | [hasMetadata()](../classes/YooKassa-Model-Transfer.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные |
 | public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-Transfer.md#method_hasPlatformFeeAmount) |  | Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
-| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
-| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
-| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
-| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства |
-| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство |
+| public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  |  |
+| public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  |  |
+| public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  |  |
+| public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  |  |
+| public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  |  |
 | public | [setAccountId()](../classes/YooKassa-Model-Transfer.md#method_setAccountId) |  | Устанавливает идентификатор магазина-получателя средств |
 | public | [setAmount()](../classes/YooKassa-Model-Transfer.md#method_setAmount) |  | Устанавливает сумму оплаты |
 | public | [setDescription()](../classes/YooKassa-Model-Transfer.md#method_setDescription) |  | Устанавливает описание транзакции |
@@ -94,7 +94,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Идентификатор магазина, в пользу которого вы принимаете оплату
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -106,7 +106,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Сумма, которую необходимо перечислить магазину
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 
@@ -118,7 +118,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Описание транзакции, которое продавец увидит в личном кабинете ЮKassa. (например: «Заказ маркетплейса №72»)
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -128,9 +128,9 @@ MAX_LENGTH_DESCRIPTION = 128
 ---
 ***Description***
 
-Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа)
+Любые дополнительные данные, которые нужны вам для работы с платежами (например, ваш внутренний идентификатор заказа)
 
-**Type:** <a href="../classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-Metadata.html"><abbr title="\YooKassa\Model\Metadata">Metadata</abbr></a>
 
 **Details:**
 
@@ -142,7 +142,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
 
-**Type:** <a href="../classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
+**Type:** <a href="classes/YooKassa-Model-AmountInterface.html"><abbr title="\YooKassa\Model\AmountInterface">AmountInterface</abbr></a>
 
 **Details:**
 
@@ -154,7 +154,7 @@ MAX_LENGTH_DESCRIPTION = 128
 
 Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled`
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="string"><abbr title="string">string</abbr></a>
 
 **Details:**
 
@@ -506,32 +506,24 @@ public hasPlatformFeeAmount() : bool
 | inheritDoc |  |  |
 
 <a name="method_jsonSerialize" class="anchor"></a>
-#### public jsonSerialize() : array
+#### public jsonSerialize() : mixed
 
 ```php
-public jsonSerialize() : array
+public jsonSerialize() : mixed
 ```
-
-**Summary**
-
-Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
 
-**Returns:** array - Ассоциативный массив со свойствами текущего объекта
+**Returns:** mixed - 
 
 
 <a name="method_offsetExists" class="anchor"></a>
-#### public offsetExists() : bool
+#### public offsetExists() : mixed
 
 ```php
-public offsetExists(string $offset) : bool
+public offsetExists(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Проверяет наличие свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -539,21 +531,17 @@ public offsetExists(string $offset) : bool
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя проверяемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** bool - True если свойство имеется, false если нет
+**Returns:** mixed - 
 
 
 <a name="method_offsetGet" class="anchor"></a>
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string $offset) : mixed
+public offsetGet(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Возвращает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -561,21 +549,17 @@ public offsetGet(string $offset) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** mixed - Значение свойства
+**Returns:** mixed - 
 
 
 <a name="method_offsetSet" class="anchor"></a>
-#### public offsetSet() : void
+#### public offsetSet() : mixed
 
 ```php
-public offsetSet(string $offset, mixed $value) : void
+public offsetSet(mixed $offset, mixed $value) : mixed
 ```
-
-**Summary**
-
-Устанавливает значение свойства
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -583,22 +567,18 @@ public offsetSet(string $offset, mixed $value) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
+| <code lang="php">mixed</code> | offset  |  |
+| <code lang="php">mixed</code> | value  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_offsetUnset" class="anchor"></a>
-#### public offsetUnset() : void
+#### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string $offset) : void
+public offsetUnset(mixed $offset) : mixed
 ```
-
-**Summary**
-
-Удаляет свойство
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
@@ -606,9 +586,9 @@ public offsetUnset(string $offset) : void
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | offset  | Имя удаляемого свойства |
+| <code lang="php">mixed</code> | offset  |  |
 
-**Returns:** void - 
+**Returns:** mixed - 
 
 
 <a name="method_setAccountId" class="anchor"></a>
@@ -809,11 +789,11 @@ protected getUnknownProperties() : array
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ class PaymentDataQiwi extends AbstractPaymentData
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::QIWI);
+        $this->setType(PaymentMethodType::QIWI);
     }
 
     /**
@@ -71,12 +71,18 @@ class PaymentDataQiwi extends AbstractPaymentData
                 $this->_phone = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid phone value', 0, 'PaymentDataQiwi.phone', $value
+                    'Invalid phone value',
+                    0,
+                    'PaymentDataQiwi.phone',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid phone value type', 0, 'PaymentDataQiwi.phone', $value
+                'Invalid phone value type',
+                0,
+                'PaymentDataQiwi.phone',
+                $value
             );
         }
     }

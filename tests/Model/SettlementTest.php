@@ -191,5 +191,4 @@ class SettlementTest extends TestCase
 
         return $result;
     }
-
 }

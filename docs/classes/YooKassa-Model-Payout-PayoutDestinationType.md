@@ -6,11 +6,13 @@
 **Summary:**
 
 PayoutDestinationType - Виды выплат
-|Код|Описание|
---- | ---
-|yoo_money|Выплата в кошелек ЮMoney|
-|bank_card|Выплата на произвольную банковскую карту|
 
+**Description:**
+
+Возможные значения:
+- `yoo_money` - Выплата в кошелек ЮMoney
+- `bank_card` - Выплата на произвольную банковскую карту
+- `sbp` - Выплата через СБП на счет в банке или платежном сервисе
 
 ---
 ### Constants
@@ -33,7 +35,7 @@ PayoutDestinationType - Виды выплат
 ---
 ### Details
 * File: [lib/Model/Payout/PayoutDestinationType.php](../../lib/Model/Payout/PayoutDestinationType.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\Payout\PayoutDestinationType
@@ -43,7 +45,7 @@ PayoutDestinationType - Виды выплат
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -118,11 +120,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

@@ -133,8 +133,7 @@ class CreatePostReceiptRequestTest extends TestCase
                 new Settlement(array(
                     'type' => SettlementType::PREPAYMENT,
                     'amount' => new ReceiptItemAmount(10, 'RUB')))
-            )
-        );
+            ));
         self::assertFalse($instance->validate());
 
         $instance->setItems(array());
@@ -404,7 +403,7 @@ class CreatePostReceiptRequestTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateSettlement($i % 2 == 0);
         }
 

@@ -59,7 +59,7 @@ class WebhookListResponseTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateWebhook();
         }
 

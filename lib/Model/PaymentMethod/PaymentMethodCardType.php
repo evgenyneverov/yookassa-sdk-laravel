@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,14 +29,23 @@ namespace YooKassa\Model\PaymentMethod;
 use YooKassa\Common\AbstractEnum;
 
 /**
- * Тип банковской карты. Возможные значения:
+ * PaymentMethodCardType - Тип банковской карты.
+ *
+ * Возможные значения:
  * - `MasterCard` (для карт Mastercard и Maestro),
  * - `Visa` (для карт Visa и Visa Electron),
  * - `Mir`,
  * - `UnionPay`,
  * - `JCB`,
  * - `AmericanExpress`,
- * - `DinersClub`
+ * - `DinersClub`,
+ * - `DiscoverCard`,
+ * - `InstaPayment`,
+ * - `InstaPaymentTM`,
+ * - `Laser`,
+ * - `Dankort`,
+ * - `Solo`,
+ * - `Switch`,
  * - `Unknown`.
  */
 class PaymentMethodCardType extends AbstractEnum
@@ -48,16 +57,30 @@ class PaymentMethodCardType extends AbstractEnum
     const JCB = 'JCB';
     const AMERICAN_EXPRESS = 'AmericanExpress';
     const DINERS_CLUB = 'DinersClub';
+    const DISCOVER_CARD_CLUB = 'DiscoverCard';
+    const INSTA_PAYMENT_CLUB = 'InstaPayment';
+    const INSTA_PAYMENT_TM_CLUB = 'InstaPaymentTM';
+    const LASER_CLUB = 'Laser';
+    const DANKORT_CLUB = 'Dankort';
+    const SOLO_CLUB = 'Solo';
+    const SWITCH_CLUB = 'Switch';
     const UNKNOWN = 'Unknown';
 
     protected static $validValues = array(
-        self::MASTER_CARD      => true,
-        self::VISA             => true,
-        self::MIR              => true,
-        self::UNION_PAY        => true,
-        self::JCB              => true,
-        self::AMERICAN_EXPRESS => true,
-        self::DINERS_CLUB      => true,
-        self::UNKNOWN          => true,
+        self::MASTER_CARD           => true,
+        self::VISA                  => true,
+        self::MIR                   => true,
+        self::UNION_PAY             => true,
+        self::JCB                   => true,
+        self::AMERICAN_EXPRESS      => true,
+        self::DINERS_CLUB           => true,
+        self::DISCOVER_CARD_CLUB    => true,
+        self::INSTA_PAYMENT_CLUB    => true,
+        self::INSTA_PAYMENT_TM_CLUB => true,
+        self::LASER_CLUB            => true,
+        self::DANKORT_CLUB          => true,
+        self::SOLO_CLUB             => true,
+        self::SWITCH_CLUB           => true,
+        self::UNKNOWN               => true,
     );
 }

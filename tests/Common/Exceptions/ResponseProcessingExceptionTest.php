@@ -27,7 +27,7 @@ class ResponseProcessingExceptionTest extends ApiExceptionTest
         if (empty($tmp['description'])) {
             self::assertEquals('', $instance->getMessage());
         } else {
-            self::assertEquals($tmp['description'].'.', $instance->getMessage());
+            self::assertEquals($tmp['description'] . '.', $instance->getMessage());
         }
     }
 
@@ -99,7 +99,7 @@ class ResponseProcessingExceptionTest extends ApiExceptionTest
         $tmp = json_decode($body, true);
         $message = '';
         if (!empty($tmp['description'])) {
-            $message = $tmp['description'].'.';
+            $message = $tmp['description'] . '.';
         }
         self::assertEquals($message, $instance->getMessage());
 

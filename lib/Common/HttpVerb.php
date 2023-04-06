@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,19 @@ namespace YooKassa\Common;
 
 class HttpVerb extends AbstractEnum
 {
+    /** Http метод GET */
     const GET = 'GET';
+    /** Http метод POST */
     const POST = 'POST';
+    /** Http метод PATCH */
     const PATCH = 'PATCH';
+    /** Http метод HEAD */
     const HEAD = 'HEAD';
+    /** Http метод OPTIONS */
     const OPTIONS = 'OPTIONS';
+    /** Http метод PUT */
     const PUT = 'PUT';
+    /** Http метод DELETE */
     const DELETE = 'DELETE';
 
     protected static $validValues = array(

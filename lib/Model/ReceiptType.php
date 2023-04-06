@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,21 +30,19 @@ use YooKassa\Common\AbstractEnum;
 
 /**
  * ReceiptType - Тип чека в онлайн-кассе.
- * |Код|Описание|
- * --- | ---
- * |payment|Приход|
- * |refund|Возврат|
- * |simple|Простой|
+ *
+ * Возможные значения:
+ * - `payment` - Приход
+ * - `refund` - Возврат
+ * - `simple` - Простой
  */
 class ReceiptType extends AbstractEnum
 {
-    /** @var string Тип чека: приход */
+    /** Тип чека: приход */
     const PAYMENT = 'payment';
-
-    /** @var string Тип чека: возврат */
+    /** Тип чека: возврат */
     const REFUND  = 'refund';
-
-    /** @var string Тип чека: простой */
+    /** Тип чека: простой */
     const SIMPLE  = 'simple';
 
     protected static $validValues = array(

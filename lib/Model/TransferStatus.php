@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,24 +26,26 @@
 
 namespace YooKassa\Model;
 
-
 use YooKassa\Common\AbstractEnum;
 
 /**
  * PaymentStatus - Статус операции распределения средств конечному получателю
- * |Код|Описание|
- * --- | ---
- * |pending|Ожидает оплаты покупателем|
- * |waiting_for_capture|Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)|
- * |succeeded|Успешно оплачен и получен магазином|
- * |canceled|Неуспех оплаты или отменен магазином (cancel)|
  *
+ * Возможные значения:
+ * - `pending` - Ожидает оплаты покупателем
+ * - `waiting_for_capture` - Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso)
+ * - `succeeded` - Успешно оплачен и получен магазином
+ * - `canceled` - Неуспех оплаты или отменен магазином (cancel)
  */
 class TransferStatus extends AbstractEnum
 {
+    /** Ожидает оплаты покупателем */
     const PENDING = 'pending';
+    /** Успешно оплачен покупателем, ожидает подтверждения магазином (capture или aviso) */
     const WAITING_FOR_CAPTURE = 'waiting_for_capture';
+    /** Успешно оплачен и получен магазином */
     const SUCCEEDED = 'succeeded';
+    /** Неуспех оплаты или отменен магазином (cancel) */
     const CANCELED = 'canceled';
 
     protected static $validValues = array(

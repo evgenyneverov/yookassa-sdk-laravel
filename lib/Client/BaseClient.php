@@ -1,8 +1,9 @@
 <?php
+
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,6 +68,15 @@ class BaseClient
 
     /** Точка входа для запросов к API по выплатам */
     const PAYOUTS_PATH = '/payouts';
+
+    /** Точка входа для запросов к API по персональным данным */
+    const PERSONAL_DATA_PATH = '/personal_data';
+
+    /** Точка входа для запросов к API по участникам СБП */
+    const SBP_BANKS_PATH = '/sbp_banks';
+
+    /** Точка входа для запросов к API по самозанятым */
+    const SELF_EMPLOYED_PATH = '/self_employed';
 
     /** Имя HTTP заголовка, используемого для передачи idempotence key */
     const IDEMPOTENCY_KEY_HEADER = 'Idempotence-Key';
@@ -296,10 +306,10 @@ class BaseClient
     /**
      * Метод проверяет, находится ли IP адрес среди IP адресов Юkassa, с которых отправляются уведомления
      *
-     * @param string $ip - IPv4 или IPv6 адрес webhook уведомления
+     * @param string $ip IPv4 или IPv6 адрес webhook уведомления
      * @return bool
      *
-     * @throws Exception - исключение будет выброшено, если будет передан IP адрес неверного формата
+     * @throws Exception Выбрасывается, если будет передан IP адрес неверного формата
      */
     public function isNotificationIPTrusted($ip)
     {
@@ -311,10 +321,10 @@ class BaseClient
     /**
      * Кодирует массив данных в JSON строку
      *
-     * @param array $serializedData
+     * @param array $serializedData Массив данных для кодировки
      *
-     * @return string
-     * @throws Exception
+     * @return string Строка JSON
+     * @throws Exception Выбрасывается, если не удалось конвертировать данные в строку JSON
      */
     protected function encodeData($serializedData)
     {
@@ -325,7 +335,7 @@ class BaseClient
         if (defined('JSON_UNESCAPED_UNICODE') && defined('JSON_UNESCAPED_SLASHES')) {
             $encoded = json_encode($serializedData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
-            $encoded = self::_unescaped(json_encode($serializedData));
+            $encoded = self::unescaped(json_encode($serializedData));
         }
 
         if ($encoded === false) {
@@ -341,10 +351,10 @@ class BaseClient
      *
      * Вспомогательная функция для старых версий PHP
      *
-     * @param string $json
-     * @return string|false
+     * @param string $json Строка JSON
+     * @return string|false Отформатированная строка JSON
      */
-    private static function _unescaped($json)
+    private static function unescaped($json)
     {
         if ($json === false) {
             return false;
@@ -360,9 +370,9 @@ class BaseClient
     /**
      * Декодирует JSON строку в массив данных
      *
-     * @param ResponseObject $response
+     * @param ResponseObject $response Объект ответа на запрос к API
      *
-     * @return array
+     * @return array Массив данных
      */
     protected function decodeData(ResponseObject $response)
     {
@@ -379,14 +389,15 @@ class BaseClient
      *
      * @param ResponseObject $response
      *
-     * @throws ApiException
-     * @throws BadApiRequestException
-     * @throws ForbiddenException
-     * @throws InternalServerError
-     * @throws NotFoundException
-     * @throws ResponseProcessingException
-     * @throws TooManyRequestsException
-     * @throws UnauthorizedException
+     * @throws ApiException Неожиданный код ошибки.
+     * @throws BadApiRequestException Неправильный запрос. Чаще всего этот статус выдается из-за нарушения правил взаимодействия с API.
+     * @throws ForbiddenException Секретный ключ или OAuth-токен верный, но не хватает прав для совершения операции.
+     * @throws InternalServerError Технические неполадки на стороне ЮKassa. Результат обработки запроса неизвестен. Повторите запрос позднее с тем же ключом идемпотентности.
+     * @throws NotFoundException Ресурс не найден.
+     * @throws ResponseProcessingException Запрос был принят на обработку, но она не завершена.
+     * @throws TooManyRequestsException Превышен лимит запросов в единицу времени. Попробуйте снизить интенсивность запросов.
+     * @throws UnauthorizedException Неверное имя пользователя или пароль или невалидный OAuth-токен при аутентификации.
+     * @throws AuthorizeException Ошибка авторизации. Не установлен заголовок.
      */
     protected function handleError(ResponseObject $response)
     {
@@ -427,7 +438,7 @@ class BaseClient
     /**
      * Задержка между повторными запросами
      *
-     * @param ResponseObject $response
+     * @param ResponseObject $response Объект ответа на запрос к API
      */
     protected function delay($response)
     {
@@ -448,11 +459,11 @@ class BaseClient
     /**
      * Выполнение запроса и обработка 202 статуса
      *
-     * @param string $path
-     * @param string $method
-     * @param array $queryParams
-     * @param null $httpBody
-     * @param array $headers
+     * @param string $path URL запроса
+     * @param string $method HTTP метод
+     * @param array $queryParams Массив GET параметров запроса
+     * @param string|null $httpBody Тело запроса
+     * @param array $headers Массив заголовков запроса
      *
      * @return mixed|ResponseObject
      * @throws ApiException

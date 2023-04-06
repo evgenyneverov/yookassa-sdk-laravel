@@ -19,7 +19,7 @@ class ReceiptTest extends TestCase
     public function testGetSetAddItems()
     {
         $instance = new Receipt();
-        
+
         self::assertNotNull($instance->getItems());
         self::assertTrue(is_array($instance->getItems()));
         self::assertEmpty($instance->getItems());
@@ -27,7 +27,7 @@ class ReceiptTest extends TestCase
         self::assertNotNull($instance->items);
         self::assertTrue(is_array($instance->items));
         self::assertEmpty($instance->items);
-        
+
         $item = new ReceiptItem();
         $instance->addItem($item);
         $items = $instance->getItems();

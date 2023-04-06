@@ -13,7 +13,8 @@ class LoggerWrapperTest extends TestCase
     {
         $logger = new LoggerWrapper(new ArrayLogger());
         self::assertNotNull($logger);
-        $logger = new LoggerWrapper(function ($level, $message, $context) {});
+        $logger = new LoggerWrapper(function ($level, $message, $context) {
+        });
         self::assertNotNull($logger);
     }
 
@@ -58,7 +59,7 @@ class LoggerWrapperTest extends TestCase
         self::assertEquals($expected, $wrapped->getLastLog());
 
         $wrapped = new ArrayLogger();
-        $instance = new LoggerWrapper(function ($level, $message, $context) use($wrapped) {
+        $instance = new LoggerWrapper(function ($level, $message, $context) use ($wrapped) {
             $wrapped->log($level, $message, $context);
         });
         $instance->log($level, $message, $context);
@@ -88,7 +89,7 @@ class LoggerWrapperTest extends TestCase
         $wrapped = new ArrayLogger();
         $instance = new LoggerWrapper($wrapped);
         foreach ($methodsMap as $level => $method) {
-            $instance->{$method} ($message, $context);
+            $instance->{$method}($message, $context);
             $expected = array($level, $message, $context);
             self::assertEquals($expected, $wrapped->getLastLog());
         }

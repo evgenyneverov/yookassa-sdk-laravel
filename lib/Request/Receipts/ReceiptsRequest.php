@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -128,13 +128,19 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length != 36) {
                 throw new InvalidPropertyValueException(
-                    'Invalid payment id value in ReceiptsRequest', 0, 'ReceiptsRequest.refundId', $value
+                    'Invalid payment id value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.refundId',
+                    $value
                 );
             }
             $this->_refundId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment id value type in ReceiptsRequest', 0, 'ReceiptsRequest.refundId', $value
+                'Invalid payment id value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.refundId',
+                $value
             );
         }
     }
@@ -172,13 +178,19 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $length = mb_strlen((string)$value, 'utf-8');
             if ($length != 36) {
                 throw new InvalidPropertyValueException(
-                    'Invalid payment id value in ReceiptsRequest', 0, 'ReceiptsRequest.paymentId', $value
+                    'Invalid payment id value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.paymentId',
+                    $value
                 );
             }
             $this->_paymentId = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid payment id value type in ReceiptsRequest', 0, 'ReceiptsRequest.paymentId', $value
+                'Invalid payment id value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.paymentId',
+                $value
             );
         }
     }
@@ -218,13 +230,17 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_gte value in ReceiptsRequest', 0, 'ReceiptsRequest.createdAtGte'
+                    'Invalid created_gte value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.createdAtGte'
                 );
             }
             $this->_createdAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_gte value type in ReceiptsRequest', 0, 'ReceiptsRequest.createdAtGte'
+                'Invalid created_gte value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.createdAtGte'
             );
         }
     }
@@ -264,13 +280,17 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_gt value in ReceiptsRequest', 0, 'ReceiptsRequest.createdAtGt'
+                    'Invalid created_gt value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.createdAtGt'
                 );
             }
             $this->_createdAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_gt value type in ReceiptsRequest', 0, 'ReceiptsRequest.createdAtGt'
+                'Invalid created_gt value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.createdAtGt'
             );
         }
     }
@@ -310,13 +330,17 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_lte value in ReceiptsRequest', 0, 'ReceiptsRequest.createdLte'
+                    'Invalid created_lte value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.createdLte'
                 );
             }
             $this->_createdAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_lte value type in ReceiptsRequest', 0, 'ReceiptsRequest.createdLte'
+                'Invalid created_lte value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.createdLte'
             );
         }
     }
@@ -356,13 +380,17 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid created_lt value in ReceiptsRequest', 0, 'ReceiptsRequest.createdLt'
+                    'Invalid created_lt value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.createdLt'
                 );
             }
             $this->_createdAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid created_lt value type in ReceiptsRequest', 0, 'ReceiptsRequest.createdLt'
+                'Invalid created_lt value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.createdLt'
             );
         }
     }
@@ -399,14 +427,20 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (!RefundStatus::valueExists((string)$value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value in ReceiptsRequest', 0, 'ReceiptsRequest.status', $value
+                    'Invalid status value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.status',
+                    $value
                 );
             } else {
                 $this->_status = (string)$value;
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in ReceiptsRequest', 0, 'ReceiptsRequest.status', $value
+                'Invalid status value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.status',
+                $value
             );
         }
     }
@@ -443,7 +477,10 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
             $this->_cursor = (string) $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in ReceiptsRequest', 0, 'ReceiptsRequest.cursor', $value
+                'Invalid status value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.cursor',
+                $value
             );
         }
     }
@@ -479,13 +516,19 @@ class ReceiptsRequest extends AbstractRequest implements ReceiptsRequestInterfac
         } elseif (is_int($value)) {
             if ($value < 0 || $value > self::MAX_LIMIT_VALUE) {
                 throw new InvalidPropertyValueException(
-                    'Invalid limit value in ReceiptsRequest', 0, 'ReceiptsRequest.limit', $value
+                    'Invalid limit value in ReceiptsRequest',
+                    0,
+                    'ReceiptsRequest.limit',
+                    $value
                 );
             }
             $this->_limit = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid limit value type in ReceiptsRequest', 0, 'ReceiptsRequest.limit', $value
+                'Invalid limit value type in ReceiptsRequest',
+                0,
+                'ReceiptsRequest.limit',
+                $value
             );
         }
     }

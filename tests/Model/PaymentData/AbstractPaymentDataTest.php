@@ -54,6 +54,6 @@ class TestPaymentData extends AbstractPaymentData
 {
     public function __construct($type)
     {
-        $this->_setType($type);
+        $this->setType($type);
     }
 }

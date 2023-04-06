@@ -4,16 +4,18 @@ namespace Tests\YooKassa\Model;
 
 use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\Random;
+use YooKassa\Model\CurrencyCode;
 use YooKassa\Model\Metadata;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\PaymentMethodType;
 use YooKassa\Model\Payout;
+use YooKassa\Model\Payout\IncomeReceipt;
 use YooKassa\Model\Payout\PayoutCancellationDetails;
 use YooKassa\Model\Payout\PayoutCancellationDetailsPartyCode;
 use YooKassa\Model\Payout\PayoutCancellationDetailsReasonCode;
 use YooKassa\Model\Deal\PayoutDealInfo;
 use YooKassa\Model\Payout\PayoutDestinationFactory;
-use YooKassa\Model\Payout\PayoutDestinationYooMoney;
+use YooKassa\Model\Payout\PayoutSelfEmployed;
 use YooKassa\Model\PayoutStatus;
 
 class PayoutTest extends TestCase
@@ -127,28 +129,24 @@ class PayoutTest extends TestCase
 
     /**
      * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
      * @param $value
      */
     public function testSetInvalidAmount($value)
     {
-        if (class_exists('InvalidPropertyValueTypeException')) {
-            self::setExpectedException('InvalidPropertyValueTypeException');
-            $instance = new Payout();
-            $instance->setAmount($value['amount']);
-        }
+        $instance = new Payout();
+        $instance->setAmount($value['amount']);
     }
 
     /**
      * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
      * @param $value
      */
     public function testSetterInvalidAmount($value)
     {
-        if (class_exists('InvalidPropertyValueTypeException')) {
-            self::setExpectedException('InvalidPropertyValueTypeException');
-            $instance = new Payout();
-            $instance->amount = $value['amount'];
-        }
+        $instance = new Payout();
+        $instance->amount = $value['amount'];
     }
 
     /**
@@ -192,6 +190,28 @@ class PayoutTest extends TestCase
     {
         $instance = new Payout();
         $instance->payout_destination = $value['payout_destination'];
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidCancellationDetails($value)
+    {
+        $instance = new Payout();
+        $instance->setCancellationDetails($value['cancellation_details']);
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetterInvalidCancellationDetails($value)
+    {
+        $instance = new Payout();
+        $instance->payout_destination = $value['cancellation_details'];
     }
 
     /**
@@ -310,13 +330,16 @@ class PayoutTest extends TestCase
 
         self::assertNull($instance->getDeal());
         self::assertNull($instance->deal);
-        if (isset($options['deal'])) {
-            $instance->setDeal($options['deal']);
-            self::assertSame($options['deal'], $instance->getDeal());
-            self::assertSame($options['deal'], $instance->deal);
 
-            $instance = new Payout();
-            $instance->deal = $options['deal'];
+        $instance->setDeal($options['deal']);
+
+        if (empty($options['deal'])) {
+            self::assertNull($instance->getSelfEmployed());
+            self::assertNull($instance->deal);
+        } elseif (is_array($options['deal'])) {
+            self::assertSame($options['deal'], $instance->getDeal()->toArray());
+            self::assertSame($options['deal'], $instance->deal->toArray());
+        } else {
             self::assertSame($options['deal'], $instance->getDeal());
             self::assertSame($options['deal'], $instance->deal);
         }
@@ -342,6 +365,107 @@ class PayoutTest extends TestCase
     {
         $instance = new Payout();
         $instance->deal = $value['deal'];
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     * @param array $options
+     */
+    public function testGetSetSelfEmployed($options)
+    {
+        $instance = new Payout();
+
+        self::assertNull($instance->getSelfEmployed());
+        self::assertNull($instance->self_employed);
+        self::assertNull($instance->selfEmployed);
+
+        $instance->setSelfEmployed($options['self_employed']);
+
+        if (empty($options['receipt'])) {
+            self::assertNull($instance->getSelfEmployed());
+            self::assertNull($instance->self_employed);
+            self::assertNull($instance->selfEmployed);
+        } elseif (is_array($options['self_employed'])) {
+            self::assertSame($options['self_employed'], $instance->getSelfEmployed()->toArray());
+            self::assertSame($options['self_employed'], $instance->self_employed->toArray());
+            self::assertSame($options['self_employed'], $instance->selfEmployed->toArray());
+        } else {
+            self::assertSame($options['self_employed'], $instance->getSelfEmployed());
+            self::assertSame($options['self_employed'], $instance->self_employed);
+            self::assertSame($options['self_employed'], $instance->selfEmployed);
+        }
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidSelfEmployed($value)
+    {
+        $instance = new Payout();
+        $instance->setSelfEmployed($value['self_employed']);
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetterInvalidSelfEmployed($value)
+    {
+        $instance = new Payout();
+        $instance->self_employed = $value['self_employed'];
+
+        $instance = new Payout();
+        $instance->selfEmployed = $value['self_employed'];
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     * @param array $options
+     */
+    public function testGetSetReceipt($options)
+    {
+        $instance = new Payout();
+
+        self::assertNull($instance->getReceipt());
+        self::assertNull($instance->receipt);
+
+        $instance->setReceipt($options['receipt']);
+
+        if (empty($options['receipt'])) {
+            self::assertNull($instance->getReceipt());
+            self::assertNull($instance->receipt);
+        } elseif (is_array($options['receipt'])) {
+            self::assertSame($options['receipt'], $instance->getReceipt()->toArray());
+            self::assertSame($options['receipt'], $instance->receipt->toArray());
+        } else {
+            self::assertSame($options['receipt'], $instance->getReceipt());
+            self::assertSame($options['receipt'], $instance->receipt);
+        }
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidReceipt($value)
+    {
+        $instance = new Payout();
+        $instance->setReceipt($value['receipt']);
+    }
+
+    /**
+     * @dataProvider invalidDataProvider
+     * @expectedException \InvalidArgumentException
+     * @param $value
+     */
+    public function testSetterInvalidReceipt($value)
+    {
+        $instance = new Payout();
+        $instance->receipt = $value['receipt'];
     }
 
     /**
@@ -471,7 +595,9 @@ class PayoutTest extends TestCase
                 'payout_destination' => $payoutDestinations[Random::value(array(PaymentMethodType::YOO_MONEY,PaymentMethodType::BANK_CARD))],
                 'created_at' => date(YOOKASSA_DATE, mt_rand(111111111, time())),
                 'test' => true,
-                'deal' => new PayoutDealInfo(array('id' => Random::str(36, 50))),
+                'deal' => null,
+                'self_employed' => null,
+                'receipt' => array(),
                 'metadata' => array('order_id' => '37'),
                 'cancellation_details' => new PayoutCancellationDetails(array(
                     'party' => Random::value($cancellationDetailsParties),
@@ -485,9 +611,20 @@ class PayoutTest extends TestCase
                 'status' => Random::value(PayoutStatus::getValidValues()),
                 'amount' => new MonetaryAmount(Random::int(1, 10000), 'RUB'),
                 'description' => Random::str(1, Payout::MAX_LENGTH_DESCRIPTION),
-                'payout_destination' => $payoutDestinations[Random::value(array(PaymentMethodType::YOO_MONEY,PaymentMethodType::BANK_CARD))],
+                'payout_destination' => null,
                 'created_at' => date(YOOKASSA_DATE, mt_rand(1, time())),
                 'test' => true,
+                'deal' => array('id' => Random::str(36, 50)),
+                'receipt' => array(
+                    'service_name'    => Random::str(1, IncomeReceipt::MAX_LENGTH_SERVICE_NAME),
+                    'npd_receipt_id'  => Random::str(1, 50),
+                    'url'             => Random::str(1, 50),
+                    'amount' => array(
+                        'value' => number_format(Random::float(1, 99), 2, '.', ''),
+                        'currency' => Random::value(CurrencyCode::getValidValues())
+                    ),
+                ),
+                'self_employed' => array('id' => Random::str(36, 50)),
                 'metadata' => null,
                 'cancellation_details' => null,
             )
@@ -503,6 +640,17 @@ class PayoutTest extends TestCase
                 'payout_destination' => $payoutDestinations[Random::value(array(PaymentMethodType::YOO_MONEY,PaymentMethodType::BANK_CARD))],
                 'created_at' => date(YOOKASSA_DATE, mt_rand(1, time())),
                 'test' => (bool)($i % 2),
+                'deal' => new PayoutDealInfo(array('id' => Random::str(36, 50))),
+                'self_employed' => new PayoutSelfEmployed(array('id' => Random::str(36, 50))),
+                'receipt' => new IncomeReceipt(array(
+                    'service_name'    => Random::str(1, IncomeReceipt::MAX_LENGTH_SERVICE_NAME),
+                    'npd_receipt_id'  => Random::str(1, 50),
+                    'url'             => Random::str(1, 50),
+                    'amount' => array(
+                        'value' => number_format(Random::float(1, 99), 2, '.', ''),
+                        'currency' => Random::value(CurrencyCode::getValidValues())
+                    ),
+                )),
                 'metadata' => new Metadata(),
                 'cancellation_details' => new PayoutCancellationDetails(array(
                     'party' => $cancellationDetailsParties[$i % $countCancellationDetailsParties],
@@ -522,10 +670,14 @@ class PayoutTest extends TestCase
                     'id' => null,
                     'status' => null,
                     'amount' => null,
-                    'payout_destination' => Random::str(10),
+                    'payout_destination' => time(),
                     'test' => null,
                     'deal' => time(),
+                    'self_employed' => time(),
+                    'receipt' => time(),
+                    'metadata' => time(),
                     'created_at' => null,
+                    'cancellation_details' => time(),
                 )
             ),
             array(
@@ -536,6 +688,9 @@ class PayoutTest extends TestCase
                     'payout_destination' => new \stdClass(),
                     'test' => '',
                     'deal' => new Metadata(),
+                    'self_employed' => new \stdClass(),
+                    'receipt' => new Metadata(),
+                    'metadata' => new \stdClass(),
                     'created_at' => array(),
                     'cancellation_details' => new \stdClass(),
                 ),
@@ -545,15 +700,18 @@ class PayoutTest extends TestCase
             $payment = array(
                 'id' => Random::str($i < 5 ? mt_rand(1, 35) : mt_rand(51, 64)),
                 'status' => Random::str(1, 35),
-                'amount' => $i % 2 ? Random::str(10) : new \stdClass(),
+                'amount' => $i % 2 ? array() : new \stdClass(),
                 'payout_destination' => $i % 2 ? Random::str(10) : new \stdClass(),
                 'test' => $i == 0 ? array() : new \stdClass(),
                 'deal' => $i == 0 ? Random::str(10) : new \stdClass(),
+                'self_employed' => $i == 0 ? Random::str(10) : new \stdClass(),
+                'receipt' => $i == 0 ? Random::str(10) : new \stdClass(),
+                'metadata' => $i == 0 ? Random::str(10) : new \stdClass(),
+                'cancellation_details' => $i == 0 ? Random::str(10) : new \stdClass(),
                 'created_at' => $i == 0 ? '23423-234-32' : -Random::int(),
             );
             $result[] = array($payment);
         }
         return $result;
     }
-
 }

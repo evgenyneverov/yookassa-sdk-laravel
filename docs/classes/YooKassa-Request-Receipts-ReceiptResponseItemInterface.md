@@ -107,10 +107,10 @@ public getQuantity() : float
 
 
 <a name="method_getAmount" class="anchor"></a>
-#### public getAmount() : float
+#### public getAmount() : int
 
 ```php
-public getAmount() : float
+public getAmount() : int
 ```
 
 **Summary**
@@ -120,7 +120,7 @@ public getAmount() : float
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptResponseItemInterface](../classes/YooKassa-Request-Receipts-ReceiptResponseItemInterface.md)
 
-**Returns:** float - Сумма стоимости покупаемого товара
+**Returns:** int - Сумма стоимости покупаемого товара
 
 
 <a name="method_getPrice" class="anchor"></a>
@@ -373,11 +373,11 @@ public getSupplier() : \YooKassa\Model\SupplierInterface
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

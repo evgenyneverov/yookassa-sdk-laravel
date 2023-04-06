@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -95,13 +95,20 @@ class VatData extends AbstractObject implements VatDataInterface
     {
         if (TypeCast::canCastToEnumString($value)) {
             if (!VatDataType::valueExists((string)$value)) {
-                throw new InvalidPropertyValueException('Invalid B2bSberbankVatData.type value', 0,
-                    'B2bSberbankVatData.type', $value);
+                throw new InvalidPropertyValueException(
+                    'Invalid B2bSberbankVatData.type value',
+                    0,
+                    'B2bSberbankVatData.type',
+                    $value
+                );
             }
             $this->_type = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid B2bSberbankVatData.type value type', 0, 'B2bSberbankVatData.type', $value
+                'Invalid B2bSberbankVatData.type value type',
+                0,
+                'B2bSberbankVatData.type',
+                $value
             );
         }
     }
@@ -126,13 +133,20 @@ class VatData extends AbstractObject implements VatDataInterface
     {
         if (TypeCast::canCastToString($value)) {
             if (!VatDataRate::valueExists((string)$value)) {
-                throw new InvalidPropertyValueException('Invalid B2bSberbankVatData.rate value', 0,
-                    'B2bSberbankVatData.rate', $value);
+                throw new InvalidPropertyValueException(
+                    'Invalid B2bSberbankVatData.rate value',
+                    0,
+                    'B2bSberbankVatData.rate',
+                    $value
+                );
             }
             $this->_rate = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid B2bSberbankVatData.rate value type', 0, 'B2bSberbankVatData.rate', $value
+                'Invalid B2bSberbankVatData.rate value type',
+                0,
+                'B2bSberbankVatData.rate',
+                $value
             );
         }
     }
@@ -161,9 +175,11 @@ class VatData extends AbstractObject implements VatDataInterface
             $this->_amount->fromArray($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid B2bSberbankVatData.amount value type', 0, 'B2bSberbankVatData.amount', $value
+                'Invalid B2bSberbankVatData.amount value type',
+                0,
+                'B2bSberbankVatData.amount',
+                $value
             );
         }
     }
-
 }

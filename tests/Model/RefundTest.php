@@ -83,10 +83,10 @@ class RefundTest extends TestCase
             array(''),
             array(null),
             array(array()),
-            array(Random::str(1,35)),
+            array(Random::str(1, 35)),
             array(Random::str(1)),
             array(Random::str(35)),
-            array(Random::str(37,48)),
+            array(Random::str(37, 48)),
             array(Random::str(37)),
             array(new \stdClass()),
             array(1),
@@ -129,7 +129,7 @@ class RefundTest extends TestCase
     public function validSources()
     {
         $sources = array();
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $sources[$i][] = array(
                 'account_id' => (string)Random::int(11111111, 99999999),
                 'amount' => array(
@@ -539,8 +539,8 @@ class RefundTest extends TestCase
             array(false),
             array(array()),
             array(new \stdClass()),
-            array(Random::str(1,10)),
-            array(new StringObject(Random::str(1,10))),
+            array(Random::str(1, 10)),
+            array(new StringObject(Random::str(1, 10))),
         );
     }
 
@@ -649,10 +649,12 @@ class RefundTest extends TestCase
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function validDealDataProvider()
     {
         return array(
+            array(null),
             array(new RefundDealInfo(array('amount' => 1))),
             array(new RefundDealInfo(array('amount' => Random::float(0.01, 9999999.99)))),
         );
@@ -693,5 +695,4 @@ class RefundTest extends TestCase
             array(new \stdClass()),
         );
     }
-
 }

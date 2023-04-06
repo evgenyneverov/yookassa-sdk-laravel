@@ -80,7 +80,6 @@ class PayoutDestinationDataBankCardTest extends AbstractPayoutDestinationDataTes
     public function testSetInvalidCard($value)
     {
         $this->getTestInstance()->setCard($value);
-
     }
 
     /**

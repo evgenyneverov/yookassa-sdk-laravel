@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,23 +57,32 @@ abstract class AbstractPaymentData extends AbstractObject
      * Устанавливает тип метода оплаты
      * @param string $value Тип метода оплаты
      */
-    protected function _setType($value)
+    protected function setType($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty payment data type', 0, 'paymentData.type'
+                'Empty payment data type',
+                0,
+                'paymentData.type'
             );
-        } elseif (TypeCast::canCastToEnumString($value)) {
+        }
+        if (TypeCast::canCastToEnumString($value)) {
             if (PaymentMethodType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in PaymentData', 0, 'paymentData.type', $value
+                    'Invalid value for "type" parameter in PaymentData',
+                    0,
+                    'paymentData.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in PaymentData', 0, 'paymentData.type', $value
+                'Invalid value type for "type" parameter in PaymentData',
+                0,
+                'paymentData.type',
+                $value
             );
         }
     }

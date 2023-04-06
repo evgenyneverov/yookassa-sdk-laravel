@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -148,13 +148,19 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
         } elseif (is_int($value)) {
             if ($value < 0 || $value > self::MAX_LIMIT_VALUE) {
                 throw new InvalidPropertyValueException(
-                    'Invalid limit value in DealsRequest', 0, 'DealsRequest.limit', $value
+                    'Invalid limit value in DealsRequest',
+                    0,
+                    'DealsRequest.limit',
+                    $value
                 );
             }
             $this->_limit = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid limit value type in DealsRequest', 0, 'DealsRequest.limit', $value
+                'Invalid limit value type in DealsRequest',
+                0,
+                'DealsRequest.limit',
+                $value
             );
         }
     }
@@ -191,7 +197,10 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $this->_cursor = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in DealsRequest', 0, 'DealsRequest.limit', $value
+                'Invalid status value type in DealsRequest',
+                0,
+                'DealsRequest.limit',
+                $value
             );
         }
     }
@@ -231,13 +240,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtGte value in DealsRequest', 0, 'PaymentRequest.createdAtGte'
+                    'Invalid createdAtGte value in DealsRequest',
+                    0,
+                    'PaymentRequest.createdAtGte'
                 );
             }
             $this->_createdAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtGte value type in DealsRequest', 0, 'PaymentRequest.createdAtGte'
+                'Invalid createdAtGte value type in DealsRequest',
+                0,
+                'PaymentRequest.createdAtGte'
             );
         }
     }
@@ -277,13 +290,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtGt value in DealsRequest', 0, 'PaymentRequest.createdAtGt'
+                    'Invalid createdAtGt value in DealsRequest',
+                    0,
+                    'PaymentRequest.createdAtGt'
                 );
             }
             $this->_createdAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtGt value type in DealsRequest', 0, 'PaymentRequest.createdAtGt'
+                'Invalid createdAtGt value type in DealsRequest',
+                0,
+                'PaymentRequest.createdAtGt'
             );
         }
     }
@@ -323,13 +340,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtLte value in DealsRequest', 0, 'PaymentRequest.createdAtLte'
+                    'Invalid createdAtLte value in DealsRequest',
+                    0,
+                    'PaymentRequest.createdAtLte'
                 );
             }
             $this->_createdAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAtLte value type in DealsRequest', 0, 'PaymentRequest.createdAtLte'
+                'Invalid createdAtLte value type in DealsRequest',
+                0,
+                'PaymentRequest.createdAtLte'
             );
         }
     }
@@ -369,13 +390,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid createdAtLt value in DealsRequest', 0, 'PaymentRequest.createdAtLt'
+                    'Invalid createdAtLt value in DealsRequest',
+                    0,
+                    'PaymentRequest.createdAtLt'
                 );
             }
             $this->_createdAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid createdAlLt value type in DealsRequest', 0, 'PaymentRequest.createdAtLt'
+                'Invalid createdAlLt value type in DealsRequest',
+                0,
+                'PaymentRequest.createdAtLt'
             );
         }
     }
@@ -415,13 +440,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid expiresAtGte value in DealsRequest', 0, 'PaymentRequest.expiresAtGte'
+                    'Invalid expiresAtGte value in DealsRequest',
+                    0,
+                    'PaymentRequest.expiresAtGte'
                 );
             }
             $this->_expiresAtGte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid expiresAtGte value type in DealsRequest', 0, 'PaymentRequest.expiresAtGte'
+                'Invalid expiresAtGte value type in DealsRequest',
+                0,
+                'PaymentRequest.expiresAtGte'
             );
         }
     }
@@ -461,13 +490,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid expiresAtGt value in DealsRequest', 0, 'PaymentRequest.expiresAtGt'
+                    'Invalid expiresAtGt value in DealsRequest',
+                    0,
+                    'PaymentRequest.expiresAtGt'
                 );
             }
             $this->_expiresAtGt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid expiresAtGt value type in DealsRequest', 0, 'PaymentRequest.expiresAtGt'
+                'Invalid expiresAtGt value type in DealsRequest',
+                0,
+                'PaymentRequest.expiresAtGt'
             );
         }
     }
@@ -507,13 +540,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid expiresAtLte value in DealsRequest', 0, 'PaymentRequest.expiresAtLte'
+                    'Invalid expiresAtLte value in DealsRequest',
+                    0,
+                    'PaymentRequest.expiresAtLte'
                 );
             }
             $this->_expiresAtLte = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid expiresAtLte value type in DealsRequest', 0, 'PaymentRequest.expiresAtLte'
+                'Invalid expiresAtLte value type in DealsRequest',
+                0,
+                'PaymentRequest.expiresAtLte'
             );
         }
     }
@@ -553,13 +590,17 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $dateTime = TypeCast::castToDateTime($value);
             if ($dateTime === null) {
                 throw new InvalidPropertyValueException(
-                    'Invalid expiresAtLt value in DealsRequest', 0, 'PaymentRequest.expiresAtLt'
+                    'Invalid expiresAtLt value in DealsRequest',
+                    0,
+                    'PaymentRequest.expiresAtLt'
                 );
             }
             $this->_expiresAtLt = $dateTime;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid expiresAlLt value type in DealsRequest', 0, 'PaymentRequest.expiresAtLt'
+                'Invalid expiresAlLt value type in DealsRequest',
+                0,
+                'PaymentRequest.expiresAtLt'
             );
         }
     }
@@ -596,14 +637,20 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (!DealStatus::valueExists((string)$value)) {
                 throw new InvalidPropertyValueException(
-                    'Invalid status value in DealsRequest', 0, 'DealsRequest.status', $value
+                    'Invalid status value in DealsRequest',
+                    0,
+                    'DealsRequest.status',
+                    $value
                 );
             } else {
                 $this->_status = (string)$value;
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value in DealsRequest', 0, 'DealsRequest.status', $value
+                'Invalid status value in DealsRequest',
+                0,
+                'DealsRequest.status',
+                $value
             );
         }
     }
@@ -658,7 +705,10 @@ class DealsRequest extends AbstractRequest implements DealsRequestInterface
             $this->_fullTextSearch = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid status value type in DealsRequest', 0, 'DealsRequest.fullTextSearch', $value
+                'Invalid status value type in DealsRequest',
+                0,
+                'DealsRequest.fullTextSearch',
+                $value
             );
         }
     }

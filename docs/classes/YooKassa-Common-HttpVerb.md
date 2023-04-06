@@ -12,13 +12,13 @@
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [GET](../classes/YooKassa-Common-HttpVerb.md#constant_GET) |  |  |
-| public | [POST](../classes/YooKassa-Common-HttpVerb.md#constant_POST) |  |  |
-| public | [PATCH](../classes/YooKassa-Common-HttpVerb.md#constant_PATCH) |  |  |
-| public | [HEAD](../classes/YooKassa-Common-HttpVerb.md#constant_HEAD) |  |  |
-| public | [OPTIONS](../classes/YooKassa-Common-HttpVerb.md#constant_OPTIONS) |  |  |
-| public | [PUT](../classes/YooKassa-Common-HttpVerb.md#constant_PUT) |  |  |
-| public | [DELETE](../classes/YooKassa-Common-HttpVerb.md#constant_DELETE) |  |  |
+| public | [GET](../classes/YooKassa-Common-HttpVerb.md#constant_GET) |  | Http метод GET |
+| public | [POST](../classes/YooKassa-Common-HttpVerb.md#constant_POST) |  | Http метод POST |
+| public | [PATCH](../classes/YooKassa-Common-HttpVerb.md#constant_PATCH) |  | Http метод PATCH |
+| public | [HEAD](../classes/YooKassa-Common-HttpVerb.md#constant_HEAD) |  | Http метод HEAD |
+| public | [OPTIONS](../classes/YooKassa-Common-HttpVerb.md#constant_OPTIONS) |  | Http метод OPTIONS |
+| public | [PUT](../classes/YooKassa-Common-HttpVerb.md#constant_PUT) |  | Http метод PUT |
+| public | [DELETE](../classes/YooKassa-Common-HttpVerb.md#constant_DELETE) |  | Http метод DELETE |
 
 ---
 ### Properties
@@ -37,7 +37,7 @@
 ---
 ### Details
 * File: [lib/Common/HttpVerb.php](../../lib/Common/HttpVerb.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Common\HttpVerb
@@ -46,6 +46,8 @@
 ## Constants
 <a name="constant_GET" class="anchor"></a>
 ###### GET
+Http метод GET
+
 ```php
 GET = 'GET'
 ```
@@ -53,6 +55,8 @@ GET = 'GET'
 
 <a name="constant_POST" class="anchor"></a>
 ###### POST
+Http метод POST
+
 ```php
 POST = 'POST'
 ```
@@ -60,6 +64,8 @@ POST = 'POST'
 
 <a name="constant_PATCH" class="anchor"></a>
 ###### PATCH
+Http метод PATCH
+
 ```php
 PATCH = 'PATCH'
 ```
@@ -67,6 +73,8 @@ PATCH = 'PATCH'
 
 <a name="constant_HEAD" class="anchor"></a>
 ###### HEAD
+Http метод HEAD
+
 ```php
 HEAD = 'HEAD'
 ```
@@ -74,6 +82,8 @@ HEAD = 'HEAD'
 
 <a name="constant_OPTIONS" class="anchor"></a>
 ###### OPTIONS
+Http метод OPTIONS
+
 ```php
 OPTIONS = 'OPTIONS'
 ```
@@ -81,6 +91,8 @@ OPTIONS = 'OPTIONS'
 
 <a name="constant_PUT" class="anchor"></a>
 ###### PUT
+Http метод PUT
+
 ```php
 PUT = 'PUT'
 ```
@@ -88,6 +100,8 @@ PUT = 'PUT'
 
 <a name="constant_DELETE" class="anchor"></a>
 ###### DELETE
+Http метод DELETE
+
 ```php
 DELETE = 'DELETE'
 ```
@@ -99,7 +113,7 @@ DELETE = 'DELETE'
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -174,11 +188,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

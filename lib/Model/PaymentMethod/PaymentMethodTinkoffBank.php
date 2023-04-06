@@ -1,8 +1,9 @@
 <?php
+
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +23,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace YooKassa\Model\PaymentMethod;
 
+namespace YooKassa\Model\PaymentMethod;
 
 use YooKassa\Model\PaymentMethodType;
 
@@ -36,6 +37,6 @@ class PaymentMethodTinkoffBank extends AbstractPaymentMethod
 {
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::TINKOFF_BANK);
+        $this->setType(PaymentMethodType::TINKOFF_BANK);
     }
 }

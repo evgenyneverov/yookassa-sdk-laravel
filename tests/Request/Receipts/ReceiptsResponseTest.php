@@ -2,7 +2,6 @@
 
 namespace YooKassa\Request\Receipts;
 
-
 use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\Random;
 use YooKassa\Helpers\UUID;
@@ -66,7 +65,7 @@ class ReceiptsResponseTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateReceipt();
         }
 
@@ -74,14 +73,15 @@ class ReceiptsResponseTest extends TestCase
     }
 
     private function generateReceipt()
-    {   $type = Random::value(ReceiptType::getEnabledValues());
+    {
+        $type = Random::value(ReceiptType::getEnabledValues());
         return array(
             'id' => Random::str(39),
             'type' => $type,
             'status' => Random::value(array('pending', 'succeeded', 'canceled')),
             'items' => $this->generateItems(),
             'settlements' => $this->generateSettlements(),
-            'tax_system_code' => Random::int(1 ,6),
+            'tax_system_code' => Random::int(1, 6),
             $type . '_id' => UUID::v4(),
         );
     }
@@ -91,7 +91,7 @@ class ReceiptsResponseTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateItem();
         }
 
@@ -107,7 +107,7 @@ class ReceiptsResponseTest extends TestCase
                 'currency' => 'RUB',
             ),
             'quantity' => round(Random::float(0.001, 99.999), 3),
-            'vat_code' => Random::int(1 ,6),
+            'vat_code' => Random::int(1, 6),
         );
     }
 
@@ -116,7 +116,7 @@ class ReceiptsResponseTest extends TestCase
         $return = array();
         $count = Random::int(1, 10);
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $return[] = $this->generateSettlement();
         }
 

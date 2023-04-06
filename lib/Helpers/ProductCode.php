@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -136,7 +136,7 @@ class ProductCode
      * @param string|null $codeDataMatrix Строка, расшифрованная из QR-кода
      * @param bool|string $usePrefix Нужен ли код типа маркировки в результате
      */
-    public function __construct($codeDataMatrix=null, $usePrefix=true)
+    public function __construct($codeDataMatrix = null, $usePrefix = true)
     {
         $this->preparePrefix($usePrefix);
 
@@ -618,7 +618,7 @@ class ProductCode
      */
     private function numToHex($string)
     {
-        return str_pad($this->base_convert($string), 12, '0', STR_PAD_LEFT);
+        return str_pad($this->baseConvert($string), 12, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -630,7 +630,7 @@ class ProductCode
      * @param int $toBase
      * @return string
      */
-    private function base_convert($numString, $fromBase=10, $toBase=16)
+    private function baseConvert($numString, $fromBase = 10, $toBase = 16)
     {
         $chars = "0123456789abcdefghijklmnopqrstuvwxyz";
         $toString = substr($chars, 0, $toBase);
@@ -702,5 +702,4 @@ class ProductCode
     {
         return $this->getResult();
     }
-
 }

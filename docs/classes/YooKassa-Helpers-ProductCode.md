@@ -10,28 +10,14 @@
 
 ---
 ### Examples
-Вариант через метод
+04-product-code.php 6 7 Вариант через метод
 
 ```php
-$inputDataMatrix = '010463003407001221SxMGorvNuq6Wk91fgr92sdfsdfghfgjh';
-$productCode = new \YooKassa\Helpers\ProductCode($inputDataMatrix);
-$receiptItem = new \YooKassa\Model\ReceiptItem();
-$receiptItem->setProductCode($productCode);
-$receiptItem->setMarkCodeInfo($productCode->getMarkCodeInfo());
-
-var_dump($receiptItem);
 
 ```
-Вариант через массив
+04-product-code.php 15 7 Вариант через массив
 
 ```php
-$inputDataMatrix = '010463003407001221SxMGorvNuq6Wk91fgr92sdfsdfghfgjh';
-$receiptItem = new \YooKassa\Model\ReceiptItem(array(
-    'product_code' => (string)($code = new \YooKassa\Helpers\ProductCode($inputDataMatrix)),
-    'mark_code_info' => $code->getMarkCodeInfo()
-));
-
-var_dump($receiptItem);
 
 ```
 
@@ -630,11 +616,11 @@ public validate() : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

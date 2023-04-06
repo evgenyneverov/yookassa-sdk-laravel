@@ -220,5 +220,4 @@ abstract class AbstractPayoutResponseTest extends TestCase
         }
         return $result;
     }
-
 }

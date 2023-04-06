@@ -1,6 +1,7 @@
 
 /vendor/
 .idea
+.phpdoc
 composer.lock
 /build/
 phpunit.xml

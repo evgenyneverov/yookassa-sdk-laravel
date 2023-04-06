@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,19 +35,13 @@ class PayoutCancellationDetailsPartyCode extends AbstractEnum
 {
     /**
      * Платформа (вы)
+     * @deprecated Будет удален в будущих версиях
      */
     const MERCHANT = 'merchant';
-
-    /**
-     * ЮKassa
-     */
+    /** ЮKassa */
     const YOO_KASSA = 'yoo_kassa';
-
-    /**
-     * «Внешние» участники процесса выплаты (например, эмитент, сторонний платежный сервис)
-     */
+    /** «Внешние» участники процесса выплаты (например, эмитент, сторонний платежный сервис) */
     const PAYMENT_NETWORK = 'payment_network';
-
 
     protected static $validValues = array(
         self::MERCHANT        => true,

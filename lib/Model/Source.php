@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,11 +62,15 @@ class Source extends AbstractObject implements SourceInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "accountId" parameter in Source', 0, 'source.accountId'
+                'Empty value for "accountId" parameter in Source',
+                0,
+                'source.accountId'
             );
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "accountId" parameter in Source', 0, 'source.accountId'
+                'Invalid value type for "accountId" parameter in Source',
+                0,
+                'source.accountId'
             );
         } else {
             $this->_accountId = (string)$value;
@@ -104,7 +108,9 @@ class Source extends AbstractObject implements SourceInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "amount" parameter in Source', 0, 'source.amount'
+                'Empty value for "amount" parameter in Source',
+                0,
+                'source.amount'
             );
         } elseif (is_array($value)) {
             $this->_amount = $this->factoryAmount($value);
@@ -112,7 +118,10 @@ class Source extends AbstractObject implements SourceInterface
             $this->_amount = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "amount" parameter in Source', 0, 'source.amount', $value
+                'Invalid value type for "amount" parameter in Source',
+                0,
+                'source.amount',
+                $value
             );
         }
     }
@@ -140,7 +149,9 @@ class Source extends AbstractObject implements SourceInterface
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "platform_fee_amount" parameter in Source', 0, 'source.platform_fee_amount'
+                'Empty value for "platform_fee_amount" parameter in Source',
+                0,
+                'source.platform_fee_amount'
             );
         } elseif (is_array($value)) {
             $this->_platform_fee_amount = $this->factoryAmount($value);
@@ -148,7 +159,10 @@ class Source extends AbstractObject implements SourceInterface
             $this->_platform_fee_amount = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "platform_fee_amount" parameter in Source', 0, 'source.platform_fee_amount', $value
+                'Invalid value type for "platform_fee_amount" parameter in Source',
+                0,
+                'source.platform_fee_amount',
+                $value
             );
         }
     }

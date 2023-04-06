@@ -186,7 +186,7 @@ class CreateCaptureRequestSerializerTest extends TestCase
                         ),
                         'customer' => array(
                             'phone' => Random::str(12, '0123456789'),
-                            'email' => Random::str(10 ),
+                            'email' => Random::str(10),
                             'full_name' => Random::str(1, 256),
                             'inn'    => Random::str(12, 12, '1234567890')
                         ),

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,33 +44,33 @@ interface ReceiptCustomerInterface
      *
      * @return string Название организации или ФИО физического лица
      */
-    function getFullName();
+    public function getFullName();
 
     /**
      * Возвращает номер телефона плательщика в формате ITU-T E.164 на который будет выслан чек
      *
      * @return string Номер телефона плательщика
      */
-    function getPhone();
+    public function getPhone();
 
     /**
      * Возвращает адрес электронной почты на который будет выслан чек
      *
      * @return string E-mail адрес плательщика
      */
-    function getEmail();
+    public function getEmail();
 
     /**
      * Возвращает ИНН плательщика
      *
      * @return string ИНН плательщика
      */
-    function getInn();
+    public function getInn();
 
     /**
      * Возвращает массив полей плательщика
      *
      * @return array
      */
-    function jsonSerialize();
+    public function jsonSerialize();
 }

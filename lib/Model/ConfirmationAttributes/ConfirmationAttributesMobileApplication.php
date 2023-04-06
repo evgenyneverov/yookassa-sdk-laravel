@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ class ConfirmationAttributesMobileApplication extends AbstractConfirmationAttrib
     public function __construct($data = array())
     {
         parent::__construct($data);
-        $this->_setType(ConfirmationType::MOBILE_APPLICATION);
+        $this->setType(ConfirmationType::MOBILE_APPLICATION);
     }
 
     /**
@@ -67,7 +67,10 @@ class ConfirmationAttributesMobileApplication extends AbstractConfirmationAttrib
             $this->_returnUrl = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid returnUrl value type', 0, 'ConfirmationAttributesMobileApplication.returnUrl', $value
+                'Invalid returnUrl value type',
+                0,
+                'ConfirmationAttributesMobileApplication.returnUrl',
+                $value
             );
         }
     }

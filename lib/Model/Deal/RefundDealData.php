@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,6 @@ use YooKassa\Model\SettlementInterface;
  */
 class RefundDealData extends AbstractObject
 {
-
     /** @var SettlementPayoutRefund[] Данные о распределении денег */
     private $_refund_settlements = array();
 
@@ -68,7 +67,10 @@ class RefundDealData extends AbstractObject
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid refund_settlements value type in deal', 0, 'deal.refund_settlements', $value
+                'Invalid refund_settlements value type in deal',
+                0,
+                'deal.refund_settlements',
+                $value
             );
         }
         $this->_refund_settlements = array();
@@ -79,7 +81,10 @@ class RefundDealData extends AbstractObject
                 $this->addRefundSettlement($val);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid refund_settlements value type in deal', 0, 'deal.refund_settlements['.$key.']', $val
+                    'Invalid refund_settlements value type in deal',
+                    0,
+                    'deal.refund_settlements[' . $key . ']',
+                    $val
                 );
             }
         }

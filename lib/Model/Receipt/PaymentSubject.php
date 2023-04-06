@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,72 +33,72 @@ use YooKassa\Common\AbstractEnum;
  */
 class PaymentSubject extends AbstractEnum
 {
-    /** @var string Товар */
+    /** Товар */
     const COMMODITY = 'commodity';
-    /** @var string Подакцизный товар */
+    /** Подакцизный товар */
     const EXCISE = 'excise';
-    /** @var string Работа */
+    /** Работа */
     const JOB = 'job';
-    /** @var string Услуга */
+    /** Услуга */
     const SERVICE = 'service';
-    /** @var string Ставка в азартной игре */
+    /** Ставка в азартной игре */
     const GAMBLING_BET = 'gambling_bet';
-    /** @var string Выигрыш азартной игры */
+    /** Выигрыш азартной игры */
     const GAMBLING_PRIZE = 'gambling_prize';
-    /** @var string Лотерейный билет */
+    /** Лотерейный билет */
     const LOTTERY = 'lottery';
-    /** @var string Выигрыш в лотерею */
+    /** Выигрыш в лотерею */
     const LOTTERY_PRIZE = 'lottery_prize';
-    /** @var string Результаты интеллектуальной деятельности */
+    /** Результаты интеллектуальной деятельности */
     const INTELLECTUAL_ACTIVITY = 'intellectual_activity';
-    /** @var string Платеж */
+    /** Платеж */
     const PAYMENT = 'payment';
-    /** @var string Агентское вознаграждение */
+    /** Агентское вознаграждение */
     const AGENT_COMMISSION = 'agent_commission';
-    /** @var string Имущественное право */
+    /** Имущественное право */
     const PROPERTY_RIGHT = 'property_right';
-    /** @var string Внереализационный доход */
+    /** Внереализационный доход */
     const NON_OPERATING_GAIN = 'non_operating_gain';
-    /** @var string Страховой сбор */
+    /** Страховой сбор */
     const INSURANCE_PREMIUM = 'insurance_premium';
-    /** @var string Торговый сбор */
+    /** Торговый сбор */
     const SALES_TAX = 'sales_tax';
-    /** @var string Курортный сбор */
+    /** Курортный сбор */
     const RESORT_FEE = 'resort_fee';
-    /** @var string Несколько вариантов */
+    /** Несколько вариантов */
     const COMPOSITE = 'composite';
-    /** @var string Другое */
+    /** Другое */
     const ANOTHER = 'another';
 
-    /** @var string Выплата */
+    /** Выплата */
     const FINE = 'fine';
-    /** @var string Страховые взносы */
+    /** Страховые взносы */
     const TAX = 'tax';
-    /** @var string Залог */
+    /** Залог */
     const LIEN = 'lien';
-    /** @var string Расход */
+    /** Расход */
     const COST = 'cost';
-    /** @var string Взносы на обязательное пенсионное страхование ИП */
+    /** Взносы на обязательное пенсионное страхование ИП */
     const PENSION_INSURANCE_WITHOUT_PAYOUTS = 'pension_insurance_without_payouts';
-    /** @var string Взносы на обязательное пенсионное страхование */
+    /** Взносы на обязательное пенсионное страхование */
     const PENSION_INSURANCE_WITH_PAYOUTS = 'pension_insurance_with_payouts';
-    /** @var string Взносы на обязательное медицинское страхование ИП */
+    /** Взносы на обязательное медицинское страхование ИП */
     const HEALTH_INSURANCE_WITHOUT_PAYOUTS = 'health_insurance_without_payouts';
-    /** @var string Взносы на обязательное медицинское страхование */
+    /** Взносы на обязательное медицинское страхование */
     const HEALTH_INSURANCE_WITH_PAYOUTS = 'health_insurance_with_payouts';
-    /** @var string Взносы на обязательное социальное страхование */
+    /** Взносы на обязательное социальное страхование */
     const HEALTH_INSURANCE = 'health_insurance';
-    /** @var string Платеж казино */
+    /** Платеж казино */
     const CASINO = 'casino';
-    /** @var string Выдача денежных средств */
+    /** Выдача денежных средств */
     const AGENT_WITHDRAWALS = 'agent_withdrawals';
-    /** @var string Подакцизный товар, подлежащий маркировке средством идентификации, не имеющим кода маркировки (в чеке — АТНМ). Пример: алкогольная продукция */
+    /** Подакцизный товар, подлежащий маркировке средством идентификации, не имеющим кода маркировки (в чеке — АТНМ). Пример: алкогольная продукция */
     const NON_MARKED_EXCISE = 'non_marked_excise';
-    /** @var string Подакцизный товар, подлежащий маркировке средством идентификации, имеющим код маркировки (в чеке — АТМ). Пример: табак */
+    /** Подакцизный товар, подлежащий маркировке средством идентификации, имеющим код маркировки (в чеке — АТМ). Пример: табак */
     const MARKED_EXCISE = 'marked_excise';
-    /** @var string Товар, подлежащий маркировке средством идентификации, имеющим код маркировки, за исключением подакцизного товара (в чеке — ТМ). Пример: обувь, духи, товары легкой промышленности */
+    /** Товар, подлежащий маркировке средством идентификации, имеющим код маркировки, за исключением подакцизного товара (в чеке — ТМ). Пример: обувь, духи, товары легкой промышленности */
     const MARKED = 'marked';
-    /** @var string Товар, подлежащий маркировке средством идентификации, не имеющим кода маркировки, за исключением подакцизного товара (в чеке — ТНМ). Пример: меховые изделия */
+    /** Товар, подлежащий маркировке средством идентификации, не имеющим кода маркировки, за исключением подакцизного товара (в чеке — ТНМ). Пример: меховые изделия */
     const NON_MARKED = 'non_marked';
 
     protected static $validValues = array(

@@ -12,6 +12,7 @@
 | [\YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataBankCard](../classes/YooKassa-Request-Payouts-PayoutDestinationData-PayoutDestinationDataBankCard.md) | Класс PayoutDestinationDataBankCard Платежные данные для проведения оплаты при помощи банковской карты |
 | [\YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataBankCardCard](../classes/YooKassa-Request-Payouts-PayoutDestinationData-PayoutDestinationDataBankCardCard.md) | Класс PayoutDestinationDataBankCardCard |
 | [\YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataFactory](../classes/YooKassa-Request-Payouts-PayoutDestinationData-PayoutDestinationDataFactory.md) | Класс PayoutDestinationDataFactory |
+| [\YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataSbp](../classes/YooKassa-Request-Payouts-PayoutDestinationData-PayoutDestinationDataSbp.md) | Класс PayoutDestinationDataSbp |
 | [\YooKassa\Request\Payouts\PayoutDestinationData\PayoutDestinationDataYooMoney](../classes/YooKassa-Request-Payouts-PayoutDestinationData-PayoutDestinationDataYooMoney.md) | Класс PayoutDestinationDataYooMoney |
 
 ---
@@ -24,11 +25,11 @@
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

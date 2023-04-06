@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,23 +75,32 @@ abstract class AbstractPaymentMethod extends AbstractObject
      * Устанавливает тип объекта
      * @param string $value Тип объекта
      */
-    protected function _setType($value)
+    protected function setType($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty payment data type', 0, 'PaymentMethod.type'
+                'Empty payment data type',
+                0,
+                'PaymentMethod.type'
             );
-        } elseif (TypeCast::canCastToEnumString($value)) {
+        }
+        if (TypeCast::canCastToEnumString($value)) {
             if (PaymentMethodType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in PaymentMethod', 0, 'PaymentMethod.type', $value
+                    'Invalid value for "type" parameter in PaymentMethod',
+                    0,
+                    'PaymentMethod.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in PaymentMethod', 0, 'PaymentMethod.type', $value
+                'Invalid value type for "type" parameter in PaymentMethod',
+                0,
+                'PaymentMethod.type',
+                $value
             );
         }
     }
@@ -141,7 +150,10 @@ abstract class AbstractPaymentMethod extends AbstractObject
             $this->_saved = (bool)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid saved value type', 0, 'PaymentMethod.saved', $value
+                'Invalid saved value type',
+                0,
+                'PaymentMethod.saved',
+                $value
             );
         }
     }

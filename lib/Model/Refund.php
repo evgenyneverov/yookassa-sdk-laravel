@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -157,12 +157,18 @@ class Refund extends AbstractObject implements RefundInterface
                 $this->_paymentId = $castedValue;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid refund paymentId value', 0, 'Refund.paymentId', $value
+                    'Invalid refund paymentId value',
+                    0,
+                    'Refund.paymentId',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid refund paymentId value type', 0, 'Refund.paymentId', $value
+                'Invalid refund paymentId value type',
+                0,
+                'Refund.paymentId',
+                $value
             );
         }
     }
@@ -194,12 +200,18 @@ class Refund extends AbstractObject implements RefundInterface
                 $this->_status = $castedValue;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid refund status value', 0, 'Refund.status', $value
+                    'Invalid refund status value',
+                    0,
+                    'Refund.status',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid refund status value type', 0, 'Refund.status', $value
+                'Invalid refund status value type',
+                0,
+                'Refund.status',
+                $value
             );
         }
     }
@@ -287,12 +299,18 @@ class Refund extends AbstractObject implements RefundInterface
                 $this->_receiptRegistration = $castedValue;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid refund receiptRegistration value', 0, 'Refund.receiptRegistration', $value
+                    'Invalid refund receiptRegistration value',
+                    0,
+                    'Refund.receiptRegistration',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid refund receiptRegistration value type', 0, 'Refund.receiptRegistration', $value
+                'Invalid refund receiptRegistration value type',
+                0,
+                'Refund.receiptRegistration',
+                $value
             );
         }
     }
@@ -371,7 +389,8 @@ class Refund extends AbstractObject implements RefundInterface
      * @deprecated Не используется. Будет удален в следующих версиях
      */
     public function setRequestor($value)
-    {}
+    {
+    }
 
     /**
      * Возвращает данные о сделке, в составе которой проходит возврат
@@ -398,9 +417,11 @@ class Refund extends AbstractObject implements RefundInterface
             $this->_deal = new RefundDealInfo($value);
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid deal value type in Refund', 0, 'Refund.deal', $value
+                'Invalid deal value type in Refund',
+                0,
+                'Refund.deal',
+                $value
             );
         }
     }
-
 }

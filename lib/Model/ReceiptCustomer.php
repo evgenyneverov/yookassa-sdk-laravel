@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -86,7 +86,10 @@ class ReceiptCustomer extends AbstractObject implements ReceiptCustomerInterface
             throw new InvalidPropertyValueTypeException('Invalid full_name value type', 0, 'receipt.customer.full_name');
         } elseif (mb_strlen((string)$value) > 256) {
             throw new InvalidPropertyValueException(
-                'Invalid full_name value: "'.$value.'"', 0, 'receipt.customer.full_name', $value
+                'Invalid full_name value: "' . $value . '"',
+                0,
+                'receipt.customer.full_name',
+                $value
             );
         } else {
             $this->_fullName = (string)$value;
@@ -172,7 +175,7 @@ class ReceiptCustomer extends AbstractObject implements ReceiptCustomerInterface
         } elseif (!TypeCast::canCastToString($value)) {
             throw new InvalidPropertyValueTypeException('Invalid inn value type', 0, 'receipt.customer.inn');
         } elseif (!preg_match('/^([0-9]{10}|[0-9]{12})$/', (string)$value)) {
-            throw new InvalidPropertyValueException('Invalid inn value: "'.$value.'"', 0, 'receipt.customer.inn');
+            throw new InvalidPropertyValueException('Invalid inn value: "' . $value . '"', 0, 'receipt.customer.inn');
         } else {
             $this->_inn = (string)$value;
         }
@@ -214,5 +217,4 @@ class ReceiptCustomer extends AbstractObject implements ReceiptCustomerInterface
 
         return $result;
     }
-
 }

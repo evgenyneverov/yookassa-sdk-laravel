@@ -96,5 +96,4 @@ class PayoutDealInfoTest extends TestCase
             ),
         );
     }
-
 }

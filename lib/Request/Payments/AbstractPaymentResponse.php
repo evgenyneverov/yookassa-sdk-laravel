@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -146,13 +146,12 @@ abstract class AbstractPaymentResponse extends Payment implements PaymentInterfa
                         $confirmation->setReturnUrl($sourceArray['confirmation']['return_url']);
                     }
                     break;
-
             }
 
             if (isset($confirmation)) {
                 $this->setConfirmation($confirmation);
             } else {
-                throw new InvalidArgumentException('confirmation type '.$confirmationType.' is incorrect');
+                throw new InvalidArgumentException('confirmation type ' . $confirmationType . ' is incorrect');
             }
         }
         if (!empty($sourceArray['refunded_amount'])) {

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,19 +33,19 @@ use YooKassa\Common\AbstractEnum;
  */
 class PaymentMode extends AbstractEnum
 {
-    /** @var string Полная предоплата */
+    /** Полная предоплата */
     const FULL_PREPAYMENT = 'full_prepayment';
-    /** @var string Частичная предоплата */
+    /** Частичная предоплата */
     const PARTIAL_PREPAYMENT = 'partial_prepayment';
-    /** @var string Аванс */
+    /** Аванс */
     const ADVANCE = 'advance';
-    /** @var string Полный расчет */
+    /** Полный расчет */
     const FULL_PAYMENT = 'full_payment';
-    /** @var string Частичный расчет и кредит */
+    /** Частичный расчет и кредит */
     const PARTIAL_PAYMENT = 'partial_payment';
-    /** @var string Кредит */
+    /** Кредит */
     const CREDIT = 'credit';
-    /** @var string Выплата по кредиту */
+    /** Выплата по кредиту */
     const CREDIT_PAYMENT = 'credit_payment';
 
     protected static $validValues = array(

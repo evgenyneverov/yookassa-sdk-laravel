@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,89 +47,89 @@ interface CreateRefundRequestInterface
      * Возвращает айди платежа для которого создаётся возврат средств
      * @return string Айди платежа для которого создаётся возврат
      */
-    function getPaymentId();
+    public function getPaymentId();
 
     /**
      * Возвращает сумму возвращаемых средств
      * @return AmountInterface Сумма возврата
      */
-    function getAmount();
+    public function getAmount();
 
     /**
      * Проверяет, был ли установлена идентификатор платежа
      * @return bool True если идентификатор платежа был установлен, false если нет
      */
-    function hasPaymentId();
+    public function hasPaymentId();
 
     /**
      * Устанавливает комментарий к возврату
      * @param string $value Комментарий к операции возврата, основание для возврата средств покупателю
      */
-    function setDescription($value);
+    public function setDescription($value);
 
     /**
      * Возвращает комментарий к возврату или null, если комментарий не задан
      * @return string Комментарий к операции возврата, основание для возврата средств покупателю.
      */
-    function getDescription();
+    public function getDescription();
 
     /**
      * Проверяет задан ли комментарий к создаваемому возврату
      * @return bool True если комментарий установлен, false если нет
      */
-    function hasDescription();
+    public function hasDescription();
 
     /**
      * Устанавливает чек
      * @param ReceiptInterface|null $value Инстанс чека или null для удаления информации о чеке
      */
-    function setReceipt($value);
+    public function setReceipt($value);
 
     /**
      * Возвращает инстанс чека или null, если чек не задан
      * @return ReceiptInterface|null Инстанс чека или null
      */
-    function getReceipt();
+    public function getReceipt();
 
     /**
      * Проверяет задан ли чек
      * @return bool True если чек есть, false если нет
      */
-    function hasReceipt();
+    public function hasReceipt();
 
     /**
      * Устанавливает информацию о распределении денег — сколько и в какой магазин нужно перевести
      * @param SourceInterface[] $value Информация о распределении денег
      */
-    function setSources($value);
+    public function setSources($value);
 
     /**
      * Возвращает информацию о распределении денег — сколько и в какой магазин нужно перевести
      * @return SourceInterface[] Информация о распределении денег
      */
-    function getSources();
+    public function getSources();
 
     /**
      * Проверяет наличие информации о распределении денег
      * @return bool
      */
-    function hasSources();
+    public function hasSources();
 
     /**
      * Устанавливает информацию о сделке
      * @param RefundDealData $value Информация о сделке
      */
-    function setDeal($value);
+    public function setDeal($value);
 
     /**
      * Возвращает информацию о сделке
      * @return RefundDealData Информация о сделке
      */
-    function getDeal();
+    public function getDeal();
 
     /**
      * Проверяет наличие информации о сделке
      * @return bool
      */
-    function hasDeal();
+    public function hasDeal();
 }

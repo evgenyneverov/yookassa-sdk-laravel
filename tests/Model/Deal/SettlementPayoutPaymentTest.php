@@ -191,5 +191,4 @@ class SettlementPayoutPaymentTest extends TestCase
 
         return $result;
     }
-
 }

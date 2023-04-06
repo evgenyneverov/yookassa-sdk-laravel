@@ -22,6 +22,7 @@ Interface CreatePaymentRequestInterface
 | public | [getConfirmation()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getConfirmation) |  | Возвращает способ подтверждения платежа |
 | public | [getDeal()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getDeal) |  | Возвращает данные о сделке, в составе которой проходит платеж |
 | public | [getDescription()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getDescription) |  | Возвращает описание транзакции |
+| public | [getFraudData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getFraudData) |  | Возвращает информацию для проверки операции на мошенничество |
 | public | [getMerchantCustomerId()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getMerchantCustomerId) |  | Возвращает идентификатор покупателя в вашей системе |
 | public | [getMetadata()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getMetadata) |  | Возвращает данные оплаты установленные мерчантом |
 | public | [getPaymentMethodData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_getPaymentMethodData) |  | Возвращает данные для создания метода оплаты |
@@ -37,6 +38,7 @@ Interface CreatePaymentRequestInterface
 | public | [hasConfirmation()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasConfirmation) |  | Проверяет, был ли установлен способ подтверждения платежа |
 | public | [hasDeal()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasDeal) |  | Проверяет, были ли установлены данные о сделке |
 | public | [hasDescription()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasDescription) |  | Проверяет наличие описания транзакции в создаваемом платеже |
+| public | [hasFraudData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasFraudData) |  | Проверяет, была ли установлена информация для проверки операции на мошенничество |
 | public | [hasMerchantCustomerId()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasMerchantCustomerId) |  | Проверяет, был ли установлен идентификатор покупателя в вашей системе |
 | public | [hasMetadata()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные заказа |
 | public | [hasPaymentMethodData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_hasPaymentMethodData) |  | Проверяет установлен ли объект с методом оплаты |
@@ -52,6 +54,7 @@ Interface CreatePaymentRequestInterface
 | public | [setConfirmation()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setConfirmation) |  | Устанавливает способ подтверждения платежа |
 | public | [setDeal()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setDeal) |  | Устанавливает данные о сделке, в составе которой проходит платеж. |
 | public | [setDescription()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setDescription) |  | Устанавливает описание транзакции |
+| public | [setFraudData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setFraudData) |  | Устанавливает информацию для проверки операции на мошенничество |
 | public | [setMerchantCustomerId()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setMerchantCustomerId) |  | Устанавливает идентификатор покупателя в вашей системе |
 | public | [setMetadata()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setMetadata) |  | Устанавливает метаданные, привязанные к платежу |
 | public | [setPaymentMethodData()](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md#method_setPaymentMethodData) |  | Устанавливает объект с информацией для создания метода оплаты |
@@ -88,6 +91,8 @@ Interface CreatePaymentRequestInterface
 | property-read |  | Метаданные привязанные к платежу |
 | property-read |  | Метаданные привязанные к платежу |
 | property-read |  | Данные о сделке, в составе которой проходит платеж |
+| property-read |  | Информация для проверки операции на мошенничество |
+| property-read |  | Информация для проверки операции на мошенничество |
 | property-read |  | Идентификатор покупателя в вашей системе, например электронная почта или номер телефона |
 | property-read |  | Идентификатор покупателя в вашей системе, например электронная почта или номер телефона |
 
@@ -803,7 +808,7 @@ public getTransfers() : \YooKassa\Model\TransferInterface[]
 #### public setTransfers() : mixed
 
 ```php
-public setTransfers(mixed $value) : mixed
+public setTransfers(\YooKassa\Model\TransferInterface[]|array|null $value) : mixed
 ```
 
 **Summary**
@@ -821,7 +826,7 @@ public setTransfers(mixed $value) : mixed
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">mixed</code> | value  |  |
+| <code lang="php">\YooKassa\Model\TransferInterface[] OR array OR null</code> | value  | Данные о распределении денег |
 
 **Returns:** mixed - 
 
@@ -878,6 +883,62 @@ public setDeal(\YooKassa\Model\Deal\PaymentDealInfo|array|null $value) : mixed
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">\YooKassa\Model\Deal\PaymentDealInfo OR array OR null</code> | value  | Данные о сделке, в составе которой проходит платеж |
+
+**Returns:** mixed - 
+
+
+<a name="method_getFraudData" class="anchor"></a>
+#### public getFraudData() : \YooKassa\Model\FraudData
+
+```php
+public getFraudData() : \YooKassa\Model\FraudData
+```
+
+**Summary**
+
+Возвращает информацию для проверки операции на мошенничество
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\CreatePaymentRequestInterface](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md)
+
+**Returns:** \YooKassa\Model\FraudData - Информация для проверки операции на мошенничество
+
+
+<a name="method_hasFraudData" class="anchor"></a>
+#### public hasFraudData() : bool
+
+```php
+public hasFraudData() : bool
+```
+
+**Summary**
+
+Проверяет, была ли установлена информация для проверки операции на мошенничество
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\CreatePaymentRequestInterface](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md)
+
+**Returns:** bool - True если информация была установлена, false если нет
+
+
+<a name="method_setFraudData" class="anchor"></a>
+#### public setFraudData() : mixed
+
+```php
+public setFraudData(\YooKassa\Model\FraudData|array|null $value) : mixed
+```
+
+**Summary**
+
+Устанавливает информацию для проверки операции на мошенничество
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\CreatePaymentRequestInterface](../classes/YooKassa-Request-Payments-CreatePaymentRequestInterface.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\FraudData OR array OR null</code> | value  | Информация для проверки операции на мошенничество |
 
 **Returns:** mixed - 
 
@@ -950,11 +1011,11 @@ public setMerchantCustomerId(string $value) : mixed
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

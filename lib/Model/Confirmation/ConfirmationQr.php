@@ -1,8 +1,9 @@
 <?php
+
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +25,6 @@
  */
 
 namespace YooKassa\Model\Confirmation;
-
 
 use YooKassa\Common\Exceptions\InvalidPropertyValueTypeException;
 use YooKassa\Helpers\TypeCast;
@@ -62,7 +62,10 @@ class ConfirmationQr extends AbstractConfirmation
             $this->_confirmationData = (string)$confirmationData;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid confirmationData value type', 0, 'confirmationQr.confirmationData', $confirmationData
+                'Invalid confirmationData value type',
+                0,
+                'confirmationQr.confirmationData',
+                $confirmationData
             );
         }
     }

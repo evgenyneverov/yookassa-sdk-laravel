@@ -13,6 +13,7 @@ use YooKassa\Model\CurrencyCode;
 use YooKassa\Model\Deal\PaymentDealInfo;
 use YooKassa\Model\Deal\SettlementPayoutPayment;
 use YooKassa\Model\Deal\SettlementPayoutPaymentType;
+use YooKassa\Model\FraudData;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Payment;
 use YooKassa\Model\PaymentData\PaymentDataQiwi;
@@ -101,6 +102,31 @@ class CreatePaymentRequestBuilderTest extends TestCase
         } else {
             self::assertNotNull($instance->getDeal());
             self::assertEquals($options['deal'], $instance->getDeal()->toArray());
+        }
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     *
+     * @param $options
+     * @throws Exception
+     */
+    public function testSetFraudData($options)
+    {
+        $builder = new CreatePaymentRequestBuilder();
+        $builder->setAmount($options['amount']);
+        $builder->setFraudData($options['fraud_data']);
+        $instance = $builder->build();
+
+        if (empty($options['fraud_data'])) {
+            self::assertNull($instance->getFraudData());
+        } else {
+            self::assertNotNull($instance->getFraudData());
+            if (is_array($options['fraud_data'])) {
+                self::assertEquals($options['fraud_data'], $instance->getFraudData()->toArray());
+            } else {
+                self::assertEquals($options['fraud_data'], $instance->getFraudData());
+            }
         }
     }
 
@@ -243,12 +269,22 @@ class CreatePaymentRequestBuilderTest extends TestCase
         foreach ($options['receiptItems'] as $item) {
             if ($item instanceof ReceiptItem) {
                 $builder->addReceiptItem(
-                    $item->getDescription(), $item->getPrice()->getValue(), $item->getQuantity(), $item->getVatCode(),
-                    $item->getPaymentMode(), $item->getPaymentSubject()
+                    $item->getDescription(),
+                    $item->getPrice()->getValue(),
+                    $item->getQuantity(),
+                    $item->getVatCode(),
+                    $item->getPaymentMode(),
+                    $item->getPaymentSubject()
                 );
             } else {
-                $builder->addReceiptItem($item['title'], $item['price'], $item['quantity'], $item['vatCode'],
-                    $item['paymentMode'], $item['paymentSubject']);
+                $builder->addReceiptItem(
+                    $item['title'],
+                    $item['price'],
+                    $item['quantity'],
+                    $item['vatCode'],
+                    $item['paymentMode'],
+                    $item['paymentSubject']
+                );
             }
         }
         $builder->setReceiptEmail($options['receiptEmail']);
@@ -278,7 +314,9 @@ class CreatePaymentRequestBuilderTest extends TestCase
         foreach ($options['receiptItems'] as $item) {
             if ($item instanceof ReceiptItem) {
                 $builder->addReceiptShipping(
-                    $item->getDescription(), $item->getPrice()->getValue(), $item->getVatCode()
+                    $item->getDescription(),
+                    $item->getPrice()->getValue(),
+                    $item->getVatCode()
                 );
             } else {
                 $builder->addReceiptShipping($item['title'], $item['price'], $item['vatCode']);
@@ -939,6 +977,7 @@ class CreatePaymentRequestBuilderTest extends TestCase
                             )
                         )
                     ),
+                    'fraud_data' => null,
                     'receiptIndustryDetails'    => null,
                     'receiptOperationalDetails' => null,
                 ),
@@ -978,6 +1017,9 @@ class CreatePaymentRequestBuilderTest extends TestCase
                         'id' => Random::str(36, 50),
                         'settlements' => array(),
                     ),
+                    'fraud_data' => new FraudData(array(
+                        'id' => Random::str(11, 15, '0123456789'),
+                    )),
                     'receiptIndustryDetails'    => '',
                     'receiptOperationalDetails' => '',
                 ),
@@ -1047,6 +1089,9 @@ class CreatePaymentRequestBuilderTest extends TestCase
                             ),
                         )
                     )
+                ),
+                'fraud_data' => array(
+                    'id' => Random::str(11, 15, '0123456789'),
                 ),
             );
             $result[] = array($request);
@@ -1222,5 +1267,33 @@ class CreatePaymentRequestBuilderTest extends TestCase
     {
         $builder = new CreatePaymentRequestBuilder();
         $builder->setDeal($value);
+    }
+
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function invalidFraudDataProvider()
+    {
+        return array(
+            array(true),
+            array(false),
+            array(new \stdClass()),
+            array(0),
+            array(7),
+            array(Random::int(-100, -1)),
+            array(Random::int(7, 100)),
+        );
+    }
+
+    /**
+     * @dataProvider invalidFraudDataProvider
+     * @expectedException InvalidArgumentException
+     * @param $value
+     */
+    public function testSetInvalidFraudData($value)
+    {
+        $builder = new CreatePaymentRequestBuilder();
+        $builder->setFraudData($value);
     }
 }

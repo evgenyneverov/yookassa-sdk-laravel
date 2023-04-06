@@ -53,7 +53,7 @@
 
 Инстанс собираемого запроса
 
-**Type:** <a href="../classes/YooKassa-Request-Receipts-ReceiptsRequest.html"><abbr title="\YooKassa\Request\Receipts\ReceiptsRequest">ReceiptsRequest</abbr></a>
+**Type:** <a href="classes/YooKassa-Request-Receipts-ReceiptsRequest.html"><abbr title="\YooKassa\Request\Receipts\ReceiptsRequest">ReceiptsRequest</abbr></a>
 Инстанс собираемого объекта запроса
 **Details:**
 
@@ -406,11 +406,11 @@ protected initCurrentObject() : \YooKassa\Request\Receipts\ReceiptsRequest
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

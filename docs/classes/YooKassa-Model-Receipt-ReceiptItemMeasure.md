@@ -15,30 +15,30 @@
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [PIECE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_PIECE) |  |  |
-| public | [GRAM](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GRAM) |  |  |
-| public | [KILOGRAM](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOGRAM) |  |  |
-| public | [TON](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_TON) |  |  |
-| public | [CENTIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_CENTIMETER) |  |  |
-| public | [DECIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_DECIMETER) |  |  |
-| public | [METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_METER) |  |  |
-| public | [SQUARE_CENTIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_CENTIMETER) |  |  |
-| public | [SQUARE_DECIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_DECIMETER) |  |  |
-| public | [SQUARE_METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_METER) |  |  |
-| public | [MILLILITER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MILLILITER) |  |  |
-| public | [LITER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_LITER) |  |  |
-| public | [CUBIC_METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_CUBIC_METER) |  |  |
-| public | [KILOWATT_HOUR](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOWATT_HOUR) |  |  |
-| public | [GIGACALORIE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GIGACALORIE) |  |  |
-| public | [DAY](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_DAY) |  |  |
-| public | [HOUR](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_HOUR) |  |  |
-| public | [MINUTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MINUTE) |  |  |
-| public | [SECOND](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SECOND) |  |  |
-| public | [KILOBYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOBYTE) |  |  |
-| public | [MEGABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MEGABYTE) |  |  |
-| public | [GIGABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GIGABYTE) |  |  |
-| public | [TERABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_TERABYTE) |  |  |
-| public | [ANOTHER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_ANOTHER) |  |  |
+| public | [PIECE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_PIECE) |  | Штука, единица товара |
+| public | [GRAM](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GRAM) |  | Грамм |
+| public | [KILOGRAM](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOGRAM) |  | Килограмм |
+| public | [TON](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_TON) |  | Тонна |
+| public | [CENTIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_CENTIMETER) |  | Сантиметр |
+| public | [DECIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_DECIMETER) |  | Дециметр |
+| public | [METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_METER) |  | Метр |
+| public | [SQUARE_CENTIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_CENTIMETER) |  | Квадратный сантиметр |
+| public | [SQUARE_DECIMETER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_DECIMETER) |  | Квадратный дециметр |
+| public | [SQUARE_METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SQUARE_METER) |  | Квадратный метр |
+| public | [MILLILITER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MILLILITER) |  | Миллилитр |
+| public | [LITER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_LITER) |  | Литр |
+| public | [CUBIC_METER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_CUBIC_METER) |  | Кубический метр |
+| public | [KILOWATT_HOUR](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOWATT_HOUR) |  | Килловат-час |
+| public | [GIGACALORIE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GIGACALORIE) |  | Гигакалория |
+| public | [DAY](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_DAY) |  | Сутки |
+| public | [HOUR](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_HOUR) |  | Час |
+| public | [MINUTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MINUTE) |  | Минута |
+| public | [SECOND](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_SECOND) |  | Секунда |
+| public | [KILOBYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_KILOBYTE) |  | Килобайт |
+| public | [MEGABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_MEGABYTE) |  | Мегабайт |
+| public | [GIGABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_GIGABYTE) |  | Гигабайт |
+| public | [TERABYTE](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_TERABYTE) |  | Терабайт |
+| public | [ANOTHER](../classes/YooKassa-Model-Receipt-ReceiptItemMeasure.md#constant_ANOTHER) |  | Другое |
 
 ---
 ### Properties
@@ -57,7 +57,7 @@
 ---
 ### Details
 * File: [lib/Model/Receipt/ReceiptItemMeasure.php](../../lib/Model/Receipt/ReceiptItemMeasure.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\Receipt\ReceiptItemMeasure
@@ -66,169 +66,217 @@
 ## Constants
 <a name="constant_PIECE" class="anchor"></a>
 ###### PIECE
+Штука, единица товара
+
 ```php
-PIECE = 'piece' : string
+PIECE = 'piece'
 ```
 
 
 <a name="constant_GRAM" class="anchor"></a>
 ###### GRAM
+Грамм
+
 ```php
-GRAM = 'gram' : string
+GRAM = 'gram'
 ```
 
 
 <a name="constant_KILOGRAM" class="anchor"></a>
 ###### KILOGRAM
+Килограмм
+
 ```php
-KILOGRAM = 'kilogram' : string
+KILOGRAM = 'kilogram'
 ```
 
 
 <a name="constant_TON" class="anchor"></a>
 ###### TON
+Тонна
+
 ```php
-TON = 'ton' : string
+TON = 'ton'
 ```
 
 
 <a name="constant_CENTIMETER" class="anchor"></a>
 ###### CENTIMETER
+Сантиметр
+
 ```php
-CENTIMETER = 'centimeter' : string
+CENTIMETER = 'centimeter'
 ```
 
 
 <a name="constant_DECIMETER" class="anchor"></a>
 ###### DECIMETER
+Дециметр
+
 ```php
-DECIMETER = 'decimeter' : string
+DECIMETER = 'decimeter'
 ```
 
 
 <a name="constant_METER" class="anchor"></a>
 ###### METER
+Метр
+
 ```php
-METER = 'meter' : string
+METER = 'meter'
 ```
 
 
 <a name="constant_SQUARE_CENTIMETER" class="anchor"></a>
 ###### SQUARE_CENTIMETER
+Квадратный сантиметр
+
 ```php
-SQUARE_CENTIMETER = 'square_centimeter' : string
+SQUARE_CENTIMETER = 'square_centimeter'
 ```
 
 
 <a name="constant_SQUARE_DECIMETER" class="anchor"></a>
 ###### SQUARE_DECIMETER
+Квадратный дециметр
+
 ```php
-SQUARE_DECIMETER = 'square_decimeter' : string
+SQUARE_DECIMETER = 'square_decimeter'
 ```
 
 
 <a name="constant_SQUARE_METER" class="anchor"></a>
 ###### SQUARE_METER
+Квадратный метр
+
 ```php
-SQUARE_METER = 'square_meter' : string
+SQUARE_METER = 'square_meter'
 ```
 
 
 <a name="constant_MILLILITER" class="anchor"></a>
 ###### MILLILITER
+Миллилитр
+
 ```php
-MILLILITER = 'milliliter' : string
+MILLILITER = 'milliliter'
 ```
 
 
 <a name="constant_LITER" class="anchor"></a>
 ###### LITER
+Литр
+
 ```php
-LITER = 'liter' : string
+LITER = 'liter'
 ```
 
 
 <a name="constant_CUBIC_METER" class="anchor"></a>
 ###### CUBIC_METER
+Кубический метр
+
 ```php
-CUBIC_METER = 'cubic_meter' : string
+CUBIC_METER = 'cubic_meter'
 ```
 
 
 <a name="constant_KILOWATT_HOUR" class="anchor"></a>
 ###### KILOWATT_HOUR
+Килловат-час
+
 ```php
-KILOWATT_HOUR = 'kilowatt_hour' : string
+KILOWATT_HOUR = 'kilowatt_hour'
 ```
 
 
 <a name="constant_GIGACALORIE" class="anchor"></a>
 ###### GIGACALORIE
+Гигакалория
+
 ```php
-GIGACALORIE = 'gigacalorie' : string
+GIGACALORIE = 'gigacalorie'
 ```
 
 
 <a name="constant_DAY" class="anchor"></a>
 ###### DAY
+Сутки
+
 ```php
-DAY = 'day' : string
+DAY = 'day'
 ```
 
 
 <a name="constant_HOUR" class="anchor"></a>
 ###### HOUR
+Час
+
 ```php
-HOUR = 'hour' : string
+HOUR = 'hour'
 ```
 
 
 <a name="constant_MINUTE" class="anchor"></a>
 ###### MINUTE
+Минута
+
 ```php
-MINUTE = 'minute' : string
+MINUTE = 'minute'
 ```
 
 
 <a name="constant_SECOND" class="anchor"></a>
 ###### SECOND
+Секунда
+
 ```php
-SECOND = 'second' : string
+SECOND = 'second'
 ```
 
 
 <a name="constant_KILOBYTE" class="anchor"></a>
 ###### KILOBYTE
+Килобайт
+
 ```php
-KILOBYTE = 'kilobyte' : string
+KILOBYTE = 'kilobyte'
 ```
 
 
 <a name="constant_MEGABYTE" class="anchor"></a>
 ###### MEGABYTE
+Мегабайт
+
 ```php
-MEGABYTE = 'megabyte' : string
+MEGABYTE = 'megabyte'
 ```
 
 
 <a name="constant_GIGABYTE" class="anchor"></a>
 ###### GIGABYTE
+Гигабайт
+
 ```php
-GIGABYTE = 'gigabyte' : string
+GIGABYTE = 'gigabyte'
 ```
 
 
 <a name="constant_TERABYTE" class="anchor"></a>
 ###### TERABYTE
+Терабайт
+
 ```php
-TERABYTE = 'terabyte' : string
+TERABYTE = 'terabyte'
 ```
 
 
 <a name="constant_ANOTHER" class="anchor"></a>
 ###### ANOTHER
+Другое
+
 ```php
-ANOTHER = 'another' : string
+ANOTHER = 'another'
 ```
 
 
@@ -238,7 +286,7 @@ ANOTHER = 'another' : string
 <a name="property_validValues"></a>
 #### protected $validValues : array
 ---
-**Type:** <a href="../array"><abbr title="array">array</abbr></a>
+**Type:** <a href="array"><abbr title="array">array</abbr></a>
 Массив принимаемых enum&#039;ом значений
 **Details:**
 
@@ -313,11 +361,11 @@ Static public valueExists(mixed $value) : bool
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

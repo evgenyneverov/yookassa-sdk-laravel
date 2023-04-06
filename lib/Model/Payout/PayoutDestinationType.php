@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,17 @@ use YooKassa\Model\PaymentMethodType;
 
 /**
  * PayoutDestinationType - Виды выплат
- * |Код|Описание|
- * --- | ---
- * |yoo_money|Выплата в кошелек ЮMoney|
- * |bank_card|Выплата на произвольную банковскую карту|
+ *
+ * Возможные значения:
+ * - `yoo_money` - Выплата в кошелек ЮMoney
+ * - `bank_card` - Выплата на произвольную банковскую карту
+ * - `sbp` - Выплата через СБП на счет в банке или платежном сервисе
  */
 class PayoutDestinationType extends AbstractEnum
 {
     protected static $validValues = array(
         PaymentMethodType::YOO_MONEY => true,
         PaymentMethodType::BANK_CARD => true,
+        PaymentMethodType::SBP => true,
     );
 }

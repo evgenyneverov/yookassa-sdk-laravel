@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,13 +52,13 @@ interface CreateDealRequestInterface
      * Проверяет наличие типа в создаваемой сделке
      * @return bool True если тип сделки установлен, false если нет
      */
-    function hasType();
+    public function hasType();
 
     /**
      * Устанавливает тип сделки
      * @param string $value Тип сделки
      */
-    function setType($value);
+    public function setType($value);
 
     /**
      * Возвращает момент перечисления вам вознаграждения платформы
@@ -71,13 +71,13 @@ interface CreateDealRequestInterface
      * Проверяет наличие момента перечисления вознаграждения в создаваемой сделке
      * @return bool True если момент перечисления вознаграждения установлен, false если нет
      */
-    function hasFeeMoment();
+    public function hasFeeMoment();
 
     /**
      * Устанавливает момент перечисления вознаграждения платформы
      * @param string $value Момент перечисления вознаграждения
      */
-    function setFeeMoment($value);
+    public function setFeeMoment($value);
 
     /**
      * Возвращает описание сделки (не более 128 символов).
@@ -90,13 +90,13 @@ interface CreateDealRequestInterface
      * Проверяет наличие описания в создаваемой сделке
      * @return bool True если описание сделки установлено, false если нет
      */
-    function hasDescription();
+    public function hasDescription();
 
     /**
      * Устанавливает описание сделки
      * @param string $value Описание сделки
      */
-    function setDescription($value);
+    public function setDescription($value);
 
     /**
      * Возвращает дополнительные данные сделки
@@ -109,11 +109,11 @@ interface CreateDealRequestInterface
      * Проверяет, были ли установлены метаданные сделки
      * @return bool True если метаданные были установлены, false если нет
      */
-    function hasMetadata();
+    public function hasMetadata();
 
     /**
      * Устанавливает метаданные, привязанные к сделке
      * @param Metadata|array|null $value Метаданные сделки, устанавливаемые мерчантом
      */
-    function setMetadata($value);
+    public function setMetadata($value);
 }

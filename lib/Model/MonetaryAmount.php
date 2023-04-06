@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -103,11 +103,11 @@ class MonetaryAmount extends AbstractObject implements AmountInterface
             throw new InvalidPropertyValueTypeException('Invalid amount value type', 0, 'amount.value', $value);
         }
         if ($value <= 0.0) {
-            throw new InvalidPropertyValueException('Invalid amount value: "'.$value.'"', 0, 'amount.value', $value);
+            throw new InvalidPropertyValueException('Invalid amount value: "' . $value . '"', 0, 'amount.value', $value);
         }
         $castedValue = (int)round($value * 100.0);
         if ($castedValue <= 0.0) {
-            throw new InvalidPropertyValueException('Invalid amount value: "'.$value.'"', 0, 'amount.value', $value);
+            throw new InvalidPropertyValueException('Invalid amount value: "' . $value . '"', 0, 'amount.value', $value);
         }
         $this->_value = $castedValue;
     }
@@ -149,7 +149,10 @@ class MonetaryAmount extends AbstractObject implements AmountInterface
                 $this->_currency = $value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid currency value: "' . $value . '"', 0, 'amount.currency', $value
+                    'Invalid currency value: "' . $value . '"',
+                    0,
+                    'amount.currency',
+                    $value
                 );
             }
         } else {
@@ -173,18 +176,27 @@ class MonetaryAmount extends AbstractObject implements AmountInterface
         }
         if (!is_numeric($coefficient)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid coefficient type in multiply method', 0, 'amount.value', $coefficient
+                'Invalid coefficient type in multiply method',
+                0,
+                'amount.value',
+                $coefficient
             );
         }
         if ($coefficient <= 0.0) {
             throw new InvalidPropertyValueException(
-                'Invalid coefficient in multiply method: "' . $coefficient . '"', 0, 'amount.value', $coefficient
+                'Invalid coefficient in multiply method: "' . $coefficient . '"',
+                0,
+                'amount.value',
+                $coefficient
             );
         }
         $castedValue = (int)round($coefficient * $this->_value);
         if ($castedValue === 0) {
             throw new InvalidPropertyValueException(
-                'Invalid coefficient value in multiply method: "' . $coefficient . '"', 0, 'amount.value', $coefficient
+                'Invalid coefficient value in multiply method: "' . $coefficient . '"',
+                0,
+                'amount.value',
+                $coefficient
             );
         }
         $this->_value = $castedValue;
@@ -205,13 +217,19 @@ class MonetaryAmount extends AbstractObject implements AmountInterface
         }
         if (!is_numeric($value)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid amount value type in increase method', 0, 'amount.value', $value
+                'Invalid amount value type in increase method',
+                0,
+                'amount.value',
+                $value
             );
         }
         $castedValue = (int)round($this->_value + $value * 100.0);
         if ($castedValue <= 0) {
             throw new InvalidPropertyValueException(
-                'Invalid amount value in increase method: "' . $value . '"', 0, 'amount.value', $value
+                'Invalid amount value in increase method: "' . $value . '"',
+                0,
+                'amount.value',
+                $value
             );
         }
         $this->_value = $castedValue;

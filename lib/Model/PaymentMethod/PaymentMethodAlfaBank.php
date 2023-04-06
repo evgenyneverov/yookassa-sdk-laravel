@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ class PaymentMethodAlfaBank extends AbstractPaymentMethod
 
     public function __construct()
     {
-        $this->_setType(PaymentMethodType::ALFABANK);
+        $this->setType(PaymentMethodType::ALFABANK);
     }
 
     /**
@@ -69,7 +69,10 @@ class PaymentMethodAlfaBank extends AbstractPaymentMethod
             $this->_login = (string)$value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid login value type', 0, 'PaymentMethodAlfaBank.login', $value
+                'Invalid login value type',
+                0,
+                'PaymentMethodAlfaBank.login',
+                $value
             );
         }
     }

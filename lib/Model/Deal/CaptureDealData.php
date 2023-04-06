@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,10 @@ class CaptureDealData extends AbstractObject
         }
         if (!is_array($value) && !($value instanceof \Traversable)) {
             throw new InvalidPropertyValueTypeException(
-                'Invalid settlements value type in deal', 0, 'deal.settlements', $value
+                'Invalid settlements value type in deal',
+                0,
+                'deal.settlements',
+                $value
             );
         }
         $this->_settlements = array();
@@ -76,7 +79,10 @@ class CaptureDealData extends AbstractObject
                 $this->addSettlement($val);
             } else {
                 throw new InvalidPropertyValueTypeException(
-                    'Invalid settlements value type in deal', 0, 'deal.settlements['.$key.']', $val
+                    'Invalid settlements value type in deal',
+                    0,
+                    'deal.settlements[' . $key . ']',
+                    $val
                 );
             }
         }

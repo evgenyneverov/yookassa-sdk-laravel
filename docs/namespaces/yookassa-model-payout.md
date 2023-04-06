@@ -9,14 +9,18 @@
 | Name | Summary |
 | ---- | ------- |
 | [\YooKassa\Model\Payout\AbstractPayoutDestination](../classes/YooKassa-Model-Payout-AbstractPayoutDestination.md) | Данные используемые для создания метода оплаты. |
+| [\YooKassa\Model\Payout\IncomeReceipt](../classes/YooKassa-Model-Payout-IncomeReceipt.md) | Класс, представляющий модель IncomeReceipt. |
 | [\YooKassa\Model\Payout\PayoutCancellationDetails](../classes/YooKassa-Model-Payout-PayoutCancellationDetails.md) | PayoutCancellationDetails - Комментарий к отмене выплаты |
 | [\YooKassa\Model\Payout\PayoutCancellationDetailsPartyCode](../classes/YooKassa-Model-Payout-PayoutCancellationDetailsPartyCode.md) | PayoutCancellationDetailsPartyCode - Возможные инициаторы отмены выплаты |
 | [\YooKassa\Model\Payout\PayoutCancellationDetailsReasonCode](../classes/YooKassa-Model-Payout-PayoutCancellationDetailsReasonCode.md) | PayoutCancellationDetailsReasonCode - Возможные причины отмены выплаты |
 | [\YooKassa\Model\Payout\PayoutDestinationBankCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCard.md) | PaymentDataBankCard Платежные данные для проведения оплаты при помощи банковской карты |
 | [\YooKassa\Model\Payout\PayoutDestinationBankCardCard](../classes/YooKassa-Model-Payout-PayoutDestinationBankCardCard.md) | Данные банковской карты Необходим при оплате PCI-DSS данными. |
 | [\YooKassa\Model\Payout\PayoutDestinationFactory](../classes/YooKassa-Model-Payout-PayoutDestinationFactory.md) | Фабрика создания объекта платежных методов из массива |
-| [\YooKassa\Model\Payout\PayoutDestinationType](../classes/YooKassa-Model-Payout-PayoutDestinationType.md) | PayoutDestinationType - Виды выплат |Код|Описание| --- | --- |yoo_money|Выплата в кошелек ЮMoney| |bank_card|Выплата на произвольную банковскую карту| |
+| [\YooKassa\Model\Payout\PayoutDestinationSbp](../classes/YooKassa-Model-Payout-PayoutDestinationSbp.md) | Класс, описывающий метод оплаты, при оплате через ЮMoney |
+| [\YooKassa\Model\Payout\PayoutDestinationType](../classes/YooKassa-Model-Payout-PayoutDestinationType.md) | PayoutDestinationType - Виды выплат |
 | [\YooKassa\Model\Payout\PayoutDestinationYooMoney](../classes/YooKassa-Model-Payout-PayoutDestinationYooMoney.md) | Класс, описывающий метод оплаты, при оплате через ЮMoney |
+| [\YooKassa\Model\Payout\PayoutSelfEmployed](../classes/YooKassa-Model-Payout-PayoutSelfEmployed.md) | Класс, представляющий модель PayoutSelfEmployed. |
+| [\YooKassa\Model\Payout\SbpParticipantBank](../classes/YooKassa-Model-Payout-SbpParticipantBank.md) | Класс, представляющий модель SbpParticipantBank. |
 
 ---
 
@@ -28,11 +32,11 @@
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

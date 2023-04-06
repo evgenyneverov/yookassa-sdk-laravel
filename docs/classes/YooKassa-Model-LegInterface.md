@@ -21,7 +21,7 @@
 ---
 ### Details
 * File: [lib/Model/LegInterface.php](../../lib/Model/LegInterface.php)
-* Package: \Default
+* Package: \YooKassa
 
 ---
 ## Methods
@@ -154,11 +154,11 @@ public setDepartureDate(\DateTime|string $value) : mixed
 
 ### Reports
 * [Errors - 0](../reports/errors.md)
-* [Markers - 0](../reports/markers.md)
-* [Deprecated - 23](../reports/deprecated.md)
+* [Markers - 1](../reports/markers.md)
+* [Deprecated - 25](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-03-09 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2023-04-06 using [phpDocumentor](http://www.phpdoc.org/)
 
 &copy; 2023 YooMoney

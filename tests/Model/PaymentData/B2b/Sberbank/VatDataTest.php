@@ -31,7 +31,6 @@ class VatDataTest extends TestCase
         self::assertEquals($value['type'], $instance->getType());
         self::assertEquals($value['rate'], $instance->getRate());
         self::assertEquals($value['amount']->getValue(), $instance->getAmount()->getValue());
-
     }
 
     /**
@@ -245,8 +244,8 @@ class VatDataTest extends TestCase
      */
     protected function getAndSetTest($value, $property, $snakeCase = null)
     {
-        $getter = 'get'.ucfirst($property);
-        $setter = 'set'.ucfirst($property);
+        $getter = 'get' . ucfirst($property);
+        $setter = 'set' . ucfirst($property);
 
         $instance = $this->getTestInstance();
 

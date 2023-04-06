@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,227 +50,227 @@ interface DealsRequestInterface
      * Возвращает страницу выдачи результатов или null, если она до этого не была установлена
      * @return string|null Страница выдачи результатов
      */
-    function getCursor();
+    public function getCursor();
 
     /**
      * Проверяет, была ли установлена страница выдачи результатов
      * @return bool True если страница выдачи результатов была установлена, false если нет
      */
-    function hasCursor();
+    public function hasCursor();
 
     /**
      * Устанавливает страницу выдачи результатов
      * @param string $value Страница
      * @return void
      */
-    function setCursor($value);
+    public function setCursor($value);
 
     /**
      * Возвращает дату создания от которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время создания, от (включительно)
      */
-    function getCreatedAtGte();
+    public function getCreatedAtGte();
 
     /**
      * Проверяет, была ли установлена дата создания от которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtGte();
+    public function hasCreatedAtGte();
 
     /**
      * Устанавливает дату создания от которой выбираются сделки
      * @param \DateTime $value Дата
      * @return void
      */
-    function setCreatedAtGte($value);
+    public function setCreatedAtGte($value);
 
     /**
      * Возвращает дату создания от которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время создания, от (не включая)
      */
-    function getCreatedAtGt();
+    public function getCreatedAtGt();
 
     /**
      * Проверяет, была ли установлена дата создания от которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtGt();
+    public function hasCreatedAtGt();
 
     /**
      * Устанавливает дату создания от которой выбираются сделки
      * @param \DateTime $value Дата
      * @return void
      */
-    function setCreatedAtGt($value);
+    public function setCreatedAtGt($value);
 
     /**
      * Возвращает дату создания до которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время создания, до (включительно)
      */
-    function getCreatedAtLte();
+    public function getCreatedAtLte();
 
     /**
      * Проверяет, была ли установлена дата создания до которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtLte();
+    public function hasCreatedAtLte();
 
     /**
      * Устанавливает дату создания до которой выбираются сделки
      * @param \DateTime $value Дата
      * @return void
      */
-    function setCreatedAtLte($value);
+    public function setCreatedAtLte($value);
 
     /**
      * Возвращает дату создания до которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время создания, до (не включая)
      */
-    function getCreatedAtLt();
+    public function getCreatedAtLt();
 
     /**
      * Проверяет, была ли установлена дата создания до которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasCreatedAtLt();
+    public function hasCreatedAtLt();
 
     /**
      * Устанавливает дату создания до которой выбираются сделки
      * @param \DateTime $value Дата
      * @return void
      */
-    function setCreatedAtLt($value);
+    public function setCreatedAtLt($value);
 
     /**
      * Возвращает дату автоматического закрытия от которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время автоматического закрытия, от (включительно)
      */
-    function getExpiresAtGte();
+    public function getExpiresAtGte();
 
     /**
      * Проверяет, была ли установлена дата автоматического закрытия от которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasExpiresAtGte();
+    public function hasExpiresAtGte();
 
     /**
      * Устанавливает дату автоматического закрытия от которой выбираются сделки
      * @param \DateTime $value Дата
      * @return void
      */
-    function setExpiresAtGte($value);
+    public function setExpiresAtGte($value);
 
     /**
      * Возвращает дату автоматического закрытия от которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время автоматического закрытия, от (не включая)
      */
-    function getExpiresAtGt();
+    public function getExpiresAtGt();
 
     /**
      * Проверяет, была ли установлена дата автоматического закрытия от которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasExpiresAtGt();
+    public function hasExpiresAtGt();
 
     /**
      * Устанавливает дату автоматического закрытия от которой выбираются сделки
      * @param \DateTime $value Дата автоматического закрытия
      * @return void
      */
-    function setExpiresAtGt($value);
+    public function setExpiresAtGt($value);
 
     /**
      * Возвращает дату автоматического закрытия до которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время автоматического закрытия, до (включительно)
      */
-    function getExpiresAtLte();
+    public function getExpiresAtLte();
 
     /**
      * Проверяет, была ли установлена дата автоматического закрытия до которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasExpiresAtLte();
+    public function hasExpiresAtLte();
 
     /**
      * Устанавливает дату автоматического закрытия до которой выбираются сделки
      * @param \DateTime $value Дата автоматического закрытия
      * @return void
      */
-    function setExpiresAtLte($value);
+    public function setExpiresAtLte($value);
 
     /**
      * Возвращает дату автоматического закрытия до которой будут возвращены сделки или null, если дата не была установлена
      * @return \DateTime|null Время автоматического закрытия, до (не включая)
      */
-    function getExpiresAtLt();
+    public function getExpiresAtLt();
 
     /**
      * Проверяет, была ли установлена автоматического закрытия до которой выбираются сделки
      * @return bool True если дата была установлена, false если нет
      */
-    function hasExpiresAtLt();
+    public function hasExpiresAtLt();
 
     /**
      * Устанавливает дату автоматического закрытия до которой выбираются сделки
      * @param \DateTime $value Дата автоматического закрытия
      * @return void
      */
-    function setExpiresAtLt($value);
+    public function setExpiresAtLt($value);
 
     /**
      * Возвращает ограничение количества объектов сделок или null, если оно до этого не было установлено
      * @return string|null Ограничение количества объектов сделок
      */
-    function getLimit();
+    public function getLimit();
 
     /**
      * Проверяет, было ли установлено ограничение количества объектов сделок
      * @return bool True если ограничение количества объектов сделок было установлено, false если нет
      */
-    function hasLimit();
+    public function hasLimit();
 
     /**
      * Устанавливает ограничение количества объектов сделок
      * @param int $value Количества объектов сделок на странице
      * @return void
      */
-    function setLimit($value);
+    public function setLimit($value);
 
     /**
      * Возвращает статус выбираемых сделок или null, если он до этого не был установлен
      * @return string|null Статус выбираемых сделок
      */
-    function getStatus();
+    public function getStatus();
 
     /**
      * Проверяет, был ли установлен статус выбираемых сделок
      * @return bool True если статус был установлен, false если нет
      */
-    function hasStatus();
+    public function hasStatus();
 
     /**
      * Устанавливает статус выбираемых сделок
      * @param string $value Статус сделок
      * @return void
      */
-    function setStatus($value);
+    public function setStatus($value);
 
     /**
      * Возвращает фильтр по описанию сделки или null, если он до этого не был установлен
      * @return string|null Фильтр по описанию сделки
      */
-    function getFullTextSearch();
+    public function getFullTextSearch();
 
     /**
      * Проверяет, был ли установлен фильтр по описанию сделки
      * @return bool True если фильтр по описанию сделки был установлен, false если нет
      */
-    function hasFullTextSearch();
+    public function hasFullTextSearch();
 
     /**
      * Устанавливает фильтр по описанию сделки
      * @param string $value Фильтр по описанию сделки
      * @return void
      */
-    function setFullTextSearch($value);
+    public function setFullTextSearch($value);
 }

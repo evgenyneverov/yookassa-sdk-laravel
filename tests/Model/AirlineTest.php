@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\YooKassa\Model;
-
 
 use YooKassa\Model\Airline;
 use PHPUnit\Framework\TestCase;

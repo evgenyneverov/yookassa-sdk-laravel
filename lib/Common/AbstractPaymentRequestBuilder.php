@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -193,18 +193,18 @@ abstract class AbstractPaymentRequestBuilder extends AbstractRequestBuilder
             } else {
                 if (empty($item['title']) && empty($item['description'])) {
                     throw new InvalidPropertyValueException(
-                        'Item#'.$index.' title or description not specified',
+                        'Item#' . $index . ' title or description not specified',
                         0,
-                        'AbstractPaymentRequestBuilder.items['.$index.'].title',
+                        'AbstractPaymentRequestBuilder.items[' . $index . '].title',
                         json_encode($item)
                     );
                 }
                 foreach (array('price', 'quantity', 'vatCode') as $property) {
                     if (empty($item[$property])) {
                         throw new InvalidPropertyValueException(
-                            'Item#'.$index.' '.$property.' not specified',
+                            'Item#' . $index . ' ' . $property . ' not specified',
                             0,
-                            'AbstractPaymentRequestBuilder.items['.$index.'].'.$property,
+                            'AbstractPaymentRequestBuilder.items[' . $index . '].' . $property,
                             json_encode($item)
                         );
                     }

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -80,21 +80,28 @@ abstract class AbstractNotification extends AbstractObject implements Notificati
      * нотификаций
      * @throws InvalidPropertyValueTypeException Выбрасывается если переданное значение не является строкой
      */
-    protected function _setType($value)
+    protected function setType($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException('Empty parameter "type" in Notification', 0, 'notification.type');
-        } elseif (TypeCast::canCastToEnumString($value)) {
+        }
+        if (TypeCast::canCastToEnumString($value)) {
             if (NotificationType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in Notification', 0, 'notification.type', $value
+                    'Invalid value for "type" parameter in Notification',
+                    0,
+                    'notification.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in Notification', 0, 'notification.type', $value
+                'Invalid value type for "type" parameter in Notification',
+                0,
+                'notification.type',
+                $value
             );
         }
     }
@@ -121,21 +128,28 @@ abstract class AbstractNotification extends AbstractObject implements Notificati
      * событий
      * @throws InvalidPropertyValueTypeException Выбрасывается если переданное значение не является строкой
      */
-    protected function _setEvent($value)
+    protected function setEvent($value)
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException('Empty parameter "event" in Notification', 0, 'notification.event');
-        } elseif (TypeCast::canCastToEnumString($value)) {
+        }
+        if (TypeCast::canCastToEnumString($value)) {
             if (NotificationEventType::valueExists($value)) {
                 $this->_event = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "event" parameter in Notification', 0, 'notification.event', $value
+                    'Invalid value for "event" parameter in Notification',
+                    0,
+                    'notification.event',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "event" parameter in Notification', 0, 'notification.event', $value
+                'Invalid value type for "event" parameter in Notification',
+                0,
+                'notification.event',
+                $value
             );
         }
     }

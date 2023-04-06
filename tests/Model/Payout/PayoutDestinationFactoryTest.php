@@ -128,7 +128,14 @@ class PayoutDestinationFactoryTest extends TestCase
             array(
                 array(
                     'type' => PaymentMethodType::YOO_MONEY,
-                    'account_number' => Random::str(11, 33, '1234567890')
+                    'account_number' => Random::str(11, 33, '1234567890'),
+                ),
+            ),
+            array(
+                array(
+                    'type' => PaymentMethodType::SBP,
+                    'phone' => Random::str(4, 16, '1234567890'),
+                    'bank_id' => Random::str(4, 12),
                 ),
             ),
          );

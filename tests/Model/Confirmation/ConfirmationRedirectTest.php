@@ -30,10 +30,10 @@ class ConfirmationRedirectTest extends AbstractConfirmationTest
     public function testGetSetEnforce($value)
     {
         $instance = $this->getTestInstance();
-        
+
         self::assertNull($instance->getEnforce());
         self::assertNull($instance->enforce);
-        
+
         $instance->setEnforce($value);
         if ($value === null || $value === '') {
             self::assertNull($instance->getEnforce());

@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,55 +47,53 @@ interface PayerBankDetailsInterface
      * Возвращает полное наименование организации
      * @return string Полное наименование организации
      */
-    function getFullName();
+    public function getFullName();
 
     /**
      * Возвращает сокращенное наименование организации
      * @return string Сокращенное наименование организации
      */
-    function getShortName();
+    public function getShortName();
 
     /**
      * Возвращает адрес организации
      * @return string Адрес организации
      */
-    function getAddress();
+    public function getAddress();
 
     /**
      * Возвращает ИНН организации
      * @return string ИНН организации
      */
-    function getInn();
+    public function getInn();
 
     /**
      * Возвращает КПП организации
      * @return string КПП организации
      */
-    function getKpp();
+    public function getKpp();
 
     /**
      * Возвращает наименование банка организации
      * @return string Наименование банка организации
      */
-    function getBankName();
+    public function getBankName();
 
     /**
      * Возвращает отделение банка организации
      * @return string Отделение банка организации
      */
-    function getBankBranch();
+    public function getBankBranch();
 
     /**
      * Возвращает БИК банка организации
      * @return string БИК банка организации
      */
-    function getBankBik();
+    public function getBankBik();
 
     /**
      * Возвращает номер счета организации
      * @return string Номер счета организации
      */
-    function getAccount();
-
+    public function getAccount();
 }
-

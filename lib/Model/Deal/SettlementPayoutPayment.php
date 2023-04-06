@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
  */
 
 namespace YooKassa\Model\Deal;
-
 
 use YooKassa\Common\AbstractObject;
 use YooKassa\Common\Exceptions\EmptyPropertyValueException;
@@ -72,19 +71,27 @@ class SettlementPayoutPayment extends AbstractObject implements SettlementInterf
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "type" parameter in Settlement', 0, 'settlement.type'
+                'Empty value for "type" parameter in Settlement',
+                0,
+                'settlement.type'
             );
         } elseif (TypeCast::canCastToEnumString($value)) {
             if (SettlementPayoutPaymentType::valueExists($value)) {
                 $this->_type = (string)$value;
             } else {
                 throw new InvalidPropertyValueException(
-                    'Invalid value for "type" parameter in Settlement', 0, 'settlement.type', $value
+                    'Invalid value for "type" parameter in Settlement',
+                    0,
+                    'settlement.type',
+                    $value
                 );
             }
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "type" parameter in Settlement', 0, 'settlement.type', $value
+                'Invalid value type for "type" parameter in Settlement',
+                0,
+                'settlement.type',
+                $value
             );
         }
     }
@@ -106,7 +113,9 @@ class SettlementPayoutPayment extends AbstractObject implements SettlementInterf
     {
         if ($value === null || $value === '') {
             throw new EmptyPropertyValueException(
-                'Empty value for "amount" parameter in Settlement', 0, 'settlement.amount'
+                'Empty value for "amount" parameter in Settlement',
+                0,
+                'settlement.amount'
             );
         } elseif (is_array($value)) {
             $this->_amount = $this->factoryAmount($value);
@@ -114,7 +123,10 @@ class SettlementPayoutPayment extends AbstractObject implements SettlementInterf
             $this->_amount = $value;
         } else {
             throw new InvalidPropertyValueTypeException(
-                'Invalid value type for "amount" parameter in Settlement', 0, 'settlement.amount', $value
+                'Invalid value type for "amount" parameter in Settlement',
+                0,
+                'settlement.amount',
+                $value
             );
         }
     }

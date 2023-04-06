@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,22 +30,31 @@ use YooKassa\Common\AbstractEnum;
 
 /**
  * ConfirmationType - Тип пользовательского процесса подтверждения платежа
- * |Код|Описание|
- * --- | ---
- * |redirect|Необходимо направить плательщика на страницу партнера|
- * |external|Необходимо ождать пока плательщик самостоятельно подтвердит платеж|
- * |code_verification|Необходимо получить одноразовый код от плательщика для подтверждения платежа|
- * |embedded|Необходимо получить токен для checkout.js|
- * |qr|Необходимо получить QR-код|
- * |mobile_application|необходимо совершить действия в мобильном приложении|
+ *
+ * Возможные значения:
+ * - `redirect` - Необходимо направить плательщика на страницу партнера
+ * - `external` - Для подтверждения платежа пользователю необходимо совершить действия во внешней системе (например, ответить на смс)
+ * - `code_verification` - Необходимо получить одноразовый код от плательщика для подтверждения платежа
+ * - `embedded` - Необходимо получить токен для checkout.js
+ * - `qr` - Необходимо получить QR-код
+ * - `mobile_application` - Необходимо совершить действия в мобильном приложении
  */
 class ConfirmationType extends AbstractEnum
 {
-    const REDIRECT           = 'redirect';
-    const EXTERNAL           = 'external';
-    const CODE_VERIFICATION  = 'code_verification';
-    const EMBEDDED           = 'embedded';
-    const QR                 = 'qr';
+    /** Необходимо направить плательщика на страницу партнера */
+    const REDIRECT = 'redirect';
+    /** Для подтверждения платежа пользователю необходимо совершить действия во внешней системе (например, ответить на смс) */
+    const EXTERNAL = 'external';
+    /**
+     * Необходимо ждать пока плательщик самостоятельно подтвердит платеж
+     * @deprecated Будет удален в будущих версиях
+     */
+    const CODE_VERIFICATION = 'code_verification';
+    /** Необходимо получить одноразовый код от плательщика для подтверждения платежа */
+    const EMBEDDED = 'embedded';
+    /** Необходимо получить QR-код */
+    const QR = 'qr';
+    /** Необходимо совершить действия в мобильном приложении */
     const MOBILE_APPLICATION = 'mobile_application';
 
     protected static $validValues = array(

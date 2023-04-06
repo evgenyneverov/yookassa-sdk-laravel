@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2022 "YooMoney", NBСO LLC
+ * Copyright (c) 2023 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,7 @@ use YooKassa\Model\AirlineInterface;
 use YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes;
 use YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesFactory;
 use YooKassa\Model\Deal\PaymentDealInfo;
+use YooKassa\Model\FraudData;
 use YooKassa\Model\Metadata;
 use YooKassa\Model\Payment;
 use YooKassa\Model\PaymentData\AbstractPaymentData;
@@ -88,6 +89,12 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
      * @var PaymentDealInfo
      */
     protected $deal;
+
+    /**
+     * Объект с информацией о сделке, в составе которой проходит платеж.
+     * @var FraudData
+     */
+    protected $fraud_data;
 
     /**
      * Инициализирует объект запроса, который в дальнейшем будет собираться билдером
@@ -342,6 +349,34 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
     }
 
     /**
+     * Устанавливает сделку
+     * @param FraudData|array|null $value Данные о сделке, в составе которой проходит платеж
+     * @throws InvalidPropertyValueTypeException
+     *
+     * @return CreatePaymentRequestBuilder Информация для проверки операции на мошенничество
+     */
+    public function setFraudData($value)
+    {
+        if ($value === null || (is_array($value) && empty($value))) {
+            $this->fraud_data = null;
+            return $this;
+        }
+        if ($value instanceof FraudData) {
+            $this->fraud_data = $value;
+        } elseif (is_array($value)) {
+            $this->fraud_data = new FraudData($value);
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid fraud_data value type in CreatePaymentRequest',
+                0,
+                'CreatePaymentRequest.fraud_data',
+                $value
+            );
+        }
+        return $this;
+    }
+
+    /**
      * Устанавливает идентификатор покупателя в вашей системе
      * @param string $value Идентификатор покупателя в вашей системе, например электронная почта или номер телефона. Не более 200 символов
      *
@@ -411,13 +446,16 @@ class CreatePaymentRequestBuilder extends AbstractPaymentRequestBuilder
         if ($this->receipt->notEmpty()) {
             $this->currentObject->setReceipt($this->receipt);
         }
-        if($this->airline->notEmpty()){
+        if ($this->airline->notEmpty()) {
             $this->currentObject->setAirline($this->airline);
         }
         $this->currentObject->setAmount($this->amount);
         $this->currentObject->setTransfers($this->transfers);
         if ($this->deal) {
             $this->currentObject->setDeal($this->deal);
+        }
+        if ($this->fraud_data) {
+            $this->currentObject->setFraudData($this->fraud_data);
         }
 
         return parent::build();

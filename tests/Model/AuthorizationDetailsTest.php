@@ -141,7 +141,7 @@ class AuthorizationDetailsTest extends TestCase
      */
     public function validDataProvider()
     {
-       return array(
+        return array(
             array(
                 'authorizationDetails' => array(
                     'rrn'      => null,
@@ -185,14 +185,14 @@ class AuthorizationDetailsTest extends TestCase
     {
         $exceptionNamespace = 'YooKassa\\Common\\Exceptions\\';
         return array(
-            array(array(), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(fopen(__FILE__, 'r'), $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(-1, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(-0.01, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(0.0, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(true, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(false, $exceptionNamespace.'InvalidPropertyValueTypeException'),
-            array(new \StdClass, $exceptionNamespace.'InvalidPropertyValueTypeException'),
+            array(array(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(fopen(__FILE__, 'r'), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(-1, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(-0.01, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(0.0, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(true, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(false, $exceptionNamespace . 'InvalidPropertyValueTypeException'),
+            array(new \StdClass(), $exceptionNamespace . 'InvalidPropertyValueTypeException'),
         );
     }
 

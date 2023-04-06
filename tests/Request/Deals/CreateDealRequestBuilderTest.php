@@ -223,5 +223,4 @@ class CreateDealRequestBuilderTest extends TestCase
             array(new SafeDeal()),
         );
     }
-
 }
