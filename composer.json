@@ -1,5 +1,5 @@
 {
-  "name": "yoomoney/yookassa-sdk-php",
+  "name": "evgenyneverov/yookassa-sdk-laravel",
   "description": "This is a developer tool for integration with YooMoney.",
   "type": "library",
   "license": "MIT",
@@ -11,17 +11,13 @@
       "email": "cms@yoomoney.ru"
     }
   ],
-  "dist": {
-    "type": "zip",
-    "url": "https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-php/archive?at=refs%2Ftags%2F2.8.0&format=zip"
-  },
   "version": "2.8.0",
   "require": {
     "php": ">=5.3.0",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "psr/log": "^1.0"
+    "psr/log": ">=1.0"
   },
   "require-dev": {
     "ext-xml": "*",
